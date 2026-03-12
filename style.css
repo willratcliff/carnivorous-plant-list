@@ -194,6 +194,33 @@ main {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* ── Price tiers ── */
+.price-tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 12px;
+  margin-bottom: 12px;
+}
+
+.price-tier {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  padding: 3px 0;
+  border-bottom: 1px solid #f0f0ec;
+}
+
+.tier-size {
+  color: #888;
+}
+
+.tier-price {
+  font-weight: 700;
+  color: #7cb342;
+}
+
 .plant-description {
   font-size: 0.875rem;
   color: #556;

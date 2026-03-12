@@ -113,6 +113,25 @@
           ? '<img src="' + plant.image + '" alt="' + plant.name + '">'
           : '<div class="img-placeholder">🌿</div>';
 
+        // Build price tiers HTML
+        var priceHTML = '';
+        if (typeof plant.price === 'object') {
+          var sizeLabels = { small: 'Small', medium: 'Medium', large: 'Large', specimen: 'Specimen' };
+          priceHTML = '<div class="price-tiers">';
+          var sizes = ['small', 'medium', 'large', 'specimen'];
+          sizes.forEach(function (size) {
+            if (plant.price[size]) {
+              priceHTML += '<div class="price-tier">' +
+                '<span class="tier-size">' + sizeLabels[size] + '</span>' +
+                '<span class="tier-price">' + plant.price[size] + '</span>' +
+              '</div>';
+            }
+          });
+          priceHTML += '</div>';
+        } else {
+          priceHTML = '<p class="plant-price">' + plant.price + '</p>';
+        }
+
         card.innerHTML =
           '<div class="plant-image">' +
             imgHTML +
@@ -123,7 +142,7 @@
           '<div class="plant-info">' +
             '<h2 class="plant-name">' + plant.name + '</h2>' +
             '<p class="plant-species">' + plant.species + '</p>' +
-            '<p class="plant-price">' + plant.price + '</p>' +
+            priceHTML +
             '<p class="plant-description">' + plant.description + '</p>' +
           '</div>';
 
