@@ -56,8 +56,14 @@ const plants = [
     species: "Dionaea muscipula 'B52'",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     description: "One of the most famous giant clones, known for producing exceptionally large traps. Fast-growing and perennial.",
-    image: "images/b52.jpg",
-    images: [],
+    image: "images/b52-large.jpg",
+    images: [
+      { label: "Small",      file: "images/b52-small.jpg" },
+      { label: "Medium",     file: "images/b52-medium.jpg" },
+      { label: "Large",      file: "images/b52-large.jpg" },
+      { label: "Large (2)",  file: "images/b52-large-2.jpg" },
+      { label: "Specimen",   file: "images/b52-specimen.jpg" },
+    ],
     status: "available",
   },
 
