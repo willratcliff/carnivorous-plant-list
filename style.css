@@ -53,10 +53,44 @@ body {
   background: rgba(255, 255, 255, 0.22);
 }
 
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 20px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-link:hover,
+.nav-link-active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
 .site-header .ebay-btn svg {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
+}
+
+/* ── Shipping bar ── */
+.shipping-bar {
+  background: #2c3e2d;
+  color: rgba(255, 255, 255, 0.88);
+  text-align: center;
+  padding: 9px 24px;
+  font-size: 0.8rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.2px;
 }
 
 /* ── Hero ── */
@@ -226,6 +260,89 @@ main {
   color: #556;
   line-height: 1.55;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ── About section ── */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 72px;
+  padding-top: 52px;
+  border-top: 2px solid rgba(124, 179, 66, 0.2);
+}
+
+.about-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.about-photo {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.about-photo-main    { aspect-ratio: 3/4; }
+.about-photo-secondary { aspect-ratio: 3/4; }
+
+.about-title {
+  font-size: 1.9rem;
+  color: #2c3e2d;
+  margin-bottom: 16px;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  color: #556;
+  line-height: 1.75;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin-bottom: 14px;
+}
+.about-text p:last-child { margin-bottom: 0; }
+
+.about-text a {
+  color: #7cb342;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(124, 179, 66, 0.4);
+  transition: border-color 0.15s;
+}
+.about-text a:hover { border-color: #7cb342; }
+
+@media (max-width: 768px) {
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .about-photos {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+/* ── Bulk & Wholesale section ── */
+.bulk-section {
+  margin-top: 72px;
+  padding-top: 52px;
+  border-top: 2px solid rgba(124, 179, 66, 0.2);
+}
+
+.bulk-section-title {
+  font-size: 1.9rem;
+  color: #2c3e2d;
+  margin-bottom: 8px;
+}
+
+.bulk-section-intro {
+  color: #556;
+  font-size: 1rem;
+  margin-bottom: 28px;
+  max-width: 540px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
 }
 
 /* ── Contact / Order section ── */
@@ -467,6 +584,335 @@ main {
 .modal-order-btn:hover {
   background: #5a8f2a;
   transform: translateY(-1px);
+}
+
+.modal-video-btn {
+  display: inline-block;
+  background: transparent;
+  color: #7cb342;
+  text-decoration: none;
+  padding: 11px 24px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  border: 2px solid #7cb342;
+  margin-left: 10px;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.modal-video-btn:hover {
+  background: #7cb342;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ── Cart icon button (header) ── */
+.cart-icon-btn {
+  position: relative;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.cart-icon-btn:hover { background: rgba(255, 255, 255, 0.22); }
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #7cb342;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(44, 62, 45, 0.95);
+}
+
+/* ── Cart overlay ── */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+
+/* ── Cart panel ── */
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  max-width: 100vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 2600;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+.cart-panel.open { transform: translateX(0); }
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid #f0f0ec;
+  flex-shrink: 0;
+  background: #2c3e2d;
+}
+.cart-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-family: Georgia, serif;
+}
+.cart-close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.cart-close:hover { background: rgba(255,255,255,0.3); }
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Cart items ── */
+.cart-items-list { display: flex; flex-direction: column; gap: 10px; }
+
+.cart-empty {
+  color: #aaa;
+  font-size: 0.9rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: center;
+  padding: 24px 0;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  background: #fafaf8;
+  border-radius: 8px;
+  border: 1px solid #f0f0ec;
+}
+.cart-item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.cart-item-name {
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #2c3e2d;
+  line-height: 1.4;
+}
+.cart-item-name em { color: #888; font-style: italic; }
+.cart-item-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7cb342;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  white-space: nowrap;
+}
+.cart-item-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.qty-btn {
+  background: #eee;
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s;
+}
+.qty-btn:hover { background: #ddd; }
+.qty-num {
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-width: 20px;
+  text-align: center;
+}
+.qty-remove {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-left: 4px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.1s;
+}
+.qty-remove:hover { color: #e53;  }
+
+/* ── Shipping note ── */
+.cart-ship-note {
+  font-size: 0.78rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #888;
+  text-align: center;
+}
+.cart-ship-free { color: #7cb342; font-weight: 600; }
+
+/* ── Summary ── */
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid #f0f0ec;
+  padding-top: 14px;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #556;
+}
+.summary-check-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  color: #556;
+}
+.summary-check-label small { color: #aaa; }
+.summary-check-label input[type="checkbox"] { accent-color: #7cb342; width: 15px; height: 15px; }
+.summary-total {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c3e2d;
+  border-top: 1px solid #f0f0ec;
+  padding-top: 10px;
+  margin-top: 4px;
+}
+.summary-total span:last-child { color: #7cb342; }
+
+/* ── Cart textarea + button ── */
+.cart-comments {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #445;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.cart-comments:focus { border-color: #7cb342; }
+
+.cart-payment-note {
+  font-size: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #aaa;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.cart-email-btn {
+  width: 100%;
+  background: #7cb342;
+  color: #fff;
+  border: none;
+  padding: 13px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.cart-email-btn:hover { background: #5a8f2a; transform: translateY(-1px); }
+
+/* ── Modal cart row ── */
+.modal-cart-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.modal-size-select {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1.5px solid #ddd;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #2c3e2d;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.modal-size-select:focus { border-color: #7cb342; }
+.modal-add-cart-btn {
+  background: #7cb342;
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.modal-add-cart-btn:hover { background: #5a8f2a; }
+
+.modal-action-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 /* ── Footer ── */

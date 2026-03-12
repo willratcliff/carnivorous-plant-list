@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Reviews — Will's Carnivorous Plants (and Friends)</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .reviews-hero {
+      text-align: center;
+      padding: 64px 24px 48px;
+    }
+    .reviews-hero h1 {
+      font-size: 2.8rem;
+      color: #2c3e2d;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .reviews-hero p {
+      font-size: 1rem;
+      color: #556;
+      max-width: 480px;
+      margin: 0 auto;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    .reviews-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+
+    .review-card {
+      background: #fff;
+      border: 2px solid rgba(124, 179, 66, 0.15);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .review-photo {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .review-body {
+      padding: 20px 22px 22px;
+    }
+
+    .review-platform {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: #1877f2;
+      margin-bottom: 12px;
+    }
+    .review-platform svg { width: 14px; height: 14px; }
+    .review-platform-ebay { color: #e53238; }
+
+    .review-item {
+      font-size: 0.75rem;
+      color: #aaa;
+      font-style: italic;
+      margin-left: auto;
+    }
+
+    .review-card-wide {
+      grid-column: 1 / -1;
+    }
+
+    .review-quote {
+      font-size: 0.95rem;
+      color: #2c3e2d;
+      line-height: 1.7;
+      font-family: Georgia, serif;
+      margin-bottom: 14px;
+      position: relative;
+      padding-left: 18px;
+    }
+    .review-quote::before {
+      content: '\201C';
+      position: absolute;
+      left: 0;
+      top: -4px;
+      font-size: 2rem;
+      color: #7cb342;
+      line-height: 1;
+    }
+
+    .review-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #888;
+    }
+    .review-meta .review-author {
+      font-weight: 600;
+      color: #556;
+    }
+    .review-likes {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+      color: #1877f2;
+      font-weight: 600;
+    }
+    .review-likes svg { width: 14px; height: 14px; }
+
+    .reviews-cta {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+      border-top: 2px solid rgba(124,179,66,0.2);
+      padding-top: 48px;
+    }
+    .reviews-cta h2 {
+      font-size: 1.5rem;
+      color: #2c3e2d;
+      margin-bottom: 10px;
+    }
+    .reviews-cta p {
+      color: #556;
+      font-size: 0.95rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .reviews-cta a.cta-btn {
+      display: inline-block;
+      background: #7cb342;
+      color: #fff;
+      text-decoration: none;
+      padding: 11px 28px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .reviews-cta a.cta-btn:hover { background: #5a8f2a; transform: translateY(-1px); }
+
+    @media (max-width: 768px) {
+      .reviews-hero h1 { font-size: 2rem; }
+      .reviews-grid { padding: 0 16px 60px; grid-template-columns: 1fr; }
+      .reviews-cta { padding: 40px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Sticky header ── -->
+  <header class="site-header">
+    <a class="logo" href="index.html" style="text-decoration:none; color:inherit;">Will's Carnivorous Plants (and Friends)</a>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html">← Shop</a>
+      <a class="nav-link" href="care.html">Care Guide</a>
+      <a class="nav-link nav-link-active" href="reviews.html">Reviews</a>
+      <a class="nav-link" href="trading.html">Trading</a>
+    </nav>
+  </header>
+
+  <!-- ── Shipping bar ── -->
+  <div class="shipping-bar">
+    🚚 Free shipping on orders over $100 &nbsp;·&nbsp; USPS Priority Mail (~3 days) &nbsp;·&nbsp; Contiguous 48 states only
+  </div>
+
+  <div class="reviews-hero">
+    <h1>Customer Reviews</h1>
+    <p>Real feedback from real growers. These plants go out to collectors, hobbyists, and enthusiasts across the country.</p>
+  </div>
+
+  <div class="reviews-grid">
+
+    <!-- Review 1 -->
+    <div class="review-card">
+      <img class="review-photo" src="images/review-dumpling-facebook.jpg" alt="Chinese Dumpling Venus Flytrap received by customer" />
+      <div class="review-body">
+        <div class="review-platform">
+          <!-- Facebook icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+          Venus Fly Trap Fans · Facebook
+        </div>
+        <p class="review-quote">
+          Thank you Will Ratcliff for this HUGE (thumb for scale) Chinese Dumpling! Definitely one of the biggest plants I've ever received! <em style="font-size:0.85em; color:#7a9a7a;">[Ed. note: this was a medium, not a large.]</em>
+        </p>
+        <div class="review-meta">
+          <span class="review-author">Top Contributor</span>
+          <span class="review-likes">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/>
+              <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+            </svg>
+            46
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- eBay reviews -->
+    <div class="review-card">
+      <div class="review-body">
+        <div class="review-platform review-platform-ebay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          eBay Verified Purchase
+        </div>
+        <p class="review-quote">I haven't found a better seller on eBay. Plants look fantastic. A definite attention to detail. I'm saving this seller for sure!!</p>
+        <div class="review-meta">
+          <span class="review-author">Verified eBay Buyer</span>
+          <span class="review-item">Maroon Monster Venus Flytraps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-body">
+        <div class="review-platform review-platform-ebay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          eBay Verified Purchase
+        </div>
+        <p class="review-quote">Can't say enough good things! Really good seller. Works at it really hard. Pays attention to detail. He's not in it just for the bucks. Definitely do again.</p>
+        <div class="review-meta">
+          <span class="review-author">Verified eBay Buyer</span>
+          <span class="review-item">Red Piranha Venus Flytraps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-body">
+        <div class="review-platform review-platform-ebay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          eBay Verified Purchase
+        </div>
+        <p class="review-quote">Beautiful plants. Fast shipment. Great person to buy from. Highly recommended by a lady who knows her carnivorous plants. A+++++</p>
+        <div class="review-meta">
+          <span class="review-author">Verified eBay Buyer</span>
+          <span class="review-item">Chinese Dumpling Venus Flytraps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-body">
+        <div class="review-platform review-platform-ebay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          eBay Verified Purchase
+        </div>
+        <p class="review-quote">Beautiful plants. Fast shipment. Great person to buy from. Highly recommended by a lady who knows her carnivorous plants. A+++++</p>
+        <div class="review-meta">
+          <span class="review-author">Verified eBay Buyer</span>
+          <span class="review-item">Giant Venus Flytrap</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card review-card-wide">
+      <div class="review-body">
+        <div class="review-platform review-platform-ebay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          eBay Verified Purchase
+        </div>
+        <p class="review-quote">Excellent quality plants at a very fair price. They all arrived very healthy, in great condition, and with strong roots! Seller does a great job with properly packing the plants with care and ships very quickly. The item descriptions provide an accurate description of what you are getting, as well as multiple photos for reference. This seller is also very good at communication and addressing any questions. I have been very impressed with all my purchases! A+++</p>
+        <div class="review-meta">
+          <span class="review-author">Verified eBay Buyer</span>
+          <span class="review-item">Wholesale Venus Flytraps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-body">
+        <div class="review-platform review-platform-ebay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          eBay Verified Purchase
+        </div>
+        <p class="review-quote">Perfect plants and amazing size. Absolutely thrilled. Arrived perfectly packed, in great condition. Could not recommend more! OH — great communication with seller too.</p>
+        <div class="review-meta">
+          <span class="review-author">Verified eBay Buyer</span>
+          <span class="review-item">Giant Venus Flytrap</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more review cards here as you collect them -->
+
+  </div>
+
+  <div class="reviews-cta">
+    <h2>Have feedback?</h2>
+    <p>If you've received a plant from me and want to share your experience, I'd love to hear from you. Email me directly or tag me on social media.</p>
+    <a class="cta-btn" href="mailto:wcratcliff@gmail.com?subject=Review for Will's Carnivorous Plants (and Friends)">Send Feedback</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Will's Carnivorous Plants (and Friends) &mdash; All plants hand-grown and shipped with care.
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading — Will's Carnivorous Plants (and Friends)</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .trade-hero {
+      text-align: center;
+      padding: 64px 24px 48px;
+    }
+    .trade-hero h1 {
+      font-size: 2.8rem;
+      color: #2c3e2d;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .trade-hero .trade-subtitle {
+      font-size: 1rem;
+      color: #7a9a7a;
+      font-style: italic;
+      font-family: Georgia, serif;
+    }
+    .trade-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .trade-section {
+      margin-bottom: 56px;
+    }
+    .trade-section h2 {
+      font-size: 1.5rem;
+      color: #2c3e2d;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(124, 179, 66, 0.25);
+    }
+    .trade-section p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .trade-section p:last-child { margin-bottom: 0; }
+
+    /* Featured plant spotlight */
+    .trade-spotlight {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: start;
+      background: #f4f8f0;
+      border: 1px solid rgba(124, 179, 66, 0.3);
+      border-radius: 16px;
+      padding: 36px;
+      margin-bottom: 56px;
+    }
+    .trade-spotlight img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      display: block;
+    }
+    .trade-spotlight-text h2 {
+      font-size: 1.7rem;
+      color: #2c3e2d;
+      margin-bottom: 6px;
+    }
+    .trade-spotlight-text .spotlight-species {
+      font-style: italic;
+      color: #7a9a7a;
+      font-family: Georgia, serif;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .trade-spotlight-text p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .trade-spotlight-text p:last-child { margin-bottom: 0; }
+
+    .trade-cta {
+      display: inline-block;
+      margin-top: 20px;
+      background: #7cb342;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: background 0.2s;
+    }
+    .trade-cta:hover { background: #558b2f; }
+
+    .trade-what-i-offer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .trade-what-i-offer li {
+      background: #eaf3e0;
+      color: #3a5c2a;
+      border-radius: 6px;
+      padding: 5px 14px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Collection table */
+    .collection-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin-top: 4px;
+    }
+    .collection-table thead th {
+      text-align: left;
+      padding: 10px 14px;
+      background: #e8f2de;
+      color: #2c3e2d;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 2px solid rgba(124,179,66,0.35);
+    }
+    .collection-table tbody tr:nth-child(even) {
+      background: #f9fcf6;
+    }
+    .collection-table tbody td {
+      padding: 9px 14px;
+      color: #333;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      vertical-align: middle;
+    }
+    .badge-sale {
+      display: inline-block;
+      background: #7cb342;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+    .collection-note {
+      font-size: 0.85rem;
+      color: #7a9a7a;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    @media (max-width: 680px) {
+      .trade-hero h1 { font-size: 2rem; }
+      .trade-spotlight {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Sticky header ── -->
+  <header class="site-header">
+    <a class="logo" href="index.html" style="text-decoration:none; color:inherit;">Will's Carnivorous Plants (and Friends)</a>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html">← Shop</a>
+      <a class="nav-link" href="care.html">Care Guide</a>
+      <a class="nav-link" href="reviews.html">Reviews</a>
+      <a class="nav-link nav-link-active" href="trading.html">Trading</a>
+    </nav>
+  </header>
+
+  <div class="trade-hero">
+    <h1>Plant Trading</h1>
+    <p class="trade-subtitle">Trading Venus flytraps and other carnivorous plants with fellow growers</p>
+  </div>
+
+  <main class="trade-content">
+
+    <!-- ── Cephalotus spotlight ── -->
+    <div class="trade-spotlight">
+      <img src="images/cephalotus.jpg" alt="Cephalotus follicularis — Albany pitcher plant" />
+      <div class="trade-spotlight-text">
+        <h2>Actively Seeking: Cephalotus</h2>
+        <p class="spotlight-species">Cephalotus follicularis — Albany Pitcher Plant</p>
+        <p>I'm actively seeking Cephalotus — either mature plants or small, rooted divisions I'd be happy to trade for it using anything shown on my <a href="index.html" style="color:#558b2f;">sale page</a>. Drop me an email and let's work something out.</p>
+        <a class="trade-cta" href="mailto:wcratcliff@gmail.com?subject=Cephalotus%20Trade">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- ── General trading policy ── -->
+    <div class="trade-section">
+      <h2>Open to Trading for VFT Clones</h2>
+      <p>I'm generally open to trading for Venus flytrap clones that I don't currently have. My collection is below. <a href="mailto:wcratcliff@gmail.com?subject=VFT%20Trade" style="color:#558b2f;">Shoot me an email</a> if you're interested in trading.</p>
+    </div>
+
+    <!-- ── Collection table ── -->
+    <div class="trade-section">
+      <h2>My Venus Flytrap Collection</h2>
+      <p>Below is the full list of cultivars currently in my collection. Plants marked <span class="badge-sale">For Sale</span> are listed on the <a href="index.html" style="color:#558b2f;">shop page</a> and are also available to trade. For anything else, reach out and we can talk.</p>
+      <table class="collection-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Cultivar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Alien</td></tr>
+          <tr><td>2</td><td>Arching Flat Skinny Leaves</td></tr>
+          <tr><td>3</td><td>B52 <span class="badge-sale">For Sale</span></td></tr>
+          <tr><td>4</td><td>Big Mouth</td></tr>
+          <tr><td>5</td><td>Bimbo</td></tr>
+          <tr><td>6</td><td>Chinese Dumpling <span class="badge-sale">For Sale</span></td></tr>
+          <tr><td>7</td><td>Coquillage</td></tr>
+          <tr><td>8</td><td>Crenata</td></tr>
+          <tr><td>9</td><td>DCXL</td></tr>
+          <tr><td>10</td><td>Dentate</td></tr>
+          <tr><td>11</td><td>FTS Maroon Monster <span class="badge-sale">For Sale</span></td></tr>
+          <tr><td>12</td><td>G14 Rosette</td></tr>
+          <tr><td>13</td><td>G17 Megatraps</td></tr>
+          <tr><td>14</td><td>Giant</td></tr>
+          <tr><td>15</td><td>Giant Microdent</td></tr>
+          <tr><td>16</td><td>Ginormous</td></tr>
+          <tr><td>17</td><td>GJ Giant Clam</td></tr>
+          <tr><td>18</td><td>GJ Phalanx</td></tr>
+          <tr><td>19</td><td>Grun</td></tr>
+          <tr><td>20</td><td>La Grossa A Gui Gui</td></tr>
+          <tr><td>21</td><td>Low Giant</td></tr>
+          <tr><td>22</td><td>Mammoth</td></tr>
+          <tr><td>23</td><td>Onslow County North Carolina</td></tr>
+          <tr><td>24</td><td>Petite Dragon</td></tr>
+          <tr><td>25</td><td>Pygmy Neotinic Clone D</td></tr>
+          <tr><td>26</td><td>Red Centered Clone</td></tr>
+          <tr><td>27</td><td>Red Piranha <span class="badge-sale">For Sale</span></td></tr>
+          <tr><td>28</td><td>RG38N</td></tr>
+          <tr><td>29</td><td>Royal Red</td></tr>
+          <tr><td>30</td><td>S. D. Draco</td></tr>
+          <tr><td>31</td><td>Sawtooth</td></tr>
+          <tr><td>32</td><td>Schuppensteil</td></tr>
+          <tr><td>33</td><td>SD Kronos</td></tr>
+          <tr><td>34</td><td>Slack's Giant</td></tr>
+          <tr><td>35</td><td>Spotty</td></tr>
+          <tr><td>36</td><td>Towering Giant</td></tr>
+          <tr><td>37</td><td>Unknown Giant <span class="badge-sale">For Sale</span></td></tr>
+        </tbody>
+      </table>
+      <p class="collection-note">37 cultivars listed. Updated March 2026.</p>
+    </div>
+
+    <!-- ── Contact ── -->
+    <div class="trade-section">
+      <h2>How to Reach Me</h2>
+      <p>Email is the best way to start a trade conversation: <a href="mailto:wcratcliff@gmail.com" style="color:#558b2f;">wcratcliff@gmail.com</a>. You can also find me on Reddit as <a href="https://www.reddit.com/user/Berberis/" target="_blank" rel="noopener" style="color:#558b2f;">u/Berberis</a> or on Instagram as <a href="https://www.instagram.com/willhascoolplants" target="_blank" rel="noopener" style="color:#558b2f;">@willhascoolplants</a>.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Will's Carnivorous Plants (and Friends) &mdash; All plants hand-grown and shipped with care.
+  </footer>
+
+</body>
+</html>
