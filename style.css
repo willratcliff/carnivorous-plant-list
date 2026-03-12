@@ -312,6 +312,41 @@ main {
 }
 .about-text a:hover { border-color: #7cb342; }
 
+/* ── Friends & Resources ── */
+.friends-section {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 2px solid rgba(124, 179, 66, 0.2);
+}
+.friends-title {
+  font-size: 1.5rem;
+  color: #2c3e2d;
+  margin-bottom: 24px;
+}
+.friend-card {
+  background: #f4f8f0;
+  border: 1px solid rgba(124, 179, 66, 0.3);
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+.friend-card h3 {
+  font-size: 1.15rem;
+  color: #2c3e2d;
+  margin-bottom: 10px;
+}
+.friend-card h3 a {
+  color: #558b2f;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(124, 179, 66, 0.4);
+}
+.friend-card h3 a:hover { border-color: #7cb342; }
+.friend-card p {
+  font-size: 0.97rem;
+  color: #444;
+  line-height: 1.75;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .about-section {
     grid-template-columns: 1fr;
