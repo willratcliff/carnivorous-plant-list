@@ -12,7 +12,6 @@
   <header class="site-header">
     <span class="logo">Will's Carnivorous Plants</span>
     <a class="ebay-btn" href="https://www.ebay.com/usr/thepitcherpeople" target="_blank" rel="noopener">
-      <!-- Shopping tag icon -->
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
         <line x1="7" y1="7" x2="7.01" y2="7"/>
@@ -29,9 +28,7 @@
 
   <main>
 
-    <!-- Plant cards are inserted here by plants.js + the script below -->
     <div class="plants-grid" id="plants-grid"></div>
-
 
     <!-- ── How to Order ── -->
     <div class="contact-section">
@@ -97,40 +94,59 @@
     &copy; 2025 Will's Carnivorous Plants &mdash; All plants hand-grown and shipped with care.
   </footer>
 
-  <!-- Load plant data, then render cards -->
+
+  <!-- ── Detail modal ── -->
+  <div id="plant-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <img id="modal-main-img" class="modal-main-img" src="" alt="" />
+      <div id="modal-thumbs" class="modal-thumbs"></div>
+      <div class="modal-details">
+        <div class="modal-header">
+          <div>
+            <h2 id="modal-name" class="modal-name"></h2>
+            <p id="modal-species" class="modal-species"></p>
+          </div>
+        </div>
+        <div id="modal-prices" class="price-tiers modal-price-tiers"></div>
+        <p id="modal-description" class="modal-description"></p>
+        <a id="modal-email" href="mailto:wcratcliff@gmail.com" class="modal-order-btn">
+          Email to Order
+        </a>
+      </div>
+    </div>
+  </div>
+
+
   <script src="plants.js"></script>
   <script>
     (function () {
+
+      // ── Render cards ──────────────────────────────────────────
       var grid = document.getElementById('plants-grid');
       var statusLabel = { available: 'Available', limited: 'Limited', sold: 'Sold', new: 'New' };
+      var sizeLabels  = { small: 'Small', medium: 'Medium', large: 'Large', specimen: 'Specimen' };
+      var sizes = ['small', 'medium', 'large', 'specimen'];
 
       plants.forEach(function (plant) {
         var card = document.createElement('div');
         card.className = 'plant-card' + (plant.status === 'sold' ? ' sold' : '');
+        card.style.cursor = 'pointer';
 
-        // Image or green placeholder
         var imgHTML = plant.image
           ? '<img src="' + plant.image + '" alt="' + plant.name + '">'
           : '<div class="img-placeholder">🌿</div>';
 
-        // Build price tiers HTML
-        var priceHTML = '';
-        if (typeof plant.price === 'object') {
-          var sizeLabels = { small: 'Small', medium: 'Medium', large: 'Large', specimen: 'Specimen' };
-          priceHTML = '<div class="price-tiers">';
-          var sizes = ['small', 'medium', 'large', 'specimen'];
-          sizes.forEach(function (size) {
-            if (plant.price[size]) {
-              priceHTML += '<div class="price-tier">' +
-                '<span class="tier-size">' + sizeLabels[size] + '</span>' +
-                '<span class="tier-price">' + plant.price[size] + '</span>' +
-              '</div>';
-            }
-          });
-          priceHTML += '</div>';
-        } else {
-          priceHTML = '<p class="plant-price">' + plant.price + '</p>';
-        }
+        var priceHTML = '<div class="price-tiers">';
+        sizes.forEach(function (s) {
+          if (plant.price[s]) {
+            priceHTML += '<div class="price-tier">' +
+              '<span class="tier-size">' + sizeLabels[s] + '</span>' +
+              '<span class="tier-price">' + plant.price[s] + '</span>' +
+            '</div>';
+          }
+        });
+        priceHTML += '</div>';
 
         card.innerHTML =
           '<div class="plant-image">' +
@@ -138,6 +154,7 @@
             '<span class="status-badge status-' + plant.status + '">' +
               (statusLabel[plant.status] || plant.status) +
             '</span>' +
+            '<span class="card-view-hint">View photos</span>' +
           '</div>' +
           '<div class="plant-info">' +
             '<h2 class="plant-name">' + plant.name + '</h2>' +
@@ -146,8 +163,85 @@
             '<p class="plant-description">' + plant.description + '</p>' +
           '</div>';
 
+        card.addEventListener('click', function () { openModal(plant); });
         grid.appendChild(card);
       });
+
+
+      // ── Modal ─────────────────────────────────────────────────
+      var modal      = document.getElementById('plant-modal');
+      var mainImg    = document.getElementById('modal-main-img');
+      var thumbsWrap = document.getElementById('modal-thumbs');
+      var modalName  = document.getElementById('modal-name');
+      var modalSpec  = document.getElementById('modal-species');
+      var modalPrice = document.getElementById('modal-prices');
+      var modalDesc  = document.getElementById('modal-description');
+
+      function openModal(plant) {
+        // Name + species
+        modalName.textContent = plant.name;
+        modalSpec.textContent = plant.species;
+        modalDesc.textContent = plant.description;
+
+        // Prices
+        modalPrice.innerHTML = '';
+        sizes.forEach(function (s) {
+          if (plant.price[s]) {
+            var row = document.createElement('div');
+            row.className = 'price-tier';
+            row.innerHTML = '<span class="tier-size">' + sizeLabels[s] + '</span>' +
+                            '<span class="tier-price">' + plant.price[s] + '</span>';
+            modalPrice.appendChild(row);
+          }
+        });
+
+        // Gallery — fall back to main image if no size photos yet
+        var gallery = (plant.images && plant.images.length > 0)
+          ? plant.images
+          : [{ label: plant.name, file: plant.image }];
+
+        mainImg.src = gallery[0].file;
+        mainImg.alt = gallery[0].label;
+
+        // Thumbnails — only show if there are multiple images
+        thumbsWrap.innerHTML = '';
+        if (gallery.length > 1) {
+          gallery.forEach(function (img, i) {
+            var thumb = document.createElement('div');
+            thumb.className = 'modal-thumb' + (i === 0 ? ' active' : '');
+            thumb.innerHTML =
+              '<img src="' + img.file + '" alt="' + img.label + '">' +
+              '<div class="modal-thumb-label">' + img.label + '</div>';
+            thumb.addEventListener('click', function () {
+              mainImg.src = img.file;
+              mainImg.alt = img.label;
+              thumbsWrap.querySelectorAll('.modal-thumb').forEach(function (t) {
+                t.classList.remove('active');
+              });
+              thumb.classList.add('active');
+            });
+            thumbsWrap.appendChild(thumb);
+          });
+          thumbsWrap.style.display = 'flex';
+        } else {
+          thumbsWrap.style.display = 'none';
+        }
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('modal-close').addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
     }());
   </script>
 
