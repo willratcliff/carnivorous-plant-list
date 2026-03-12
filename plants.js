@@ -61,7 +61,6 @@ const plants = [
       { label: "Small",      file: "images/b52-small.jpg" },
       { label: "Medium",     file: "images/b52-medium.jpg" },
       { label: "Large",      file: "images/b52-large.jpg" },
-      { label: "Large (2)",  file: "images/b52-large-2.jpg" },
       { label: "Specimen",   file: "images/b52-specimen.jpg" },
     ],
     status: "available",
