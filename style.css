@@ -1,0 +1,291 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  color: #2c3e2d;
+  line-height: 1.6;
+}
+
+/* ── Sticky Header ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(44, 62, 45, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header .logo {
+  color: #fff;
+  font-size: 1.25rem;
+  letter-spacing: 0.3px;
+}
+
+.site-header .ebay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.site-header .ebay-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.site-header .ebay-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  padding: 72px 24px 56px;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  color: #2c3e2d;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #556;
+  max-width: 480px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ── Main ── */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #7cb342;
+  margin-bottom: 28px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ── Plants Grid ── */
+.plants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* ── Plant Card ── */
+.plant-card {
+  background: #fff;
+  border: 2px solid rgba(124, 179, 66, 0.15);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.plant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+}
+
+.plant-card.sold {
+  opacity: 0.72;
+}
+
+/* ── Card image ── */
+.plant-image {
+  position: relative;
+}
+
+.plant-image img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.plant-image .img-placeholder {
+  width: 100%;
+  height: 260px;
+  background: linear-gradient(135deg, #d4e8c2 0%, #b8d9a0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+}
+
+/* ── Status badge ── */
+.status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.status-available { background: rgba(34, 197, 94, 0.92); }
+.status-limited   { background: rgba(245, 158, 11, 0.92); }
+.status-sold      { background: rgba(220, 38, 38, 0.92); }
+.status-new       { background: rgba(147, 51, 234, 0.92); }
+
+/* ── Card text info ── */
+.plant-info {
+  padding: 18px 20px 22px;
+}
+
+.plant-name {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #2c3e2d;
+  margin-bottom: 3px;
+}
+
+.plant-species {
+  font-size: 0.85rem;
+  color: #7a9a7a;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.plant-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #7cb342;
+  margin-bottom: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.plant-description {
+  font-size: 0.875rem;
+  color: #556;
+  line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ── Contact / Order section ── */
+.contact-section {
+  margin-top: 72px;
+  padding-top: 52px;
+  border-top: 2px solid rgba(124, 179, 66, 0.2);
+}
+
+.contact-section h2 {
+  font-size: 1.9rem;
+  color: #2c3e2d;
+  margin-bottom: 10px;
+}
+
+.contact-intro {
+  color: #556;
+  font-size: 1rem;
+  margin-bottom: 28px;
+  max-width: 540px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 25px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  text-decoration: none;
+  color: #2c3e2d;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s;
+}
+
+.contact-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  background: #f8faf5;
+}
+
+.contact-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.contact-link.email     { border-color: #7cb342; color: #4a7a20; }
+.contact-link.instagram { border-color: #c13584; color: #8a2060; }
+.contact-link.facebook  { border-color: #1877f2; color: #1255c0; }
+.contact-link.reddit    { border-color: #ff4500; color: #cc3300; }
+.contact-link.ebay      { border-color: #e53238; color: #b02020; }
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 32px 24px;
+  color: #999;
+  font-size: 0.8rem;
+  border-top: 1px solid rgba(44, 62, 45, 0.1);
+  margin-top: 64px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: rgba(44, 62, 45, 0.03);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .site-header { padding: 14px 20px; }
+  main { padding: 0 16px 60px; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero { padding: 48px 20px 36px; }
+  .contact-links { flex-direction: column; }
+  .contact-link { justify-content: center; }
+}
