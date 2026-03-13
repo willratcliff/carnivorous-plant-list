@@ -64,9 +64,8 @@ const plants = [
     description: "This is an ICPS registered cultivar developed by Matt Miller through the Flytrap Store's breeding program, and it has become one of the most sought-after red clones in the hobby for good reason. Where most red Venus flytraps tend to be slow, finicky growers, Maroon Monster breaks the mold entirely. It grows fast, puts out thick and sturdy leaves, and produces oversized traps that color up to an incredible deep maroon, almost purple-black in strong light.\n\nThe contrast between those dark trap interiors and the bright lime-green edging along the trap margins is what really sets this clone apart visually. If you've grown Akai Ryu before and wished for something with more substance, bigger traps, and a more compact growth habit, this is the plant you've been looking for.\n\nI always select the largest and best looking specimens from my community pots to ship.",
     image: "images/maroon-monster-primary.jpg",
     images: [
-      { label: "Medium",        file: "images/maroon-monster-medium-packed.jpg" },
-      { label: "Community Pot", file: "images/maroon-monster.jpg"               },
-      { label: "The Collection", file: "images/maroon-monster-primary.jpg"      },
+      { label: "Medium",         file: "images/maroon-monster-medium-packed.jpg" },
+      { label: "Community Pot", file: "images/maroon-monster-primary.jpg"      },
     ],
     status: "available",
   },
@@ -79,7 +78,7 @@ const plants = [
     description: "Up for sale is one large Venus flytrap from a giant clone whose label was unfortunately lost. The plant pictured is representative of what you will receive: a mature specimen with solid rhizome development and traps that are already sizing up nicely for the season. Multiple available, first come first served.\n\nWHY THIS CLONE?\nI grow dozens of named cultivars, and this unidentified clone is among the most impressive performers in my entire collection. It produces oversized traps on tall, upright petioles with a strong, sturdy growth habit that gives the whole plant real presence. The traps color up easily in good light, developing rich red interiors without needing to be pushed hard, and the overall vigor of the plant is outstanding.\n\nThis is the kind of flytrap that makes people stop and look. The combination of trap size, upright stature, and reliable coloration puts it in rare company, and it has consistently outperformed many of the named giants I grow alongside it. If you're the type of grower who cares more about the plant in front of you than the name on the tag, this one will not disappoint.",
     image: "images/unknown-giant-1.jpg",
     images: [
-      { label: "The Collection", file: "images/unknown-giant-fertilizer.jpg" },
+      { label: "Community Pot", file: "images/unknown-giant-fertilizer.jpg" },
       { label: "For Scale",      file: "images/unknown-giant-oliver.jpg"     },
       { label: "Packed & Ready", file: "images/unknown-giant-packed.jpg"     },
       { label: "Plant",          file: "images/unknown-giant-1.jpg"          },
@@ -143,7 +142,7 @@ const plants = [
   {
     name: "<em>Utricularia calycifida</em> — Established Clump",
     species: "Utricularia calycifida",
-    flatPrice: "$15",
+    flatPrice: "$20",
     price: {},
     shortDescription: "Established clump in active growth with multiple flower stalks emerging. Bare root, ready to pot. Optional free Drosera binata hitchhiker; just mention your preference when ordering.",
     description: "Up for sale is an established clump of <em>Utricularia calycifida</em>, currently in active growth with multiple flower stalks emerging. The plant is shown growing in a 2.5\" pot for scale, and you will receive this exact specimen. As shown in the root photos, this clump has developed an impressive network of stolons and fine roots that fill the entire pot, and if you look closely you can see the tiny bladder traps studded throughout, the structures the plant uses to catch and digest microscopic prey in the soil. This kind of root and trap development is a clear sign of a healthy, vigorous plant that should settle in quickly after repotting and continue growing without missing a beat.\n\nAs a bonus, this purchase includes an optional free <em>Drosera binata</em> hitchhiker plant; just state your preference for one (or not) in your email when ordering.\n\nWHY U. CALYCIFIDA?\n<em>Utricularia calycifida</em> is a terrestrial bladderwort native to South America, and it is one of the best species in the genus for growers who want a plant that flowers reliably and looks great doing it. It produces delicate violet blooms on wiry stalks that rise well above the rosette of spoon-shaped leaves, often putting out multiple flower stalks at once. The flowers punch well above their weight for a plant this size.\n\nWhat makes this species particularly appealing is how easy it is to maintain compared to many tropical <em>Utricularia</em>. It does well on a bright windowsill or under grow lights, tolerates a range of humidity levels, and spreads steadily through underground stolons. It's a great entry point into the world of bladderworts for growers who are used to flytraps and sundews, and an equally good addition for experienced collectors looking for something that flowers without fuss.",
@@ -216,7 +215,7 @@ const bulkPlants = [
     description: "Up for sale are medium-sized Venus flytrap divisions, shipped bare root. These are vigorous, typical-form plants with established rhizomes, ready to pot up and grow.\n\nThese are great for anyone looking to start a collection, fill out a bog garden, stock a classroom or school project, or just get more flytraps growing without paying cultivar prices. The larger quantities are also perfect if you're looking to pot these up and sell them at a local farmers market, plant sale, or fundraiser. Flytraps are easy sellers, especially with kids, and buying in bulk keeps your cost per plant low. Medium divisions like these establish quickly and will be putting out full-sized traps by summer.\n\nABOUT THESE PLANTS\nDionaea muscipula is the only species of Venus flytrap, native to a small stretch of coastal plain in the Carolinas. Despite that narrow native range, they're surprisingly easy to grow. Full sun, mineral-free water (distilled, reverse osmosis, or rain), and a nutrient-poor soil mix like peat and perlite is all they need. They're cold-hardy perennials that go dormant in winter and come back strong every spring.\n\nTypical-form flytraps are the real workhorse of the genus. In good conditions, they produce bright green petioles and traps that color up to a vivid red on the interior, with long, interlocking cilia along the trap margins. They clump readily, grow fast, and are as tough as flytraps come. These are all divisions from established plants, not tissue culture, so the root systems and rhizomes are quite robust.\n\nThis is a mixture of multiple clones. The first photos show mature plants; the division photos show actual size at time of shipping. In a few months they will mature into the size shown in the mature plant photos given adequate conditions.",
     image: "images/vft-bulk-tray1.jpg",
     images: [
-      { label: "The Collection",  file: "images/vft-bulk-tray1.jpg"      },
+      { label: "Community Pot",  file: "images/vft-bulk-tray1.jpg"      },
       { label: "Packed & Ready",  file: "images/vft-bulk-bags.jpg"        },
       { label: "Growing Trays",   file: "images/vft-bulk-tray2.jpg"       },
       { label: "Division Size",   file: "images/vft-bulk-divisions.jpg"   },
