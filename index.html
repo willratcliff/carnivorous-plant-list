@@ -189,15 +189,36 @@
           </label>
           <span id="sum-heatpack">$0.00</span>
         </div>
-        <div class="summary-row">
-          <label class="summary-check-label">
-            <input type="checkbox" id="cart-ga-chk"> Georgia resident <small>(8% sales tax)</small>
-          </label>
+        <div class="summary-row" id="ga-tax-row" style="display:none;">
+          <span>GA Sales Tax <small>(8%)</small></span>
           <span id="sum-tax">$0.00</span>
         </div>
         <div class="summary-row summary-total"><span>Total</span><span id="sum-total">$0.00</span></div>
       </div>
-      <textarea id="cart-comments" class="cart-comments" placeholder="Comments, special requests, or shipping address…"></textarea>
+
+      <label class="cart-field-label">Shipping Address <span style="color:#c0392b;">*</span></label>
+      <input  id="cart-addr-name"   class="cart-addr-field" type="text"   placeholder="Full name" />
+      <input  id="cart-addr-street" class="cart-addr-field" type="text"   placeholder="Street address" />
+      <div class="cart-addr-row">
+        <input  id="cart-addr-city"   class="cart-addr-field" type="text"   placeholder="City" />
+        <select id="cart-addr-state"  class="cart-addr-field cart-addr-state">
+          <option value="">State</option>
+          <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+          <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+          <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+          <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+          <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
+          <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+          <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+          <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+          <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+          <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+        </select>
+        <input  id="cart-addr-zip"    class="cart-addr-field cart-addr-zip"  type="text" placeholder="ZIP" maxlength="10" />
+      </div>
+
+      <label class="cart-field-label" for="cart-comments">Comments / Special Requests</label>
+      <textarea id="cart-comments" class="cart-comments" placeholder="Optional — size preferences, heat pack questions, etc."></textarea>
       <p class="cart-payment-note">Payment via PayPal, Venmo, or Zelle — coordinated by email after you send your order.</p>
       <button id="cart-email-btn" class="cart-email-btn">Send Order by Email</button>
     </div>
@@ -431,7 +452,12 @@
       var cartShipNote = document.getElementById('cart-ship-note');
       var heatpackRow  = document.getElementById('heatpack-row');
       var heatpackChk  = document.getElementById('cart-heatpack-chk');
-      var gaChk        = document.getElementById('cart-ga-chk');
+      var gaTaxRow     = document.getElementById('ga-tax-row');
+      var addrName     = document.getElementById('cart-addr-name');
+      var addrStreet   = document.getElementById('cart-addr-street');
+      var addrCity     = document.getElementById('cart-addr-city');
+      var addrState    = document.getElementById('cart-addr-state');
+      var addrZip      = document.getElementById('cart-addr-zip');
       var cartComments = document.getElementById('cart-comments');
 
       function openCart() {
@@ -470,7 +496,8 @@
         var shipping = free ? 0 : 10;
         var heat     = (!free && heatpackChk.checked) ? 5 : 0;
         var taxBase  = sub + shipping + heat;
-        var tax      = gaChk.checked ? Math.round(taxBase * 0.08 * 100) / 100 : 0;
+        var isGA     = addrState.value === 'GA';
+        var tax      = isGA ? Math.round(taxBase * 0.08 * 100) / 100 : 0;
         return { sub: sub, shipping: shipping, heat: heat, tax: tax, total: taxBase + tax, free: free };
       }
 
@@ -537,6 +564,7 @@
         document.getElementById('sum-shipping').textContent = t.free ? 'Free' : '$' + t.shipping.toFixed(2);
         heatpackRow.style.display = t.free ? 'none' : 'flex';
         document.getElementById('sum-heatpack').textContent = heatpackChk.checked ? '$5.00' : '$0.00';
+        gaTaxRow.style.display = addrState.value === 'GA' ? 'flex' : 'none';
         document.getElementById('sum-tax').textContent = '$' + t.tax.toFixed(2);
         document.getElementById('sum-total').textContent = '$' + t.total.toFixed(2);
 
@@ -550,10 +578,15 @@
       }
 
       heatpackChk.addEventListener('change', renderCart);
-      gaChk.addEventListener('change', renderCart);
+      addrState.addEventListener('change', renderCart);
 
       document.getElementById('cart-email-btn').addEventListener('click', function () {
         if (cart.length === 0) { alert('Your cart is empty.'); return; }
+        if (!addrName.value.trim())   { alert('Please enter your name.'); addrName.focus(); return; }
+        if (!addrStreet.value.trim()) { alert('Please enter your street address.'); addrStreet.focus(); return; }
+        if (!addrCity.value.trim())   { alert('Please enter your city.'); addrCity.focus(); return; }
+        if (!addrState.value)         { alert('Please select your state.'); addrState.focus(); return; }
+        if (!addrZip.value.trim())    { alert('Please enter your ZIP code.'); addrZip.focus(); return; }
         var t = calcTotals();
         var lines = cart.map(function (item) {
           return '\u2022 ' + item.name + (item.size ? ' (' + item.size + ')' : '') +
@@ -565,10 +598,14 @@
           '\nSubtotal:   $' + t.sub.toFixed(2) +
           '\nShipping:   ' + (t.free ? 'Free (order \u2265$100)' : '$' + t.shipping.toFixed(2));
         if (heatpackChk.checked) body += '\nHeat Pack:  ' + (t.free ? 'Free (order \u2265$100)' : '$5.00');
-        if (gaChk.checked)       body += '\nGA Tax (8%): $' + t.tax.toFixed(2);
+        if (addrState.value === 'GA') body += '\nGA Tax (8%): $' + t.tax.toFixed(2);
         body += '\nTotal:      $' + t.total.toFixed(2);
+        body += '\n\n──────────────────\nShipping Address:\n' +
+          addrName.value.trim() + '\n' +
+          addrStreet.value.trim() + '\n' +
+          addrCity.value.trim() + ', ' + addrState.value + ' ' + addrZip.value.trim();
         var comments = cartComments.value.trim();
-        if (comments) body += '\n\n──────────────────\nNotes / Shipping Address:\n' + comments;
+        if (comments) body += '\n\n──────────────────\nNotes:\n' + comments;
         body += '\n\nThanks!';
 
         window.location.href = 'mailto:wcratcliff@gmail.com' +
@@ -577,7 +614,11 @@
 
         cart = [];
         heatpackChk.checked = false;
-        gaChk.checked = false;
+        addrName.value = '';
+        addrStreet.value = '';
+        addrCity.value = '';
+        addrState.value = '';
+        addrZip.value = '';
         cartComments.value = '';
         renderCart();
       });

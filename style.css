@@ -873,6 +873,17 @@ main {
 .summary-total span:last-child { color: #7cb342; }
 
 /* ── Cart textarea + button ── */
+.cart-field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 600;
+  color: #555;
+  margin: 12px 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
 .cart-comments {
   width: 100%;
   min-height: 80px;
@@ -887,6 +898,30 @@ main {
   transition: border-color 0.15s;
 }
 .cart-comments:focus { border-color: #7cb342; }
+
+.cart-addr-field {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #445;
+  outline: none;
+  transition: border-color 0.15s;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  background: #fff;
+}
+.cart-addr-field:focus { border-color: #7cb342; }
+.cart-addr-row {
+  display: flex;
+  gap: 8px;
+}
+.cart-addr-row .cart-addr-field { margin-bottom: 0; }
+.cart-addr-state { flex: 0 0 72px; }
+.cart-addr-zip   { flex: 0 0 90px; }
+.cart-addr-row input[placeholder="City"] { flex: 1; }
 
 .cart-payment-note {
   font-size: 0.75rem;
