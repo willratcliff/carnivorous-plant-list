@@ -88,6 +88,20 @@ const plants = [
   },
 
   {
+    name: "Specimen Typical VFT",
+    species: "Dionaea muscipula · Typical",
+    flatPrice: "$25",
+    shortDescription: "Large, vigorous typical clones with big traps and well-developed rhizomes. These divide rapidly and are the source of our wholesale medium divisions.",
+    description: "These are large, mature Venus flytraps grown from typical clones selected for vigor, trap size, and rhizome development. They are not named cultivars, but they perform like plants twice their price: big traps, strong constitutions, and a growth rate that keeps the community pots constantly overflowing.\n\nWHY TYPICALS?\nTypicals are underrated. The best ones produce traps that rival many named clones, and because they haven't been through years of hobbyist selection pressure for looks alone, they tend to be robust and forgiving growers. These particular plants are the source stock for our wholesale medium division program — we divide them repeatedly, they bounce back fast, and the cycle keeps going. A single specimen can realistically produce dozens of divisions per year under good conditions.\n\nIf you're looking to build a collection quickly, or just want a large, impressive plant that will reward neglect with vigorous growth, this is the place to start.",
+    image: "images/typical-specimen-1.jpg",
+    images: [
+      { label: "Specimen",  file: "images/typical-specimen-1.jpg" },
+      { label: "Close-Up",  file: "images/typical-specimen-2.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
     name: "Red Piranha VFT",
     species: "Dionaea muscipula 'Red Piranha' · ICPS Registered Cultivar",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
