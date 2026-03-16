@@ -33,9 +33,11 @@ const plants = [
     description: "Chinese Dumpling is one of the most distinctive and sought-after flytrap cultivars to hit the hobby in recent years. It gets its name from the unique shape of its traps, which are short, rounded, and reminiscent of a dumpling. At maturity, the trap margins become twisted and the cilia take on a frilly, almost serrated look that gives the whole plant a wonderfully sinister appearance. In a world full of mutant flytraps, this one still manages to stand out.\n\nGrown in strong light, the traps will blush a deep red while the petioles stay a vibrant green, making for a striking contrast. Younger and winter traps tend to look more typical, without much visible mutation to the teeth. As the plants mature and the warmer, sunnier months arrive, the characteristic dumpling shape really starts to express itself. This is also a clone that puts on impressive rhizome development for its size.\n\nI will select the largest and most vigorous plants from my community pots to ship.",
     image: "images/chinese-dumpling-large.jpg",
     images: [
+      { label: "Small",    file: "images/chinese-dumpling-small.jpg"   },
       { label: "Medium",   file: "images/chinese-dumpling-medium.jpg"  },
       { label: "Mediums",  file: "images/chinese-dumpling-mediums.jpg" },
       { label: "Large",    file: "images/chinese-dumpling-large.jpg"   },
+      { label: "Large 2",  file: "images/chinese-dumpling-large-2.jpg" },
     ],
     status: "available",
   },
