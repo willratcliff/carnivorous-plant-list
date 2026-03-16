@@ -923,6 +923,45 @@ main {
 .cart-addr-zip   { flex: 0 0 90px; }
 .cart-addr-row input[placeholder="City"] { flex: 1; }
 
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #444;
+  cursor: pointer;
+  background: #f4f8f0;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 7px 14px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.payment-option:has(input:checked) {
+  border-color: #7cb342;
+  background: #eaf4d8;
+  color: #2c3e2d;
+  font-weight: 600;
+}
+.payment-option input { display: none; }
+.payment-instructions {
+  margin-top: 10px;
+  background: #f4f8f0;
+  border-left: 3px solid #7cb342;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #444;
+  line-height: 1.6;
+}
+
 .cart-payment-note {
   font-size: 0.75rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;

@@ -196,6 +196,9 @@
         <div class="summary-row summary-total"><span>Total</span><span id="sum-total">$0.00</span></div>
       </div>
 
+      <label class="cart-field-label">Your Email <span style="color:#c0392b;">*</span></label>
+      <input  id="cart-email" class="cart-addr-field" type="email" placeholder="you@example.com" />
+
       <label class="cart-field-label">Shipping Address <span style="color:#c0392b;">*</span></label>
       <input  id="cart-addr-name"   class="cart-addr-field" type="text"   placeholder="Full name" />
       <input  id="cart-addr-street" class="cart-addr-field" type="text"   placeholder="Street address" />
@@ -217,10 +220,23 @@
         <input  id="cart-addr-zip"    class="cart-addr-field cart-addr-zip"  type="text" placeholder="ZIP" maxlength="10" />
       </div>
 
+      <label class="cart-field-label">Payment Method <span style="color:#c0392b;">*</span></label>
+      <div class="payment-methods">
+        <label class="payment-option">
+          <input type="radio" name="payment" value="PayPal"> PayPal
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="Venmo"> Venmo
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="Zelle"> Zelle
+        </label>
+      </div>
+      <div id="payment-instructions" class="payment-instructions" style="display:none;"></div>
+
       <label class="cart-field-label" for="cart-comments">Comments / Special Requests</label>
       <textarea id="cart-comments" class="cart-comments" placeholder="Optional — size preferences, heat pack questions, etc."></textarea>
-      <p class="cart-payment-note">Payment via PayPal, Venmo, or Zelle — coordinated by email after you send your order.</p>
-      <button id="cart-email-btn" class="cart-email-btn">Send Order by Email</button>
+      <button id="cart-email-btn" class="cart-email-btn">Send Order</button>
     </div>
   </div>
 
@@ -453,12 +469,40 @@
       var heatpackRow  = document.getElementById('heatpack-row');
       var heatpackChk  = document.getElementById('cart-heatpack-chk');
       var gaTaxRow     = document.getElementById('ga-tax-row');
+      var cartEmail    = document.getElementById('cart-email');
       var addrName     = document.getElementById('cart-addr-name');
       var addrStreet   = document.getElementById('cart-addr-street');
       var addrCity     = document.getElementById('cart-addr-city');
       var addrState    = document.getElementById('cart-addr-state');
       var addrZip      = document.getElementById('cart-addr-zip');
       var cartComments = document.getElementById('cart-comments');
+      var paymentInstructions = document.getElementById('payment-instructions');
+
+      var paymentInfo = {
+        PayPal: 'Send payment to <strong>wcratcliff@gmail.com</strong> via PayPal Friends &amp; Family.',
+        Venmo:  'Send payment to <strong>@rathere</strong> on Venmo (last 4 digits: <strong>4983</strong>).',
+        Zelle:  'Send payment to <strong>wcratcliff@gmail.com</strong> via Zelle.'
+      };
+      var paymentInfoPlain = {
+        PayPal: 'Send payment to wcratcliff@gmail.com via PayPal Friends & Family.',
+        Venmo:  'Send payment to @rathere on Venmo (last 4 digits: 4983).',
+        Zelle:  'Send payment to wcratcliff@gmail.com via Zelle.'
+      };
+
+      function getSelectedPayment() {
+        var radios = document.querySelectorAll('input[name="payment"]');
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) return radios[i].value;
+        }
+        return '';
+      }
+
+      document.querySelectorAll('input[name="payment"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          paymentInstructions.innerHTML = paymentInfo[this.value];
+          paymentInstructions.style.display = 'block';
+        });
+      });
 
       function openCart() {
         cartPanel.classList.add('open');
@@ -582,11 +626,14 @@
 
       document.getElementById('cart-email-btn').addEventListener('click', function () {
         if (cart.length === 0) { alert('Your cart is empty.'); return; }
+        if (!cartEmail.value.trim())  { alert('Please enter your email address.'); cartEmail.focus(); return; }
         if (!addrName.value.trim())   { alert('Please enter your name.'); addrName.focus(); return; }
         if (!addrStreet.value.trim()) { alert('Please enter your street address.'); addrStreet.focus(); return; }
         if (!addrCity.value.trim())   { alert('Please enter your city.'); addrCity.focus(); return; }
         if (!addrState.value)         { alert('Please select your state.'); addrState.focus(); return; }
         if (!addrZip.value.trim())    { alert('Please enter your ZIP code.'); addrZip.focus(); return; }
+        var selectedPayment = getSelectedPayment();
+        if (!selectedPayment) { alert('Please select a payment method.'); return; }
         var t = calcTotals();
         var lines = cart.map(function (item) {
           return '\u2022 ' + item.name + (item.size ? ' (' + item.size + ')' : '') +
@@ -604,23 +651,44 @@
           addrName.value.trim() + '\n' +
           addrStreet.value.trim() + '\n' +
           addrCity.value.trim() + ', ' + addrState.value + ' ' + addrZip.value.trim();
+        body += '\n\n──────────────────\nPayment Method: ' + selectedPayment + '\n' + paymentInfoPlain[selectedPayment];
         var comments = cartComments.value.trim();
         if (comments) body += '\n\n──────────────────\nNotes:\n' + comments;
         body += '\n\nThanks!';
 
-        window.location.href = 'mailto:wcratcliff@gmail.com' +
-          '?subject=' + encodeURIComponent("Plant Order \u2014 Will\u2019s Carnivorous Plants") +
-          '&body=' + encodeURIComponent(body);
+        var btn = document.getElementById('cart-email-btn');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
 
-        cart = [];
-        heatpackChk.checked = false;
-        addrName.value = '';
-        addrStreet.value = '';
-        addrCity.value = '';
-        addrState.value = '';
-        addrZip.value = '';
-        cartComments.value = '';
-        renderCart();
+        fetch('https://script.google.com/macros/s/AKfycbxwaU3EPphJoKLpZ0RWoyrGyRbEpHFbji1kDr2CI_BGlBF7qMYxEVPh4OPKkxTTIZoGHw/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({ body: body, customerEmail: cartEmail.value.trim() })
+        }).then(function () {
+          cart = [];
+          heatpackChk.checked = false;
+          cartEmail.value = '';
+          addrName.value = '';
+          addrStreet.value = '';
+          addrCity.value = '';
+          addrState.value = '';
+          addrZip.value = '';
+          cartComments.value = '';
+          document.querySelectorAll('input[name="payment"]').forEach(function(r){ r.checked = false; });
+          paymentInstructions.style.display = 'none';
+          renderCart();
+          btn.textContent = '✓ Order Sent!';
+          btn.style.background = '#7cb342';
+          setTimeout(function () {
+            btn.textContent = 'Send Order';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        }).catch(function () {
+          btn.textContent = 'Send Order';
+          btn.disabled = false;
+          alert('Something went wrong sending your order. Please email wcratcliff@gmail.com directly.');
+        });
       });
 
       renderCart();
