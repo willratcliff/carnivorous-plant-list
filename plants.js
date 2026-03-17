@@ -100,7 +100,7 @@ const plants = [
       { label: "Specimen",  file: "images/typical-specimen-1.jpg" },
       { label: "Close-Up",  file: "images/typical-specimen-2.jpg" },
     ],
-    status: "available",
+    status: "sold",
   },
 
   {
@@ -210,13 +210,12 @@ const bulkPlants = [
     priceTiers: [
       { label: "10 Plants",  price: "$80"  },
       { label: "20 Plants",  price: "$120" },
-      { label: "50 Plants",  price: "$250" },
     ],
     shortDescription: "Bulk-priced B52 smalls — well on their way to medium size, as you can see from the image. One of the largest-trapping clones in cultivation.",
     description: "Bulk-priced small divisions of <em>Dionaea muscipula</em> 'B52', one of the most celebrated cultivars in Venus flytrap growing. These plants are well on their way to medium size, as you can see from the image, and will size up quickly with proper care. B52 is known for producing some of the largest traps of any cultivar, regularly exceeding 1.5 inches, on plants that are also vigorous growers and reliable dividers. These are genuine TC-origin B52 stock grown out in my collection over multiple seasons.\n\nDivisions are established rhizomes with roots, shipped bare root. They are past the tissue-culture stage and ready to grow. With good sun and mineral-free water, they will be producing full-sized B52 traps by summer.\n\nThese prices are designed for resale. B52 is one of the most recognizable flytrap names in the hobby; it sells itself at plant tables, farmers markets, and school fundraisers. Buying in bulk allows you to offer a premium named cultivar at a price that works for retail while still leaving margin.\n\nShipping is $10 flat rate via USPS Priority Mail, or free on orders over $100.",
     image: "images/b52-smalls-wholesale.jpg",
     images: [],
-    status: "available",
+    status: "sold",
   },
 
   {
