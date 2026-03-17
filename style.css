@@ -1051,6 +1051,8 @@ footer {
 @media (max-width: 500px) {
   .nav-link { display: none; }
   .cart-icon-btn { flex-shrink: 0; }
+  .site-header .logo img { display: none; }
+  .site-header .logo { font-size: 1rem; white-space: nowrap; }
 }
 
 @media (max-width: 480px) {
