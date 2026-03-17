@@ -1048,11 +1048,47 @@ footer {
   main { padding: 0 16px 60px; }
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 6px 8px;
+  line-height: 1;
+}
+
 @media (max-width: 500px) {
-  .nav-link { display: none; }
-  .cart-icon-btn { flex-shrink: 0; }
   .site-header .logo img { display: none; }
   .site-header .logo { font-size: 1rem; white-space: nowrap; }
+  .hamburger-btn { display: flex; }
+  .cart-icon-btn { flex-shrink: 0; }
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(44, 62, 45, 0.98);
+    padding: 8px 0;
+    z-index: 999;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  }
+  .site-nav.nav-open { display: flex; }
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 12px 20px;
+    border-radius: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
 }
 
 @media (max-width: 480px) {
