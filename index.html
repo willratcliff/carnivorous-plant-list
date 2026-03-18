@@ -653,6 +653,7 @@
         if (heatpackChk.checked) body += '\nHeat Pack:  ' + (t.free ? 'Free (order \u2265$100)' : '$5.00');
         if (addrState.value === 'GA') body += '\nGA Tax (8%): $' + t.tax.toFixed(2);
         body += '\nTotal:      $' + t.total.toFixed(2);
+        body += '\n\n──────────────────\nCustomer Email: ' + cartEmail.value.trim();
         body += '\n\n──────────────────\nShipping Address:\n' +
           addrName.value.trim() + '\n' +
           addrStreet.value.trim() + '\n' +
