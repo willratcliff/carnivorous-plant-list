@@ -388,7 +388,7 @@
           });
         }
 
-        if (cartOptions.length > 0) {
+        if (cartOptions.length > 0 && plant.status !== 'sold' && plant.status !== 'unavailable') {
           cartRow.style.display = 'flex';
           if (cartOptions.length === 1 && cartOptions[0].label === '') {
             sizeSelect.style.display = 'none';
