@@ -39,7 +39,7 @@ const plants = [
       { label: "Large",    file: "images/chinese-dumpling-large.jpg"   },
       { label: "Large 2",  file: "images/chinese-dumpling-large-2.jpg" },
     ],
-    status: "unavailable",
+    status: "available",
   },
 
   {
