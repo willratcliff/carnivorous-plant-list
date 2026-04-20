@@ -30,8 +30,7 @@ const plants = [
     species: "Dionaea muscipula 'Chinese Dumpling' · Rare Cultivar",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     bulkTiers: [
-      { label: "10 Mediums", price: "$100" },
-      { label: "20 Mediums", price: "$180" },
+      { label: "Medium · 10+ ea.", price: "$10" },
     ],
     shortDescription: "Rare cultivar with short, rounded traps and frilly, twisted teeth at maturity. One of the most distinctive mutant flytraps in the hobby.",
     description: "Chinese Dumpling is one of the most distinctive and sought-after flytrap cultivars to hit the hobby in recent years. It gets its name from the unique shape of its traps, which are short, rounded, and reminiscent of a dumpling. At maturity, the trap margins become twisted and the cilia take on a frilly, almost serrated look that gives the whole plant a wonderfully sinister appearance. In a world full of mutant flytraps, this one still manages to stand out.\n\nGrown in strong light, the traps will blush a deep red while the petioles stay a vibrant green, making for a striking contrast. Younger and winter traps tend to look more typical, without much visible mutation to the teeth. As the plants mature and the warmer, sunnier months arrive, the characteristic dumpling shape really starts to express itself. This is also a clone that puts on impressive rhizome development for its size.\n\n",
@@ -51,8 +50,7 @@ const plants = [
     species: "Dionaea muscipula 'B52'",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     bulkTiers: [
-      { label: "10 Mediums", price: "$100" },
-      { label: "20 Mediums", price: "$180" },
+      { label: "Medium · 10+ ea.", price: "$10" },
     ],
     shortDescription: "The most famous giant clone in the hobby. Mature traps exceed 2 inches, the plant clumps readily, and it grows fast. A must-have for any collection.",
     description: "B52 is one of the most famous Venus flytrap cultivars in the hobby, and probably the first giant clone most growers hear about. It was developed by Henning von Schmeling in Georgia as part of a larger breeding program, where 'B52' was simply his internal label for the plant (generation B, number 52, though he switched the labels with 13 and 52 IIRC because this clone was head and shoulders above the rest, and B52 had a better ring to it). The name stuck, and it's easy to see why. Mature traps can exceed 2 inches in length, roughly double the size of a typical flytrap, and the plant clumps readily, producing a dense carpet of oversized traps.\n\nIn good light, the trap interiors color up to a bright, vivid red while the petioles stay a clean green, making for a bold contrast. This is also a notably vigorous grower. Where some large-trapping clones can be fussy or slow, B52 puts on size quickly and tends to divide on its own, which is part of what has made it such a staple. If you're looking for a flytrap that makes an impression even from across the room, this is the one.\n\n",
@@ -127,8 +125,7 @@ const plants = [
     species: "Dionaea muscipula 'Giant'",
     price: { small: "$10", medium: "$15", large: "$20" },
     bulkTiers: [
-      { label: "10 Mediums", price: "$100" },
-      { label: "20 Mediums", price: "$180" },
+      { label: "Medium · 10+ ea.", price: "$10" },
     ],
     shortDescription: "A large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably.",
     description: "Giant is a large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably. Not a novelty mutant — just a genuinely large, well-performing flytrap.",
@@ -142,8 +139,7 @@ const plants = [
     species: "Dionaea muscipula 'FTS Towering Giant'",
     price: { small: "$10", medium: "$15", large: "$20" },
     bulkTiers: [
-      { label: "10 Mediums", price: "$100" },
-      { label: "20 Mediums", price: "$180" },
+      { label: "Medium · 10+ ea.", price: "$10" },
     ],
     shortDescription: "Developed by Matt Miller, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — one of the most architecturally dramatic flytraps you can grow.",
     description: "Developed by Matt Miller and named in 2014, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — spring leaves can reach six inches or more. The coloration leans lime green to chartreuse with a contrasting red throat. One of the most architecturally dramatic flytraps in the hobby.",
