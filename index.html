@@ -46,13 +46,6 @@
 
     <div class="plants-grid" id="plants-grid"></div>
 
-    <!-- ── Bulk & Wholesale ── -->
-    <div class="bulk-section">
-      <h2 class="bulk-section-title">Bulk &amp; Wholesale</h2>
-      <p class="bulk-section-intro">Mixed-clone, bare-root plants in larger quantities — great for bog gardens, classrooms, plant sales, and farmers markets.</p>
-      <div class="plants-grid" id="bulk-grid"></div>
-    </div>
-
     <!-- ── About ── -->
     <div class="about-section">
       <div class="about-photos">
@@ -273,6 +266,17 @@
             }
           });
         }
+        if (plant.bulkTiers && plant.bulkTiers.length) {
+          html += '<div class="price-tier" style="border-top:1px solid #e0e0e0;margin-top:4px;padding-top:4px;">' +
+            '<span class="tier-size" style="color:#888;font-size:0.78em;text-transform:uppercase;letter-spacing:0.05em;">Bulk</span>' +
+          '</div>';
+          plant.bulkTiers.forEach(function (t) {
+            html += '<div class="price-tier">' +
+              '<span class="tier-size">' + t.label + '</span>' +
+              '<span class="tier-price">' + t.price + '</span>' +
+            '</div>';
+          });
+        }
         return html + '</div>';
       }
 
@@ -306,8 +310,7 @@
         });
       }
 
-      renderCards(plants,     document.getElementById('plants-grid'));
-      renderCards(bulkPlants, document.getElementById('bulk-grid'));
+      renderCards(plants, document.getElementById('plants-grid'));
 
 
       // ── Modal ─────────────────────────────────────────────────
@@ -354,6 +357,20 @@
             }
           });
         }
+        if (plant.bulkTiers && plant.bulkTiers.length) {
+          var bulkLabel = document.createElement('div');
+          bulkLabel.className = 'price-tier';
+          bulkLabel.style.cssText = 'border-top:1px solid #e0e0e0;margin-top:4px;padding-top:4px;';
+          bulkLabel.innerHTML = '<span class="tier-size" style="color:#888;font-size:0.78em;text-transform:uppercase;letter-spacing:0.05em;">Bulk</span>';
+          modalPrice.appendChild(bulkLabel);
+          plant.bulkTiers.forEach(function (t) {
+            var row = document.createElement('div');
+            row.className = 'price-tier';
+            row.innerHTML = '<span class="tier-size">' + t.label + '</span>' +
+                            '<span class="tier-price">' + t.price + '</span>';
+            modalPrice.appendChild(row);
+          });
+        }
 
         // Video link
         if (plant.videoLink) {
@@ -385,6 +402,12 @@
               var p = parseFloat(val.replace(/[^0-9.]/g, ''));
               if (!isNaN(p)) cartOptions.push({ label: sizeLabels[s], price: p });
             }
+          });
+        }
+        if (plant.bulkTiers) {
+          plant.bulkTiers.forEach(function (t) {
+            var p = parseFloat(t.price.replace(/[^0-9.]/g, ''));
+            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p });
           });
         }
 

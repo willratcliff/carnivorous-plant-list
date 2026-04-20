@@ -29,6 +29,10 @@ const plants = [
     name: "Chinese Dumpling VFT",
     species: "Dionaea muscipula 'Chinese Dumpling' · Rare Cultivar",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
+    bulkTiers: [
+      { label: "10 Mediums", price: "$100" },
+      { label: "20 Mediums", price: "$180" },
+    ],
     shortDescription: "Rare cultivar with short, rounded traps and frilly, twisted teeth at maturity. One of the most distinctive mutant flytraps in the hobby.",
     description: "Chinese Dumpling is one of the most distinctive and sought-after flytrap cultivars to hit the hobby in recent years. It gets its name from the unique shape of its traps, which are short, rounded, and reminiscent of a dumpling. At maturity, the trap margins become twisted and the cilia take on a frilly, almost serrated look that gives the whole plant a wonderfully sinister appearance. In a world full of mutant flytraps, this one still manages to stand out.\n\nGrown in strong light, the traps will blush a deep red while the petioles stay a vibrant green, making for a striking contrast. Younger and winter traps tend to look more typical, without much visible mutation to the teeth. As the plants mature and the warmer, sunnier months arrive, the characteristic dumpling shape really starts to express itself. This is also a clone that puts on impressive rhizome development for its size.\n\n",
     image: "images/chinese-dumpling-large.jpg",
@@ -46,6 +50,10 @@ const plants = [
     name: "B52 VFT",
     species: "Dionaea muscipula 'B52'",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
+    bulkTiers: [
+      { label: "10 Mediums", price: "$100" },
+      { label: "20 Mediums", price: "$180" },
+    ],
     shortDescription: "The most famous giant clone in the hobby. Mature traps exceed 2 inches, the plant clumps readily, and it grows fast. A must-have for any collection.",
     description: "B52 is one of the most famous Venus flytrap cultivars in the hobby, and probably the first giant clone most growers hear about. It was developed by Henning von Schmeling in Georgia as part of a larger breeding program, where 'B52' was simply his internal label for the plant (generation B, number 52, though he switched the labels with 13 and 52 IIRC because this clone was head and shoulders above the rest, and B52 had a better ring to it). The name stuck, and it's easy to see why. Mature traps can exceed 2 inches in length, roughly double the size of a typical flytrap, and the plant clumps readily, producing a dense carpet of oversized traps.\n\nIn good light, the trap interiors color up to a bright, vivid red while the petioles stay a clean green, making for a bold contrast. This is also a notably vigorous grower. Where some large-trapping clones can be fussy or slow, B52 puts on size quickly and tends to divide on its own, which is part of what has made it such a staple. If you're looking for a flytrap that makes an impression even from across the room, this is the one.\n\n",
     image: "images/b52-large.jpg",
@@ -118,6 +126,10 @@ const plants = [
     name: "Giant VFT",
     species: "Dionaea muscipula 'Giant'",
     price: { small: "$10", medium: "$15", large: "$20" },
+    bulkTiers: [
+      { label: "10 Mediums", price: "$100" },
+      { label: "20 Mediums", price: "$180" },
+    ],
     shortDescription: "A large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably.",
     description: "Giant is a large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably. Not a novelty mutant — just a genuinely large, well-performing flytrap.",
     image: "images/giant.jpg",
@@ -129,6 +141,10 @@ const plants = [
     name: "FTS Towering Giant VFT",
     species: "Dionaea muscipula 'FTS Towering Giant'",
     price: { small: "$10", medium: "$15", large: "$20" },
+    bulkTiers: [
+      { label: "10 Mediums", price: "$100" },
+      { label: "20 Mediums", price: "$180" },
+    ],
     shortDescription: "Developed by Matt Miller, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — one of the most architecturally dramatic flytraps you can grow.",
     description: "Developed by Matt Miller and named in 2014, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — spring leaves can reach six inches or more. The coloration leans lime green to chartreuse with a contrasting red throat. One of the most architecturally dramatic flytraps in the hobby.",
     image: "images/towering-giant.jpg",
@@ -183,6 +199,9 @@ const plants = [
     species: "Stylidium debile",
     flatPrice: "$10",
     price: {},
+    bulkTiers: [
+      { label: "10 Plants", price: "$75" },
+    ],
     shortDescription: "The trigger plant: its spring-loaded anther snaps down to smack pollinating insects in milliseconds. Easy to grow in pure peat, and irresistible for kids pretending to be bees.",
     description: "Up for sale are divisions of <em>Stylidium debile</em>, the trigger plant. This quirky Australian native has a party trick unlike anything else in the plant world: a spring-loaded anther column that snaps down and smacks any insect that lands on the flower, coating it in pollen in milliseconds. It's the fastest movement in the plant kingdom, and it never gets old to watch.\n\nKids absolutely love it. Have them pretend to be a bee, touch the flower column with a fingertip or toothpick, and watch it fire.\n\nGROWING\n<em>Stylidium debile</em> is easy. It thrives in pure peat moss kept consistently moist, the same conditions you'd use for a Venus flytrap or sundew. It tolerates a wide range of light levels and will bloom prolifically under grow lights or in a bright window, sending up wiry stalks tipped with small pink flowers. Each flower is a loaded trigger waiting to go off.\n\nDivisions are shipped bare root. Size is representative of plants shown in the divisions photo.",
     image: "images/stylidium-community.jpg",
@@ -252,43 +271,4 @@ const plants = [
 //    ]
 // ================================================================
 
-const bulkPlants = [
-
-  {
-    name: "B52 VFTs — Bulk Smalls",
-    species: "Dionaea muscipula 'B52' · Bare Root · Mixed Sizes",
-    priceTiers: [
-      { label: "10 Plants",  price: "$80"  },
-      { label: "20 Plants",  price: "$120" },
-    ],
-    shortDescription: "Bulk-priced B52 smalls — well on their way to medium size, as you can see from the image. One of the largest-trapping clones in cultivation.",
-    description: "Bulk-priced small divisions of <em>Dionaea muscipula</em> 'B52', one of the most celebrated cultivars in Venus flytrap growing. These plants are well on their way to medium size, as you can see from the image, and will size up quickly with proper care. B52 is known for producing some of the largest traps of any cultivar, regularly exceeding 1.5 inches, on plants that are also vigorous growers and reliable dividers. These are genuine TC-origin B52 stock grown out in my collection over multiple seasons.\n\nDivisions are established rhizomes with roots, shipped bare root. They are past the tissue-culture stage and ready to grow. With good sun and mineral-free water, they will be producing full-sized B52 traps by summer.\n\nThese prices are designed for resale. B52 is one of the most recognizable flytrap names in the hobby; it sells itself at plant tables, farmers markets, and school fundraisers. Buying in bulk allows you to offer a premium named cultivar at a price that works for retail while still leaving margin.\n\nShipping is $10 flat rate via USPS Priority Mail, or free on orders over $100.",
-    image: "images/b52-smalls-wholesale.jpg",
-    images: [],
-    status: "unavailable",
-  },
-
-  {
-    name: "VFTs — Bulk Medium Divisions",
-    species: "Dionaea muscipula · Typical Form · Mixed Clones",
-    priceTiers: [
-      { label: "10 Plants", price: "$60"  },
-      { label: "20 Plants", price: "$100" },
-      { label: "50 Plants", price: "$200" },
-    ],
-    shortDescription: "Vigorous medium divisions from established plants, shipped bare root. Perfect for bog gardens, classrooms, plant sales, and farmers markets.",
-    description: "Up for sale are medium-sized Venus flytrap divisions, shipped bare root. These are vigorous, typical-form plants with established rhizomes, ready to pot up and grow.\n\nThese are great for anyone looking to start a collection, fill out a bog garden, stock a classroom or school project, or just get more flytraps growing without paying cultivar prices. The larger quantities are also perfect if you're looking to pot these up and sell them at a local farmers market, plant sale, or fundraiser. Flytraps are easy sellers, especially with kids, and buying in bulk keeps your cost per plant low. Medium divisions like these establish quickly and will be putting out full-sized traps by summer.\n\nABOUT THESE PLANTS\nDionaea muscipula is the only species of Venus flytrap, native to a small stretch of coastal plain in the Carolinas. Despite that narrow native range, they're surprisingly easy to grow. Full sun, mineral-free water (distilled, reverse osmosis, or rain), and a nutrient-poor soil mix like peat and perlite is all they need. They're cold-hardy perennials that go dormant in winter and come back strong every spring.\n\nTypical-form flytraps are the real workhorse of the genus. In good conditions, they produce bright green petioles and traps that color up to a vivid red on the interior, with long, interlocking cilia along the trap margins. They clump readily, grow fast, and are as tough as flytraps come. These are all divisions from established plants, not tissue culture, so the root systems and rhizomes are quite robust.\n\nThis is a mixture of multiple clones. The first photos show mature plants; the division photos show actual size at time of shipping. In a few months they will mature into the size shown in the mature plant photos given adequate conditions.",
-    image: "images/vft-bulk-tray1.jpg",
-    images: [
-      { label: "Community Pot",  file: "images/vft-bulk-tray1.jpg"      },
-      { label: "Packed & Ready",  file: "images/vft-bulk-bags.jpg"        },
-      { label: "Growing Trays",   file: "images/vft-bulk-tray2.jpg"       },
-      { label: "Division Size",   file: "images/vft-bulk-divisions.jpg"   },
-      { label: "Mature Traps",    file: "images/vft-bulk-mature3.jpg"     },
-      { label: "Mature Plants",   file: "images/vft-bulk-mature2.jpg"     },
-      { label: "Mature Close-Up", file: "images/vft-bulk-mature1.jpg"     },
-    ],
-    status: "unavailable",
-  },
-
-];
+const bulkPlants = [];
