@@ -30,7 +30,7 @@ const plants = [
     species: "Dionaea muscipula 'Chinese Dumpling' · Rare Cultivar",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     shortDescription: "Rare cultivar with short, rounded traps and frilly, twisted teeth at maturity. One of the most distinctive mutant flytraps in the hobby.",
-    description: "Chinese Dumpling is one of the most distinctive and sought-after flytrap cultivars to hit the hobby in recent years. It gets its name from the unique shape of its traps, which are short, rounded, and reminiscent of a dumpling. At maturity, the trap margins become twisted and the cilia take on a frilly, almost serrated look that gives the whole plant a wonderfully sinister appearance. In a world full of mutant flytraps, this one still manages to stand out.\n\nGrown in strong light, the traps will blush a deep red while the petioles stay a vibrant green, making for a striking contrast. Younger and winter traps tend to look more typical, without much visible mutation to the teeth. As the plants mature and the warmer, sunnier months arrive, the characteristic dumpling shape really starts to express itself. This is also a clone that puts on impressive rhizome development for its size.\n\nI will select the largest and most vigorous plants from my community pots to ship.",
+    description: "Chinese Dumpling is one of the most distinctive and sought-after flytrap cultivars to hit the hobby in recent years. It gets its name from the unique shape of its traps, which are short, rounded, and reminiscent of a dumpling. At maturity, the trap margins become twisted and the cilia take on a frilly, almost serrated look that gives the whole plant a wonderfully sinister appearance. In a world full of mutant flytraps, this one still manages to stand out.\n\nGrown in strong light, the traps will blush a deep red while the petioles stay a vibrant green, making for a striking contrast. Younger and winter traps tend to look more typical, without much visible mutation to the teeth. As the plants mature and the warmer, sunnier months arrive, the characteristic dumpling shape really starts to express itself. This is also a clone that puts on impressive rhizome development for its size.\n\n",
     image: "images/chinese-dumpling-large.jpg",
     images: [
       { label: "Small",    file: "images/chinese-dumpling-small.jpg"   },
@@ -47,7 +47,7 @@ const plants = [
     species: "Dionaea muscipula 'B52'",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     shortDescription: "The most famous giant clone in the hobby. Mature traps exceed 2 inches, the plant clumps readily, and it grows fast. A must-have for any collection.",
-    description: "B52 is one of the most famous Venus flytrap cultivars in the hobby, and probably the first giant clone most growers hear about. It was developed by Henning von Schmeling in Georgia as part of a larger breeding program, where 'B52' was simply his internal label for the plant (generation B, number 52, though he switched the labels with 13 and 52 IIRC because this clone was head and shoulders above the rest, and B52 had a better ring to it). The name stuck, and it's easy to see why. Mature traps can exceed 2 inches in length, roughly double the size of a typical flytrap, and the plant clumps readily, producing a dense carpet of oversized traps.\n\nIn good light, the trap interiors color up to a bright, vivid red while the petioles stay a clean green, making for a bold contrast. This is also a notably vigorous grower. Where some large-trapping clones can be fussy or slow, B52 puts on size quickly and tends to divide on its own, which is part of what has made it such a staple. If you're looking for a flytrap that makes an impression even from across the room, this is the one.\n\nI always select the largest and most vigorous plants from my community pots to ship.",
+    description: "B52 is one of the most famous Venus flytrap cultivars in the hobby, and probably the first giant clone most growers hear about. It was developed by Henning von Schmeling in Georgia as part of a larger breeding program, where 'B52' was simply his internal label for the plant (generation B, number 52, though he switched the labels with 13 and 52 IIRC because this clone was head and shoulders above the rest, and B52 had a better ring to it). The name stuck, and it's easy to see why. Mature traps can exceed 2 inches in length, roughly double the size of a typical flytrap, and the plant clumps readily, producing a dense carpet of oversized traps.\n\nIn good light, the trap interiors color up to a bright, vivid red while the petioles stay a clean green, making for a bold contrast. This is also a notably vigorous grower. Where some large-trapping clones can be fussy or slow, B52 puts on size quickly and tends to divide on its own, which is part of what has made it such a staple. If you're looking for a flytrap that makes an impression even from across the room, this is the one.\n\n",
     image: "images/b52-large.jpg",
     images: [
       { label: "Small",      file: "images/b52-small.jpg" },
@@ -63,7 +63,7 @@ const plants = [
     species: "Dionaea muscipula 'FTS Maroon Monster' · ICPS Registered Cultivar",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     shortDescription: "One of the most sought-after red clones in the hobby. Fast-growing with oversized traps that color up to a deep maroon, almost purple-black in strong light. ICPS registered cultivar.",
-    description: "This is an ICPS registered cultivar developed by Matt Miller through the Flytrap Store's breeding program, and it has become one of the most sought-after red clones in the hobby for good reason. Where most red Venus flytraps tend to be slow, finicky growers, Maroon Monster breaks the mold entirely. It grows fast, puts out thick and sturdy leaves, and produces oversized traps that color up to an incredible deep maroon, almost purple-black in strong light.\n\nThe contrast between those dark trap interiors and the bright lime-green edging along the trap margins is what really sets this clone apart visually. If you've grown Akai Ryu before and wished for something with more substance, bigger traps, and a more compact growth habit, this is the plant you've been looking for.\n\nI always select the largest and best looking specimens from my community pots to ship.",
+    description: "This is an ICPS registered cultivar developed by Matt Miller through the Flytrap Store's breeding program, and it has become one of the most sought-after red clones in the hobby for good reason. Where most red Venus flytraps tend to be slow, finicky growers, Maroon Monster breaks the mold entirely. It grows fast, puts out thick and sturdy leaves, and produces oversized traps that color up to an incredible deep maroon, almost purple-black in strong light.\n\nThe contrast between those dark trap interiors and the bright lime-green edging along the trap margins is what really sets this clone apart visually. If you've grown Akai Ryu before and wished for something with more substance, bigger traps, and a more compact growth habit, this is the plant you've been looking for.\n\n",
     image: "images/maroon-monster-primary.jpg",
     images: [
       { label: "Medium",         file: "images/maroon-monster-medium-packed.jpg" },
@@ -108,10 +108,60 @@ const plants = [
     species: "Dionaea muscipula 'Red Piranha' · ICPS Registered Cultivar",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     shortDescription: "ICPS registered sawtooth cultivar with chili-pepper-red traps, jagged teeth, and a striking golden-green margin. A hobby classic since 1999.",
-    description: "Red Piranha is an ICPS registered cultivar developed by Ed Reed and first published in the Carnivorous Plant Newsletter back in 1999. It has been a staple of the hobby ever since. This is a red sawtooth type that produces bright, chili-pepper-red traps lined with short, jagged teeth that give the whole plant a distinctly piranha-like appearance.\n\nWhat really makes Red Piranha pop is the thick band of golden-green edging that runs along the trap margins just below those jagged teeth, contrasting against the deep red of the trap interior. As individual traps age, they tend to suffuse fully red, darkening over time. The plant grows upright with an open habit and colors up beautifully in strong light.\n\nI always select my best looking plants from my community tray to ship.",
+    description: "Red Piranha is an ICPS registered cultivar developed by Ed Reed and first published in the Carnivorous Plant Newsletter back in 1999. It has been a staple of the hobby ever since. This is a red sawtooth type that produces bright, chili-pepper-red traps lined with short, jagged teeth that give the whole plant a distinctly piranha-like appearance.\n\nWhat really makes Red Piranha pop is the thick band of golden-green edging that runs along the trap margins just below those jagged teeth, contrasting against the deep red of the trap interior. As individual traps age, they tend to suffuse fully red, darkening over time. The plant grows upright with an open habit and colors up beautifully in strong light.\n\n",
     image: "images/red-piranha.jpg",
     images: [],
     status: "available",
+  },
+
+  {
+    name: "Giant VFT",
+    species: "Dionaea muscipula 'Giant'",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "A large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably.",
+    description: "Giant is a large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably. Not a novelty mutant — just a genuinely large, well-performing flytrap.",
+    image: "images/giant.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "FTS Towering Giant VFT",
+    species: "Dionaea muscipula 'FTS Towering Giant'",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "Developed by Matt Miller, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — one of the most architecturally dramatic flytraps you can grow.",
+    description: "Developed by Matt Miller and named in 2014, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — spring leaves can reach six inches or more. The coloration leans lime green to chartreuse with a contrasting red throat. One of the most architecturally dramatic flytraps in the hobby.",
+    image: "images/towering-giant.jpg",
+    images: [
+      { label: "Full Plant", file: "images/towering-giant.jpg"          },
+      { label: "Up Close",   file: "images/towering-giant-up-close.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "Big Mouth VFT",
+    species: "Dionaea muscipula 'Big Mouth'",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "A stunning clone. Big Mouth produces large, low-slung traps with vivid red-purple interiors, extraordinarily long and shapely cilia, and a wide-open, flat profile unlike anything else in the hobby.",
+    description: "A stunning clone. First propagated in 1998 by Tony Camilleri, Big Mouth is defined by the exceptional width of its trap opening, vivid red-purple interior coloration, and extraordinarily long and shapely cilia that give the traps a striking, almost ornate appearance. Traps are carried on short petioles in a low, ground-hugging rosette. A plant that genuinely looks different from every other flytrap in a collection.",
+    image: "images/big-mouth-nursery-tray.jpg",
+    images: [
+      { label: "Nursery Tray", file: "images/big-mouth-nursery-tray.jpg" },
+      { label: "Up Close",     file: "images/big-mouth-up-close.jpg"     },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "Ginormous VFT",
+    species: "Dionaea muscipula 'Ginormous' · ICPS Registered Cultivar",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "ICPS registered cultivar from Damon Collingsworth of California Carnivores. Traps rival B52 in size but on notably longer petioles, giving the plant a larger, more open stance with vivid candy-apple-red interiors.",
+    description: "Ginormous is an ICPS registered cultivar bred by Damon Collingsworth of California Carnivores and officially registered in 2013. It earns its name: traps regularly reach 2.25 inches or more, putting it in the same tier as B52 for raw trap size. What sets it apart from B52 is the notably longer petioles, which give the plant a more open, sprawling stance and make the traps feel even more imposing. The interiors color up to a bright candy-apple red against lime-green petioles — bold, clean contrast. A vigorous grower that clumps readily and performs especially well outdoors.",
+    image: "images/ginormous.jpg",
+    images: [],
+    status: "new",
   },
 
   {
