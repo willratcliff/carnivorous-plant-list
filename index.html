@@ -427,13 +427,10 @@
             });
           }
           addCartBtn.onclick = function () {
-            var label = cartOptions.length === 1 ? cartOptions[0].label
-              : sizeSelect.options[sizeSelect.selectedIndex].dataset.label;
-            var price = cartOptions.length === 1 ? cartOptions[0].price
-              : parseFloat(sizeSelect.value);
-            var minQty = cartOptions.length === 1 ? (cartOptions[0].minQty || 1)
-              : (parseInt(sizeSelect.options[sizeSelect.selectedIndex].dataset.minqty) || 1);
-            addToCart(plant, label, price, minQty);
+            var opt = (cartOptions.length === 1 && cartOptions[0].label === '')
+              ? cartOptions[0]
+              : cartOptions[sizeSelect.selectedIndex];
+            addToCart(plant, opt.label, opt.price, opt.minQty || 1);
           };
         } else {
           cartRow.style.display = 'none';
@@ -661,6 +658,12 @@
 
       document.getElementById('cart-email-btn').addEventListener('click', function () {
         if (cart.length === 0) { alert('Your cart is empty.'); return; }
+        for (var bi = 0; bi < cart.length; bi++) {
+          if (cart[bi].minQty > 1 && cart[bi].qty < cart[bi].minQty) {
+            alert(cart[bi].name + ' bulk pricing requires a minimum of ' + cart[bi].minQty + '. Please update your quantity or remove the item.');
+            return;
+          }
+        }
         if (!cartEmail.value.trim())  { alert('Please enter your email address.'); cartEmail.focus(); return; }
         if (!addrName.value.trim())   { alert('Please enter your name.'); addrName.focus(); return; }
         if (!addrStreet.value.trim()) { alert('Please enter your street address.'); addrStreet.focus(); return; }
