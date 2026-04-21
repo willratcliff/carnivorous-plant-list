@@ -407,7 +407,7 @@
         if (plant.bulkTiers) {
           plant.bulkTiers.forEach(function (t) {
             var p = parseFloat(t.price.replace(/[^0-9.]/g, ''));
-            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p });
+            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p, minQty: 10 });
           });
         }
 
@@ -422,6 +422,7 @@
               o.value = opt.price;
               o.textContent = opt.label + (opt.label ? ' — $' + opt.price.toFixed(2) : '');
               o.dataset.label = opt.label;
+              o.dataset.minqty = opt.minQty || 1;
               sizeSelect.appendChild(o);
             });
           }
@@ -430,7 +431,9 @@
               : sizeSelect.options[sizeSelect.selectedIndex].dataset.label;
             var price = cartOptions.length === 1 ? cartOptions[0].price
               : parseFloat(sizeSelect.value);
-            addToCart(plant, label, price);
+            var minQty = cartOptions.length === 1 ? (cartOptions[0].minQty || 1)
+              : (parseInt(sizeSelect.options[sizeSelect.selectedIndex].dataset.minqty) || 1);
+            addToCart(plant, label, price, minQty);
           };
         } else {
           cartRow.style.display = 'none';
@@ -550,13 +553,14 @@
       document.getElementById('cart-close-btn').addEventListener('click', closeCart);
       cartOverlay.addEventListener('click', closeCart);
 
-      function addToCart(plant, sizeLabel, price) {
+      function addToCart(plant, sizeLabel, price, minQty) {
+        minQty = minQty || 1;
         var id = plant.name + '||' + sizeLabel;
         var found = false;
         for (var i = 0; i < cart.length; i++) {
           if (cart[i].id === id) { cart[i].qty++; found = true; break; }
         }
-        if (!found) cart.push({ id: id, name: plant.name, size: sizeLabel, price: price, qty: 1 });
+        if (!found) cart.push({ id: id, name: plant.name, size: sizeLabel, price: price, qty: minQty, minQty: minQty });
         renderCart();
         closeModal();
         openCart();
@@ -595,6 +599,7 @@
             info.className = 'cart-item-info';
             info.innerHTML = '<span class="cart-item-name">' + item.name +
               (item.size ? ' <em>(' + item.size + ')</em>' : '') + '</span>' +
+              (item.minQty > 1 ? '<span style="font-size:0.75em;color:#888;"> min ' + item.minQty + '</span>' : '') +
               '<span class="cart-item-price">$' + (item.price * item.qty).toFixed(2) + '</span>';
 
             var ctrl = document.createElement('div');
@@ -606,7 +611,8 @@
               btn.textContent = pair[0];
               btn.addEventListener('click', (function (i, d) { return function () {
                 cart[i].qty += d;
-                if (cart[i].qty <= 0) cart.splice(i, 1);
+                var min = cart[i].minQty || 1;
+                if (cart[i].qty < min) cart.splice(i, 1);
                 renderCart();
               }; })(idx, pair[1]));
               ctrl.appendChild(btn);
