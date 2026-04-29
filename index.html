@@ -234,6 +234,7 @@
     </div>
   </div>
 
+  <script src="sales.js"></script>
   <script src="plants.js"></script>
   <script>
     (function () {
@@ -288,9 +289,17 @@
             ? '<img src="' + plant.image + '" alt="' + plant.name + '">'
             : '<div class="img-placeholder">🌿</div>';
 
+          var saleBadgeHTML = '';
+          var plantSale = window.SaleHelpers && window.SaleHelpers.hasAnySaleForPlant(plant.name);
+          if (plantSale) {
+            var saleLabel = plantSale.type === 'bogo' ? 'BOGO' : 'SALE';
+            saleBadgeHTML = '<span class="sale-badge">' + saleLabel + '</span>';
+          }
+
           card.innerHTML =
             '<div class="plant-image">' +
               imgHTML +
+              saleBadgeHTML +
               '<span class="status-badge status-' + plant.status + '">' +
                 (statusLabel[plant.status] || plant.status) +
               '</span>' +
@@ -550,12 +559,33 @@
 
       function addToCart(plant, sizeLabel, price, minQty) {
         minQty = minQty || 1;
+        var step = 1;
+        var saleTag = null;
+        var saleId = null;
+        var sale = window.SaleHelpers && window.SaleHelpers.saleFor(plant.name, sizeLabel);
+        if (sale && sale.type === 'bogo') {
+          // BOGO: pair quantities (step by 2, min 2) and halve the unit price
+          // so cart total reflects "pay for one, get one free".
+          price = price / 2;
+          minQty = Math.max(minQty, 2);
+          step = 2;
+          saleTag = 'BOGO';
+          saleId = sale.id;
+        }
         var id = plant.name + '||' + sizeLabel;
         var found = false;
         for (var i = 0; i < cart.length; i++) {
-          if (cart[i].id === id) { cart[i].qty++; found = true; break; }
+          if (cart[i].id === id) {
+            cart[i].qty += (cart[i].step || 1);
+            found = true;
+            break;
+          }
         }
-        if (!found) cart.push({ id: id, name: plant.name, size: sizeLabel, price: price, qty: minQty, minQty: minQty });
+        if (!found) cart.push({
+          id: id, name: plant.name, size: sizeLabel,
+          price: price, qty: minQty, minQty: minQty,
+          step: step, saleTag: saleTag, saleId: saleId,
+        });
         renderCart();
         closeModal();
         openCart();
@@ -593,8 +623,10 @@
             var info = document.createElement('div');
             info.className = 'cart-item-info';
             info.innerHTML = '<span class="cart-item-name">' + item.name +
-              (item.size ? ' <em>(' + item.size + ')</em>' : '') + '</span>' +
-              (item.minQty > 1 ? '<span style="font-size:0.75em;color:#888;"> min ' + item.minQty + '</span>' : '') +
+              (item.size ? ' <em>(' + item.size + ')</em>' : '') +
+              (item.saleTag ? ' <span style="color:#c87a00;font-weight:700;">(' + item.saleTag + ')</span>' : '') +
+              '</span>' +
+              (item.minQty > 1 && !item.saleTag ? '<span style="font-size:0.75em;color:#888;"> min ' + item.minQty + '</span>' : '') +
               '<span class="cart-item-price">$' + (item.price * item.qty).toFixed(2) + '</span>';
 
             var ctrl = document.createElement('div');
@@ -604,8 +636,9 @@
               var btn = document.createElement('button');
               btn.className = 'qty-btn';
               btn.textContent = pair[0];
-              btn.addEventListener('click', (function (i, d) { return function () {
-                cart[i].qty += d;
+              btn.addEventListener('click', (function (i, dir) { return function () {
+                var step = cart[i].step || 1;
+                cart[i].qty += dir * step;
                 var min = cart[i].minQty || 1;
                 if (cart[i].qty < min) cart.splice(i, 1);
                 renderCart();
@@ -673,8 +706,22 @@
         var t = calcTotals();
         var lines = cart.map(function (item) {
           return '\u2022 ' + item.name + (item.size ? ' (' + item.size + ')' : '') +
-            ' \xd7' + item.qty + '  \u2014  $' + (item.price * item.qty).toFixed(2);
+            ' \xd7' + item.qty + '  \u2014  $' + (item.price * item.qty).toFixed(2) +
+            (item.saleTag ? ' (' + item.saleTag + ')' : '');
         }).join('\n');
+
+        // Collect any active sales actually used by this order, for an email summary.
+        var saleSummary = '';
+        var usedSaleIds = {};
+        cart.forEach(function (item) {
+          if (item.saleId && !usedSaleIds[item.saleId]) {
+            usedSaleIds[item.saleId] = true;
+            var sale = (window.SALES || []).find(function (s) { return s.id === item.saleId; });
+            if (sale) {
+              saleSummary += '\n\u2022 ' + sale.bannerText;
+            }
+          }
+        });
 
         var body = 'Hi Will,\n\nI\u2019d like to place the following order:\n\n' + lines +
           '\n\n──────────────────' +
@@ -689,6 +736,7 @@
           addrStreet.value.trim() + '\n' +
           addrCity.value.trim() + ', ' + addrState.value + ' ' + addrZip.value.trim();
         body += '\n\n──────────────────\nPayment Method: ' + selectedPayment + '\n' + paymentInfoPlain[selectedPayment];
+        if (saleSummary) body += '\n\n──────────────────\nSale Applied:' + saleSummary;
         var comments = cartComments.value.trim();
         if (comments) body += '\n\n──────────────────\nNotes:\n' + comments;
         body += '\n\nThanks!';

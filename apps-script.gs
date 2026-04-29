@@ -10,7 +10,7 @@ function doPost(e) {
         "Thanks for your order! Here is a copy for your records:\n\n" +
         data.body +
         "\n\n------------------\n" +
-        "I'll be in touch shortly to confirm. If you have any questions, " +
+        "Once I receive payment, I usually ship within 24h. If you have any questions, " +
         "reply to this email or reach me at will@phamcliff.com.\n\n" +
         "- Will\n" +
         "Phamcliff Farm\n" +
