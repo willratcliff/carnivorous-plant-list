@@ -173,7 +173,7 @@ const plants = [
     description: "Ginormous is an ICPS registered cultivar bred by Damon Collingsworth of California Carnivores and officially registered in 2013. It earns its name: traps regularly reach 2.25 inches or more, putting it in the same tier as B52 for raw trap size. What sets it apart from B52 is the notably longer petioles, which give the plant a more open, sprawling stance and make the traps feel even more imposing. The interiors color up to a bright candy-apple red against lime-green petioles — bold, clean contrast. A vigorous grower that clumps readily and performs especially well outdoors.",
     image: "images/ginormous.jpg",
     images: [],
-    status: "new",
+    status: "unavailable",
   },
 
   {
