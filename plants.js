@@ -81,7 +81,7 @@ const plants = [
   {
     name: "Unknown Giant VFT",
     species: "Dionaea muscipula · Unidentified Giant Clone",
-    price: { small: "$10", medium: "$15", large: "$20" },
+    price: { small: "$10", medium: "$15" },
     shortDescription: "An unidentified giant clone that consistently outperforms many named cultivars: oversized traps, tall upright petioles, and outstanding vigor. Multiple available.",
     description: "Up for sale is one large Venus flytrap from a giant clone whose label was unfortunately lost. The plant pictured is representative of what you will receive: a mature specimen with solid rhizome development and traps that are already sizing up nicely for the season. Multiple available, first come first served.\n\nWHY THIS CLONE?\nI grow dozens of named cultivars, and this unidentified clone is among the most impressive performers in my entire collection. It produces oversized traps on tall, upright petioles with a strong, sturdy growth habit that gives the whole plant real presence. The traps color up easily in good light, developing rich red interiors without needing to be pushed hard, and the overall vigor of the plant is outstanding.\n\nThis is the kind of flytrap that makes people stop and look. The combination of trap size, upright stature, and reliable coloration puts it in rare company, and it has consistently outperformed many of the named giants I grow alongside it. If you're the type of grower who cares more about the plant in front of you than the name on the tag, this one will not disappoint.",
     image: "images/unknown-giant-1.jpg",
