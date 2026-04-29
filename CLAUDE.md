@@ -61,7 +61,7 @@ CLAUDE.md         — this file
 
 ## Contact Info on Site
 
-- Email: wcratcliff@gmail.com
+- Email: will@phamcliff.com
 - Instagram: @willhascoolplants
 - Facebook: https://www.facebook.com/profile.php?id=61586990360469
 - Reddit: u/Berberis — https://www.reddit.com/user/Berberis/
