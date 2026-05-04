@@ -414,7 +414,8 @@
         if (plant.bulkTiers) {
           plant.bulkTiers.forEach(function (t) {
             var p = parseFloat(t.price.replace(/[^0-9.]/g, ''));
-            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p, minQty: 10 });
+            var qty = parseInt(t.label) || 10;
+            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p / qty, minQty: qty });
           });
         }
 
