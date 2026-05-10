@@ -56,7 +56,6 @@ const plants = [
     description: "B52 is one of the most famous Venus flytrap cultivars in the hobby, and probably the first giant clone most growers hear about. It was developed by Henning von Schmeling in Georgia as part of a larger breeding program, where 'B52' was simply his internal label for the plant (generation B, number 52, though he switched the labels with 13 and 52 IIRC because this clone was head and shoulders above the rest, and B52 had a better ring to it). The name stuck, and it's easy to see why. Mature traps can exceed 2 inches in length, roughly double the size of a typical flytrap, and the plant clumps readily, producing a dense carpet of oversized traps.\n\nIn good light, the trap interiors color up to a bright, vivid red while the petioles stay a clean green, making for a bold contrast. This is also a notably vigorous grower. Where some large-trapping clones can be fussy or slow, B52 puts on size quickly and tends to divide on its own, which is part of what has made it such a staple. If you're looking for a flytrap that makes an impression even from across the room, this is the one.\n\n",
     image: "images/b52-large.jpg",
     images: [
-      { label: "Small",      file: "images/b52-small.jpg" },
       { label: "Medium",     file: "images/b52-medium.jpg" },
       { label: "Large",      file: "images/b52-large.jpg" },
       { label: "Specimen",   file: "images/b52-specimen.jpg" },
