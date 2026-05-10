@@ -70,10 +70,7 @@ const plants = [
     shortDescription: "One of the most sought-after red clones in the hobby. Fast-growing with oversized traps that color up to a deep maroon, almost purple-black in strong light. ICPS registered cultivar.",
     description: "This is an ICPS registered cultivar developed by Matt Miller through the Flytrap Store's breeding program, and it has become one of the most sought-after red clones in the hobby for good reason. Where most red Venus flytraps tend to be slow, finicky growers, Maroon Monster breaks the mold entirely. It grows fast, puts out thick and sturdy leaves, and produces oversized traps that color up to an incredible deep maroon, almost purple-black in strong light.\n\nThe contrast between those dark trap interiors and the bright lime-green edging along the trap margins is what really sets this clone apart visually. If you've grown Akai Ryu before and wished for something with more substance, bigger traps, and a more compact growth habit, this is the plant you've been looking for.\n\n",
     image: "images/maroon-monster-new.jpg",
-    images: [
-      { label: "Medium",         file: "images/maroon-monster-medium-packed.jpg" },
-      { label: "Community Pot", file: "images/maroon-monster-primary.jpg"      },
-    ],
+    images: [],
     status: "available",
   },
 
@@ -120,14 +117,14 @@ const plants = [
   },
 
   {
-    name: "Giant VFT",
-    species: "Dionaea muscipula 'Giant'",
+    name: "Giant Traps VFT",
+    species: "Dionaea muscipula 'Giant Traps'",
     price: { small: "$10", medium: "$15", large: "$20" },
     bulkTiers: [
       { label: "Medium · 10+ ea.", price: "$10" },
     ],
     shortDescription: "A large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably.",
-    description: "Giant is a large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably. Not a novelty mutant — just a genuinely large, well-performing flytrap.",
+    description: "Giant Traps is a large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably. Not a novelty mutant — just a genuinely large, well-performing flytrap.",
     image: "images/giant.jpg",
     images: [],
     status: "new",
@@ -158,8 +155,9 @@ const plants = [
     description: "A stunning clone. First propagated in 1998 by Tony Camilleri, Big Mouth is defined by the exceptional width of its trap opening, vivid red-purple interior coloration, and extraordinarily long and shapely cilia that give the traps a striking, almost ornate appearance. Traps are carried on short petioles in a low, ground-hugging rosette. A plant that genuinely looks different from every other flytrap in a collection.",
     image: "images/big-mouth-nursery-tray.jpg",
     images: [
-      { label: "Nursery Tray", file: "images/big-mouth-nursery-tray.jpg" },
-      { label: "Up Close",     file: "images/big-mouth-up-close.jpg"     },
+      { label: "Nursery Tray", file: "images/big-mouth-nursery-tray.jpg"   },
+      { label: "Nursery Tray", file: "images/big-mouth-nursery-tray-2.jpg" },
+      { label: "Up Close",     file: "images/big-mouth-up-close.jpg"       },
     ],
     status: "new",
   },
