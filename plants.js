@@ -143,7 +143,10 @@ const plants = [
     shortDescription: "Developed by Matt Miller, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — one of the most architecturally dramatic flytraps you can grow.",
     description: "Developed by Matt Miller and named in 2014, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — spring leaves can reach six inches or more. The coloration leans lime green to chartreuse with a contrasting red throat. One of the most architecturally dramatic flytraps in the hobby.",
     image: "images/towering-giant.jpg",
-    images: [],
+    images: [
+      { label: "Community Tray", file: "images/towering-giant.jpg"       },
+      { label: "Large Plant",    file: "images/towering-giant-large.jpg" },
+    ],
     status: "new",
   },
 
