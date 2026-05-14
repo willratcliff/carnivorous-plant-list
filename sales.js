@@ -67,6 +67,19 @@ window.SaleHelpers = {
   },
 };
 
+// ── Discount codes (hashed for security) ────────────────────────────
+// Codes are stored as SHA-256 hashes so the actual code text never
+// appears in source. To add a new code, hash it (uppercase) and append.
+window.DISCOUNT_CODES = [
+  {
+    hash: '3cba318ed252545c2c5cff285efdd8bda024a3a0782d6f7fefe0fbb750fba988',
+    type: 'bogo',
+    label: 'BOGO (Carnivorous Plants Hub)',
+    maxFreeItems: 1,
+    excludeBulk: true,
+  },
+];
+
 // ── Auto-render the sale banner ─────────────────────────────────────
 // Runs on every page that includes sales.js. Inserts a banner element
 // immediately after .shipping-bar (consistent placement across pages).

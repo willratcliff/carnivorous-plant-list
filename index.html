@@ -174,8 +174,21 @@
     <div class="cart-body">
       <div id="cart-items-list" class="cart-items-list"></div>
       <p id="cart-ship-note" class="cart-ship-note"></p>
+      <div class="discount-code-row" id="discount-code-row">
+        <input id="cart-discount-input" class="cart-addr-field" type="text" placeholder="Discount code" />
+        <button id="cart-discount-btn" class="discount-apply-btn">Apply</button>
+      </div>
+      <div class="discount-applied-row" id="discount-applied-row" style="display:none;">
+        <span class="discount-applied-label" id="discount-applied-label"></span>
+        <button id="discount-remove-btn" class="discount-remove-btn">Remove</button>
+      </div>
+      <p id="discount-status" class="discount-status"></p>
       <div class="cart-summary">
         <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
+        <div class="summary-row summary-discount" id="discount-row" style="display:none;">
+          <span id="discount-label">Discount</span>
+          <span id="sum-discount">-$0.00</span>
+        </div>
         <div class="summary-row"><span>Shipping</span><span id="sum-shipping">$10.00</span></div>
         <div class="summary-row" id="heatpack-row">
           <label class="summary-check-label">
@@ -495,6 +508,7 @@
 
       // ── Cart ────────────────────────────────────────────────────
       var cart = [];
+      var appliedDiscount = null;
       var cartPanel    = document.getElementById('cart-panel');
       var cartOverlay  = document.getElementById('cart-overlay');
       var cartBadge    = document.getElementById('cart-badge');
@@ -595,13 +609,27 @@
       function calcTotals() {
         var sub = 0;
         for (var i = 0; i < cart.length; i++) sub += cart[i].price * cart[i].qty;
+        var discount = 0;
+        if (appliedDiscount && appliedDiscount.type === 'bogo') {
+          var cheapest = Infinity;
+          var eligibleQty = 0;
+          for (var i = 0; i < cart.length; i++) {
+            var isBulk = cart[i].minQty > 1 && !cart[i].saleTag;
+            if (appliedDiscount.excludeBulk && isBulk) continue;
+            eligibleQty += cart[i].qty;
+            if (cart[i].price < cheapest) cheapest = cart[i].price;
+          }
+          if (eligibleQty >= 2 && cheapest < Infinity) {
+            discount = cheapest;
+          }
+        }
         var free     = sub >= 100;
         var shipping = free ? 0 : 10;
         var heat     = (!free && heatpackChk.checked) ? 5 : 0;
-        var taxBase  = sub + shipping + heat;
+        var taxBase  = sub - discount + shipping + heat;
         var isGA     = addrState.value === 'GA';
         var tax      = isGA ? Math.round(taxBase * 0.08 * 100) / 100 : 0;
-        return { sub: sub, shipping: shipping, heat: heat, tax: tax, total: taxBase + tax, free: free };
+        return { sub: sub, discount: discount, shipping: shipping, heat: heat, tax: tax, total: taxBase + tax, free: free };
       }
 
       function renderCart() {
@@ -669,6 +697,8 @@
 
         var t = calcTotals();
         document.getElementById('sum-subtotal').textContent = '$' + t.sub.toFixed(2);
+        document.getElementById('discount-row').style.display = t.discount > 0 ? 'flex' : 'none';
+        document.getElementById('sum-discount').textContent = '-$' + t.discount.toFixed(2);
         document.getElementById('sum-shipping').textContent = t.free ? 'Free' : '$' + t.shipping.toFixed(2);
         heatpackRow.style.display = t.free ? 'none' : 'flex';
         document.getElementById('sum-heatpack').textContent = heatpackChk.checked ? '$5.00' : '$0.00';
@@ -687,6 +717,53 @@
 
       heatpackChk.addEventListener('change', renderCart);
       addrState.addEventListener('change', renderCart);
+
+      function hashCode(str) {
+        var data = new TextEncoder().encode(str);
+        return crypto.subtle.digest('SHA-256', data).then(function (buf) {
+          return Array.from(new Uint8Array(buf)).map(function (b) {
+            return b.toString(16).padStart(2, '0');
+          }).join('');
+        });
+      }
+
+      document.getElementById('cart-discount-btn').addEventListener('click', function () {
+        var input = document.getElementById('cart-discount-input').value.toUpperCase().trim();
+        var status = document.getElementById('discount-status');
+        if (!input) return;
+        hashCode(input).then(function (hash) {
+          var codes = window.DISCOUNT_CODES || [];
+          var match = null;
+          for (var i = 0; i < codes.length; i++) {
+            if (codes[i].hash === hash) { match = codes[i]; break; }
+          }
+          if (match) {
+            appliedDiscount = match;
+            document.getElementById('discount-code-row').style.display = 'none';
+            document.getElementById('discount-applied-row').style.display = 'flex';
+            document.getElementById('discount-applied-label').textContent = '✓ ' + match.label;
+            status.textContent = '';
+            status.className = 'discount-status';
+            renderCart();
+          } else {
+            status.textContent = 'Invalid discount code.';
+            status.className = 'discount-status error';
+          }
+        });
+      });
+
+      document.getElementById('cart-discount-input').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('cart-discount-btn').click();
+      });
+
+      document.getElementById('discount-remove-btn').addEventListener('click', function () {
+        appliedDiscount = null;
+        document.getElementById('discount-code-row').style.display = 'flex';
+        document.getElementById('discount-applied-row').style.display = 'none';
+        document.getElementById('cart-discount-input').value = '';
+        document.getElementById('discount-status').textContent = '';
+        renderCart();
+      });
 
       document.getElementById('cart-email-btn').addEventListener('click', function () {
         if (cart.length === 0) { alert('Your cart is empty.'); return; }
@@ -726,8 +803,9 @@
 
         var body = 'Hi Will,\n\nI\u2019d like to place the following order:\n\n' + lines +
           '\n\n──────────────────' +
-          '\nSubtotal:   $' + t.sub.toFixed(2) +
-          '\nShipping:   ' + (t.free ? 'Free (order \u2265$100)' : '$' + t.shipping.toFixed(2));
+          '\nSubtotal:   $' + t.sub.toFixed(2);
+        if (t.discount > 0) body += '\nDiscount:   -$' + t.discount.toFixed(2) + ' (' + appliedDiscount.label + ')';
+        body += '\nShipping:   ' + (t.free ? 'Free (order \u2265$100)' : '$' + t.shipping.toFixed(2));
         if (heatpackChk.checked) body += '\nHeat Pack:  ' + (t.free ? 'Free (order \u2265$100)' : '$5.00');
         if (addrState.value === 'GA') body += '\nGA Tax (8%): $' + t.tax.toFixed(2);
         body += '\nTotal:      $' + t.total.toFixed(2);
@@ -737,6 +815,9 @@
           addrStreet.value.trim() + '\n' +
           addrCity.value.trim() + ', ' + addrState.value + ' ' + addrZip.value.trim();
         body += '\n\n──────────────────\nPayment Method: ' + selectedPayment + '\n' + paymentInfoPlain[selectedPayment];
+        if (appliedDiscount && t.discount > 0) {
+          saleSummary += '\n• Discount code: ' + appliedDiscount.label + ' (-$' + t.discount.toFixed(2) + ')';
+        }
         if (saleSummary) body += '\n\n──────────────────\nSale Applied:' + saleSummary;
         var comments = cartComments.value.trim();
         if (comments) body += '\n\n──────────────────\nNotes:\n' + comments;
@@ -762,6 +843,11 @@
           cartComments.value = '';
           document.querySelectorAll('input[name="payment"]').forEach(function(r){ r.checked = false; });
           paymentInstructions.style.display = 'none';
+          appliedDiscount = null;
+          document.getElementById('discount-code-row').style.display = 'flex';
+          document.getElementById('discount-applied-row').style.display = 'none';
+          document.getElementById('cart-discount-input').value = '';
+          document.getElementById('discount-status').textContent = '';
           renderCart();
           btn.textContent = '✓ Order Sent!';
           btn.style.background = '#7cb342';
