@@ -67,6 +67,9 @@ const plants = [
     name: "FTS Maroon Monster VFT",
     species: "Dionaea muscipula 'FTS Maroon Monster' · ICPS Registered Cultivar",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
+    bulkTiers: [
+      { label: "Medium · 10+ ea.", price: "$10" },
+    ],
     shortDescription: "One of the most sought-after red clones in the hobby. Fast-growing with oversized traps that color up to a deep maroon, almost purple-black in strong light. ICPS registered cultivar.",
     description: "This is an ICPS registered cultivar developed by Matt Miller through the Flytrap Store's breeding program, and it has become one of the most sought-after red clones in the hobby for good reason. Where most red Venus flytraps tend to be slow, finicky growers, Maroon Monster breaks the mold entirely. It grows fast, puts out thick and sturdy leaves, and produces oversized traps that color up to an incredible deep maroon, almost purple-black in strong light.\n\nThe contrast between those dark trap interiors and the bright lime-green edging along the trap margins is what really sets this clone apart visually. If you've grown Akai Ryu before and wished for something with more substance, bigger traps, and a more compact growth habit, this is the plant you've been looking for.\n\n",
     image: "images/maroon-monster-new.jpg",
@@ -95,6 +98,9 @@ const plants = [
     name: "Specimen Typical VFT",
     species: "Dionaea muscipula · Typical",
     flatPrice: "$25",
+    bulkTiers: [
+      { label: "10+ ea.", price: "$15" },
+    ],
     shortDescription: "Large, vigorous typical clones with big traps and well-developed rhizomes. These divide rapidly and are the source of our wholesale medium divisions.",
     description: "These are large, mature Venus flytraps grown from typical clones selected for vigor, trap size, and rhizome development. They are not named cultivars, but they perform like plants twice their price: big traps, strong constitutions, and a growth rate that keeps the community pots constantly overflowing.\n\nWHY TYPICALS?\nTypicals are underrated. The best ones produce traps that rival many named clones, and because they haven't been through years of hobbyist selection pressure for looks alone, they tend to be robust and forgiving growers. These particular plants are the source stock for our wholesale medium division program — we divide them repeatedly, they bounce back fast, and the cycle keeps going. A single specimen can realistically produce dozens of divisions per year under good conditions.\n\nIf you're looking to build a collection quickly, or just want a large, impressive plant that will reward neglect with vigorous growth, this is the place to start.",
     image: "images/typical-specimen-1.jpg",
@@ -123,6 +129,7 @@ const plants = [
     bulkTiers: [
       { label: "Medium · 10+ ea.", price: "$10" },
     ],
+
     shortDescription: "A large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably.",
     description: "Giant Traps is a large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably. Not a novelty mutant — just a genuinely large, well-performing flytrap.",
     image: "images/giant.jpg",
@@ -222,8 +229,8 @@ const plants = [
     species: "Utricularia calycifida",
     flatPrice: "$20",
     price: {},
-    shortDescription: "Established clump in active growth with multiple flower stalks emerging. Bare root, ready to pot. Optional free Drosera binata hitchhiker; just mention your preference when ordering.",
-    description: "Up for sale is an established clump of <em>Utricularia calycifida</em>, currently in active growth with multiple flower stalks emerging. The plant is shown growing in a 2.5\" pot for scale, and you will receive this exact specimen. As shown in the root photos, this clump has developed an impressive network of stolons and fine roots that fill the entire pot, and if you look closely you can see the tiny bladder traps studded throughout, the structures the plant uses to catch and digest microscopic prey in the soil. This kind of root and trap development is a clear sign of a healthy, vigorous plant that should settle in quickly after repotting and continue growing without missing a beat.\n\nAs a bonus, this purchase includes an optional free <em>Drosera binata</em> hitchhiker plant; just state your preference for one (or not) in your email when ordering.\n\nWHY U. CALYCIFIDA?\n<em>Utricularia calycifida</em> is a terrestrial bladderwort native to South America, and it is one of the best species in the genus for growers who want a plant that flowers reliably and looks great doing it. It produces delicate violet blooms on wiry stalks that rise well above the rosette of spoon-shaped leaves, often putting out multiple flower stalks at once. The flowers punch well above their weight for a plant this size.\n\nWhat makes this species particularly appealing is how easy it is to maintain compared to many tropical <em>Utricularia</em>. It does well on a bright windowsill or under grow lights, tolerates a range of humidity levels, and spreads steadily through underground stolons. It's a great entry point into the world of bladderworts for growers who are used to flytraps and sundews, and an equally good addition for experienced collectors looking for something that flowers without fuss.",
+    shortDescription: "Established clump in active growth with multiple flower stalks emerging. Bare root, ready to pot.",
+    description: "Up for sale is an established clump of <em>Utricularia calycifida</em>, currently in active growth with multiple flower stalks emerging. The plant is shown growing in a 2.5\" pot for scale, and you will receive this exact specimen. As shown in the root photos, this clump has developed an impressive network of stolons and fine roots that fill the entire pot, and if you look closely you can see the tiny bladder traps studded throughout, the structures the plant uses to catch and digest microscopic prey in the soil. This kind of root and trap development is a clear sign of a healthy, vigorous plant that should settle in quickly after repotting and continue growing without missing a beat.\n\nWHY U. CALYCIFIDA?\n<em>Utricularia calycifida</em> is a terrestrial bladderwort native to South America, and it is one of the best species in the genus for growers who want a plant that flowers reliably and looks great doing it. It produces delicate violet blooms on wiry stalks that rise well above the rosette of spoon-shaped leaves, often putting out multiple flower stalks at once. The flowers punch well above their weight for a plant this size.\n\nWhat makes this species particularly appealing is how easy it is to maintain compared to many tropical <em>Utricularia</em>. It does well on a bright windowsill or under grow lights, tolerates a range of humidity levels, and spreads steadily through underground stolons. It's a great entry point into the world of bladderworts for growers who are used to flytraps and sundews, and an equally good addition for experienced collectors looking for something that flowers without fuss.",
     image: "images/u-calycifida-flowers.jpg",
     images: [
       { label: "In Bloom",          file: "images/u-calycifida-flowers.jpg" },
