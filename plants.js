@@ -91,7 +91,7 @@ const plants = [
       { label: "Plant",          file: "images/unknown-giant-1.jpg"          },
       { label: "Close-Up",       file: "images/unknown-giant-2.jpg"          },
     ],
-    status: "available",
+    status: "sold",
   },
 
   {
