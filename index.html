@@ -301,7 +301,7 @@
       function renderCards(plantList, gridEl) {
         plantList.forEach(function (plant) {
           var card = document.createElement('div');
-          card.className = 'plant-card' + (plant.status === 'sold' ? ' sold' : '');
+          card.className = 'plant-card' + (plant.status === 'sold' || plant.status === 'unavailable' ? ' sold' : '');
           card.style.cursor = 'pointer';
 
           var imgHTML = plant.image
