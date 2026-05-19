@@ -250,7 +250,8 @@ const plants = [
     description: "This compact LED grow light is the easiest way to keep a Venus flytrap or two thriving indoors. The telescoping stake inserts directly into the pot, and the built-in timer cycles 12 hours on, 12 hours off with no external timer needed. It is a fully self-contained lighting system — just plug it into any USB power supply and you're done.\n\nThe light uses a mixture of warm and cool white LEDs, producing an excellent full-spectrum output. At one to two inches above the plant, we measure roughly 250 PPFD, which is more than enough to drive healthy, vigorous growth. The flytrap shown in the photo was grown for several months under this light exclusively.\n\nIf you're keeping just a plant or two on a desk or windowsill and want a simple, reliable grow light without the complexity of a full fixture setup, this is the one to get. USB power supply not included.",
     image: "images/led-grow-light-stake.jpg",
     images: [
-      { label: "Photo 2", file: "images/led-grow-light-stake-2.jpg" },
+      { label: "With Flytrap", file: "images/led-grow-light-stake.jpg" },
+      { label: "Light Detail",  file: "images/led-grow-light-stake-2.jpg" },
     ],
     status: "available",
   },
