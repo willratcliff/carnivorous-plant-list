@@ -199,9 +199,7 @@ const plants = [
     species: "Stylidium debile",
     flatPrice: "$10",
     price: {},
-    bulkTiers: [
-      { label: "10+ Plants", price: "$7.50" },
-    ],
+    bulkTiers: [],
     shortDescription: "The trigger plant: its spring-loaded anther snaps down to smack pollinating insects in milliseconds. Easy to grow in pure peat, and irresistible for kids pretending to be bees.",
     description: "Up for sale are divisions of <em>Stylidium debile</em>, the trigger plant. This quirky Australian native has a party trick unlike anything else in the plant world: a spring-loaded anther column that snaps down and smacks any insect that lands on the flower, coating it in pollen in milliseconds. It's the fastest movement in the plant kingdom, and it never gets old to watch.\n\nKids absolutely love it. Have them pretend to be a bee, touch the flower column with a fingertip or toothpick, and watch it fire.\n\nGROWING\n<em>Stylidium debile</em> is easy. It thrives in pure peat moss kept consistently moist, the same conditions you'd use for a Venus flytrap or sundew. It tolerates a wide range of light levels and will bloom prolifically under grow lights or in a bright window, sending up wiry stalks tipped with small pink flowers. Each flower is a loaded trigger waiting to go off.\n\nDivisions are shipped bare root. Size is representative of plants shown in the divisions photo.",
     image: "images/stylidium-community.jpg",
