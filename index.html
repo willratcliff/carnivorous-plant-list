@@ -641,6 +641,11 @@
       });
 
       function openCart() {
+        var btn = document.getElementById('cart-email-btn');
+        btn.style.display = '';
+        btn.textContent = 'Send Order';
+        btn.style.background = '';
+        btn.disabled = false;
         cartPanel.classList.add('open');
         cartPanel.setAttribute('aria-hidden', 'false');
         cartOverlay.classList.add('open');
@@ -966,10 +971,11 @@
         btn.textContent = 'Sending…';
         btn.disabled = true;
 
+        var submittedEmail = cartEmail.value.trim();
         fetch('https://script.google.com/macros/s/AKfycbyJnmfdYwvRckhsoYN4j9xZ8zasOpks8ccBSysA6hG-VIMlBLSPf7hKNoMyumsQEVawdQ/exec', {
           method: 'POST',
           mode: 'no-cors',
-          body: JSON.stringify({ body: body, customerEmail: cartEmail.value.trim() })
+          body: JSON.stringify({ body: body, customerEmail: submittedEmail })
         }).then(function () {
           cart = [];
           heatpackChk.checked = false;
@@ -990,11 +996,23 @@
           renderCart();
           btn.textContent = '✓ Order Sent!';
           btn.style.background = '#7cb342';
-          setTimeout(function () {
-            btn.textContent = 'Send Order';
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 4000);
+          btn.disabled = true;
+          cartItemsList.innerHTML =
+            '<div style="text-align:center;padding:20px 10px;">' +
+              '<div style="font-size:1.5rem;margin-bottom:10px;">✓</div>' +
+              '<div style="font-size:1rem;font-weight:700;color:#2c3e2d;margin-bottom:10px;">Order received!</div>' +
+              '<p style="font-size:0.88rem;color:#555;line-height:1.6;margin-bottom:10px;">' +
+                'Check your email for order details and payment instructions. We will ship once payment is received.' +
+              '</p>' +
+              '<p style="font-size:0.85rem;color:#555;line-height:1.6;margin-bottom:10px;">' +
+                'Your confirmation was sent to:<br><strong>' + submittedEmail + '</strong>' +
+              '</p>' +
+              '<p style="font-size:0.82rem;color:#888;line-height:1.6;">' +
+                'If you don’t see it, check your spam folder and verify the email address above is correct. ' +
+                'If it’s still not there, reach out to us at <a href="mailto:will@phamcliff.com" style="color:#7cb342;">will@phamcliff.com</a>.' +
+              '</p>' +
+            '</div>';
+          btn.style.display = 'none';
         }).catch(function () {
           btn.textContent = 'Send Order';
           btn.disabled = false;
