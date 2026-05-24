@@ -34,7 +34,15 @@
 
   <!-- ── Shipping bar ── -->
   <div class="shipping-bar">
-    🚚 $10 flat-rate shipping via USPS Priority Mail &nbsp;·&nbsp; Free shipping on orders over $100 &nbsp;·&nbsp; Contiguous 48 states only
+    🚚 $10 flat-rate shipping via USPS Priority Mail &nbsp;·&nbsp; Contiguous 48 states only
+  </div>
+  <div class="rewards-banner">
+    <div class="rewards-banner-inner">
+      <strong>Order Rewards</strong> &nbsp;—&nbsp;
+      ⚪ $25+: free small bag of Nutricote &nbsp;·&nbsp;
+      🪴 $50+: pick a free small flytrap &nbsp;·&nbsp;
+      🚚 $100+: free shipping
+    </div>
   </div>
 
   <!-- ── Hero ── -->
@@ -146,6 +154,7 @@
     <div class="modal-box">
       <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
       <img id="modal-main-img" class="modal-main-img" src="" alt="" />
+      <video id="modal-main-video" class="modal-main-img" autoplay loop muted playsinline style="display:none;"></video>
       <div id="modal-thumbs" class="modal-thumbs"></div>
       <div class="modal-details">
         <div class="modal-header">
@@ -158,6 +167,7 @@
         <p id="modal-description" class="modal-description"></p>
         <div id="modal-cart-row" class="modal-cart-row">
           <select id="modal-size-select" class="modal-size-select"></select>
+          <select id="modal-clone-select" class="modal-size-select" style="display:none;margin-top:6px;"></select>
           <button id="modal-add-cart-btn" class="modal-add-cart-btn">+ Add to Cart</button>
         </div>
         <div class="modal-action-btns">
@@ -180,6 +190,20 @@
     <div class="cart-body">
       <div id="cart-items-list" class="cart-items-list"></div>
       <p id="cart-ship-note" class="cart-ship-note"></p>
+      <div id="cart-rewards" class="cart-rewards" style="display:none;">
+        <div class="rewards-title">Order Rewards</div>
+        <div id="reward-nutricote" class="reward-row" style="display:none;">
+          <span>⚪ Free small bag of Nutricote included!</span>
+        </div>
+        <div id="reward-flytrap" class="reward-row" style="display:none;">
+          <span>🪴 Pick your free small flytrap:</span>
+          <select id="reward-flytrap-select" class="cart-addr-field" style="margin-top:4px;font-size:0.85rem;"></select>
+        </div>
+        <div id="reward-shipping" class="reward-row" style="display:none;">
+          <span>🚚 Free shipping unlocked!</span>
+        </div>
+        <div id="reward-progress" class="reward-progress"></div>
+      </div>
       <div class="discount-code-row" id="discount-code-row">
         <input id="cart-discount-input" class="cart-addr-field" type="text" placeholder="Discount code" />
         <button id="cart-discount-btn" class="discount-apply-btn">Apply</button>
@@ -304,9 +328,14 @@
           card.className = 'plant-card' + (plant.status === 'sold' || plant.status === 'unavailable' ? ' sold' : '');
           card.style.cursor = 'pointer';
 
-          var imgHTML = plant.image
-            ? '<img src="' + plant.image + '" alt="' + plant.name + '">'
-            : '<div class="img-placeholder">🌿</div>';
+          var imgHTML;
+          if (plant.video) {
+            imgHTML = '<video src="' + plant.video + '" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>';
+          } else if (plant.image) {
+            imgHTML = '<img src="' + plant.image + '" alt="' + plant.name + '">';
+          } else {
+            imgHTML = '<div class="img-placeholder">🌿</div>';
+          }
 
           var saleBadgeHTML = '';
           var plantSale = window.SaleHelpers && window.SaleHelpers.hasAnySaleForPlant(plant.name);
@@ -342,6 +371,7 @@
       // ── Modal ─────────────────────────────────────────────────
       var modal      = document.getElementById('plant-modal');
       var mainImg    = document.getElementById('modal-main-img');
+      var mainVideo  = document.getElementById('modal-main-video');
       var thumbsWrap = document.getElementById('modal-thumbs');
       var modalName  = document.getElementById('modal-name');
       var modalSpec  = document.getElementById('modal-species');
@@ -438,6 +468,10 @@
           });
         }
 
+        var cloneSelect = document.getElementById('modal-clone-select');
+        cloneSelect.style.display = 'none';
+        cloneSelect.innerHTML = '';
+
         if (cartOptions.length > 0 && plant.status !== 'sold' && plant.status !== 'unavailable') {
           cartRow.style.display = 'flex';
           if (cartOptions.length === 1 && cartOptions[0].label === '') {
@@ -453,11 +487,37 @@
               sizeSelect.appendChild(o);
             });
           }
+
+          if (plant.kitPlantPicker) {
+            var mediumPlants = plants.filter(function (p) {
+              return p.price && p.price.medium && p.status !== 'unavailable' && p.status !== 'sold';
+            });
+            cloneSelect.innerHTML = '<option value="">— Choose your flytrap clone —</option>';
+            mediumPlants.forEach(function (p) {
+              var o = document.createElement('option');
+              o.value = p.name;
+              o.textContent = p.name;
+              cloneSelect.appendChild(o);
+            });
+            var showClonePicker = function () {
+              var selLabel = cartOptions[sizeSelect.selectedIndex] ? cartOptions[sizeSelect.selectedIndex].label : '';
+              cloneSelect.style.display = selLabel.indexOf('Venus Flytrap') !== -1 ? 'block' : 'none';
+            };
+            showClonePicker();
+            sizeSelect.addEventListener('change', showClonePicker);
+          }
+
           addCartBtn.onclick = function () {
             var opt = (cartOptions.length === 1 && cartOptions[0].label === '')
               ? cartOptions[0]
               : cartOptions[sizeSelect.selectedIndex];
-            addToCart(plant, opt.label, opt.price, opt.minQty || 1);
+            var label = opt.label;
+            if (plant.kitPlantPicker && label.indexOf('Venus Flytrap') !== -1) {
+              var clone = cloneSelect.value;
+              if (!clone) { alert('Please choose a flytrap clone.'); return; }
+              label = label + ' — ' + clone;
+            }
+            addToCart(plant, label, opt.price, opt.minQty || 1);
           };
         } else {
           cartRow.style.display = 'none';
@@ -466,24 +526,46 @@
         // Gallery — fall back to main image if no size photos yet
         var gallery = (plant.images && plant.images.length > 0)
           ? plant.images
-          : [{ label: plant.name, file: plant.image }];
+          : (plant.video ? [] : [{ label: plant.name, file: plant.image }]);
+        if (plant.video) {
+          gallery = [{ label: 'Video', file: plant.video, isVideo: true }].concat(gallery);
+        }
 
-        var defaultIdx = gallery.length - 1;
-        mainImg.src = gallery[defaultIdx].file;
-        mainImg.alt = gallery[defaultIdx].label;
+        function showGalleryItem(item) {
+          if (item.isVideo) {
+            mainImg.style.display = 'none';
+            mainVideo.src = item.file;
+            mainVideo.style.display = '';
+            mainVideo.play();
+          } else {
+            mainVideo.style.display = 'none';
+            mainVideo.pause();
+            mainImg.src = item.file;
+            mainImg.alt = item.label;
+            mainImg.style.display = '';
+          }
+        }
 
-        // Thumbnails — only show if there are multiple images
+        var defaultIdx = plant.video ? 0 : gallery.length - 1;
+        showGalleryItem(gallery[defaultIdx]);
+
+        // Thumbnails — only show if there are multiple items
         thumbsWrap.innerHTML = '';
         if (gallery.length > 1) {
           gallery.forEach(function (img, i) {
             var thumb = document.createElement('div');
             thumb.className = 'modal-thumb' + (i === defaultIdx ? ' active' : '');
-            thumb.innerHTML =
-              '<img src="' + img.file + '" alt="' + img.label + '">' +
-              '<div class="modal-thumb-label">' + img.label + '</div>';
+            if (img.isVideo) {
+              thumb.innerHTML =
+                '<video src="' + img.file + '" muted style="width:100%;height:100%;object-fit:cover;"></video>' +
+                '<div class="modal-thumb-label">▶ ' + img.label + '</div>';
+            } else {
+              thumb.innerHTML =
+                '<img src="' + img.file + '" alt="' + img.label + '">' +
+                '<div class="modal-thumb-label">' + img.label + '</div>';
+            }
             thumb.addEventListener('click', function () {
-              mainImg.src = img.file;
-              mainImg.alt = img.label;
+              showGalleryItem(img);
               thumbsWrap.querySelectorAll('.modal-thumb').forEach(function (t) {
                 t.classList.remove('active');
               });
@@ -712,11 +794,52 @@
         document.getElementById('sum-tax').textContent = '$' + t.tax.toFixed(2);
         document.getElementById('sum-total').textContent = '$' + t.total.toFixed(2);
 
-        if (t.free) {
-          cartShipNote.textContent = '✓ Free shipping applied!';
-          cartShipNote.className = 'cart-ship-note cart-ship-free';
+        // ── Rewards tiers ──
+        var rewardsEl       = document.getElementById('cart-rewards');
+        var rewardNutricote = document.getElementById('reward-nutricote');
+        var rewardFlytrap   = document.getElementById('reward-flytrap');
+        var rewardShipping  = document.getElementById('reward-shipping');
+        var rewardProgress  = document.getElementById('reward-progress');
+        var rewardSelect    = document.getElementById('reward-flytrap-select');
+
+        var hasNutricote = t.sub >= 25;
+        var hasFlytrap   = t.sub >= 50;
+        var hasFreeShip  = t.sub >= 100;
+
+        rewardNutricote.style.display = hasNutricote ? '' : 'none';
+        rewardFlytrap.style.display   = hasFlytrap   ? '' : 'none';
+        rewardShipping.style.display  = hasFreeShip  ? '' : 'none';
+        rewardsEl.style.display = (hasNutricote || hasFlytrap || hasFreeShip || t.sub > 0) ? '' : 'none';
+
+        // Progress hints
+        var hints = [];
+        if (!hasNutricote && t.sub > 0) hints.push('$' + (25 - t.sub).toFixed(2) + ' more for a free small bag of Nutricote');
+        else if (!hasFlytrap) hints.push('$' + (50 - t.sub).toFixed(2) + ' more to pick a free small flytrap');
+        else if (!hasFreeShip) hints.push('$' + (100 - t.sub).toFixed(2) + ' more for free shipping');
+        rewardProgress.textContent = hints.length ? '→ Add ' + hints[0] : '';
+
+        // Populate flytrap dropdown (only plants with small price that are available)
+        if (hasFlytrap && rewardSelect.children.length === 0) {
+          var smallPlants = plants.filter(function (p) {
+            return p.price && p.price.small && p.status !== 'unavailable' && p.status !== 'sold';
+          });
+          rewardSelect.innerHTML = '<option value="">— Choose your free flytrap —</option>';
+          smallPlants.forEach(function (p) {
+            var opt = document.createElement('option');
+            opt.value = p.name;
+            opt.textContent = p.name;
+            rewardSelect.appendChild(opt);
+          });
+        } else if (!hasFlytrap) {
+          rewardSelect.innerHTML = '';
+        }
+
+        // Ship note
+        if (hasFreeShip) {
+          cartShipNote.textContent = '';
+          cartShipNote.className = 'cart-ship-note';
         } else {
-          cartShipNote.textContent = 'Add $' + (100 - t.sub).toFixed(2) + ' more for free shipping';
+          cartShipNote.textContent = '';
           cartShipNote.className = 'cart-ship-note';
         }
       }
@@ -788,6 +911,11 @@
         var selectedPayment = getSelectedPayment();
         if (!selectedPayment) { alert('Please select a payment method.'); return; }
         var t = calcTotals();
+        var rewardFlytrapChoice = '';
+        if (t.sub >= 50) {
+          rewardFlytrapChoice = document.getElementById('reward-flytrap-select').value;
+          if (!rewardFlytrapChoice) { alert('Please pick your free small flytrap from the rewards section.'); return; }
+        }
         var lines = cart.map(function (item) {
           return '\u2022 ' + item.name + (item.size ? ' (' + item.size + ')' : '') +
             ' \xd7' + item.qty + '  \u2014  $' + (item.price * item.qty).toFixed(2) +
@@ -825,6 +953,11 @@
           saleSummary += '\n• Discount code: ' + appliedDiscount.label + ' (-$' + t.discount.toFixed(2) + ')';
         }
         if (saleSummary) body += '\n\n──────────────────\nSale Applied:' + saleSummary;
+        var rewardLines = [];
+        if (t.sub >= 25)  rewardLines.push('• Free small bag of Nutricote');
+        if (t.sub >= 50)  rewardLines.push('• Free small flytrap: ' + rewardFlytrapChoice);
+        if (t.sub >= 100) rewardLines.push('• Free shipping');
+        if (rewardLines.length) body += '\n\n──────────────────\nOrder Rewards:\n' + rewardLines.join('\n');
         var comments = cartComments.value.trim();
         if (comments) body += '\n\n──────────────────\nNotes:\n' + comments;
         body += '\n\nThanks!';

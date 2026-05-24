@@ -96,6 +96,19 @@ body {
   letter-spacing: 0.2px;
 }
 
+/* ── Rewards banner ── */
+.rewards-banner {
+  background: linear-gradient(90deg, #e8f5e9, #c8e6c9);
+  text-align: center;
+  padding: 10px 24px;
+  font-size: 0.82rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #2c3e2d;
+  letter-spacing: 0.1px;
+  border-bottom: 1px solid #a5d6a7;
+}
+.rewards-banner strong { color: #1b5e20; }
+
 /* ── Sale banner (rendered by sales.js when a sale is active) ── */
 .sale-banner {
   background: linear-gradient(90deg, #f5b400 0%, #f59e0b 100%);
@@ -872,6 +885,36 @@ main {
   text-align: center;
 }
 .cart-ship-free { color: #7cb342; font-weight: 600; }
+
+/* ── Cart rewards ── */
+.cart-rewards {
+  background: #f1f8e9;
+  border: 1px solid #c5e1a5;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+}
+.rewards-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #2e7d32;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.reward-row {
+  font-size: 0.85rem;
+  color: #2c3e2d;
+  padding: 4px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.reward-progress {
+  font-size: 0.78rem;
+  color: #558b2f;
+  margin-top: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
 /* ── Discount code ── */
 .discount-code-row {

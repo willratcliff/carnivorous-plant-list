@@ -26,6 +26,18 @@
 const plants = [
 
   {
+    name: "Korean Shark VFT",
+    species: "Dionaea muscipula 'Korean Shark'",
+    price: { medium: "$20", large: "$30" },
+    shortDescription: "A mutant of Korean Melody Shark. Retains the shark-like dentation but is larger, more vigorous, and has more robust petioles.",
+    description: "Korean Shark is a mutant of the well-known Korean Melody Shark clone. It keeps the distinctive shark-tooth dentation that makes Melody Shark so recognizable, but everything else has been dialed up: the traps are larger, the petioles are thicker and more robust, and the overall vigor of the plant is noticeably stronger than its parent clone.\n\nIf you've grown Korean Melody Shark and wished it had more substance, this is the answer. The sawtooth margins are still there, but the plant behind them is built heavier and grows faster.",
+    image: "images/korean-shark.jpg",
+    video: "images/korean-shark-video.mp4",
+    images: [],
+    status: "new",
+  },
+
+  {
     name: "B52 Hybrid VFT",
     species: "Dionaea muscipula 'B52 Hybrid'",
     price: { medium: "$20", large: "$30" },
@@ -88,23 +100,6 @@ const plants = [
     image: "images/maroon-monster-new.jpg",
     images: [],
     status: "available",
-  },
-
-  {
-    name: "Unknown Giant VFT",
-    species: "Dionaea muscipula · Unidentified Giant Clone",
-    price: { small: "$10", medium: "$15" },
-    shortDescription: "An unidentified giant clone that consistently outperforms many named cultivars: oversized traps, tall upright petioles, and outstanding vigor. Multiple available.",
-    description: "Up for sale is one large Venus flytrap from a giant clone whose label was unfortunately lost. The plant pictured is representative of what you will receive: a mature specimen with solid rhizome development and traps that are already sizing up nicely for the season. Multiple available, first come first served.\n\nWHY THIS CLONE?\nI grow dozens of named cultivars, and this unidentified clone is among the most impressive performers in my entire collection. It produces oversized traps on tall, upright petioles with a strong, sturdy growth habit that gives the whole plant real presence. The traps color up easily in good light, developing rich red interiors without needing to be pushed hard, and the overall vigor of the plant is outstanding.\n\nThis is the kind of flytrap that makes people stop and look. The combination of trap size, upright stature, and reliable coloration puts it in rare company, and it has consistently outperformed many of the named giants I grow alongside it. If you're the type of grower who cares more about the plant in front of you than the name on the tag, this one will not disappoint.",
-    image: "images/unknown-giant-1.jpg",
-    images: [
-      { label: "Community Pot", file: "images/unknown-giant-fertilizer.jpg" },
-      { label: "For Scale",      file: "images/unknown-giant-oliver.jpg"     },
-      { label: "Packed & Ready", file: "images/unknown-giant-packed.jpg"     },
-      { label: "Plant",          file: "images/unknown-giant-1.jpg"          },
-      { label: "Close-Up",       file: "images/unknown-giant-2.jpg"          },
-    ],
-    status: "unavailable",
   },
 
   {
@@ -183,17 +178,6 @@ const plants = [
   },
 
   {
-    name: "Ginormous VFT",
-    species: "Dionaea muscipula 'Ginormous' · ICPS Registered Cultivar",
-    price: { small: "$10", medium: "$15", large: "$20" },
-    shortDescription: "ICPS registered cultivar from Damon Collingsworth of California Carnivores. Traps rival B52 in size but on notably longer petioles, giving the plant a larger, more open stance with vivid candy-apple-red interiors.",
-    description: "Ginormous is an ICPS registered cultivar bred by Damon Collingsworth of California Carnivores and officially registered in 2013. It earns its name: traps regularly reach 2.25 inches or more, putting it in the same tier as B52 for raw trap size. What sets it apart from B52 is the notably longer petioles, which give the plant a more open, sprawling stance and make the traps feel even more imposing. The interiors color up to a bright candy-apple red against lime-green petioles — bold, clean contrast. A vigorous grower that clumps readily and performs especially well outdoors.",
-    image: "images/ginormous.jpg",
-    images: [],
-    status: "unavailable",
-  },
-
-  {
     name: "<em>Drosera binata</em> var. multifida extrema",
     species: "Drosera binata var. multifida extrema",
     priceTiers: [
@@ -268,6 +252,21 @@ const plants = [
   },
 
   {
+    name: "Beginner Kit",
+    species: "Everything you need to get started",
+    kitPlantPicker: true,
+    priceTiers: [
+      { label: "Kit with Venus Flytrap",  price: "$30" },
+      { label: "Kit with Sundew (D. binata)",  price: "$30" },
+    ],
+    shortDescription: "A medium-sized plant of your choice, 2.5\" pot, peat moss, and grow light. Ships bare root — pot it up yourself and learn the basics of carnivorous plant care.",
+    description: "This kit has everything a beginner needs to start growing carnivorous plants: a healthy medium-sized plant (your choice of Venus flytrap clone or <em>Drosera binata</em> var. multifida extrema sundew), a 2.5\" pot, peat moss, and a grow light.\n\nThe plant ships bare root, not pre-potted. That is intentional. Potting it up yourself takes five minutes and teaches you exactly how these plants want to be grown, which will pay off every year when repotting and dividing season comes around. In our experience, bare root shipping is also a more reliable way to ship flytraps — the plants travel lighter, stay drier, and arrive in better condition.\n\nIf you choose the Venus flytrap option, you can pick any available clone from the dropdown. The sundew option is a division of <em>Drosera binata</em> var. multifida extrema, one of the easiest and most spectacular sundews in cultivation. Both are forgiving growers that do well under the included grow light.",
+    image: "images/beginner-kit.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
     name: "Nutricote 360 + Fluval Bug Bites Fertilizer Kit",
     species: "1 lb Nutricote 18-6-8 · 2 oz Bug Bites Pellets",
     flatPrice: "$15",
@@ -282,6 +281,34 @@ const plants = [
     ],
     videoLink: "https://www.instagram.com/p/DU6h58gCRjB/",
     status: "available",
+  },
+
+  {
+    name: "Unknown Giant VFT",
+    species: "Dionaea muscipula · Unidentified Giant Clone",
+    price: { small: "$10", medium: "$15" },
+    shortDescription: "An unidentified giant clone that consistently outperforms many named cultivars: oversized traps, tall upright petioles, and outstanding vigor. Multiple available.",
+    description: "Up for sale is one large Venus flytrap from a giant clone whose label was unfortunately lost. The plant pictured is representative of what you will receive: a mature specimen with solid rhizome development and traps that are already sizing up nicely for the season. Multiple available, first come first served.\n\nWHY THIS CLONE?\nI grow dozens of named cultivars, and this unidentified clone is among the most impressive performers in my entire collection. It produces oversized traps on tall, upright petioles with a strong, sturdy growth habit that gives the whole plant real presence. The traps color up easily in good light, developing rich red interiors without needing to be pushed hard, and the overall vigor of the plant is outstanding.\n\nThis is the kind of flytrap that makes people stop and look. The combination of trap size, upright stature, and reliable coloration puts it in rare company, and it has consistently outperformed many of the named giants I grow alongside it. If you're the type of grower who cares more about the plant in front of you than the name on the tag, this one will not disappoint.",
+    image: "images/unknown-giant-1.jpg",
+    images: [
+      { label: "Community Pot", file: "images/unknown-giant-fertilizer.jpg" },
+      { label: "For Scale",      file: "images/unknown-giant-oliver.jpg"     },
+      { label: "Packed & Ready", file: "images/unknown-giant-packed.jpg"     },
+      { label: "Plant",          file: "images/unknown-giant-1.jpg"          },
+      { label: "Close-Up",       file: "images/unknown-giant-2.jpg"          },
+    ],
+    status: "unavailable",
+  },
+
+  {
+    name: "Ginormous VFT",
+    species: "Dionaea muscipula 'Ginormous' · ICPS Registered Cultivar",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "ICPS registered cultivar from Damon Collingsworth of California Carnivores. Traps rival B52 in size but on notably longer petioles, giving the plant a larger, more open stance with vivid candy-apple-red interiors.",
+    description: "Ginormous is an ICPS registered cultivar bred by Damon Collingsworth of California Carnivores and officially registered in 2013. It earns its name: traps regularly reach 2.25 inches or more, putting it in the same tier as B52 for raw trap size. What sets it apart from B52 is the notably longer petioles, which give the plant a more open, sprawling stance and make the traps feel even more imposing. The interiors color up to a bright candy-apple red against lime-green petioles — bold, clean contrast. A vigorous grower that clumps readily and performs especially well outdoors.",
+    image: "images/ginormous.jpg",
+    images: [],
+    status: "unavailable",
   },
 
 ];
