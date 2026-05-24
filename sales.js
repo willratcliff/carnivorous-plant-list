@@ -15,17 +15,7 @@
 // To add a new sale: append an entry below.
 // To turn one off early: delete the entry or set `ends` to a past date.
 
-window.SALES = [
-  {
-    id: 'big-mouth-bogo-2026-04',
-    plant: 'Big Mouth VFT',
-    sizes: 'all',
-    type: 'bogo',
-    bannerText: 'BOGO: Big Mouth Venus Flytrap — buy one, get one free!',
-    starts: '2026-04-29T00:00:00-04:00',
-    ends:   '2026-05-03T23:59:59-04:00',
-  },
-];
+window.SALES = [];
 
 // ── Helpers consumed by the cart and card-rendering code ────────────
 window.SaleHelpers = {
@@ -70,15 +60,7 @@ window.SaleHelpers = {
 // ── Discount codes (hashed for security) ────────────────────────────
 // Codes are stored as SHA-256 hashes so the actual code text never
 // appears in source. To add a new code, hash it (uppercase) and append.
-window.DISCOUNT_CODES = [
-  {
-    hash: '3cba318ed252545c2c5cff285efdd8bda024a3a0782d6f7fefe0fbb750fba988',
-    type: 'bogo',
-    label: 'BOGO (Carnivorous Plants Hub)',
-    maxFreeItems: 1,
-    excludeBulk: true,
-  },
-];
+window.DISCOUNT_CODES = [];
 
 // ── Auto-render the sale banner ─────────────────────────────────────
 // Runs on every page that includes sales.js. Inserts a banner element
