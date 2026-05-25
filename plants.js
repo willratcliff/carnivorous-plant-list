@@ -91,10 +91,8 @@ const plants = [
   {
     name: "FTS Maroon Monster VFT",
     species: "Dionaea muscipula 'FTS Maroon Monster' · ICPS Registered Cultivar",
-    price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
-    bulkTiers: [
-      { label: "Medium · 10+ ea.", price: "$10" },
-    ],
+    price: { small: "$10", specimen: "Inquire" },
+    bulkTiers: [],
     shortDescription: "One of the most sought-after red clones in the hobby. Fast-growing with oversized traps that color up to a deep maroon, almost purple-black in strong light. ICPS registered cultivar.",
     description: "This is an ICPS registered cultivar developed by Matt Miller through the Flytrap Store's breeding program, and it has become one of the most sought-after red clones in the hobby for good reason. Where most red Venus flytraps tend to be slow, finicky growers, Maroon Monster breaks the mold entirely. It grows fast, puts out thick and sturdy leaves, and produces oversized traps that color up to an incredible deep maroon, almost purple-black in strong light.\n\nThe contrast between those dark trap interiors and the bright lime-green edging along the trap margins is what really sets this clone apart visually. If you've grown Akai Ryu before and wished for something with more substance, bigger traps, and a more compact growth habit, this is the plant you've been looking for.\n\n",
     image: "images/maroon-monster-new.jpg",
@@ -216,7 +214,7 @@ const plants = [
     description: "Up for sale is a mature specimen of <em>Utricularia alpina</em>, one of the most elegant bladderworts in cultivation. This epiphytic species from the tropical Americas produces broad, strap-like leaves and stunning large white flowers with a yellow patch, striking enough to compete with any orchid on a windowsill. The plant is established in live sphagnum moss, with well-developed stolons running through the medium.\n\nWHY U. ALPINA?\nMost <em>Utricularia</em> are tiny, threadlike things that disappear into their pots. Alpina is the opposite: it grows large, makes a real presence, and when it blooms, it stops people in their tracks. The flowers are among the showiest in the genus, and a well-grown specimen in live sphagnum looks genuinely spectacular.\n\nGROWING\nGrow it just like a Venus flytrap or sundew: pot it in pure sphagnum and sit it in a tray of distilled or rain water. It does well under grow lights or in a bright window. Once established, it grows steadily and blooms reliably.",
     image: "images/u-alpina.jpg",
     images: [],
-    status: "available",
+    status: "sold",
   },
 
   {
@@ -297,17 +295,6 @@ const plants = [
       { label: "Plant",          file: "images/unknown-giant-1.jpg"          },
       { label: "Close-Up",       file: "images/unknown-giant-2.jpg"          },
     ],
-    status: "unavailable",
-  },
-
-  {
-    name: "Ginormous VFT",
-    species: "Dionaea muscipula 'Ginormous' · ICPS Registered Cultivar",
-    price: { small: "$10", medium: "$15", large: "$20" },
-    shortDescription: "ICPS registered cultivar from Damon Collingsworth of California Carnivores. Traps rival B52 in size but on notably longer petioles, giving the plant a larger, more open stance with vivid candy-apple-red interiors.",
-    description: "Ginormous is an ICPS registered cultivar bred by Damon Collingsworth of California Carnivores and officially registered in 2013. It earns its name: traps regularly reach 2.25 inches or more, putting it in the same tier as B52 for raw trap size. What sets it apart from B52 is the notably longer petioles, which give the plant a more open, sprawling stance and make the traps feel even more imposing. The interiors color up to a bright candy-apple red against lime-green petioles — bold, clean contrast. A vigorous grower that clumps readily and performs especially well outdoors.",
-    image: "images/ginormous.jpg",
-    images: [],
     status: "unavailable",
   },
 
