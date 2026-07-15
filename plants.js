@@ -26,6 +26,56 @@
 const plants = [
 
   {
+    name: "Pinguicula debbertiana",
+    species: "",
+    price: { small: "$10", medium: "$15" },
+    shortDescription: "A pink Mexican butterwort that forms tight, glandular rosettes of sticky, carnivorous leaves. Offered as small (~1.5 cm) for $10 or medium (~2.5 cm) for $15.",
+    description: "Pinguicula debbertiana is a Mexican butterwort prized for its soft pink coloration and neat, symmetrical rosettes. The photos show plants in their summer growth phase, with sticky, carnivorous leaves blushing pink under bright light and catching fungus gnats and other small insects.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Two sizes are offered: small plants are about 1.5 cm in diameter, and medium plants about 2.5 cm.",
+    image: "images/debbertiana.jpg",
+    images: [
+      { label: "Rosettes", file: "images/debbertiana.jpg"   },
+      { label: "Close-Up", file: "images/debbertiana-2.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "Pinguicula ehlersiae 'Victoria'",
+    species: "",
+    price: { small: "$10", medium: "$15" },
+    shortDescription: "A compact Mexican butterwort with symmetrical rose-pink, white-margined rosettes. Offered as small (~1.5 cm) for $10 or medium (~2.5 cm) for $15.",
+    description: "Pinguicula ehlersiae 'Victoria' is a selected clone of this compact Mexican butterwort, prized for its neat, symmetrical rosettes of rose-pink leaves edged in white. The sticky, glandular leaves catch fungus gnats and other small insects, and the plant colors up beautifully under bright light.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Two sizes are offered: small plants are about 1.5 cm in diameter, and medium plants about 2.5 cm.",
+    image: "images/ehlersiae-victoria.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "Pinguicula ehlersiae 'Cotton Candy'",
+    species: "",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "A pastel selection of P. ehlersiae — creamy white rosettes blushed with soft pink. Offered as small (~1.5 cm) for $10, medium (~2.5 cm) for $15, or large (3.5 cm or larger) for $20.",
+    description: "Pinguicula ehlersiae 'Cotton Candy' is a pastel selection of this compact Mexican butterwort, named for its soft, cotton-candy coloring — creamy white rosettes blushed with pink toward the center. The sticky, glandular leaves catch fungus gnats and other small insects, and the delicate coloration develops best under bright light.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Three sizes are offered: small plants are about 1.5 cm in diameter, medium about 2.5 cm, and large 3.5 cm or greater.",
+    image: "images/ehlersiae-cotton-candy.jpg",
+    images: [
+      { label: "Rosettes", file: "images/ehlersiae-cotton-candy.jpg"   },
+      { label: "Close-Up", file: "images/ehlersiae-cotton-candy-2.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "Pinguicula ehlersiae × mesophytica",
+    species: "",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "A vigorous butterwort hybrid with plump mauve rosettes and vivid magenta flowers. Offered as small (~1.5 cm) for $10, medium (~2.5 cm) for $15, or large (3.5 cm or larger) for $20.",
+    description: "Pinguicula ehlersiae × mesophytica is a hybrid Mexican butterwort that pairs the compact rosette of P. ehlersiae with the larger, succulent leaves of P. mesophytica. The result is a robust, easy grower with plump mauve-lavender leaves and striking magenta flowers held on tall stalks, as shown in the photos. The sticky, glandular leaves catch fungus gnats and other small insects.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Three sizes are offered: small plants are about 1.5 cm in diameter, medium about 2.5 cm, and large 3.5 cm or greater.",
+    image: "images/ehlersiae-x-mesophytica.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
     name: "Korean Shark VFT",
     species: "Dionaea muscipula 'Korean Shark'",
     price: { medium: "$20", large: "$30" },
@@ -34,7 +84,7 @@ const plants = [
     image: "images/korean-shark.jpg",
     video: "images/korean-shark-video.mp4",
     images: [],
-    status: "new",
+    status: "available",
   },
 
   {
@@ -47,7 +97,7 @@ const plants = [
     images: [
       { label: "Colony", file: "images/b52-hybrid.jpg" },
     ],
-    status: "new",
+    status: "available",
   },
 
   {
@@ -140,7 +190,7 @@ const plants = [
     description: "Giant Traps is a large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably. Not a novelty mutant — just a genuinely large, well-performing flytrap.",
     image: "images/giant.jpg",
     images: [],
-    status: "new",
+    status: "available",
   },
 
   {
@@ -157,7 +207,7 @@ const plants = [
       { label: "Community Tray", file: "images/towering-giant.jpg"       },
       { label: "Large Plant",    file: "images/towering-giant-large.jpg" },
     ],
-    status: "new",
+    status: "available",
   },
 
   {
@@ -172,7 +222,7 @@ const plants = [
       { label: "Nursery Tray", file: "images/big-mouth-nursery-tray-2.jpg" },
       { label: "Up Close",     file: "images/big-mouth-up-close.jpg"       },
     ],
-    status: "new",
+    status: "available",
   },
 
   {
@@ -206,18 +256,6 @@ const plants = [
   },
 
   {
-    name: "<em>Utricularia alpina</em> — Mature Specimen",
-    species: "Utricularia alpina",
-    flatPrice: "$25",
-    price: {},
-    shortDescription: "A large, elegant epiphytic bladderwort growing in a bed of live sphagnum. Mature specimen with well-established stolons and stunning white flowers.",
-    description: "Up for sale is a mature specimen of <em>Utricularia alpina</em>, one of the most elegant bladderworts in cultivation. This epiphytic species from the tropical Americas produces broad, strap-like leaves and stunning large white flowers with a yellow patch, striking enough to compete with any orchid on a windowsill. The plant is established in live sphagnum moss, with well-developed stolons running through the medium.\n\nWHY U. ALPINA?\nMost <em>Utricularia</em> are tiny, threadlike things that disappear into their pots. Alpina is the opposite: it grows large, makes a real presence, and when it blooms, it stops people in their tracks. The flowers are among the showiest in the genus, and a well-grown specimen in live sphagnum looks genuinely spectacular.\n\nGROWING\nGrow it just like a Venus flytrap or sundew: pot it in pure sphagnum and sit it in a tray of distilled or rain water. It does well under grow lights or in a bright window. Once established, it grows steadily and blooms reliably.",
-    image: "images/u-alpina.jpg",
-    images: [],
-    status: "sold",
-  },
-
-  {
     name: "<em>Utricularia calycifida</em> — Established Clump",
     species: "Utricularia calycifida",
     flatPrice: "$20",
@@ -236,11 +274,11 @@ const plants = [
 
   {
     name: "LED Grow Light with Stake",
-    species: "Full Spectrum · Warm + Cool White LEDs · Built-In Timer",
-    flatPrice: "$10",
+    species: "Full Spectrum · Stake + Metal Base + AC Adapter · Built-In Timer",
+    flatPrice: "$5",
     price: {},
-    shortDescription: "A self-contained grow light for one or two plants. Telescoping stake inserts into the pot, built-in timer runs 12h on / 12h off, and the warm + cool white LED mix delivers ~250 PPFD an inch or two above the plant. Just add a USB power supply.",
-    description: "This compact LED grow light is the easiest way to keep a Venus flytrap or two thriving indoors. The telescoping stake inserts directly into the pot, and the built-in timer cycles 12 hours on, 12 hours off with no external timer needed. It is a fully self-contained lighting system — just plug it into any USB power supply and you're done.\n\nThe light uses a mixture of warm and cool white LEDs, producing an excellent full-spectrum output. At one to two inches above the plant, we measure roughly 250 PPFD, which is more than enough to drive healthy, vigorous growth. The flytrap shown in the photo was grown for several months under this light exclusively.\n\nIf you're keeping just a plant or two on a desk or windowsill and want a simple, reliable grow light without the complexity of a full fixture setup, this is the one to get. USB power supply not included.",
+    shortDescription: "A self-contained grow light for one or two plants. Comes complete with a telescoping stake, a metal base you can stand a pot on, an AC adapter, and a built-in 12h on / 12h off timer. Priced at cost ($5) — this batch came in dimmer than I expected.",
+    description: "This compact LED grow light is a simple, self-contained lighting setup for a Venus flytrap or two, and it comes with everything you need. In the box: a telescoping stake that inserts directly into the pot, a weighted metal base you can set a potted plant on top of, an AC adapter, and a built-in timer that cycles 12 hours on, 12 hours off with no external timer needed. Just plug it in and go.\n\nThe light uses a mixture of warm and cool white LEDs for a full-spectrum output.\n\nA NOTE ON THIS BATCH\nThis batch came in dimmer than I expected, so I'm selling these at cost. They'll add supplemental light for a plant or two, but I can't yet vouch for how well this particular batch grows flytraps on its own. Priced to move at $5 — feel free to reach out if you have questions.\n\nIf you're keeping just a plant or two on a desk or windowsill and want a simple, inexpensive grow light without the complexity of a full fixture setup, this is an easy option.",
     image: "images/led-grow-light-stake.jpg",
     images: [
       { label: "With Flytrap", file: "images/led-grow-light-stake.jpg" },
@@ -257,11 +295,11 @@ const plants = [
       { label: "Kit with Venus Flytrap",  price: "$30" },
       { label: "Kit with Sundew (D. binata)",  price: "$30" },
     ],
-    shortDescription: "A medium-sized plant of your choice, 2.5\" pot, peat moss, and grow light. Ships bare root — pot it up yourself and learn the basics of carnivorous plant care.",
-    description: "This kit has everything a beginner needs to start growing carnivorous plants: a healthy medium-sized plant (your choice of Venus flytrap clone or <em>Drosera binata</em> var. multifida extrema sundew), a 2.5\" pot, peat moss, and a grow light.\n\nThe plant ships bare root, not pre-potted. That is intentional. Potting it up yourself takes five minutes and teaches you exactly how these plants want to be grown, which will pay off every year when repotting and dividing season comes around. In our experience, bare root shipping is also a more reliable way to ship flytraps — the plants travel lighter, stay drier, and arrive in better condition.\n\nIf you choose the Venus flytrap option, you can pick any available clone from the dropdown. The sundew option is a division of <em>Drosera binata</em> var. multifida extrema, one of the easiest and most spectacular sundews in cultivation. Both are forgiving growers that do well under the included grow light.",
+    shortDescription: "A large plant of your choice, 2.5\" pot, peat moss, and grow light. Ships bare root — pot it up yourself and learn the basics of carnivorous plant care.",
+    description: "This kit has everything a beginner needs to start growing carnivorous plants: a healthy large plant (your choice of Venus flytrap clone or <em>Drosera binata</em> var. multifida extrema sundew), a 2.5\" pot, peat moss, and a grow light.\n\nThe plant ships bare root, not pre-potted. That is intentional. Potting it up yourself takes five minutes and teaches you exactly how these plants want to be grown, which will pay off every year when repotting and dividing season comes around. In our experience, bare root shipping is also a more reliable way to ship flytraps — the plants travel lighter, stay drier, and arrive in better condition.\n\nIf you choose the Venus flytrap option, you can pick any available clone from the dropdown. The sundew option is a division of <em>Drosera binata</em> var. multifida extrema, one of the easiest and most spectacular sundews in cultivation. Both are forgiving growers that do well under the included grow light.",
     image: "images/beginner-kit.jpg",
     images: [],
-    status: "new",
+    status: "available",
   },
 
   {
@@ -295,6 +333,18 @@ const plants = [
       { label: "Plant",          file: "images/unknown-giant-1.jpg"          },
       { label: "Close-Up",       file: "images/unknown-giant-2.jpg"          },
     ],
+    status: "unavailable",
+  },
+
+  {
+    name: "<em>Utricularia alpina</em> — Mature Specimen",
+    species: "Utricularia alpina",
+    flatPrice: "$25",
+    price: {},
+    shortDescription: "A large, elegant epiphytic bladderwort growing in a bed of live sphagnum. Mature specimen with well-established stolons and stunning white flowers.",
+    description: "Up for sale is a mature specimen of <em>Utricularia alpina</em>, one of the most elegant bladderworts in cultivation. This epiphytic species from the tropical Americas produces broad, strap-like leaves and stunning large white flowers with a yellow patch, striking enough to compete with any orchid on a windowsill. The plant is established in live sphagnum moss, with well-developed stolons running through the medium.\n\nWHY U. ALPINA?\nMost <em>Utricularia</em> are tiny, threadlike things that disappear into their pots. Alpina is the opposite: it grows large, makes a real presence, and when it blooms, it stops people in their tracks. The flowers are among the showiest in the genus, and a well-grown specimen in live sphagnum looks genuinely spectacular.\n\nGROWING\nGrow it just like a Venus flytrap or sundew: pot it in pure sphagnum and sit it in a tray of distilled or rain water. It does well under grow lights or in a bright window. Once established, it grows steadily and blooms reliably.",
+    image: "images/u-alpina.jpg",
+    images: [],
     status: "unavailable",
   },
 
