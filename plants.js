@@ -78,7 +78,7 @@ const plants = [
   {
     name: "Korean Shark VFT",
     species: "Dionaea muscipula 'Korean Shark'",
-    price: { medium: "$20", large: "$30" },
+    price: { medium: "$15", large: "$20" },
     shortDescription: "A mutant of Korean Melody Shark. Retains the shark-like dentation but is larger, more vigorous, and has more robust petioles.",
     description: "Korean Shark is a mutant of the well-known Korean Melody Shark clone. It keeps the distinctive shark-tooth dentation that makes Melody Shark so recognizable, but everything else has been dialed up: the traps are larger, the petioles are thicker and more robust, and the overall vigor of the plant is noticeably stronger than its parent clone.\n\nIf you've grown Korean Melody Shark and wished it had more substance, this is the answer. The sawtooth margins are still there, but the plant behind them is built heavier and grows faster.",
     image: "images/korean-shark.jpg",
@@ -90,7 +90,7 @@ const plants = [
   {
     name: "B52 Hybrid VFT",
     species: "Dionaea muscipula 'B52 Hybrid'",
-    price: { medium: "$20", large: "$30" },
+    price: { medium: "$15", large: "$20" },
     shortDescription: "Like a cracked out B52. Low-growing with gigantic, pink traps — a true giant and one of the coolest clones to come along in recent years.",
     description: "Think B52, then crank everything up. This hybrid takes the famous giant genetics and pushes them further: the growth habit is low and compact, the traps are massive, and they color up to a striking pink that sets it apart from just about anything else in the genus. It is, frankly, like a cracked out B52.\n\nThis is a true giant clone. The traps size up quickly and the pink coloration develops reliably in good light, giving the whole plant a look that stops people mid-scroll. If you've grown B52 and loved it, this is the next level. One of the coolest clones I've seen come along in recent years.",
     image: "images/b52-hybrid.jpg",
