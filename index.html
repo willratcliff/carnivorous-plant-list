@@ -34,7 +34,7 @@
 
   <!-- ── Shipping bar ── -->
   <div class="shipping-bar">
-    🚚 $10 flat-rate shipping via USPS Priority Mail &nbsp;·&nbsp; Contiguous 48 states only
+    🚚 $15 flat-rate shipping &amp; handling &nbsp;·&nbsp; Contiguous 48 states only
   </div>
   <div class="rewards-banner">
     <div class="rewards-banner-inner">
@@ -219,7 +219,7 @@
           <span id="discount-label">Discount</span>
           <span id="sum-discount">-$0.00</span>
         </div>
-        <div class="summary-row"><span>Shipping</span><span id="sum-shipping">$10.00</span></div>
+        <div class="summary-row"><span>Shipping &amp; Handling</span><span id="sum-shipping">$15.00</span></div>
         <div class="summary-row" id="heatpack-row">
           <label class="summary-check-label">
             <input type="checkbox" id="cart-heatpack-chk"> Heat pack <small>($5 — cold weather protection)</small>
@@ -717,7 +717,7 @@
           }
         }
         var free     = sub >= 100;
-        var shipping = free ? 0 : 10;
+        var shipping = free ? 0 : 15;
         var heat     = (!free && heatpackChk.checked) ? 5 : 0;
         var taxBase  = sub - discount + shipping + heat;
         var isGA     = addrState.value === 'GA';
@@ -942,12 +942,12 @@
 
         var body = 'Hi Will,\n\nI\u2019d like to place the following order:\n\n' + lines +
           '\n\n──────────────────' +
-          '\nSubtotal:   $' + t.sub.toFixed(2);
-        if (t.discount > 0) body += '\nDiscount:   -$' + t.discount.toFixed(2) + ' (' + appliedDiscount.label + ')';
-        body += '\nShipping:   ' + (t.free ? 'Free (order \u2265$100)' : '$' + t.shipping.toFixed(2));
-        if (heatpackChk.checked) body += '\nHeat Pack:  ' + (t.free ? 'Free (order \u2265$100)' : '$5.00');
-        if (addrState.value === 'GA') body += '\nGA Tax (8%): $' + t.tax.toFixed(2);
-        body += '\nTotal:      $' + t.total.toFixed(2);
+          '\nSubtotal:            $' + t.sub.toFixed(2);
+        if (t.discount > 0) body += '\nDiscount:            -$' + t.discount.toFixed(2) + ' (' + appliedDiscount.label + ')';
+        body += '\nShipping & Handling: ' + (t.free ? 'Free (order \u2265$100)' : '$' + t.shipping.toFixed(2));
+        if (heatpackChk.checked) body += '\nHeat Pack:           ' + (t.free ? 'Free (order \u2265$100)' : '$5.00');
+        if (addrState.value === 'GA') body += '\nGA Tax (8%):         $' + t.tax.toFixed(2);
+        body += '\nTotal:               $' + t.total.toFixed(2);
         body += '\n\n──────────────────\nCustomer Email: ' + cartEmail.value.trim();
         body += '\n\n──────────────────\nShipping Address:\n' +
           addrName.value.trim() + '\n' +
