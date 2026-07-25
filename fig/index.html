@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Free Fig Tree — Phamcliff Farm</title>
+  <meta name="description" content="Care and planting instructions for the 'Celeste' fig trees we're giving away to neighbors in Atlanta." />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .fig-hero {
+      text-align: center;
+      padding: 64px 24px 40px;
+    }
+    .fig-hero h1 {
+      font-size: 2.8rem;
+      color: #2c3e2d;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .fig-hero .fig-subtitle {
+      font-size: 1rem;
+      color: #7a9a7a;
+      font-style: italic;
+      font-family: Georgia, serif;
+      margin-bottom: 16px;
+    }
+    .fig-hero .fig-tagline {
+      display: inline-block;
+      background: #7cb342;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .fig-content {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .fig-section {
+      margin-bottom: 48px;
+    }
+    .fig-section h2 {
+      font-size: 1.4rem;
+      color: #7cb342;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(124, 179, 66, 0.2);
+    }
+    .fig-section h3 {
+      font-size: 1.05rem;
+      color: #2c3e2d;
+      margin: 24px 0 8px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .fig-section p,
+    .fig-section li {
+      font-size: 0.95rem;
+      color: #445;
+      line-height: 1.75;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .fig-section p {
+      margin-bottom: 14px;
+    }
+    .fig-section p:last-child {
+      margin-bottom: 0;
+    }
+    .fig-section ul,
+    .fig-section ol {
+      margin: 0 0 14px 0;
+      padding-left: 22px;
+    }
+    .fig-section li {
+      margin-bottom: 10px;
+    }
+    .fig-callout {
+      background: #f5f9ee;
+      border-left: 4px solid #7cb342;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+    .fig-callout p {
+      margin-bottom: 0;
+      color: #2c3e2d;
+    }
+    .fig-callout p + p {
+      margin-top: 10px;
+    }
+    .fig-callout-warn {
+      background: #fdf6ec;
+      border-left-color: #e0a33e;
+    }
+
+    /* ── At-a-glance card ── */
+    .fig-glance {
+      background: #fff;
+      border: 1px solid rgba(124, 179, 66, 0.3);
+      border-radius: 12px;
+      padding: 8px 24px;
+      margin-bottom: 48px;
+      box-shadow: 0 2px 10px rgba(44, 62, 45, 0.05);
+    }
+    .fig-glance-row {
+      display: flex;
+      gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(124, 179, 66, 0.15);
+    }
+    .fig-glance-row:last-child {
+      border-bottom: none;
+    }
+    .fig-glance-label {
+      flex: 0 0 118px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #7cb342;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding-top: 2px;
+    }
+    .fig-glance-value {
+      flex: 1;
+      font-size: 0.95rem;
+      color: #445;
+      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* ── Mother-plant gallery ── */
+    .fig-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 0 0 48px;
+    }
+    .fig-gallery figure {
+      margin: 0;
+    }
+    .fig-gallery img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 0 2px 10px rgba(44, 62, 45, 0.12);
+    }
+    .fig-gallery figcaption {
+      font-size: 0.82rem;
+      color: #667;
+      line-height: 1.5;
+      padding-top: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .fig-gallery-intro {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #7cb342;
+      text-align: center;
+      margin-bottom: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* ── Single inline photo ── */
+    .fig-photo {
+      margin: 22px 0;
+    }
+    .fig-photo img {
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 2px 10px rgba(44, 62, 45, 0.12);
+    }
+    .fig-photo figcaption {
+      font-size: 0.82rem;
+      color: #667;
+      line-height: 1.5;
+      padding-top: 8px;
+      max-width: 440px;
+      margin: 0 auto;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* ── Planting steps ── */
+    .fig-steps {
+      list-style: none;
+      counter-reset: figstep;
+      padding-left: 0;
+      margin: 0;
+    }
+    .fig-steps li {
+      counter-increment: figstep;
+      position: relative;
+      padding-left: 46px;
+      margin-bottom: 20px;
+    }
+    .fig-steps li::before {
+      content: counter(figstep);
+      position: absolute;
+      left: 0;
+      top: -1px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #7cb342;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .fig-steps li strong {
+      color: #2c3e2d;
+    }
+
+    /* ── Harvest timeline ── */
+    .fig-crops {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 18px 0;
+    }
+    .fig-crop {
+      background: #f5f9ee;
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .fig-crop h4 {
+      font-size: 1rem;
+      color: #2c3e2d;
+      margin-bottom: 4px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .fig-crop .fig-crop-when {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #7cb342;
+      margin-bottom: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .fig-crop p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .fig-footer-note {
+      text-align: center;
+      padding: 36px 24px 0;
+      border-top: 2px solid rgba(124, 179, 66, 0.2);
+      margin-bottom: 48px;
+    }
+    .fig-footer-note p {
+      font-size: 0.95rem;
+      color: #556;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+    .fig-footer-note .tagline {
+      font-style: italic;
+      color: #7cb342;
+      font-family: Georgia, serif;
+    }
+
+    @media (max-width: 768px) {
+      .fig-hero { padding: 44px 20px 32px; }
+      .fig-hero h1 { font-size: 2rem; }
+      .fig-content { padding: 0 16px 60px; }
+      .fig-glance { padding: 6px 18px; }
+      .fig-glance-row { flex-direction: column; gap: 2px; }
+      .fig-glance-label { flex: none; }
+      .fig-crops { grid-template-columns: 1fr; }
+      .fig-gallery { grid-template-columns: 1fr; gap: 22px; }
+      .fig-gallery img { aspect-ratio: 4 / 3; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Sticky header ── -->
+  <header class="site-header">
+    <a class="logo" href="../index.html" style="text-decoration:none; color:#fff; display:flex; align-items:center; gap:10px;"><img src="../images/phamcliff-logo.png" alt="Phamcliff Farm logo" style="height:44px; width:44px; object-fit:cover; border-radius:6px;"> Phamcliff Farm</a>
+    <nav class="site-nav" id="site-nav">
+      <a class="nav-link" href="../index.html">← Shop</a>
+      <a class="nav-link" href="../care.html">Care Guide</a>
+      <a class="nav-link" href="../reviews.html">Reviews</a>
+      <a class="nav-link" href="../trading.html">Trading</a>
+      <a class="nav-link" href="../dormancy.html">Dormancy</a>
+    </nav>
+    <div class="header-actions">
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <div class="fig-hero">
+    <h1>Your Free Fig Tree</h1>
+    <p class="fig-subtitle">Ficus carica &lsquo;Celeste&rsquo;</p>
+    <p class="fig-tagline">Free food for life</p>
+  </div>
+
+  <div class="fig-content">
+
+    <div class="fig-section">
+      <p>Thanks for taking one of these home! What you've got is a small rooted fig tree in a 3.5&Prime; deep nursery pot. Doesn't look like much yet. But figs grow <em>fast</em>, and if you get it in the ground somewhere sunny and keep water on it through this first summer, in a few years you'll have a tree giving you two crops of fruit a year for basically the rest of your life. Honestly, it's the easiest fruit tree I know of for this climate (and I've tried a lot of them).</p>
+      <p>Everything you need is below, but the short version: <strong>full sun, in the ground, water it the first year, then mostly leave it alone.</strong></p>
+    </div>
+
+    <!-- ── Mother plant photos ── -->
+    <p class="fig-gallery-intro">The mother plant your cutting came from</p>
+    <div class="fig-gallery">
+      <figure>
+        <img src="../images/fig-mother-3.jpg" alt="A fig branch held in one hand, densely covered with green developing figs at every leaf node." loading="lazy" />
+        <figcaption>Main crop coming on. Figs form at every leaf node along the new growth. Count them and you'll see why one tree feeds a family.</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/fig-mother-1.jpg" alt="A handful of ripe Celeste figs with violet-brown skin and pale green necks, some showing surface splits and beads of nectar." loading="lazy" />
+        <figcaption>Ripe and ready. Color has deepened, the skin has cracked a little, nectar is beading up at the eye. That's what you're waiting for.</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/fig-mother-2.jpg" alt="A ripe Celeste fig sliced in half on a cutting board, showing pale amber flesh and a dense rose-pink interior." loading="lazy" />
+        <figcaption>Cut open. Amber flesh going rose-pink in the middle. The flavor is closer to honey or jam than anything you'll find at a grocery store.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ── At a glance ── -->
+    <div class="fig-glance">
+      <div class="fig-glance-row">
+        <div class="fig-glance-label">Variety</div>
+        <div class="fig-glance-value">&lsquo;Celeste&rsquo;, a classic Southern fig. Small to medium fruit, violet-brown skin, amber-pink flesh. Really sweet and rich, almost honeyed.</div>
+      </div>
+      <div class="fig-glance-row">
+        <div class="fig-glance-label">Sun</div>
+        <div class="fig-glance-value">Full sun. <strong>Four hours of direct sun a day is the minimum</strong>, and six or eight is better. More sun means more fruit, and sweeter fruit.</div>
+      </div>
+      <div class="fig-glance-row">
+        <div class="fig-glance-label">Where</div>
+        <div class="fig-glance-value">In the ground, in full sun. That's where these want to be. (Holding it in a larger pot for a few months is fine if you'd rather plant in the fall.)</div>
+      </div>
+      <div class="fig-glance-row">
+        <div class="fig-glance-label">Mature size</div>
+        <div class="fig-glance-value">10&prime; tall in just a few years, topping out not much over 15&prime;. It keeps filling out sideways to about <strong>10&prime; across</strong>, so give it room.</div>
+      </div>
+      <div class="fig-glance-row">
+        <div class="fig-glance-label">Harvest</div>
+        <div class="fig-glance-value">Two crops a year here: a light early one in summer, then the big main crop from late summer into fall.</div>
+      </div>
+      <div class="fig-glance-row">
+        <div class="fig-glance-label">Maintenance</div>
+        <div class="fig-glance-value">Pretty low. No spraying, no pollination, no special soil. Fertilizer helps but is optional.</div>
+      </div>
+      <div class="fig-glance-row">
+        <div class="fig-glance-label">Cold hardiness</div>
+        <div class="fig-glance-value">Celeste is one of the hardier figs, and it does just fine through Atlanta winters.</div>
+      </div>
+    </div>
+
+    <!-- ── Where to plant ── -->
+    <div class="fig-section">
+      <h2>Picking the Spot</h2>
+      <p>This is the one decision that really matters, and it's hard to undo. Worth taking a minute on it.</p>
+
+      <h3>Sun</h3>
+      <p>Find the sunniest spot you have. Four hours of direct, unobstructed sun a day is the floor, and below that you'll get a healthy-looking plant that never really produces much fruit. Six to eight hours is where these start to perform, south- or west-facing is ideal. I'd actually watch the spot over the course of a day before you commit. How much sun a place actually gets is almost always different from what you'd guess.</p>
+
+      <h3>Room to spread</h3>
+      <p>Picture a tree 15&prime; tall and 10&prime; wide, because that's what this is going to be. Give it at least 8&ndash;10&prime; of clearance from your house, your neighbor's fence, a driveway, or another tree. Fig roots are shallow and run wide rather than deep, so don't plant one tight against a foundation, a septic field, or a walkway you care about.</p>
+
+      <h3>Soil and drainage</h3>
+      <p>Figs aren't fussy about soil. Ordinary Georgia clay is fine, they do well in it. What they don't want is ground that stays soggy, so avoid low spots where water pools after a storm. If the spot drains, you're good.</p>
+
+      <div class="fig-callout">
+        <p><strong>A trick worth knowing:</strong> planting near a south- or west-facing wall gives you a nice warm microclimate. The wall soaks up heat during the day and releases it at night, which nudges the fruit to ripen a bit earlier and gives the tree some extra protection in a hard winter.</p>
+      </div>
+    </div>
+
+    <!-- ── How to plant ── -->
+    <div class="fig-section">
+      <h2>How to Plant It</h2>
+      <p>The whole job takes about ten minutes.</p>
+
+      <ol class="fig-steps">
+        <li><strong>Water the plant in its pot first.</strong> Give it a good soak an hour or so before you plant, a hydrated root ball slides out cleanly and handles the move much better than a dry one.</li>
+
+        <li><strong>Dig a hole about twice as wide as the pot and just as deep.</strong> These are deep 3.5&Prime; pots, so you're looking at a hole roughly 7&Prime; across and 5&ndash;6&Prime; deep. Width matters more than depth here; loosening the soil sideways is what lets the roots run.</li>
+
+        <li><strong>Backfill with the soil you dug out.</strong> Native Georgia clay is all a fig needs, so you don't have to amend anything. If you want to work some compost into the backfill, that's fine too, it won't hurt, and plenty of people do it. The only thing to avoid is making the hole so rich and fluffy that the roots have no reason to leave it. Either way the tree will be happy.</li>
+
+        <li><strong>Slide the plant out and set it in.</strong> Tip the pot and support the base of the stem. Don't yank it by the trunk. If the roots are circling the bottom of the pot, gently tease the outer ones loose with your fingers so they grow outward. Set it so the top of the root ball sits level with the surrounding ground, or maybe a half inch below. <em>Don't</em> bury the stem deeper than it was growing in the pot.</li>
+
+        <li><strong>Backfill and firm it in.</strong> Push the soil back around the root ball and press it down with your hands to close up air pockets. No need to stomp on it.</li>
+
+        <li><strong>Water it in slowly and deeply.</strong> This first watering is the important one, because it settles the soil in around the roots. Give it a couple of gallons, poured slowly enough that it soaks in instead of running off.</li>
+
+        <li><strong>Mulch.</strong> Spread 2&ndash;3&Prime; of wood chips, pine straw, or shredded bark in a circle about 2&prime; across. Keep it pulled back an inch or two from the stem itself so it's not sitting against wet material. Mulch is doing a lot of work here: holds moisture, evens out soil temperature, and keeps grass and weeds off a plant that's way too small to compete with them.</li>
+
+        <li><strong>Mark it.</strong> Put a stake, a flag, or a tomato cage next to it. A plant this small is invisible to a lawn mower or a string trimmer, and that's far and away the most common way these die in year one (ask me how I know). If you have deer or rabbits, a cage or some wire mesh around it for the first season is cheap insurance.</li>
+      </ol>
+
+      <div class="fig-callout fig-callout-warn">
+        <p><strong>Planting now, in the heat?</strong> Go for it. Figs are tough and these will establish fine in midsummer. It is the trickiest window of the year in Atlanta though, and the whole thing comes down to water. A 3.5&Prime; root ball can dry out in a single hot afternoon, so <strong>check it daily and water it regularly until it's established</strong> (details just below). Stay on top of that for the first few weeks and it'll take right off.</p>
+        <p>If it's easier for you, potting it up into a 1- or 2-gallon container and planting in the ground come October works great too. But there's no need to wait.</p>
+      </div>
+    </div>
+
+    <!-- ── First year ── -->
+    <div class="fig-section">
+      <h2>The First Year</h2>
+      <p>Almost all the work with a fig tree happens in the first year. After that it pretty much takes care of itself.</p>
+
+      <h3>Water</h3>
+      <p>How often you water changes as the plant gets established, and the first few weeks are the ones that matter. The finger test is the only tool you need: push a finger into the soil right next to the stem, and if the top inch is dry, water it.</p>
+      <p><strong>The first two to four weeks.</strong> Right now the root ball is still only the size of the pot it came in, and it can dry out in a single hot afternoon. Check it every day and water whenever the top inch is dry. Planted in July or August that usually works out to every day or every other day. This is the stretch where these plants get lost, and it's almost always to drought.</p>
+      <p><strong>The rest of the first season.</strong> Once the plant is clearly pushing new leaves, its roots are moving out into the surrounding soil and you can ease off to a deep soak about twice a week (more in a hot dry spell). Deep and less frequent beats a light daily sprinkle. You want the water going down and the roots following it.</p>
+      <p><strong>Second year onward.</strong> An established fig is about as drought-tolerant as fruit trees get. You'll water it in a bad drought and otherwise ignore it. One thing worth knowing though: fig fruit likes steady moisture while it's sizing up, so a tree that swings between bone dry and soaked is more likely to drop its figs or split them.</p>
+
+      <h3>Fertilizer</h3>
+      <p>Helpful but not necessary. A fig in the ground will grow and fruit fine on its own, so if you never feed it you haven't done anything wrong. A bit does speed things along though. A light application of balanced fertilizer in spring, or some compost spread around the base, gives the tree a push while it's sizing up over the first few years.</p>
+      <p>Use a light hand and you'll get the benefit without any downside. The one thing to avoid is piling on nitrogen, which buys you gorgeous leafy growth at the expense of fruit.</p>
+
+      <h3>First winter</h3>
+      <p>Established Celeste figs shrug off Atlanta winters no problem, but a first-year plant is smaller and more exposed than one with a few seasons of roots behind it. Before the first hard freeze just pile mulch a few inches deep over the root zone. That's all it needs.</p>
+      <p>If an unusually hard winter ever kills the top growth back, don't pull the plant. Figs resprout vigorously from the roots in spring. You'd lose that year's early crop, but the main crop comes on new wood and shows up anyway.</p>
+    </div>
+
+    <!-- ── Two crops ── -->
+    <div class="fig-section">
+      <h2>Two Crops a Year</h2>
+      <p>We get two harvests a year here, which is one of the really nice things about growing figs in Atlanta. Our season is long enough to finish both.</p>
+
+      <div class="fig-crops">
+        <div class="fig-crop">
+          <div class="fig-crop-when">Early summer</div>
+          <h4>The breba crop</h4>
+          <p>Forms on last year's wood and ripens around June. On Celeste it's the lighter of the two, more of a handful than a haul. But it's the first fresh fig of the year and that counts for something.</p>
+        </div>
+        <div class="fig-crop">
+          <div class="fig-crop-when">Late summer → fall</div>
+          <h4>The main crop</h4>
+          <p>Forms on the current season's new growth and ripens from roughly August into fall. This is the big one, what Celeste is known for. Comes on over several weeks so you pick a bit at a time.</p>
+        </div>
+      </div>
+
+      <p>Don't expect much fruit the first year or two, the plant is busy building roots and wood. You'll usually see your first real crop in year two or three, and from there it climbs pretty steeply as the tree fills out.</p>
+
+      <h3>Telling when a fig is ripe</h3>
+      <p>This is the part people get wrong, and it's worth getting right because <strong>a fig does not ripen after you pick it.</strong> If you pick it early that's as good as it will ever taste.</p>
+      <p>A ripe fig tells you pretty clearly though. The neck softens and the fruit droops down instead of pointing out. It goes soft to a gentle squeeze, the skin deepens in color, and often a bead of nectar forms at the eye on the bottom or the skin shows small surface splits. When it's ready it comes off with barely any pull. If you have to tug, give it another day or two.</p>
+
+      <figure class="fig-photo">
+        <img src="../images/fig-mother-4.jpg" alt="A wedge of a dead-ripe Celeste fig held up between two fingers, showing deep rose-red flesh, with a bright red sundew growing in a nursery tray behind it." loading="lazy" />
+        <figcaption>This is what you're after: a dead-ripe Celeste cut open. When the flesh has gone this deep red it's at peak sweetness, jammy and almost syrupy. (The red thing photobombing in back is a sundew, which is what the rest of this site is actually about.)</figcaption>
+      </figure>
+
+      <div class="fig-callout">
+        <p><strong>Why Celeste does well in our humidity:</strong> Celeste has a tight, closed eye (the small opening at the bottom of the fruit is nearly sealed). That keeps rain and dried-fruit beetles out, so the fruit resists the splitting and souring that ruin open-eyed varieties in the muggy Southeast. It's a big part of why this one became the Southern standard.</p>
+        <p>It's also a common-type fig, which means it sets fruit entirely on its own. No pollination, no second tree, no fig wasp.</p>
+      </div>
+    </div>
+
+    <!-- ── Ongoing ── -->
+    <div class="fig-section">
+      <h2>After It's Established</h2>
+
+      <h3>Pruning</h3>
+      <p>Figs don't need much. If you want to prune for shape or to keep it reachable, do it in late winter while the tree is dormant, and take out dead wood, crossing branches, and any suckers coming up from the base that you don't want. Go easy though: the early summer crop forms on last year's wood, so heavy winter pruning trades away that crop for a bushier tree. Lots of people don't prune at all and do just fine.</p>
+
+      <h3>Pests and problems</h3>
+      <p>There is very little to worry about here. You won't be spraying anything. Your actual competition is <strong>birds and squirrels</strong>, who are excellent judges of fig ripeness and will get to the fruit the same day you would. Bird netting works if you want it, but most of us just pay the tithe. A mature tree makes way more figs than one household can eat anyway.</p>
+
+      <h3>Sharing it forward</h3>
+      <p>Fig cuttings root super easily. Take pencil-thick cuttings of dormant wood in late winter and you can turn one tree into a dozen without much skill or equipment. That's exactly where the plant you're holding came from. Pass some along when yours is big enough!</p>
+
+      <div class="fig-callout fig-callout-warn">
+        <p><strong>One safety note:</strong> the milky white sap in fig leaves and unripe fruit is an irritant. On some people it causes a rash, and combined with sunlight it can cause a more serious burn-like reaction (phytophotodermatitis, if you want the fancy term). Not dangerous to have around, but worth knowing about, especially if you have kids. Wear gloves and long sleeves if you're doing a lot of pruning, and rinse off any sap that gets on skin rather than letting it sit there in the sun. Ripe fruit is completely fine.</p>
+      </div>
+    </div>
+
+    <div class="fig-footer-note">
+      <p>Questions about your tree, now or three years from now? Email me at <a href="mailto:will@phamcliff.com">will@phamcliff.com</a>. Happy to help!</p>
+      <p class="tagline">Plant it in the sun, water it this year, and enjoy the figs.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 Phamcliff Farm &mdash; All plants hand-grown.
+  </footer>
+
+  <script>
+    document.getElementById('hamburger-btn').addEventListener('click', function () {
+      document.getElementById('site-nav').classList.toggle('nav-open');
+    });
+  </script>
+</body>
+</html>
