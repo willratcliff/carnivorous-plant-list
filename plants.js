@@ -42,9 +42,9 @@ const plants = [
   {
     name: "Pinguicula ehlersiae 'Victoria'",
     species: "",
-    price: { small: "$10", medium: "$15" },
-    shortDescription: "A compact Mexican butterwort with symmetrical rose-pink, white-margined rosettes. Offered as small (~1.5 cm) for $10 or medium (~2.5 cm) for $15.",
-    description: "Pinguicula ehlersiae 'Victoria' is a selected clone of this compact Mexican butterwort, prized for its neat, symmetrical rosettes of rose-pink leaves edged in white. The sticky, glandular leaves catch fungus gnats and other small insects, and the plant colors up beautifully under bright light.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Two sizes are offered: small plants are about 1.5 cm in diameter, and medium plants about 2.5 cm.",
+    price: { small: "$10" },
+    shortDescription: "A compact Mexican butterwort with symmetrical rose-pink, white-margined rosettes. Offered as small (~1.5 cm) for $10.",
+    description: "Pinguicula ehlersiae 'Victoria' is a selected clone of this compact Mexican butterwort, prized for its neat, symmetrical rosettes of rose-pink leaves edged in white. The sticky, glandular leaves catch fungus gnats and other small insects, and the plant colors up beautifully under bright light.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Small plants are about 1.5 cm in diameter.",
     image: "images/ehlersiae-victoria.jpg",
     images: [],
     status: "new",
@@ -170,7 +170,7 @@ const plants = [
   {
     name: "Red Piranha VFT",
     species: "Dionaea muscipula 'Red Piranha' · ICPS Registered Cultivar",
-    price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
+    price: { small: "$10", medium: "$15" },
     shortDescription: "ICPS registered sawtooth cultivar with chili-pepper-red traps, jagged teeth, and a striking golden-green margin. A hobby classic since 1999.",
     description: "Red Piranha is an ICPS registered cultivar developed by Ed Reed and first published in the Carnivorous Plant Newsletter back in 1999. It has been a staple of the hobby ever since. This is a red sawtooth type that produces bright, chili-pepper-red traps lined with short, jagged teeth that give the whole plant a distinctly piranha-like appearance.\n\nWhat really makes Red Piranha pop is the thick band of golden-green edging that runs along the trap margins just below those jagged teeth, contrasting against the deep red of the trap interior. As individual traps age, they tend to suffuse fully red, darkening over time. The plant grows upright with an open habit and colors up beautifully in strong light.\n\n",
     image: "images/red-piranha.jpg",
