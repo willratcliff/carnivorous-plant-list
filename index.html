@@ -39,7 +39,6 @@
   <div class="rewards-banner">
     <div class="rewards-banner-inner">
       <strong>Order Rewards</strong> (tiers stack!) &nbsp;—&nbsp;
-      ⚪ $25+: free small bag of Nutricote &nbsp;·&nbsp;
       🪴 $50+: pick a free small flytrap &nbsp;·&nbsp;
       🚚 $100+: free shipping
     </div>
@@ -192,9 +191,6 @@
       <p id="cart-ship-note" class="cart-ship-note"></p>
       <div id="cart-rewards" class="cart-rewards" style="display:none;">
         <div class="rewards-title">Order Rewards</div>
-        <div id="reward-nutricote" class="reward-row" style="display:none;">
-          <span>⚪ Free small bag of Nutricote included!</span>
-        </div>
         <div id="reward-flytrap" class="reward-row" style="display:none;">
           <span>🪴 Pick your free small flytrap:</span>
           <select id="reward-flytrap-select" class="cart-addr-field" style="margin-top:4px;font-size:0.85rem;"></select>
@@ -801,25 +797,21 @@
 
         // ── Rewards tiers ──
         var rewardsEl       = document.getElementById('cart-rewards');
-        var rewardNutricote = document.getElementById('reward-nutricote');
         var rewardFlytrap   = document.getElementById('reward-flytrap');
         var rewardShipping  = document.getElementById('reward-shipping');
         var rewardProgress  = document.getElementById('reward-progress');
         var rewardSelect    = document.getElementById('reward-flytrap-select');
 
-        var hasNutricote = t.sub >= 25;
         var hasFlytrap   = t.sub >= 50;
         var hasFreeShip  = t.sub >= 100;
 
-        rewardNutricote.style.display = hasNutricote ? '' : 'none';
         rewardFlytrap.style.display   = hasFlytrap   ? '' : 'none';
         rewardShipping.style.display  = hasFreeShip  ? '' : 'none';
-        rewardsEl.style.display = (hasNutricote || hasFlytrap || hasFreeShip || t.sub > 0) ? '' : 'none';
+        rewardsEl.style.display = (hasFlytrap || hasFreeShip || t.sub > 0) ? '' : 'none';
 
         // Progress hints
         var hints = [];
-        if (!hasNutricote && t.sub > 0) hints.push('$' + (25 - t.sub).toFixed(2) + ' more for a free small bag of Nutricote');
-        else if (!hasFlytrap) hints.push('$' + (50 - t.sub).toFixed(2) + ' more to pick a free small flytrap');
+        if (!hasFlytrap && t.sub > 0) hints.push('$' + (50 - t.sub).toFixed(2) + ' more to pick a free small flytrap');
         else if (!hasFreeShip) hints.push('$' + (100 - t.sub).toFixed(2) + ' more for free shipping');
         rewardProgress.textContent = hints.length ? '→ Add ' + hints[0] : '';
 
@@ -959,7 +951,6 @@
         }
         if (saleSummary) body += '\n\n──────────────────\nSale Applied:' + saleSummary;
         var rewardLines = [];
-        if (t.sub >= 25)  rewardLines.push('• Free small bag of Nutricote');
         if (t.sub >= 50)  rewardLines.push('• Free small flytrap: ' + rewardFlytrapChoice);
         if (t.sub >= 100) rewardLines.push('• Free shipping');
         if (rewardLines.length) body += '\n\n──────────────────\nOrder Rewards:\n' + rewardLines.join('\n');
