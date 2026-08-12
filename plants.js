@@ -28,9 +28,9 @@ const plants = [
   {
     name: "Pinguicula debbertiana",
     species: "",
-    price: { small: "$10", medium: "$15" },
-    shortDescription: "A pink Mexican butterwort that forms tight, glandular rosettes of sticky, carnivorous leaves. Offered as small (~1.5 cm) for $10 or medium (~2.5 cm) for $15.",
-    description: "Pinguicula debbertiana is a Mexican butterwort prized for its soft pink coloration and neat, symmetrical rosettes. The photos show plants in their summer growth phase, with sticky, carnivorous leaves blushing pink under bright light and catching fungus gnats and other small insects.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Two sizes are offered: small plants are about 1.5 cm in diameter, and medium plants about 2.5 cm.",
+    price: { small: "$10" },
+    shortDescription: "A pink Mexican butterwort that forms tight, glandular rosettes of sticky, carnivorous leaves. Offered as small (~1.5 cm) for $10.",
+    description: "Pinguicula debbertiana is a Mexican butterwort prized for its soft pink coloration and neat, symmetrical rosettes. The photos show plants in their summer growth phase, with sticky, carnivorous leaves blushing pink under bright light and catching fungus gnats and other small insects.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Small plants are about 1.5 cm in diameter.",
     image: "images/debbertiana.jpg",
     images: [
       { label: "Rosettes", file: "images/debbertiana.jpg"   },
@@ -67,9 +67,9 @@ const plants = [
   {
     name: "Pinguicula ehlersiae × mesophytica",
     species: "",
-    price: { small: "$10", medium: "$15", large: "$20" },
-    shortDescription: "A vigorous butterwort hybrid with plump mauve rosettes and vivid magenta flowers. Offered as small (~1.5 cm) for $10, medium (~2.5 cm) for $15, or large (3.5 cm or larger) for $20.",
-    description: "Pinguicula ehlersiae × mesophytica is a hybrid Mexican butterwort that pairs the compact rosette of P. ehlersiae with the larger, succulent leaves of P. mesophytica. The result is a robust, easy grower with plump mauve-lavender leaves and striking magenta flowers held on tall stalks, as shown in the photos. The sticky, glandular leaves catch fungus gnats and other small insects.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Three sizes are offered: small plants are about 1.5 cm in diameter, medium about 2.5 cm, and large 3.5 cm or greater.",
+    price: { small: "$10" },
+    shortDescription: "A vigorous butterwort hybrid with plump mauve rosettes and vivid magenta flowers. Offered as small (~1.5 cm) for $10.",
+    description: "Pinguicula ehlersiae × mesophytica is a hybrid Mexican butterwort that pairs the compact rosette of P. ehlersiae with the larger, succulent leaves of P. mesophytica. The result is a robust, easy grower with plump mauve-lavender leaves and striking magenta flowers held on tall stalks, as shown in the photos. The sticky, glandular leaves catch fungus gnats and other small insects.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Small plants are about 1.5 cm in diameter.",
     image: "images/ehlersiae-x-mesophytica.jpg",
     images: [],
     status: "new",
