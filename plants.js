@@ -333,7 +333,50 @@ const plants = [
       { label: "Plant",          file: "images/unknown-giant-1.jpg"          },
       { label: "Close-Up",       file: "images/unknown-giant-2.jpg"          },
     ],
-    status: "unavailable",
+    status: "available",
+  },
+
+  {
+    name: "<em>Drosera adelae</em> 'Giant'",
+    species: "Drosera adelae 'Giant'",
+    priceTiers: [
+      { label: "1 Division",  price: "$15" },
+      { label: "2 Divisions", price: "$25" },
+    ],
+    shortDescription: "A large-growing form of the lance-leaved sundew, shipped bare root at about 2 inches tall. An easy, vigorous grower that thrives in low light.",
+    description: "Up for sale are divisions of <em>Drosera adelae</em> 'Giant', a large-growing form of the lance-leaved sundew from Queensland, Australia. This is one of the easiest sundews in cultivation and one of the most forgiving carnivorous plants you can grow. It tolerates lower light levels than most sundews, spreads readily by root runners, and produces long, lance-shaped leaves covered in glistening tentacles that catch fungus gnats and other small insects.\n\nThe 'Giant' form produces noticeably larger rosettes and longer leaves than typical <em>D. adelae</em>, making it a more substantial and impressive plant. Once established, it will spread through the pot by underground runners and form a dense colony.\n\nDivisions are shipped bare root at about 2 inches tall.",
+    image: "images/d-adelae-giant.jpg",
+    images: [
+      { label: "Division", file: "images/d-adelae-giant.jpg" },
+      { label: "Community Pots", file: "images/d-adelae-giant-2.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "<em>Drosera spatulata</em> × <em>ultramafica</em>",
+    species: "Drosera spatulata × ultramafica",
+    priceTiers: [
+      { label: "1 Rosette",  price: "$15" },
+      { label: "2 Rosettes", price: "$25" },
+    ],
+    shortDescription: "A compact, vividly red sundew hybrid at flowering size (1–1.5 inches). Shipped bare root.",
+    description: "Up for sale are rosettes of <em>Drosera spatulata</em> × <em>ultramafica</em>, a compact sundew hybrid that colors up to a striking, vivid red under bright light. The rosettes are small but intensely colored, with spoon-shaped leaves densely covered in glistening tentacles. Plants are at flowering size, about 1 to 1.5 inches in diameter, and are already producing flower stalks.\n\nThis hybrid combines the easy-growing nature of <em>D. spatulata</em> with the compact form and intense coloration of <em>D. ultramafica</em>. It does well in a standard peat/perlite mix kept wet, under bright light.\n\nRosettes are shipped bare root at flowering size.",
+    image: "images/d-spatulata-x-ultramafica.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "<em>Nepenthes</em> 'Lady Luck'",
+    species: "Nepenthes 'Lady Luck'",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A vigorous Nepenthes hybrid that produces colorful pitchers readily under grow lights. Shipped potted.",
+    description: "<em>Nepenthes</em> 'Lady Luck' is a vigorous hybrid pitcher plant that produces attractive, colorful pitchers even under modest grow-light conditions. It is one of the easier Nepenthes to grow indoors, tolerating a range of humidity and temperature levels that would stress fussier species.\n\nPlants are shipped potted in sphagnum moss, ready to grow.",
+    image: "images/n-lady-luck.jpg",
+    images: [],
+    status: "new",
   },
 
   {
