@@ -53,9 +53,9 @@ const plants = [
   {
     name: "Pinguicula ehlersiae 'Cotton Candy'",
     species: "",
-    price: { small: "$10", medium: "$15", large: "$20" },
-    shortDescription: "A pastel selection of P. ehlersiae — creamy white rosettes blushed with soft pink. Offered as small (~1.5 cm) for $10, medium (~2.5 cm) for $15, or large (3.5 cm or larger) for $20.",
-    description: "Pinguicula ehlersiae 'Cotton Candy' is a pastel selection of this compact Mexican butterwort, named for its soft, cotton-candy coloring — creamy white rosettes blushed with pink toward the center. The sticky, glandular leaves catch fungus gnats and other small insects, and the delicate coloration develops best under bright light.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Three sizes are offered: small plants are about 1.5 cm in diameter, medium about 2.5 cm, and large 3.5 cm or greater.",
+    price: { small: "$10", medium: "$15" },
+    shortDescription: "A pastel selection of P. ehlersiae — creamy white rosettes blushed with soft pink. Offered as small (~1.5 cm) for $10 or medium (~2.5 cm) for $15.",
+    description: "Pinguicula ehlersiae 'Cotton Candy' is a pastel selection of this compact Mexican butterwort, named for its soft, cotton-candy coloring — creamy white rosettes blushed with pink toward the center. The sticky, glandular leaves catch fungus gnats and other small insects, and the delicate coloration develops best under bright light.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Two sizes are offered: small plants are about 1.5 cm in diameter, and medium about 2.5 cm.",
     image: "images/ehlersiae-cotton-candy.jpg",
     images: [
       { label: "Rosettes", file: "images/ehlersiae-cotton-candy.jpg"   },
