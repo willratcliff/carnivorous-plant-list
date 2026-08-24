@@ -275,10 +275,10 @@ const plants = [
   {
     name: "LED Grow Light with Stake",
     species: "Full Spectrum · Stake + Metal Base + AC Adapter · Built-In Timer",
-    flatPrice: "$5",
+    flatPrice: "$10",
     price: {},
-    shortDescription: "A self-contained grow light for one or two plants. Comes complete with a telescoping stake, a metal base you can stand a pot on, an AC adapter, and a built-in 12h on / 12h off timer. Priced at cost ($5) — this batch came in dimmer than I expected.",
-    description: "This compact LED grow light is a simple, self-contained lighting setup for a Venus flytrap or two, and it comes with everything you need. In the box: a telescoping stake that inserts directly into the pot, a weighted metal base you can set a potted plant on top of, an AC adapter, and a built-in timer that cycles 12 hours on, 12 hours off with no external timer needed. Just plug it in and go.\n\nThe light uses a mixture of warm and cool white LEDs for a full-spectrum output.\n\nA NOTE ON THIS BATCH\nThis batch came in dimmer than I expected, so I'm selling these at cost. They'll add supplemental light for a plant or two, but I can't yet vouch for how well this particular batch grows flytraps on its own. Priced to move at $5 — feel free to reach out if you have questions.\n\nIf you're keeping just a plant or two on a desk or windowsill and want a simple, inexpensive grow light without the complexity of a full fixture setup, this is an easy option.",
+    shortDescription: "A self-contained grow light for one or two plants. Comes complete with a telescoping stake, a metal base you can stand a pot on, an AC adapter, and a built-in 12h on / 12h off timer. $10.",
+    description: "This compact LED grow light is a simple, self-contained lighting setup for a Venus flytrap or two, and it comes with everything you need. In the box: a telescoping stake that inserts directly into the pot, a weighted metal base you can set a potted plant on top of, an AC adapter, and a built-in timer that cycles 12 hours on, 12 hours off with no external timer needed. Just plug it in and go.\n\nThe light uses a mixture of warm and cool white LEDs for a full-spectrum output.\n\nIf you're keeping just a plant or two on a desk or windowsill and want a simple, inexpensive grow light without the complexity of a full fixture setup, this is an easy option.",
     image: "images/led-grow-light-stake.jpg",
     images: [
       { label: "With Flytrap", file: "images/led-grow-light-stake.jpg" },
