@@ -383,6 +383,18 @@ const plants = [
   },
 
   {
+    name: "<em>Drosera intermedia</em>",
+    species: "Drosera intermedia",
+    flatPrice: "$20",
+    price: {},
+    shortDescription: "The spoonleaf sundew. A vigorous clumper that throws crown after crown and blushes red in strong light. $20 per plant, shipped bare root.",
+    description: "Up for sale are plants of <em>Drosera intermedia</em>, the spoonleaf sundew. The photo shows the stock pot, which has filled in with a half dozen crowns pushing against each other and several flower scapes already set with seed. The leaves are the giveaway for this species: narrow, spoon-shaped blades held up on long petioles, angled toward the light rather than lying flat, every tentacle carrying a bead of mucilage. Under strong light the blades and tentacles color to a deep pink-red, which is exactly what the plants in the photo are doing. Buyers receive a single plant taken from stock like this, not the pot shown.\n\nWHY D. INTERMEDIA?\nIt clumps. A single plant does not stay a single plant for long: it offsets from the base until you have a tight colony filling the pot, and it self-seeds readily on top of that. That makes it one of the better sundews for growers who want a pot that fills in on its own rather than a specimen that needs babying. It is also a hardy, wide-ranging species in the wild, growing in wet peat and sand seeps, and that toughness carries into cultivation.\n\nGROWING\nStandard sundew treatment: peat or a peat/perlite mix kept wet, mineral-free water (distilled, RO, or rain) in a tray, and as much light as you can give it. Light is what drives the red. In colder winters it may pull back into a tight resting bud and start again in spring; kept warm and lit, it will often just keep growing.\n\nPlants are shipped bare root.",
+    image: "images/d-intermedia.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
     name: "<em>Nepenthes</em> 'Lady Luck'",
     species: "Nepenthes 'Lady Luck'",
     flatPrice: "$15",
