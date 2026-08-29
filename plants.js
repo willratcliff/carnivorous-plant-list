@@ -273,6 +273,21 @@ const plants = [
   },
 
   {
+    name: "<em>Utricularia blanchetii</em> — Rooted Plug",
+    species: "Utricularia blanchetii",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A Brazilian bladderwort that buries its own pot under a cloud of pale lilac flowers on wiry, dark scapes. Rooted plugs, $15 each.",
+    description: "Up for sale are rooted plugs of <em>Utricularia blanchetii</em>, a terrestrial bladderwort from Brazil and one of the most floriferous plants in the genus. The video shows the mother pot in full bloom, carrying dozens of flower stalks at once, the whole thing hovering in a haze of pale lilac and white flowers held on thin, dark, wiry scapes well above a mat of grassy leaves. Buyers receive a rooted plug taken from stock like this, not the pot shown.\n\nWHY U. BLANCHETII?\nMost bladderworts flower politely. Blanchetii flowers like it is trying to prove something. A settled pot will throw scape after scape until the leaves disappear entirely under the display, and each small flower carries a delicate purple veining on the lower lip that is worth getting close to see. Below the surface it is doing the real work: the substrate is threaded with stolons studded with bladder traps, tiny suction bulbs that fire in under a millisecond to catch protozoa and other soil microfauna.\n\nGROWING\nEasy. Grow it in peat or a peat/sand mix, sit the pot in a tray of mineral-free water (distilled, RO, or rain), and give it bright light from a window or under grow lights. It spreads steadily through the medium and will fill a pot on its own. Plugs establish fast and typically start flowering once they have taken hold.",
+    image: "images/u-blanchetii.jpg",
+    video: "images/u-blanchetii-video.mp4",
+    images: [
+      { label: "In Bloom", file: "images/u-blanchetii.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
     name: "LED Grow Light with Stake",
     species: "Full Spectrum · Stake + Metal Base + AC Adapter · Built-In Timer",
     flatPrice: "$10",

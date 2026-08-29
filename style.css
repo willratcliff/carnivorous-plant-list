@@ -215,7 +215,8 @@ main {
   position: relative;
 }
 
-.plant-image img {
+.plant-image img,
+.plant-image video {
   width: 100%;
   height: 260px;
   object-fit: cover;
