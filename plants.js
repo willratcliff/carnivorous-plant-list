@@ -407,6 +407,18 @@ const plants = [
   },
 
   {
+    name: "<em>Drosera capensis</em> 'Peppermint'",
+    species: "Drosera capensis 'Peppermint'",
+    flatPrice: "$30",
+    price: {},
+    shortDescription: "A candy-striped Cape sundew from David Flocken's Candy Cane line: green leaves edged in deep red, arching back on themselves into a hook. $30 per plant, shipped potted.",
+    description: "Up for sale are medium plants of <em>Drosera capensis</em> 'Peppermint'. The photo shows a flat of them growing under LEDs. The leaves are striped, a green to yellow-green center running the length of the blade with the margins and tips flushed deep pink-red, and every tentacle is carrying a bead of mucilage. The older leaves arch back on themselves into a hook, which is where the Candy Cane line gets its name. Set one next to a typical Cape sundew, a plain green strap with red tentacles, and you would not guess they were the same species.\n\nWHERE THIS CLONE CAME FROM\n'Peppermint' is a selection out of the Candy Cane line of <em>D. capensis</em>, which traces to David Flocken (GrowPings), a Utah grower who has spent years on a project to make capensis interesting again. His method is brute force: grow out enormous numbers of seedlings and keep the handful that stand out. He was already deep into that program by 2015, when he described the goal in an interview as a quest \"to revive Drosera capensis to the status it deserves.\" The Candy Cane line came out of that work and built a following among growers who take capensis seriously. Jeremiah's Plants released 'Peppermint' as a first release, calling it almost seven years in the making, at $45 bare root, and it sold out.\n\nWHY CAPENSIS?\nIt is the sundew everyone hands to beginners, and for good reason: it grows fast, flowers freely, and comes back from the root when the top dies. That toughness is exactly what makes a good selection worth owning, because you get the striping and the curl of a collector's plant on something that will forgive the mistakes you make while learning to grow it. It also earns its keep. A well-grown capensis on a kitchen counter will strip the fungus gnats out of your houseplants, folding its leaves around whatever it catches.\n\nGROWING\nPeat or a peat and perlite mix kept wet, mineral-free water (distilled, RO, or rain) in a tray, and as much light as you can give it. Light is what drives the color. Grown dim, 'Peppermint' is just a green capensis with good manners. It will flower, and capensis flowers self-pollinate without any help, so expect volunteer seedlings in nearby pots. Whether those seedlings hold the striping is not something I can promise you, so treat the plant you buy as the sure thing.\n\nPlants are shipped potted.",
+    image: "images/d-capensis-peppermint.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
     name: "<em>Nepenthes</em> 'Gaya'",
     species: "Nepenthes 'Gaya'",
     flatPrice: "$15",
@@ -427,7 +439,7 @@ const plants = [
     description: "Up for sale is a mature specimen of <em>Utricularia alpina</em>, one of the most elegant bladderworts in cultivation. This epiphytic species from the tropical Americas produces broad, strap-like leaves and stunning large white flowers with a yellow patch, striking enough to compete with any orchid on a windowsill. The plant is established in live sphagnum moss, with well-developed stolons running through the medium.\n\nWHY U. ALPINA?\nMost <em>Utricularia</em> are tiny, threadlike things that disappear into their pots. Alpina is the opposite: it grows large, makes a real presence, and when it blooms, it stops people in their tracks. The flowers are among the showiest in the genus, and a well-grown specimen in live sphagnum looks genuinely spectacular.\n\nGROWING\nGrow it just like a Venus flytrap or sundew: pot it in pure sphagnum and sit it in a tray of distilled or rain water. It does well under grow lights or in a bright window. Once established, it grows steadily and blooms reliably.",
     image: "images/u-alpina.jpg",
     images: [],
-    status: "unavailable",
+    status: "available",
   },
 
 ];
