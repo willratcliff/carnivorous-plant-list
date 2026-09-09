@@ -445,7 +445,7 @@
         } else if (plant.priceTiers) {
           plant.priceTiers.forEach(function (t) {
             var p = parseFloat(t.price.replace(/[^0-9.]/g, ''));
-            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p });
+            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p, pick: t.pick });
           });
         } else if (plant.price) {
           sizes.forEach(function (s) {
@@ -485,19 +485,43 @@
           }
 
           if (plant.kitPlantPicker) {
-            var mediumPlants = plants.filter(function (p) {
-              return p.price && p.price.medium && p.status !== 'unavailable' && p.status !== 'sold';
+            // Lowest listed price for a plant, ignoring "Inquire" and bulk tiers.
+            var kitPlantPrice = function (p) {
+              var vals = [];
+              if (p.flatPrice) {
+                var f = parseFloat(p.flatPrice.replace(/[^0-9.]/g, ''));
+                if (!isNaN(f)) vals.push(f);
+              }
+              if (p.price) {
+                sizes.forEach(function (sz) {
+                  var v = p.price[sz];
+                  if (v && v !== 'Inquire') {
+                    var n = parseFloat(v.replace(/[^0-9.]/g, ''));
+                    if (!isNaN(n)) vals.push(n);
+                  }
+                });
+              }
+              return vals.length ? Math.min.apply(null, vals) : null;
+            };
+            // Kit plants: flytraps, Nepenthes and Pinguicula that cost $15 or less.
+            var kitPlants = plants.filter(function (p) {
+              if (p.kitPlantPicker || p.status === 'unavailable' || p.status === 'sold') return false;
+              var txt = (p.name + ' ' + (p.species || '')).replace(/<[^>]+>/g, '');
+              if (!/VFT|Venus flytrap|Nepenthes|Pinguicula/i.test(txt)) return false;
+              var mp = kitPlantPrice(p);
+              return mp !== null && mp <= 15;
             });
-            cloneSelect.innerHTML = '<option value="">— Choose your flytrap clone —</option>';
-            mediumPlants.forEach(function (p) {
+            cloneSelect.innerHTML = '<option value="">— Choose your plant —</option>';
+            kitPlants.forEach(function (p) {
+              var plain = p.name.replace(/<[^>]+>/g, '');
               var o = document.createElement('option');
-              o.value = p.name;
-              o.textContent = p.name;
+              o.value = plain;
+              o.textContent = plain;
               cloneSelect.appendChild(o);
             });
             var showClonePicker = function () {
-              var selLabel = cartOptions[sizeSelect.selectedIndex] ? cartOptions[sizeSelect.selectedIndex].label : '';
-              cloneSelect.style.display = selLabel.indexOf('Venus Flytrap') !== -1 ? 'block' : 'none';
+              var selOpt = cartOptions[sizeSelect.selectedIndex];
+              cloneSelect.style.display = (selOpt && selOpt.pick) ? 'block' : 'none';
             };
             showClonePicker();
             sizeSelect.addEventListener('change', showClonePicker);
@@ -508,9 +532,9 @@
               ? cartOptions[0]
               : cartOptions[sizeSelect.selectedIndex];
             var label = opt.label;
-            if (plant.kitPlantPicker && label.indexOf('Venus Flytrap') !== -1) {
+            if (plant.kitPlantPicker && opt.pick) {
               var clone = cloneSelect.value;
-              if (!clone) { alert('Please choose a flytrap clone.'); return; }
+              if (!clone) { alert('Please choose your kit plant.'); return; }
               label = label + ' — ' + clone;
             }
             addToCart(plant, label, opt.price, opt.minQty || 1);
