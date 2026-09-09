@@ -407,6 +407,18 @@ const plants = [
   },
 
   {
+    name: "<em>Nepenthes</em> 'Gaya'",
+    species: "Nepenthes 'Gaya'",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A three-species hybrid tropical pitcher plant that pitchers young and grows happily in ordinary indoor conditions. Deep red, cherry-speckled traps. $15 per plant, shipped potted.",
+    description: "Up for sale are plants of <em>Nepenthes</em> 'Gaya', a hybrid of <em>N. khasiana</em> with (<em>N. ventricosa</em> × <em>N. maxima</em>). The photo shows one of them lifted out of the tray it grows in, a small plant already carrying two open pitchers: one deep red with a broad flared peristome, the other yellow-green and heavily speckled in cherry red, with the newest leaves blushing pink under the LED strip. Buyers receive a plant like the one shown.\n\nWHY 'GAYA'?\nIt is easy indoors, which is not something you can say about most of the genus. Three species go into the cross, and the hybrid appears to have picked up the useful part of each: vigor from <em>khasiana</em>, tolerance of ordinary room conditions from <em>ventricosa</em>, and the heavy red speckling and wide peristome from <em>maxima</em>. The plants I am selling are already pitchering in a pot this small, under nothing fancier than an LED strip on a shelf.\n\nGROWING\nWarm and bright. Roughly 70 to 85°F in the day with a cooler night, and as much light as you can give it short of burning the leaves. A window with a few hours of sun works, and so does a shelf under LEDs, which is how these were grown. Pot it in something loose and airy, long-fibered sphagnum on its own or cut with perlite, and water from the top with distilled, RO, or rain water. Keep the mix evenly moist, but do not stand it in a deep tray the way you would a flytrap, since Nepenthes roots rot when they sit waterlogged. Higher humidity gives bigger, better-colored pitchers, but 'Gaya' keeps producing them in normal room air, making it one of the few Nepenthes I am comfortable handing to someone who has never grown one.\n\nPlants are shipped potted in sphagnum moss, ready to grow.",
+    image: "images/n-gaya.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
     name: "<em>Utricularia alpina</em> — Mature Specimen",
     species: "Utricularia alpina",
     flatPrice: "$25",
