@@ -17,6 +17,15 @@
 
 window.SALES = [];
 
+// ── No-Dormancy Experiment bonus ────────────────────────────────────
+// Free division of the no-dormancy Target clone, added to any order when
+// the customer opts in. Set `active` to false to take it off the site.
+// `ends` is optional (ISO 8601 with offset); null means open-ended.
+window.EXPERIMENT = {
+  active: true,
+  ends: null,
+};
+
 // ── Helpers consumed by the cart and card-rendering code ────────────
 window.SaleHelpers = {
   activeSales: function (now) {

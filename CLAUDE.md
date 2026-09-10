@@ -27,7 +27,9 @@ GitHub Pages redeploys automatically within ~30 seconds of a push.
 index.html        — page structure, section/jump-bar rendering, modal + cart JS (rarely needs editing)
 style.css         — all styling; design tokens live in :root at the top (rarely needs editing)
 plants.js         — ALL inventory data lives here (edit this to update the site)
-sales.js          — time-boxed promotions and discount codes
+sales.js          — time-boxed promotions, discount codes, and the EXPERIMENT toggle
+apps-script.gs    — Google Apps Script the cart posts to (emails + experiment sheet); redeploy after edits
+experiment/       — no-dormancy experiment tracker (README + gitignored participants.csv)
 images/           — full-size plant photos (JPG, 1200px wide) used in the detail modal
 images/thumbs/    — 700px card thumbnails, same filenames (regenerate when adding a photo)
 CLAUDE.md         — this file
@@ -88,3 +90,19 @@ except the first starts collapsed; tapping a section header or a jump chip expan
 - Facebook: https://www.facebook.com/profile.php?id=61586990360469
 - Reddit: u/Berberis — https://www.reddit.com/user/Berberis/
 - eBay: thepitcherpeople — https://www.ebay.com/usr/thepitcherpeople
+
+## No-Dormancy Experiment Bonus
+
+A featured block at the top of the sale page offers a free division of the
+no-dormancy Target clone with any order. Customers opt in via the block's
+button or the checkbox in the cart, choose a growing setup, and the order email
+gains a `No-Dormancy Experiment: YES` block. The Apps Script logs each
+participant to a Google Sheet with a check-in date 120 days out; see
+`experiment/README.md` for the local mirror and check-in workflow.
+
+- **Turn it off:** set `active: false` in `window.EXPERIMENT` in `sales.js`
+  (or set `ends` to an ISO date with offset).
+- **Copy and photos:** the `#experiment-feature` block in `index.html`;
+  photos are `images/target-clone-tray.jpg` and `images/target-clone-closeup.jpg`.
+- **Sheet logging only works after the updated `apps-script.gs` is pasted
+  into the Apps Script project and redeployed as a new version.**

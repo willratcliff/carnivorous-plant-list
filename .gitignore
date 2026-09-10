@@ -1,0 +1,3 @@
+# Customer data must never reach the public GitHub Pages repo
+experiment/participants.csv
+.DS_Store

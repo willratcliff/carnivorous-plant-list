@@ -56,6 +56,23 @@
     <p class="hero-sub">I grow every plant here myself (my kids help, as the photos below will attest), so each one has spent months under my eye before it goes in a box, not a week in a warehouse. Click any plant for photos and sizes, put together an order in the cart, and I'll get it shipped right out once payment lands.</p>
   </section>
 
+  <!-- ── Featured: no-dormancy experiment bonus (shown when window.EXPERIMENT.active) ── -->
+  <section class="feature-card" id="experiment-feature" hidden>
+    <div class="feature-photos">
+      <img src="images/thumbs/target-clone-tray.jpg" alt="Two nursery trays of Venus flytraps, all divisions of one no-dormancy Target clone" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/target-clone-tray.jpg';">
+      <img class="feature-photo-2" src="images/thumbs/target-clone-closeup.jpg" alt="Close-up of the no-dormancy flytrap divisions, traps open and healthy" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/target-clone-closeup.jpg';">
+    </div>
+    <div class="feature-body">
+      <p class="feature-eyebrow">Limited-time bonus &middot; A small experiment</p>
+      <h2 class="feature-title">Free with any order: a division of my no-dormancy flytrap</h2>
+      <p class="feature-text">Three years ago I bought a typical Venus flytrap at Target and stopped giving it a winter rest, fully expecting it to decline. It hasn't. That one plant has thrown roughly 60 divisions since, and both of these trays descend from it. For a limited time I'll tuck a free division into any order if you opt in. The one ask: grow it without dormancy under whatever conditions you have (windowsill, lights, greenhouse, anything), and when I email in a few months, tell me how it's doing. The backstory is in <a href="dormancy.html">the dormancy post</a>.</p>
+      <div class="feature-actions">
+        <button type="button" class="feature-btn" id="experiment-feature-btn">Count me in</button>
+        <span class="feature-status" id="experiment-feature-status">Added to your order at checkout.</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Jump bar (filled in by JS with one chip per section) ── -->
   <nav class="jump-bar" id="jump-bar" aria-label="Jump to a section">
     <div class="jump-bar-inner" id="jump-bar-inner"></div>
@@ -212,6 +229,24 @@
           <span>🚚 Free shipping unlocked!</span>
         </div>
         <div id="reward-progress" class="reward-progress"></div>
+      </div>
+      <div class="cart-experiment" id="cart-experiment" style="display:none;">
+        <label class="exp-optin-label">
+          <input type="checkbox" id="exp-optin">
+          <span><strong>Add a free division of the no-dormancy Target clone.</strong> I'll grow it without dormancy, and Will can email me in a few months to ask how it's doing.</span>
+        </label>
+        <div class="exp-fields" id="exp-fields" style="display:none;">
+          <label class="cart-field-label" for="exp-setup">Where will it live?</label>
+          <select id="exp-setup" class="cart-addr-field">
+            <option value="">Choose one</option>
+            <option>Windowsill</option>
+            <option>Grow lights</option>
+            <option>Greenhouse</option>
+            <option>Outdoors</option>
+            <option>Not sure yet</option>
+          </select>
+          <input id="exp-notes" class="cart-addr-field" type="text" placeholder="Anything else about your setup (optional)" maxlength="200">
+        </div>
       </div>
       <div class="discount-code-row" id="discount-code-row">
         <input id="cart-discount-input" class="cart-addr-field" type="text" placeholder="Discount code" />
@@ -901,6 +936,47 @@
       document.getElementById('cart-close-btn').addEventListener('click', closeCart);
       cartOverlay.addEventListener('click', closeCart);
 
+      // ── No-Dormancy Experiment opt-in ──────────────────────────
+      // One flag drives both the featured block and the cart checkbox.
+      var experimentOn = false;
+      var expActive = (function () {
+        var cfg = window.EXPERIMENT;
+        if (!cfg || !cfg.active) return false;
+        if (cfg.ends && new Date() > new Date(cfg.ends)) return false;
+        return true;
+      }());
+      var expFeature   = document.getElementById('experiment-feature');
+      var expFeatBtn   = document.getElementById('experiment-feature-btn');
+      var expFeatStat  = document.getElementById('experiment-feature-status');
+      var expCartBlock = document.getElementById('cart-experiment');
+      var expOptIn     = document.getElementById('exp-optin');
+      var expFields    = document.getElementById('exp-fields');
+      var expSetup     = document.getElementById('exp-setup');
+      var expNotes     = document.getElementById('exp-notes');
+
+      function setExperiment(on) {
+        experimentOn = !!on;
+        expOptIn.checked = experimentOn;
+        expFields.style.display = experimentOn ? '' : 'none';
+        expFeatBtn.classList.toggle('on', experimentOn);
+        expFeatBtn.textContent = experimentOn ? '\u2713 You\u2019re in' : 'Count me in';
+        expFeatStat.style.display = experimentOn ? '' : 'none';
+      }
+      if (expActive) {
+        expFeature.hidden = false;
+        expCartBlock.style.display = '';
+        expFeatBtn.addEventListener('click', function () {
+          setExperiment(!experimentOn);
+          if (experimentOn && cart.length === 0) {
+            expFeatStat.textContent = 'Added to your order at checkout. Pick any plant below and it ships along.';
+          } else {
+            expFeatStat.textContent = 'Added to your order at checkout.';
+          }
+        });
+        expOptIn.addEventListener('change', function () { setExperiment(expOptIn.checked); });
+      }
+      setExperiment(false);
+
       function addToCart(plant, sizeLabel, price, minQty) {
         minQty = minQty || 1;
         var step = 1;
@@ -1196,6 +1272,25 @@
         if (rewardLines.length) body += '\n\n──────────────────\nOrder Rewards:\n' + rewardLines.join('\n');
         var comments = cartComments.value.trim();
         if (comments) body += '\n\n──────────────────\nNotes:\n' + comments;
+
+        var experiment = null;
+        if (expActive && experimentOn) {
+          if (!expSetup.value) { alert('Where will the no-dormancy flytrap live? Pick one in the cart, or untick the free division.'); expSetup.focus(); return; }
+          experiment = {
+            optIn: true,
+            setup: expSetup.value,
+            notes: expNotes.value.trim(),
+            name: addrName.value.trim(),
+            email: cartEmail.value.trim(),
+            city: addrCity.value.trim(),
+            state: addrState.value,
+            subtotal: t.sub
+          };
+          body += '\n\n──────────────────\nNo-Dormancy Experiment: YES (free Target clone division)' +
+            '\nGrowing setup: ' + experiment.setup +
+            (experiment.notes ? '\nSetup notes: ' + experiment.notes : '') +
+            '\nWill may email in a few months to ask how the plant is doing.';
+        }
         body += '\n\nThanks!';
 
         var btn = document.getElementById('cart-email-btn');
@@ -1206,7 +1301,7 @@
         fetch('https://script.google.com/macros/s/AKfycbyJnmfdYwvRckhsoYN4j9xZ8zasOpks8ccBSysA6hG-VIMlBLSPf7hKNoMyumsQEVawdQ/exec', {
           method: 'POST',
           mode: 'no-cors',
-          body: JSON.stringify({ body: body, customerEmail: submittedEmail })
+          body: JSON.stringify({ body: body, customerEmail: submittedEmail, experiment: experiment })
         }).then(function () {
           cart = [];
           heatpackChk.checked = false;
@@ -1217,6 +1312,9 @@
           addrState.value = '';
           addrZip.value = '';
           cartComments.value = '';
+          expSetup.value = '';
+          expNotes.value = '';
+          setExperiment(false);
           document.querySelectorAll('input[name="payment"]').forEach(function(r){ r.checked = false; });
           paymentInstructions.style.display = 'none';
           appliedDiscount = null;
