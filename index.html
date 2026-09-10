@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Phamcliff Farm — Hand-grown Carnivorous Plants</title>
-  <meta name="description" content="Venus flytraps, sundews, butterworts, Nepenthes and bladderworts, hand-grown in Georgia and shipped bare root or potted. Flat-rate shipping to the contiguous 48 states." />
+  <meta name="description" content="Venus flytraps, sundews, butterworts, Nepenthes and a few oddities, grown by hand in Georgia by an evolutionary biologist who got a little carried away. $15 flat-rate shipping to the lower 48." />
   <meta name="theme-color" content="#1d2a1f" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,9 +51,9 @@
 
   <!-- ── Hero ── -->
   <section class="hero">
-    <p class="hero-eyebrow">Hand-grown in Georgia</p>
-    <h1>Carnivorous plants, grown by a biologist.</h1>
-    <p class="hero-sub">Venus flytraps, sundews, butterworts, Nepenthes and a few oddities, all propagated and grown by hand. Tap any plant for photos and sizes, build an order in the cart, and I'll ship it out once payment lands.</p>
+    <p class="hero-eyebrow">Hand-grown in Georgia &middot; Shipped to the lower 48</p>
+    <h1>Carnivorous plants, grown by a biologist who got a little carried away.</h1>
+    <p class="hero-sub">I grow every plant here myself (my kids help, as the photos below will attest), so each one has spent months under my eye before it goes in a box, not a week in a warehouse. Click any plant for photos and sizes, put together an order in the cart, and I'll get it shipped right out once payment lands.</p>
   </section>
 
   <!-- ── Jump bar (filled in by JS with one chip per section) ── -->
@@ -335,12 +335,12 @@
       // Each plant in plants.js carries a `category`; anything unknown
       // falls into the trailing "Other" bucket so nothing disappears.
       var SECTIONS = [
-        { key: 'flytrap',    chip: 'Flytraps',    title: 'Venus Flytraps',               sub: '<em>Dionaea muscipula</em>' },
-        { key: 'drosera',    chip: 'Sundews',     title: 'Sundews',                      sub: '<em>Drosera</em>' },
-        { key: 'pinguicula', chip: 'Butterworts', title: 'Butterworts',                  sub: '<em>Pinguicula</em>' },
-        { key: 'nepenthes',  chip: 'Nepenthes',   title: 'Tropical Pitcher Plants',      sub: '<em>Nepenthes</em>' },
-        { key: 'oddities',   chip: 'Oddities',    title: 'Bladderworts &amp; Oddities',  sub: '<em>Utricularia</em>, <em>Stylidium</em> and other strange things' },
-        { key: 'supplies',   chip: 'Supplies',    title: 'Supplies &amp; Kits',          sub: 'Lights, fertilizer and beginner kits' },
+        { key: 'flytrap',    chip: 'Flytraps',    title: 'Venus Flytraps',               sub: '<em>Dionaea muscipula</em>. Named cultivars, plus one giant of unknown parentage. Shipped bare root.' },
+        { key: 'drosera',    chip: 'Sundews',     title: 'Sundews',                      sub: '<em>Drosera</em>. The easiest carnivores to keep alive, and the fastest to fill a pot.' },
+        { key: 'pinguicula', chip: 'Butterworts', title: 'Butterworts',                  sub: '<em>Pinguicula</em>. Mexican butterworts: small sticky rosettes that are murder on fungus gnats.' },
+        { key: 'nepenthes',  chip: 'Nepenthes',   title: 'Tropical Pitcher Plants',      sub: '<em>Nepenthes</em>. Tropical pitcher plants that do fine indoors. These ship potted.' },
+        { key: 'oddities',   chip: 'Oddities',    title: 'Bladderworts &amp; Oddities',  sub: '<em>Utricularia</em>, <em>Stylidium</em>, and whatever else I could not resist propagating.' },
+        { key: 'supplies',   chip: 'Supplies',    title: 'Supplies &amp; Kits',          sub: 'A $10 grow light, a fertilizer kit for trap feeding, and a beginner kit with a plant of your choice.' },
         { key: 'other',      chip: 'Other',       title: 'Other',                        sub: '' }
       ];
 
@@ -479,8 +479,8 @@
           head.innerHTML =
             '<div>' +
               '<h2 class="section-title">' + sec.title + '</h2>' +
-              '<p class="section-sub">' + (sec.sub ? sec.sub + ' · ' : '') +
-                items.length + (items.length === 1 ? ' listing' : ' listings') + '</p>' +
+              '<p class="section-sub">' + items.length + (items.length === 1 ? ' listing' : ' listings') +
+                (sec.sub ? ' · ' + sec.sub : '') + '</p>' +
             '</div>' +
             '<span class="section-chevron" aria-hidden="true">' + CHEVRON + '</span>';
           head.addEventListener('click', function () {
