@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phamcliff Farm</title>
+  <title>Phamcliff Farm — Hand-grown Carnivorous Plants</title>
+  <meta name="description" content="Venus flytraps, sundews, butterworts, Nepenthes and bladderworts, hand-grown in Georgia and shipped bare root or potted. Flat-rate shipping to the contiguous 48 states." />
+  <meta name="theme-color" content="#1d2a1f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -46,18 +51,26 @@
 
   <!-- ── Hero ── -->
   <section class="hero">
-    <p>Sale page</p>
+    <p class="hero-eyebrow">Hand-grown in Georgia</p>
+    <h1>Carnivorous plants, grown by a biologist.</h1>
+    <p class="hero-sub">Venus flytraps, sundews, butterworts, Nepenthes and a few oddities, all propagated and grown by hand. Tap any plant for photos and sizes, build an order in the cart, and I'll ship it out once payment lands.</p>
   </section>
+
+  <!-- ── Jump bar (filled in by JS with one chip per section) ── -->
+  <nav class="jump-bar" id="jump-bar" aria-label="Jump to a section">
+    <div class="jump-bar-inner" id="jump-bar-inner"></div>
+  </nav>
 
   <main>
 
-    <div class="plants-grid" id="plants-grid"></div>
+    <!-- ── Shop sections (rendered from plants.js, grouped by category) ── -->
+    <div id="shop" class="shop"></div>
 
     <!-- ── About ── -->
     <div class="about-section">
       <div class="about-photos">
-        <img src="images/about-oliver.jpg" alt="Oliver holding a tray of Venus flytraps" class="about-photo about-photo-main" />
-        <img src="images/oliver-flytraps.jpg" alt="Oliver holding a tray of Venus flytraps" class="about-photo about-photo-secondary" />
+        <img loading="lazy" src="images/about-oliver.jpg" alt="Oliver holding a tray of Venus flytraps" class="about-photo about-photo-main" />
+        <img loading="lazy" src="images/oliver-flytraps.jpg" alt="Oliver holding a tray of Venus flytraps" class="about-photo about-photo-secondary" />
       </div>
       <div class="about-text">
         <h2 class="about-title">About the Grower</h2>
@@ -318,50 +331,252 @@
         return html + '</div>';
       }
 
-      function renderCards(plantList, gridEl) {
-        plantList.forEach(function (plant) {
-          var card = document.createElement('div');
-          card.className = 'plant-card' + (plant.status === 'sold' || plant.status === 'unavailable' ? ' sold' : '');
-          card.style.cursor = 'pointer';
+      // ── Sections ───────────────────────────────────────────────
+      // Each plant in plants.js carries a `category`; anything unknown
+      // falls into the trailing "Other" bucket so nothing disappears.
+      var SECTIONS = [
+        { key: 'flytrap',    chip: 'Flytraps',    title: 'Venus Flytraps',               sub: '<em>Dionaea muscipula</em>' },
+        { key: 'drosera',    chip: 'Sundews',     title: 'Sundews',                      sub: '<em>Drosera</em>' },
+        { key: 'pinguicula', chip: 'Butterworts', title: 'Butterworts',                  sub: '<em>Pinguicula</em>' },
+        { key: 'nepenthes',  chip: 'Nepenthes',   title: 'Tropical Pitcher Plants',      sub: '<em>Nepenthes</em>' },
+        { key: 'oddities',   chip: 'Oddities',    title: 'Bladderworts &amp; Oddities',  sub: '<em>Utricularia</em>, <em>Stylidium</em> and other strange things' },
+        { key: 'supplies',   chip: 'Supplies',    title: 'Supplies &amp; Kits',          sub: 'Lights, fertilizer and beginner kits' },
+        { key: 'other',      chip: 'Other',       title: 'Other',                        sub: '' }
+      ];
 
-          var imgHTML;
-          if (plant.video) {
-            imgHTML = '<video src="' + plant.video + '" autoplay loop muted playsinline></video>';
-          } else if (plant.image) {
-            imgHTML = '<img src="' + plant.image + '" alt="' + plant.name + '">';
-          } else {
-            imgHTML = '<div class="img-placeholder">🌿</div>';
-          }
+      var CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
 
-          var saleBadgeHTML = '';
-          var plantSale = window.SaleHelpers && window.SaleHelpers.hasAnySaleForPlant(plant.name);
-          if (plantSale) {
-            var saleLabel = plantSale.type === 'bogo' ? 'BOGO' : 'SALE';
-            saleBadgeHTML = '<span class="sale-badge">' + saleLabel + '</span>';
-          }
-
-          card.innerHTML =
-            '<div class="plant-image">' +
-              imgHTML +
-              saleBadgeHTML +
-              '<span class="status-badge status-' + plant.status + '">' +
-                (statusLabel[plant.status] || plant.status) +
-              '</span>' +
-              '<span class="card-view-hint">View photos</span>' +
-            '</div>' +
-            '<div class="plant-info">' +
-              '<h2 class="plant-name">' + plant.name + '</h2>' +
-              '<p class="plant-species">' + plant.species + '</p>' +
-              buildPriceHTML(plant) +
-              '<p class="plant-description">' + (plant.shortDescription || plant.description) + '</p>' +
-            '</div>';
-
-          card.addEventListener('click', function () { openModal(plant); });
-          gridEl.appendChild(card);
-        });
+      // Card thumbnails live in images/thumbs/ (700px wide). Fall back to
+      // the full-size photo if a thumb hasn't been generated yet.
+      function thumbOf(path) {
+        return path.replace(/^images\//, 'images/thumbs/');
       }
 
-      renderCards(plants, document.getElementById('plants-grid'));
+      function escapeAttr(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+      }
+
+      function fmtMoney(n) {
+        return '$' + (n % 1 ? n.toFixed(2) : String(n));
+      }
+
+      // One-line price summary for the card: "$15", "$10 – $20", "$12+"
+      function priceSummary(plant) {
+        var vals = [], inquire = false, options = 0;
+        function push(v) {
+          if (!v) return;
+          if (/inquire/i.test(v)) { inquire = true; return; }
+          var n = parseFloat(String(v).replace(/[^0-9.]/g, ''));
+          if (!isNaN(n)) vals.push(n);
+        }
+        var noteWord = 'sizes';
+        if (plant.flatPrice) {
+          push(plant.flatPrice);
+        } else if (plant.priceTiers) {
+          noteWord = 'options';
+          plant.priceTiers.forEach(function (t) { push(t.price); options++; });
+        } else if (plant.price) {
+          sizes.forEach(function (sz) { if (plant.price[sz]) { push(plant.price[sz]); options++; } });
+        }
+        var main = '', note = [];
+        if (vals.length) {
+          var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+          if (min === max) main = fmtMoney(min) + (inquire ? '+' : '');
+          else main = fmtMoney(min) + ' – ' + fmtMoney(max) + (inquire ? '+' : '');
+        } else if (inquire) {
+          main = 'Inquire';
+        }
+        if (options > 1) note.push(options + ' ' + noteWord);
+        if (plant.bulkTiers && plant.bulkTiers.length) note.push('bulk pricing');
+        return { main: main, note: note.join(' · ') };
+      }
+
+      function buildCard(plant) {
+        var card = document.createElement('div');
+        card.className = 'plant-card' + (plant.status === 'sold' || plant.status === 'unavailable' ? ' sold' : '');
+        card.style.cursor = 'pointer';
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+
+        var plainName = escapeAttr(String(plant.name).replace(/<[^>]+>/g, ''));
+        var imgHTML;
+        if (plant.video) {
+          // Poster first; the video itself only loads when the card scrolls into view.
+          var poster = plant.image ? escapeAttr(thumbOf(plant.image)) : '';
+          imgHTML = '<video class="card-video" muted loop playsinline preload="none"' +
+            (poster ? ' poster="' + poster + '"' : '') +
+            ' data-src="' + escapeAttr(plant.video) + '" aria-label="' + plainName + '"></video>' +
+            '<span class="video-tag">&#9654; Video</span>';
+        } else if (plant.image) {
+          var full = escapeAttr(plant.image);
+          imgHTML = '<img src="' + escapeAttr(thumbOf(plant.image)) + '" alt="' + plainName + '" loading="lazy" decoding="async"' +
+            ' onerror="this.onerror=null;this.src=\'' + full + '\';">';
+        } else {
+          imgHTML = '<div class="img-placeholder">🌿</div>';
+        }
+
+        var saleBadgeHTML = '';
+        var plantSale = window.SaleHelpers && window.SaleHelpers.hasAnySaleForPlant(plant.name);
+        if (plantSale) {
+          saleBadgeHTML = '<span class="sale-badge">' + (plantSale.type === 'bogo' ? 'BOGO' : 'SALE') + '</span>';
+        }
+
+        var ps = priceSummary(plant);
+        var priceHTML = ps.main
+          ? '<div class="plant-price-line"><span class="price-main">' + ps.main + '</span>' +
+            (ps.note ? '<span class="price-note">' + ps.note + '</span>' : '') + '</div>'
+          : '';
+
+        card.innerHTML =
+          '<div class="plant-image">' +
+            imgHTML +
+            saleBadgeHTML +
+            '<span class="status-badge status-' + plant.status + '">' +
+              (statusLabel[plant.status] || plant.status) +
+            '</span>' +
+            '<span class="card-view-hint">View details</span>' +
+          '</div>' +
+          '<div class="plant-info">' +
+            '<h3 class="plant-name">' + plant.name + '</h3>' +
+            (plant.species ? '<p class="plant-species">' + plant.species + '</p>' : '') +
+            priceHTML +
+            '<p class="plant-description">' + (plant.shortDescription || plant.description) + '</p>' +
+          '</div>';
+
+        card.addEventListener('click', function () { openModal(plant); });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(plant); }
+        });
+        return card;
+      }
+
+      function renderShop() {
+        var shop = document.getElementById('shop');
+        var chips = document.getElementById('jump-bar-inner');
+        var known = {};
+        SECTIONS.forEach(function (sec) { known[sec.key] = true; });
+
+        var isPhone = window.matchMedia('(max-width: 640px)').matches;
+        var firstRendered = true;
+
+        SECTIONS.forEach(function (sec) {
+          var items = plants.filter(function (p) {
+            var c = p.category || 'other';
+            return sec.key === 'other' ? !known[c] || c === 'other' : c === sec.key;
+          });
+          if (!items.length) return;
+
+          var section = document.createElement('section');
+          section.className = 'shop-section';
+          section.id = 'sec-' + sec.key;
+          if (isPhone && !firstRendered) section.classList.add('collapsed');
+          firstRendered = false;
+
+          var head = document.createElement('button');
+          head.className = 'section-head';
+          head.type = 'button';
+          head.setAttribute('aria-expanded', String(!section.classList.contains('collapsed')));
+          head.innerHTML =
+            '<div>' +
+              '<h2 class="section-title">' + sec.title + '</h2>' +
+              '<p class="section-sub">' + (sec.sub ? sec.sub + ' · ' : '') +
+                items.length + (items.length === 1 ? ' listing' : ' listings') + '</p>' +
+            '</div>' +
+            '<span class="section-chevron" aria-hidden="true">' + CHEVRON + '</span>';
+          head.addEventListener('click', function () {
+            var collapsed = section.classList.toggle('collapsed');
+            head.setAttribute('aria-expanded', String(!collapsed));
+          });
+
+          var grid = document.createElement('div');
+          grid.className = 'plants-grid';
+          items.forEach(function (plant) { grid.appendChild(buildCard(plant)); });
+
+          section.appendChild(head);
+          section.appendChild(grid);
+          shop.appendChild(section);
+
+          var chip = document.createElement('a');
+          chip.className = 'jump-chip';
+          chip.href = '#sec-' + sec.key;
+          chip.innerHTML = sec.chip + '<span class="jump-chip-count">' + items.length + '</span>';
+          chip.addEventListener('click', function (e) {
+            e.preventDefault();
+            section.classList.remove('collapsed');
+            head.setAttribute('aria-expanded', 'true');
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (history.replaceState) history.replaceState(null, '', '#sec-' + sec.key);
+          });
+          chips.appendChild(chip);
+        });
+
+        // Deep link: /#sec-drosera opens that section on load.
+        if (location.hash && /^#sec-/.test(location.hash)) {
+          var target = document.querySelector(location.hash);
+          if (target) {
+            target.classList.remove('collapsed');
+            var h = target.querySelector('.section-head');
+            if (h) h.setAttribute('aria-expanded', 'true');
+            setTimeout(function () { target.scrollIntoView({ block: 'start' }); }, 50);
+          }
+        }
+      }
+
+      renderShop();
+
+      // ── Header height → CSS var (keeps the jump bar snug under the header) ──
+      (function () {
+        var header = document.querySelector('.site-header');
+        function setHeaderH() {
+          if (header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+        }
+        setHeaderH();
+        window.addEventListener('resize', setHeaderH);
+        window.addEventListener('load', setHeaderH);
+      }());
+
+      // ── Highlight the chip for the section currently in view ──
+      (function () {
+        var chips = Array.prototype.slice.call(document.querySelectorAll('.jump-chip'));
+        var secs  = Array.prototype.slice.call(document.querySelectorAll('.shop-section'));
+        if (!secs.length) return;
+        var ticking = false;
+        function update() {
+          ticking = false;
+          var bar = document.getElementById('jump-bar');
+          var offset = (bar ? bar.getBoundingClientRect().bottom : 0) + 12;
+          var current = secs[0];
+          for (var i = 0; i < secs.length; i++) {
+            if (secs[i].getBoundingClientRect().top <= offset) current = secs[i];
+          }
+          chips.forEach(function (c) {
+            c.classList.toggle('active', c.getAttribute('href') === '#' + current.id);
+          });
+        }
+        window.addEventListener('scroll', function () {
+          if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        }, { passive: true });
+        update();
+      }());
+
+      // ── Card videos: load + play only while on screen ──
+      (function () {
+        var vids = Array.prototype.slice.call(document.querySelectorAll('video.card-video'));
+        if (!vids.length) return;
+        function start(v) {
+          if (!v.getAttribute('src')) v.src = v.getAttribute('data-src');
+          var p = v.play();
+          if (p && p.catch) p.catch(function () { /* autoplay blocked: poster stays */ });
+        }
+        if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) start(en.target);
+            else if (en.target.getAttribute('src')) en.target.pause();
+          });
+        }, { rootMargin: '200px 0px' });
+        vids.forEach(function (v) { io.observe(v); });
+      }());
 
 
       // ── Modal ─────────────────────────────────────────────────
@@ -556,7 +771,8 @@
             mainImg.style.display = 'none';
             mainVideo.src = item.file;
             mainVideo.style.display = '';
-            mainVideo.play();
+            var mp = mainVideo.play();
+            if (mp && mp.catch) mp.catch(function () {});
           } else {
             mainVideo.style.display = 'none';
             mainVideo.pause();

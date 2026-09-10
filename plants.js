@@ -6,6 +6,9 @@
 //
 //    name        : Common name shown on the card
 //    species     : Scientific name (shown in italic below the name)
+//    category    : Section the card is filed under. One of:
+//                    "flytrap" · "drosera" · "pinguicula" · "nepenthes" · "oddities" · "supplies"
+//                  (anything else, or missing, lands in an "Other" section)
 //    price       : Object with size tiers — omit or set to "" to hide a size
 //                    { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" }
 //    description : Short blurb shown on the card and in the detail modal
@@ -27,6 +30,7 @@ const plants = [
 
   {
     name: "Pinguicula debbertiana",
+    category: "pinguicula",
     species: "",
     price: { small: "$10" },
     shortDescription: "A pink Mexican butterwort that forms tight, glandular rosettes of sticky, carnivorous leaves. Offered as small (~1.5 cm) for $10.",
@@ -41,6 +45,7 @@ const plants = [
 
   {
     name: "Pinguicula ehlersiae 'Victoria'",
+    category: "pinguicula",
     species: "",
     price: { small: "$10" },
     shortDescription: "A compact Mexican butterwort with symmetrical rose-pink, white-margined rosettes. Offered as small (~1.5 cm) for $10.",
@@ -52,6 +57,7 @@ const plants = [
 
   {
     name: "Pinguicula ehlersiae 'Cotton Candy'",
+    category: "pinguicula",
     species: "",
     price: { small: "$10", medium: "$15" },
     shortDescription: "A pastel selection of P. ehlersiae — creamy white rosettes blushed with soft pink. Offered as small (~1.5 cm) for $10 or medium (~2.5 cm) for $15.",
@@ -66,6 +72,7 @@ const plants = [
 
   {
     name: "Pinguicula ehlersiae × mesophytica",
+    category: "pinguicula",
     species: "",
     price: { small: "$10" },
     shortDescription: "A vigorous butterwort hybrid with plump mauve rosettes and vivid magenta flowers. Offered as small (~1.5 cm) for $10.",
@@ -77,6 +84,7 @@ const plants = [
 
   {
     name: "Korean Shark VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'Korean Shark'",
     price: { medium: "$15", large: "$20" },
     shortDescription: "A mutant of Korean Melody Shark. Retains the shark-like dentation but is larger, more vigorous, and has more robust petioles.",
@@ -89,6 +97,7 @@ const plants = [
 
   {
     name: "B52 Hybrid VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'B52 Hybrid'",
     price: { medium: "$15", large: "$20" },
     shortDescription: "Like a cracked out B52. Low-growing with gigantic, pink traps — a true giant and one of the coolest clones to come along in recent years.",
@@ -102,6 +111,7 @@ const plants = [
 
   {
     name: "Chinese Dumpling VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'Chinese Dumpling' · Rare Cultivar",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     bulkTiers: [
@@ -122,6 +132,7 @@ const plants = [
 
   {
     name: "B52 VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'B52'",
     price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     bulkTiers: [
@@ -140,6 +151,7 @@ const plants = [
 
   {
     name: "FTS Maroon Monster VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'FTS Maroon Monster' · ICPS Registered Cultivar",
     price: { small: "$10", specimen: "Inquire" },
     bulkTiers: [],
@@ -152,6 +164,7 @@ const plants = [
 
   {
     name: "Specimen Typical VFT",
+    category: "flytrap",
     species: "Dionaea muscipula · Typical",
     flatPrice: "$25",
     bulkTiers: [
@@ -169,6 +182,7 @@ const plants = [
 
   {
     name: "Red Piranha VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'Red Piranha' · ICPS Registered Cultivar",
     price: { small: "$10", medium: "$15" },
     shortDescription: "ICPS registered sawtooth cultivar with chili-pepper-red traps, jagged teeth, and a striking golden-green margin. A hobby classic since 1999.",
@@ -180,6 +194,7 @@ const plants = [
 
   {
     name: "Giant Traps VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'Giant Traps'",
     price: { small: "$10", medium: "$15", large: "$20" },
     bulkTiers: [
@@ -195,6 +210,7 @@ const plants = [
 
   {
     name: "FTS Towering Giant VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'FTS Towering Giant'",
     price: { small: "$10", medium: "$15", large: "$20" },
     bulkTiers: [
@@ -212,6 +228,7 @@ const plants = [
 
   {
     name: "Big Mouth VFT",
+    category: "flytrap",
     species: "Dionaea muscipula 'Big Mouth'",
     price: { small: "$10", medium: "$15", large: "$20" },
     shortDescription: "A stunning clone. Big Mouth produces large, low-slung traps with vivid red-purple interiors, extraordinarily long and shapely cilia, and a wide-open, flat profile unlike anything else in the hobby.",
@@ -227,6 +244,7 @@ const plants = [
 
   {
     name: "<em>Drosera binata</em> var. multifida extrema",
+    category: "drosera",
     species: "Drosera binata var. multifida extrema",
     priceTiers: [
       { label: "1 Division",  price: "$12" },
@@ -241,6 +259,7 @@ const plants = [
 
   {
     name: "<em>Stylidium debile</em> — Trigger Plant",
+    category: "oddities",
     species: "Stylidium debile",
     flatPrice: "$10",
     price: {},
@@ -257,6 +276,7 @@ const plants = [
 
   {
     name: "<em>Utricularia calycifida</em> — Established Clump",
+    category: "oddities",
     species: "Utricularia calycifida",
     flatPrice: "$20",
     price: {},
@@ -274,6 +294,7 @@ const plants = [
 
   {
     name: "<em>Utricularia blanchetii</em> — Rooted Plug",
+    category: "oddities",
     species: "Utricularia blanchetii",
     flatPrice: "$15",
     price: {},
@@ -289,6 +310,7 @@ const plants = [
 
   {
     name: "LED Grow Light with Stake",
+    category: "supplies",
     species: "Full Spectrum · Stake + Metal Base + AC Adapter · Built-In Timer",
     flatPrice: "$10",
     price: {},
@@ -304,6 +326,7 @@ const plants = [
 
   {
     name: "Beginner Kit",
+    category: "supplies",
     species: "Everything you need to get started",
     kitPlantPicker: true,
     priceTiers: [
@@ -319,6 +342,7 @@ const plants = [
 
   {
     name: "Nutricote 360 + Fluval Bug Bites Fertilizer Kit",
+    category: "supplies",
     species: "1 lb Nutricote 18-6-8 · 2 oz Bug Bites Pellets",
     flatPrice: "$15",
     price: {},
@@ -336,6 +360,7 @@ const plants = [
 
   {
     name: "Unknown Giant VFT",
+    category: "flytrap",
     species: "Dionaea muscipula · Unidentified Giant Clone",
     price: { small: "$10", medium: "$15" },
     shortDescription: "An unidentified giant clone that consistently outperforms many named cultivars: oversized traps, tall upright petioles, and outstanding vigor. Multiple available.",
@@ -353,6 +378,7 @@ const plants = [
 
   {
     name: "<em>Drosera adelae</em> 'Giant'",
+    category: "drosera",
     species: "Drosera adelae 'Giant'",
     priceTiers: [
       { label: "1 Division",  price: "$15" },
@@ -370,6 +396,7 @@ const plants = [
 
   {
     name: "<em>Drosera spatulata</em> × <em>ultramafica</em>",
+    category: "drosera",
     species: "Drosera spatulata × ultramafica",
     priceTiers: [
       { label: "1 Rosette",  price: "$15" },
@@ -384,6 +411,7 @@ const plants = [
 
   {
     name: "<em>Drosera intermedia</em>",
+    category: "drosera",
     species: "Drosera intermedia",
     flatPrice: "$20",
     price: {},
@@ -396,6 +424,7 @@ const plants = [
 
   {
     name: "<em>Nepenthes</em> 'Lady Luck'",
+    category: "nepenthes",
     species: "Nepenthes 'Lady Luck'",
     flatPrice: "$15",
     price: {},
@@ -408,6 +437,7 @@ const plants = [
 
   {
     name: "<em>Drosera capensis</em> 'Peppermint'",
+    category: "drosera",
     species: "Drosera capensis 'Peppermint'",
     flatPrice: "$30",
     price: {},
@@ -420,6 +450,7 @@ const plants = [
 
   {
     name: "<em>Nepenthes</em> 'Gaya'",
+    category: "nepenthes",
     species: "Nepenthes 'Gaya'",
     flatPrice: "$15",
     price: {},
@@ -432,6 +463,7 @@ const plants = [
 
   {
     name: "<em>Utricularia alpina</em> — Mature Specimen",
+    category: "oddities",
     species: "Utricularia alpina",
     flatPrice: "$25",
     price: {},

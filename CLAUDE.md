@@ -24,10 +24,12 @@ GitHub Pages redeploys automatically within ~30 seconds of a push.
 ## File Structure
 
 ```
-index.html        — page structure and modal/rendering JS (rarely needs editing)
-style.css         — all styling (rarely needs editing)
+index.html        — page structure, section/jump-bar rendering, modal + cart JS (rarely needs editing)
+style.css         — all styling; design tokens live in :root at the top (rarely needs editing)
 plants.js         — ALL inventory data lives here (edit this to update the site)
-images/           — plant photos (JPG, web-optimized at 1200px wide)
+sales.js          — time-boxed promotions and discount codes
+images/           — full-size plant photos (JPG, 1200px wide) used in the detail modal
+images/thumbs/    — 700px card thumbnails, same filenames (regenerate when adding a photo)
 CLAUDE.md         — this file
 ```
 
@@ -37,6 +39,7 @@ CLAUDE.md         — this file
 {
   name:        "Common Name",
   species:     "Genus species 'Clone'",
+  category:    "flytrap",   // flytrap | drosera | pinguicula | nepenthes | oddities | supplies
   price:       { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
   description: "Short description shown on card and in modal.",
   image:       "images/main-photo.jpg",   // card thumbnail
@@ -57,7 +60,26 @@ CLAUDE.md         — this file
    ```
    sips -s format jpeg --resampleWidth 1200 "input.HEIC" --out "images/output.jpg"
    ```
-3. Add the image path to `plants.js`
+3. Generate the card thumbnail (same filename, in `images/thumbs/`):
+   ```
+   sips -s format jpeg -s formatOptions 78 --resampleWidth 700 "images/output.jpg" --out "images/thumbs/output.jpg"
+   ```
+   Cards fall back to the full-size photo if the thumb is missing, so this is a perf nicety, not a blocker.
+4. Add the image path to `plants.js` (always the `images/` path; the code derives the thumb path)
+
+Card videos (`video:` field) should be re-encoded before committing so they stay under ~2 MB:
+```
+ffmpeg -i input.mp4 -vf "scale=540:-2" -c:v libx264 -crf 27 -preset slow -pix_fmt yuv420p -movflags +faststart -an images/output.mp4
+```
+The card shows the plant's `image` as a poster and only loads the video once the card scrolls into view.
+
+## Sale Page Layout
+
+The sale page groups cards into sections by `category`. Section titles, order, and
+jump-bar chip labels are defined in the `SECTIONS` array near the top of the inline
+script in `index.html`. Plants with an unknown or missing category land in a trailing
+"Other" section, so a typo never hides a listing. On phones (≤640px) every section
+except the first starts collapsed; tapping a section header or a jump chip expands it.
 
 ## Contact Info on Site
 
