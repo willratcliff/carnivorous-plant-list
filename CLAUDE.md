@@ -18,6 +18,9 @@ This project is regularly updated via Claude Code. Common tasks include:
 - **Marking plants sold** — change `status` to `"sold"` in `plants.js`
 - **Committing and pushing** — commit via Claude Code, push via GitHub Desktop
 
+Other pages: `care.html` (care guide), `dormancy.html` (dormancy essay), `nutricote.html`
+(trap-feeding method). The Reviews and Trading pages were removed in September 2026.
+
 After changes are committed, the user pushes via **GitHub Desktop**.
 GitHub Pages redeploys automatically within ~30 seconds of a push.
 
