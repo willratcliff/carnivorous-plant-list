@@ -5,7 +5,7 @@ two places:
 
 1. **Google Sheet** "Phamcliff No-Dormancy Experiment" in Will's Drive. The
    Apps Script (`../apps-script.gs`) creates it on first use and appends one
-   row per participant, with a check-in date 120 days out.
+   row per participant, with a first check-in date one year out (Will is most curious a year or two later).
 2. **`participants.csv`** in this folder: a local, gitignored mirror for
    working offline or with Claude Code. It is never committed (the site repo
    is public).

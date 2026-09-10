@@ -14,7 +14,7 @@ var EXPERIMENT_HEADERS = [
   "Logged", "Name", "Email", "City", "State", "Growing setup", "Setup notes",
   "Order subtotal", "Check-in due", "Checked in?", "How is it doing?"
 ];
-var CHECK_IN_DAYS = 120;
+var CHECK_IN_DAYS = 365;   // first check-in; Will is most curious a year or two out
 
 function doPost(e) {
   try {
@@ -36,7 +36,7 @@ function doPost(e) {
           "About the free no-dormancy division: it's a typical Venus flytrap I've grown " +
           "without a winter rest for three years. Pot it up like any other flytrap, keep it " +
           "warm and under as much light as you can give it, and skip dormancy this winter. " +
-          "I'll email in a few months to ask how it's doing. If it struggles, that's useful " +
+          "I'll check in down the road, probably a year or two out, to ask how it's doing. If it struggles, that's useful " +
           "to know too!\n\n";
       }
 

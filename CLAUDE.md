@@ -97,7 +97,7 @@ A featured block at the top of the sale page offers a free division of the
 no-dormancy Target clone with any order. Customers opt in via the block's
 button or the checkbox in the cart, choose a growing setup, and the order email
 gains a `No-Dormancy Experiment: YES` block. The Apps Script logs each
-participant to a Google Sheet with a check-in date 120 days out; see
+participant to a Google Sheet with a first check-in date one year out; see
 `experiment/README.md` for the local mirror and check-in workflow.
 
 - **Turn it off:** set `active: false` in `window.EXPERIMENT` in `sales.js`
