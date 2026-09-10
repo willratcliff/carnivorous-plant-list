@@ -29,7 +29,7 @@ style.css         — all styling; design tokens live in :root at the top (rarel
 plants.js         — ALL inventory data lives here (edit this to update the site)
 sales.js          — time-boxed promotions, discount codes, and the EXPERIMENT toggle
 apps-script.gs    — Google Apps Script the cart posts to (emails + experiment sheet); redeploy after edits
-experiment/       — no-dormancy experiment tracker (README + gitignored participants.csv)
+experiment/       — flytrap citizen-science tracker (README + gitignored participants.csv)
 images/           — full-size plant photos (JPG, 1200px wide) used in the detail modal
 images/thumbs/    — 700px card thumbnails, same filenames (regenerate when adding a photo)
 CLAUDE.md         — this file
@@ -91,12 +91,13 @@ except the first starts collapsed; tapping a section header or a jump chip expan
 - Reddit: u/Berberis — https://www.reddit.com/user/Berberis/
 - eBay: thepitcherpeople — https://www.ebay.com/usr/thepitcherpeople
 
-## No-Dormancy Experiment Bonus
+## Flytrap Citizen-Science Bonus
 
 A featured block at the top of the sale page offers a free division of the
 no-dormancy Target clone with any order. Customers opt in via the block's
-button or the checkbox in the cart, choose a growing setup, and the order email
-gains a `No-Dormancy Experiment: YES` block. The Apps Script logs each
+button or the checkbox in the cart, choose a regime (dormancy or no dormancy;
+a mix is the point) and a growing setup, and the order email gains a
+`Citizen Science Experiment: YES` block. The Apps Script logs each
 participant to a Google Sheet with a first check-in date one year out; see
 `experiment/README.md` for the local mirror and check-in workflow.
 

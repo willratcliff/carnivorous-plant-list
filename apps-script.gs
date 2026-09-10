@@ -1,7 +1,7 @@
 // Phamcliff Farm order handler (Google Apps Script, deployed as a web app).
 //
 // Receives the JSON the cart posts, emails Will and the customer, and, when the
-// customer opted into the no-dormancy experiment, appends a row to a tracking
+// customer opted into the citizen-science flytrap experiment, appends a row to a tracking
 // spreadsheet so they can be checked on later.
 //
 // After editing this file: paste it into the Apps Script project, then
@@ -9,9 +9,9 @@
 // The first run that touches the spreadsheet will ask you to authorize
 // the Sheets/Drive scope once.
 
-var EXPERIMENT_SHEET_NAME = "Phamcliff No-Dormancy Experiment";
+var EXPERIMENT_SHEET_NAME = "Phamcliff Flytrap Citizen Science";
 var EXPERIMENT_HEADERS = [
-  "Logged", "Name", "Email", "City", "State", "Growing setup", "Setup notes",
+  "Logged", "Name", "Email", "City", "State", "Regime", "Growing setup", "Setup notes",
   "Order subtotal", "Check-in due", "Checked in?", "How is it doing?"
 ];
 var CHECK_IN_DAYS = 365;   // first check-in; Will is most curious a year or two out
@@ -33,11 +33,11 @@ function doPost(e) {
 
       if (data.experiment && data.experiment.optIn) {
         confirmation +=
-          "About the free no-dormancy division: it's a typical Venus flytrap I've grown " +
-          "without a winter rest for three years. Pot it up like any other flytrap, keep it " +
-          "warm and under as much light as you can give it, and skip dormancy this winter. " +
-          "I'll check in down the road, probably a year or two out, to ask how it's doing. If it struggles, that's useful " +
-          "to know too!\n\n";
+          "About the free division: it's a typical Venus flytrap I've grown without a winter " +
+          "rest for three years. Pot it up like any other flytrap and give it as much light as " +
+          "you can. Whichever regime you picked (dormancy or no dormancy), stick with it, and " +
+          "I'll check in over the coming years to hear how it did. If it struggles, that's " +
+          "useful to know too!\n\n";
       }
 
       confirmation +=
@@ -102,6 +102,7 @@ function logExperimentParticipant(ex) {
     ex.email || "",
     ex.city || "",
     ex.state || "",
+    ex.regime || "",
     ex.setup || "",
     ex.notes || "",
     typeof ex.subtotal === "number" ? ex.subtotal : "",

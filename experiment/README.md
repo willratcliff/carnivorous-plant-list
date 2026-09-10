@@ -1,23 +1,25 @@
-# No-Dormancy Experiment tracker
+# Flytrap citizen-science experiment tracker
 
-Customers who tick the free Target-clone division at checkout are logged in
-two places:
+Customers who tick the free Target-clone division at checkout choose a regime
+(dormancy or no dormancy) and agree to share results over the coming years.
+The point is to compare regimes across many growers, so a mix is welcome.
+Participants are logged in two places:
 
-1. **Google Sheet** "Phamcliff No-Dormancy Experiment" in Will's Drive. The
+1. **Google Sheet** "Phamcliff Flytrap Citizen Science" in Will's Drive. The
    Apps Script (`../apps-script.gs`) creates it on first use and appends one
    row per participant, with a first check-in date one year out (Will is most curious a year or two later).
 2. **`participants.csv`** in this folder: a local, gitignored mirror for
    working offline or with Claude Code. It is never committed (the site repo
    is public).
 
-Every order email also carries a `No-Dormancy Experiment: YES` block, so the
+Every order email also carries a `Citizen Science Experiment: YES` block, so the
 Gmail inbox is the fallback source of truth if the sheet write ever fails.
 
 ## Filling the local CSV
 
 - Export the Sheet as CSV and replace `participants.csv`, or
 - ask Claude Code to "sync experiment participants": it searches Gmail for
-  `"No-Dormancy Experiment: YES"` order emails and appends any rows that are
+  `"Citizen Science Experiment: YES"` order emails and appends any rows that are
   not already in the CSV (matched on email + logged date).
 
 ## Checking in

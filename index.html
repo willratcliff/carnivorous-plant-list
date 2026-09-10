@@ -59,13 +59,13 @@
   <!-- ── Featured: no-dormancy experiment bonus (shown when window.EXPERIMENT.active) ── -->
   <section class="feature-card" id="experiment-feature" hidden>
     <div class="feature-photos">
-      <img src="images/thumbs/target-clone-tray.jpg" alt="Two nursery trays of Venus flytraps, all divisions of one no-dormancy Target clone" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/target-clone-tray.jpg';">
-      <img class="feature-photo-2" src="images/thumbs/target-clone-closeup.jpg" alt="Close-up of the no-dormancy flytrap divisions, traps open and healthy" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/target-clone-closeup.jpg';">
+      <img src="images/thumbs/target-clone-tray.jpg" alt="A nursery tray of Venus flytraps, every one a division of a single no-dormancy Target clone" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/target-clone-tray.jpg';">
+      <img class="feature-photo-2" src="images/thumbs/target-clone-closeup.jpg" alt="Close-up of the same tray, traps open and healthy" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/target-clone-closeup.jpg';">
     </div>
     <div class="feature-body">
-      <p class="feature-eyebrow">Limited-time bonus &middot; A small experiment</p>
+      <p class="feature-eyebrow">Limited-time bonus &middot; Citizen science</p>
       <h2 class="feature-title">Free with any order: a division of my no-dormancy flytrap</h2>
-      <p class="feature-text">Three years ago I bought a typical Venus flytrap at Target and stopped giving it a winter rest, fully expecting it to decline. It hasn't. That one plant has thrown roughly 60 divisions since, and both of these trays descend from it. For a limited time I'll tuck a free division into any order if you opt in. All I'd ask is that you skip dormancy and grow it under whatever conditions you have (windowsill, lights, greenhouse, anything). A year or two out I'll check in, and I'd love to hear how it did. The backstory is in <a href="dormancy.html">the dormancy post</a>.</p>
+      <p class="feature-text">Three years ago I bought a typical Venus flytrap at Target and stopped giving it a winter rest, fully expecting it to decline. It hasn't. That one plant has thrown roughly 60 divisions since, and every plant in this tray descends from it. For a limited time I'll tuck a free division into any order if you opt in. Here's the citizen-science part: I have no stake in which way you go, and a mix is actually better, since the more growers and the more regimes, the more we can learn (statistical power, and all that). Pick one, dormancy or no dormancy, stick with it, and be willing to share how the plant does over the coming years when I check in. The backstory is in <a href="dormancy.html">the dormancy post</a>.</p>
       <div class="feature-actions">
         <button type="button" class="feature-btn" id="experiment-feature-btn">Count me in</button>
         <span class="feature-status" id="experiment-feature-status">Added to your order at checkout.</span>
@@ -233,9 +233,16 @@
       <div class="cart-experiment" id="cart-experiment" style="display:none;">
         <label class="exp-optin-label">
           <input type="checkbox" id="exp-optin">
-          <span><strong>Add a free division of the no-dormancy Target clone.</strong> I'll grow it without dormancy, and Will can email me down the road, a year or two out, to ask how it's doing.</span>
+          <span><strong>Add a free division of the Target clone and join the citizen-science experiment.</strong> I'll pick one regime, stick with it, and share how the plant does over the coming years when Will checks in.</span>
         </label>
         <div class="exp-fields" id="exp-fields" style="display:none;">
+          <label class="cart-field-label" for="exp-regime">Which regime will you use?</label>
+          <select id="exp-regime" class="cart-addr-field">
+            <option value="">Choose one</option>
+            <option value="No dormancy">No dormancy (grow it straight through winter)</option>
+            <option value="Dormancy">Dormancy (give it a winter rest)</option>
+            <option value="Undecided">Haven't decided yet</option>
+          </select>
           <label class="cart-field-label" for="exp-setup">Where will it live?</label>
           <select id="exp-setup" class="cart-addr-field">
             <option value="">Choose one</option>
@@ -951,6 +958,7 @@
       var expCartBlock = document.getElementById('cart-experiment');
       var expOptIn     = document.getElementById('exp-optin');
       var expFields    = document.getElementById('exp-fields');
+      var expRegime    = document.getElementById('exp-regime');
       var expSetup     = document.getElementById('exp-setup');
       var expNotes     = document.getElementById('exp-notes');
 
@@ -1275,9 +1283,11 @@
 
         var experiment = null;
         if (expActive && experimentOn) {
-          if (!expSetup.value) { alert('Where will the no-dormancy flytrap live? Pick one in the cart, or untick the free division.'); expSetup.focus(); return; }
+          if (!expRegime.value) { alert('Which regime will you use for the free flytrap? Pick one in the cart, or untick the free division.'); expRegime.focus(); return; }
+          if (!expSetup.value) { alert('Where will the free flytrap live? Pick one in the cart, or untick the free division.'); expSetup.focus(); return; }
           experiment = {
             optIn: true,
+            regime: expRegime.value,
             setup: expSetup.value,
             notes: expNotes.value.trim(),
             name: addrName.value.trim(),
@@ -1286,10 +1296,11 @@
             state: addrState.value,
             subtotal: t.sub
           };
-          body += '\n\n──────────────────\nNo-Dormancy Experiment: YES (free Target clone division)' +
+          body += '\n\n──────────────────\nCitizen Science Experiment: YES (free Target clone division)' +
+            '\nRegime: ' + experiment.regime +
             '\nGrowing setup: ' + experiment.setup +
             (experiment.notes ? '\nSetup notes: ' + experiment.notes : '') +
-            '\nWill may email a year or two down the road to ask how the plant is doing.';
+            '\nWill may check in over the coming years to ask how the plant is doing.';
         }
         body += '\n\nThanks!';
 
@@ -1312,6 +1323,7 @@
           addrState.value = '';
           addrZip.value = '';
           cartComments.value = '';
+          expRegime.value = '';
           expSetup.value = '';
           expNotes.value = '';
           setExperiment(false);
