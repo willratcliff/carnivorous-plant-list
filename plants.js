@@ -403,7 +403,7 @@ const plants = [
       { label: "Division", file: "images/d-adelae-giant.jpg" },
       { label: "Community Pots", file: "images/d-adelae-giant-2.jpg" },
     ],
-    status: "new",
+    status: "sold",
   },
 
   {
