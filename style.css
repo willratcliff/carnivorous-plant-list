@@ -1522,6 +1522,9 @@ footer {
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: 0;
 }
+.feature-card[hidden] {
+  display: none;
+}
 .feature-card > * {
   background: var(--surface);
   border: 1px solid var(--line);
