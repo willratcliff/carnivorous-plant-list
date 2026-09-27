@@ -26,6 +26,17 @@ window.EXPERIMENT = {
   ends: null,
 };
 
+// ── Frost bonus: a free U. calycifida or S. debile with every order ─
+// These live outside and won't survive a freeze, so until the first frost
+// every order gets one free, customer's pick (or "No thanks"). Stacks with
+// the $50+ and $100+ order rewards. Set `active` to false after the first
+// frost (or set `ends` to an ISO 8601 date with offset).
+window.FROST_BONUS = {
+  active: true,
+  ends: null,
+  choices: ['Utricularia calycifida', 'Stylidium debile'],
+};
+
 // ── Helpers consumed by the cart and card-rendering code ────────────
 window.SaleHelpers = {
   activeSales: function (now) {
@@ -52,6 +63,13 @@ window.SaleHelpers = {
       if (actives[i].plant === plantName) return actives[i];
     }
     return null;
+  },
+
+  frostBonusActive: function (now) {
+    var cfg = window.FROST_BONUS;
+    if (!cfg || !cfg.active) return false;
+    if (cfg.ends && (now || new Date()) > new Date(cfg.ends)) return false;
+    return true;
   },
 
   // Format the sale end date in the farm's local timezone (ET) so every
@@ -93,6 +111,29 @@ window.DISCOUNT_CODES = [];
 
     banner.innerHTML = inner;
     anchor.parentNode.insertBefore(banner, anchor.nextSibling);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', render);
+  } else {
+    render();
+  }
+}());
+
+// ── Frost bonus line in the Order Rewards banner (every page) ───────
+(function () {
+  function render() {
+    if (!window.SaleHelpers.frostBonusActive()) return;
+    var banners = document.querySelectorAll('.rewards-banner');
+    for (var i = 0; i < banners.length; i++) {
+      var host = banners[i].querySelector('.rewards-banner-inner') || banners[i];
+      if (host.querySelector('.frost-bonus-line')) continue;
+      var line = document.createElement('div');
+      line.className = 'frost-bonus-line';
+      line.innerHTML = '\u2744\ufe0f <strong>Until the first frost:</strong> a free <em>U. calycifida</em> or ' +
+        '<em>S. debile</em> with every order';
+      host.insertBefore(line, host.firstChild);
+    }
   }
 
   if (document.readyState === 'loading') {

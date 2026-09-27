@@ -142,6 +142,7 @@ h1, h2, h3 {
   border-bottom: 1px solid #a5d6a7;
 }
 .rewards-banner strong { color: #1b5e20; }
+.frost-bonus-line { margin-bottom: 3px; }
 
 /* ── Sale banner (rendered by sales.js when a sale is active) ── */
 .sale-banner {

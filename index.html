@@ -43,7 +43,7 @@
   <div class="rewards-banner">
     <div class="rewards-banner-inner">
       <strong>Order Rewards</strong> (tiers stack!) &nbsp;—&nbsp;
-      🪴 $50+: pick a free small flytrap &nbsp;·&nbsp;
+      🪴 $50+: pick a free small flytrap or ping &nbsp;·&nbsp;
       🚚 $100+: free shipping
     </div>
   </div>
@@ -219,8 +219,12 @@
       <p id="cart-ship-note" class="cart-ship-note"></p>
       <div id="cart-rewards" class="cart-rewards" style="display:none;">
         <div class="rewards-title">Order Rewards</div>
+        <div id="reward-frost" class="reward-row" style="display:none;">
+          <span>❄️ Pick your free plant (every order, until the first frost):</span>
+          <select id="reward-frost-select" class="cart-addr-field" style="margin-top:4px;font-size:0.85rem;"></select>
+        </div>
         <div id="reward-flytrap" class="reward-row" style="display:none;">
-          <span>🪴 Pick your free small flytrap:</span>
+          <span>🪴 Pick your free small flytrap or ping:</span>
           <select id="reward-flytrap-select" class="cart-addr-field" style="margin-top:4px;font-size:0.85rem;"></select>
         </div>
         <div id="reward-shipping" class="reward-row" style="display:none;">
@@ -326,7 +330,7 @@
     </div>
   </div>
 
-  <script src="sales.js?v=3"></script>
+  <script src="sales.js?v=4"></script>
   <script src="plants.js?v=2"></script>
   <script>
     (function () {
@@ -942,6 +946,21 @@
       cartOverlay.addEventListener('click', closeCart);
 
       // ── No-Dormancy Experiment opt-in ──────────────────────────
+      // Frost bonus (sales.js): a free U. calycifida or S. debile with every order.
+      var frostActive = !!(window.SaleHelpers && window.SaleHelpers.frostBonusActive &&
+                           window.SaleHelpers.frostBonusActive());
+      var frostSelect = document.getElementById('reward-frost-select');
+      if (frostActive) {
+        var frostNames = { 'Utricularia calycifida': ' (bladderwort)', 'Stylidium debile': ' (trigger plant)' };
+        frostSelect.innerHTML = '<option value="">— Choose your free plant —</option>';
+        window.FROST_BONUS.choices.concat(['No thanks']).forEach(function (c) {
+          var opt = document.createElement('option');
+          opt.value = c;
+          opt.textContent = c + (frostNames[c] || '');
+          frostSelect.appendChild(opt);
+        });
+      }
+
       // One flag drives both the featured block and the cart checkbox.
       var experimentOn = false;
       var expActive = (function () {
@@ -1124,16 +1143,18 @@
         var rewardProgress  = document.getElementById('reward-progress');
         var rewardSelect    = document.getElementById('reward-flytrap-select');
 
+        var hasFrost     = frostActive && cart.length > 0;
         var hasFlytrap   = t.sub >= 50;
         var hasFreeShip  = t.sub >= 100;
 
+        document.getElementById('reward-frost').style.display = hasFrost ? '' : 'none';
         rewardFlytrap.style.display   = hasFlytrap   ? '' : 'none';
         rewardShipping.style.display  = hasFreeShip  ? '' : 'none';
-        rewardsEl.style.display = (hasFlytrap || hasFreeShip || t.sub > 0) ? '' : 'none';
+        rewardsEl.style.display = (hasFrost || hasFlytrap || hasFreeShip || t.sub > 0) ? '' : 'none';
 
         // Progress hints
         var hints = [];
-        if (!hasFlytrap && t.sub > 0) hints.push('$' + (50 - t.sub).toFixed(2) + ' more to pick a free small flytrap');
+        if (!hasFlytrap && t.sub > 0) hints.push('$' + (50 - t.sub).toFixed(2) + ' more to pick a free small flytrap or ping');
         else if (!hasFreeShip) hints.push('$' + (100 - t.sub).toFixed(2) + ' more for free shipping');
         rewardProgress.textContent = hints.length ? '→ Add ' + hints[0] : '';
 
@@ -1142,7 +1163,7 @@
           var smallPlants = plants.filter(function (p) {
             return p.price && p.price.small && p.status !== 'unavailable' && p.status !== 'sold';
           });
-          rewardSelect.innerHTML = '<option value="">— Choose your free flytrap —</option>';
+          rewardSelect.innerHTML = '<option value="">— Choose your free flytrap or ping —</option>';
           smallPlants.forEach(function (p) {
             var opt = document.createElement('option');
             opt.value = p.name;
@@ -1230,10 +1251,15 @@
         var selectedPayment = getSelectedPayment();
         if (!selectedPayment) { alert('Please select a payment method.'); return; }
         var t = calcTotals();
+        var frostChoice = '';
+        if (frostActive) {
+          frostChoice = frostSelect.value;
+          if (!frostChoice) { alert('Please pick your free plant (U. calycifida or S. debile) in the Order Rewards section, or choose "No thanks".'); frostSelect.focus(); return; }
+        }
         var rewardFlytrapChoice = '';
         if (t.sub >= 50) {
           rewardFlytrapChoice = document.getElementById('reward-flytrap-select').value;
-          if (!rewardFlytrapChoice) { alert('Please pick your free small flytrap from the rewards section.'); return; }
+          if (!rewardFlytrapChoice) { alert('Please pick your free small flytrap or ping from the rewards section.'); return; }
         }
         var lines = cart.map(function (item) {
           return '\u2022 ' + item.name + (item.size ? ' (' + item.size + ')' : '') +
@@ -1273,7 +1299,8 @@
         }
         if (saleSummary) body += '\n\n──────────────────\nSale Applied:' + saleSummary;
         var rewardLines = [];
-        if (t.sub >= 50)  rewardLines.push('• Free small flytrap: ' + rewardFlytrapChoice);
+        if (frostActive)  rewardLines.push('• Free plant (every order, until first frost): ' + frostChoice);
+        if (t.sub >= 50)  rewardLines.push('• Free small flytrap/ping: ' + rewardFlytrapChoice);
         if (t.sub >= 100) rewardLines.push('• Free shipping');
         if (rewardLines.length) body += '\n\n──────────────────\nOrder Rewards:\n' + rewardLines.join('\n');
         var comments = cartComments.value.trim();
@@ -1321,6 +1348,7 @@
           addrState.value = '';
           addrZip.value = '';
           cartComments.value = '';
+          frostSelect.value = '';
           expRegime.value = '';
           expSetup.value = '';
           expNotes.value = '';

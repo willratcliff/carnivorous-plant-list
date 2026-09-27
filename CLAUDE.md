@@ -94,6 +94,23 @@ except the first starts collapsed; tapping a section header or a jump chip expan
 - Reddit: u/Berberis — https://www.reddit.com/user/Berberis/
 - eBay: thepitcherpeople — https://www.ebay.com/usr/thepitcherpeople
 
+## Order Rewards and the Frost Bonus
+
+The cart's Order Rewards section stacks three tiers; picks are written into the
+order email under "Order Rewards" (no Apps Script change needed):
+
+- **Every order (fall 2026, until the first frost):** a free *Utricularia calycifida*
+  or *Stylidium debile*, or "No thanks". Required pick in the cart. Driven by
+  `window.FROST_BONUS` in `sales.js`, which also adds the "Until the first frost"
+  line to the Order Rewards banner on every page. **Turn it off:** set
+  `active: false` (or set `ends` to an ISO date with offset).
+- **$50+:** a free small flytrap or ping. The dropdown lists every available plant
+  with a `small` price in `plants.js` (so Pinguicula count).
+- **$100+:** free shipping (`calcTotals` in `index.html`).
+
+The static banner text for the $50/$100 tiers lives in `index.html`, `care.html`,
+`dormancy.html` and `nutricote.html`.
+
 ## Flytrap Citizen-Science Bonus
 
 A featured block at the top of the sale page offers a free division of the
