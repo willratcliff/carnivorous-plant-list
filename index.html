@@ -1299,7 +1299,7 @@
         }
         if (saleSummary) body += '\n\n──────────────────\nSale Applied:' + saleSummary;
         var rewardLines = [];
-        if (frostActive)  rewardLines.push('• Free plant (every order, until first frost): ' + frostChoice);
+        if (frostActive && frostChoice !== 'No thanks') rewardLines.push('• Free plant: ' + frostChoice);
         if (t.sub >= 50)  rewardLines.push('• Free small flytrap/ping: ' + rewardFlytrapChoice);
         if (t.sub >= 100) rewardLines.push('• Free shipping');
         if (rewardLines.length) body += '\n\n──────────────────\nOrder Rewards:\n' + rewardLines.join('\n');
