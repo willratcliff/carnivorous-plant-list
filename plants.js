@@ -7,7 +7,8 @@
 //    name        : Common name shown on the card
 //    species     : Scientific name (shown in italic below the name)
 //    category    : Section the card is filed under. One of:
-//                    "flytrap" · "drosera" · "pinguicula" · "nepenthes" · "oddities" · "supplies"
+//                    "cephalotus" · "flytrap" · "drosera" · "pinguicula" · "nepenthes" · "oddities" · "supplies"
+//                  ("cephalotus" is special: it drives the showcase block, see the entry below)
 //                  (anything else, or missing, lands in an "Other" section)
 //    price       : Object with size tiers — omit or set to "" to hide a size
 //                    { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" }
@@ -27,6 +28,55 @@
 // ================================================================
 
 const plants = [
+
+  // ── Cephalotus ──────────────────────────────────────────────────
+  // Rendered as its own showcase block at the top of the shop (the
+  // #cephalotus section in index.html), not as a normal card.
+  //   sizes   : one entry per buyable option. `photo` is an example plant
+  //             at that size. `noClone: true` hides the clone picker (e.g. for
+  //             a no-ID option); add `note: "..."` to show a line under the sizes.
+  //             Add `soldOut: true` to grey a size out.
+  //   clones  : add `soldOut: true` to grey a clone out.
+  //   gallery : photos for the swipeable strip under the clones (`wide: true` for landscape shots).
+  //   status  : "sold" or "unavailable" disables Add to Cart for the whole block.
+  {
+    name: "Cephalotus follicularis",
+    category: "cephalotus",
+    species: "Albany pitcher plant",
+    sizes: [
+      { label: "Small",        price: 75,  photo: "images/ceph-small.jpg"  },
+      { label: "Medium",       price: 100, photo: "images/ceph-medium.jpg" },
+      { label: "Large",        price: 125, photo: "images/ceph-large.jpg"  },
+    ],
+    defaultSize: "Medium",
+    clones: [
+      { name: "Anthracite", parents: "“Coalmine Beach” × ‘OG Black’" },
+      { name: "Behemoth",   parents: "“UC Davis” × ‘OG Black’" },
+      { name: "Bogjewels",  parents: "‘OG Black’ × “Julie Jones”" },
+      { name: "Ducbog",     parents: "“UC Davis” × ‘OG Black’" },
+      { name: "Ogre",       parents: "‘OG Black’ × “Coalmine Beach”" },
+    ],
+    mixes: [
+      { name: "Rockwool",  note: "my pick" },
+      { name: "Peat/sand" },
+    ],
+    video: "images/ceph-backyard-video.mp4",
+    image: "images/ceph-backyard-video-poster.jpg",
+    gallery: [
+      { file: "images/ceph-dark-in-hand.jpg",  alt: "A near-black Cephalotus held up over a tray of green Venus flytraps" },
+      { file: "images/ceph-rows-flytraps.jpg", wide: true, alt: "Rows of Cephalotus under grow lights, flytraps at the edge of the shelf" },
+      { file: "images/ceph-red-lid.jpg",       alt: "A Cephalotus with one bright red lid, held over flytraps" },
+      { file: "images/ceph-dark-clump.jpg",    alt: "A dense, dark, hairy clump of Cephalotus pitchers" },
+      { file: "images/ceph-backyard.jpg",      alt: "A dark Cephalotus held up outdoors against a green backyard" },
+      { file: "images/ceph-pitcher-side.jpg",  alt: "Side view of a fat Cephalotus pitcher with rows of plants behind it" },
+      { file: "images/ceph-rows-hairy.jpg",    wide: true, alt: "Shelf of Cephalotus under lights, the hairy pitchers in sharp focus" },
+      { file: "images/ceph-pink-lid.jpg",      alt: "Cephalotus with a pink, striped lid" },
+      { file: "images/ceph-red-rosette.jpg",   alt: "A red-flushed Cephalotus in a 2.5 inch pot" },
+      { file: "images/ceph-young-hairy.jpg",   alt: "A young, very hairy Cephalotus seen from above" },
+      { file: "images/ceph-rockwool-tray.jpg", alt: "Small Cephalotus growing in rockwool cubes" },
+    ],
+    status: "new",
+  },
 
   {
     name: "Pinguicula debbertiana",
@@ -313,7 +363,6 @@ const plants = [
     shortDescription: "A Brazilian bladderwort that buries its own pot under a cloud of pale lilac flowers on wiry, dark scapes. Rooted plugs, $15 each.",
     description: "Up for sale are rooted plugs of <em>Utricularia blanchetii</em>, a terrestrial bladderwort from Brazil and one of the most floriferous plants in the genus. In full bloom the mother pots carry dozens of flower stalks at once, the whole thing hovering in a haze of pale lilac and white flowers held on thin, dark, wiry scapes well above a mat of grassy leaves. Buyers receive a rooted plug taken from established stock, not a blooming pot.\n\nWHY U. BLANCHETII?\nMost bladderworts flower politely. Blanchetii flowers like it is trying to prove something. A settled pot will throw scape after scape until the leaves disappear entirely under the display, and each small flower carries a delicate purple veining on the lower lip that is worth getting close to see. Below the surface it is doing the real work: the substrate is threaded with stolons studded with bladder traps, tiny suction bulbs that fire in under a millisecond to catch protozoa and other soil microfauna.\n\nGROWING\nEasy. Grow it in peat or a peat/sand mix, sit the pot in a tray of mineral-free water (distilled, RO, or rain), and give it bright light from a window or under grow lights. It spreads steadily through the medium and will fill a pot on its own. Plugs establish fast and typically start flowering once they have taken hold.",
     image: "images/u-blanchetii.jpg",
-    video: "images/u-blanchetii-video.mp4",
     images: [
       { label: "In Bloom", file: "images/u-blanchetii.jpg" },
     ],
@@ -321,15 +370,42 @@ const plants = [
   },
 
   {
+    name: "<em>Utricularia appendiculata</em> — Rooted Plug",
+    category: "oddities",
+    species: "Utricularia appendiculata",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A terrestrial bladderwort from the Sphagnum bogs of tropical Africa, and the only species in its own section of the genus. Rooted plugs, $15 each.",
+    description: "Up for sale are rooted plugs of <em>Utricularia appendiculata</em>, a terrestrial bladderwort from tropical Africa and Madagascar, where it grows in Sphagnum bogs and boggy grassland. It is a bit of a taxonomic loner: Peter Taylor gave it a section all its own, <em>Oliveria</em>, and it is still the only species in it. Buyers receive a rooted plug taken from established stock.\n\nGROWING\nSame easy routine as <em>U. blanchetii</em>: peat or a peat/sand mix, the pot sitting in a tray of mineral-free water (distilled, RO, or rain), and bright light from a window or under grow lights.",
+    image: "images/u-appendiculata.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "<em>Utricularia prehensilis</em> — Rooted Plug",
+    category: "oddities",
+    species: "Utricularia prehensilis",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A terrestrial bladderwort from the marshes and bogs of tropical and southern Africa. Rooted plugs, $15 each.",
+    description: "Up for sale are rooted plugs of <em>Utricularia prehensilis</em>, a terrestrial bladderwort native to tropical and southern Africa, where it grows in marshes, bogs, and swamps. Like the other terrestrial bladderworts, the traps live underground: tiny bladders along the stolons that catch soil microfauna. Buyers receive a rooted plug taken from established stock.\n\nGROWING\nSame easy routine as <em>U. blanchetii</em>: peat or a peat/sand mix, the pot sitting in a tray of mineral-free water (distilled, RO, or rain), and bright light from a window or under grow lights.",
+    image: "images/u-prehensilis.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
     name: "LED Grow Light with Stake",
     category: "supplies",
-    species: "Full Spectrum · Stake + Metal Base + AC Adapter · Built-In Timer",
+    species: "Full Spectrum · 400+ PPFD at 1″ · Stake + Metal Base + AC Adapter · Built-In Timer",
     flatPrice: "$10",
     price: {},
-    shortDescription: "A self-contained grow light for one or two plants. Comes complete with a telescoping stake, a metal base you can stand a pot on, an AC adapter, and a built-in 12h on / 12h off timer. $10.",
-    description: "This compact LED grow light is a simple, self-contained lighting setup for a Venus flytrap or two, and it comes with everything you need. In the box: a telescoping stake that inserts directly into the pot, a weighted metal base you can set a potted plant on top of, an AC adapter, and a built-in timer that cycles 12 hours on, 12 hours off with no external timer needed. Just plug it in and go.\n\nThe light uses a mixture of warm and cool white LEDs for a full-spectrum output.\n\nIf you're keeping just a plant or two on a desk or windowsill and want a simple, inexpensive grow light without the complexity of a full fixture setup, this is an easy option.",
+    shortDescription: "The best of nearly a dozen ring lights I've tried, from a batch that's twice as bright as the runner-up (400+ PPFD at 1 inch). Stake, metal base, AC adapter and a built-in 12h on / 12h off timer. $10.",
+    description: "This compact LED ring light is a simple, self-contained lighting setup for a Venus flytrap or two, and it comes with everything you need. In the box: a telescoping stake that inserts directly into the pot, a weighted metal base you can set a potted plant on top of, an AC adapter, and a built-in timer that cycles 12 hours on, 12 hours off with no external timer needed. Just plug it in and go.\n\nWHY THIS ONE?\nI have tried nearly a dozen of these, and these are the best I have found. The exact same lights vary 4-fold in brightness, and this exact batch is by far the best: twice as bright as the second brightest. It puts out over 400 PPFD at 1 inch (see the PAR meter reading), which is honestly too bright for my preference. I recommend 250 to 350 PPFD, and I would put your plant 3 to 6 inches away from the light.\n\nYou can get a ring light for a few bucks cheaper elsewhere, but with this one, you know exactly what you are getting (and it's a fantastic batch).\n\nThe light uses a mixture of warm and cool white LEDs for a full-spectrum output.",
     image: "images/led-grow-light-stake.jpg",
     images: [
+      { label: "PAR at 1″",  file: "images/led-grow-light-par.jpg" },
       { label: "With Flytrap", file: "images/led-grow-light-stake.jpg" },
       { label: "Light Detail",  file: "images/led-grow-light-stake-2.jpg" },
     ],
@@ -416,8 +492,11 @@ const plants = [
     ],
     shortDescription: "A compact, vividly red sundew hybrid at flowering size (1–1.5 inches). Shipped bare root.",
     description: "Up for sale are rosettes of <em>Drosera spatulata</em> × <em>ultramafica</em>, a compact sundew hybrid that colors up to a striking, vivid red under bright light. The rosettes are small but intensely colored, with spoon-shaped leaves densely covered in glistening tentacles. Plants are at flowering size, about 1 to 1.5 inches in diameter, and are already producing flower stalks.\n\nThis hybrid combines the easy-growing nature of <em>D. spatulata</em> with the compact form and intense coloration of <em>D. ultramafica</em>. It does well in a standard peat/perlite mix kept wet, under bright light.\n\nRosettes are shipped bare root at flowering size.",
-    image: "images/d-spatulata-x-ultramafica.jpg",
-    images: [],
+    image: "images/d-spatulata-x-ultramafica-pot.jpg",
+    images: [
+      { label: "Rosette", file: "images/d-spatulata-x-ultramafica.jpg"     },
+      { label: "Pot",     file: "images/d-spatulata-x-ultramafica-pot.jpg" },
+    ],
     status: "new",
   },
 
@@ -440,10 +519,13 @@ const plants = [
     species: "Nepenthes 'Lady Luck'",
     flatPrice: "$15",
     price: {},
-    shortDescription: "A vigorous Nepenthes hybrid that produces colorful pitchers readily under grow lights. Shipped potted.",
-    description: "<em>Nepenthes</em> 'Lady Luck' is a vigorous hybrid pitcher plant that produces attractive, colorful pitchers even under modest grow-light conditions. It is one of the easier Nepenthes to grow indoors, tolerating a range of humidity and temperature levels that would stress fussier species.\n\nPlants are shipped potted in sphagnum moss, ready to grow.",
-    image: "images/n-lady-luck.jpg",
-    images: [],
+    shortDescription: "A vigorous Nepenthes hybrid with deep red, fuzzy pitchers that color up readily under grow lights. Shipped potted.",
+    description: "<em>Nepenthes</em> 'Lady Luck' is a vigorous hybrid pitcher plant that colors up beautifully even under modest grow lights. The pitchers are a deep, velvety red, with a ribbed red peristome, fringed wings running down the front, and a fine coat of hairs over the whole thing (zoom in on the close-up, the fuzz is real). It is one of the easier Nepenthes to grow indoors, tolerating a range of humidity and temperature levels that would stress fussier species.\n\nPlants are similar to those pictured and are shipped potted in sphagnum moss, ready to grow.",
+    image: "images/n-lady-luck-pitchers.jpg",
+    images: [
+      { label: "Pitchers", file: "images/n-lady-luck-pitchers.jpg" },
+      { label: "Plant",    file: "images/n-lady-luck.jpg"          },
+    ],
     status: "new",
   },
 

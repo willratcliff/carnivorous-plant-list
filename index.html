@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phamcliff Farm — Hand-grown Carnivorous Plants</title>
-  <meta name="description" content="Venus flytraps, sundews, butterworts, Nepenthes and a few oddities, grown by hand in Georgia by an evolutionary biologist who got a little carried away. $15 flat-rate shipping to the lower 48." />
+  <title>Phamcliff Farm · Carnivorous Plants Grown by an Evolutionary Biologist</title>
+  <meta name="description" content="Cephalotus, Venus flytraps, sundews, butterworts, Nepenthes and a few oddities, grown in Georgia by an evolutionary biologist who got a little carried away. $15 flat-rate shipping to the lower 48." />
   <meta name="theme-color" content="#1d2a1f" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260916" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=20261017" />
 </head>
 <body>
 
@@ -50,8 +50,8 @@
 
   <!-- ── Hero ── -->
   <section class="hero">
-    <p class="hero-eyebrow">Hand-grown in Georgia &middot; Shipped to the lower 48</p>
-    <h1>Carnivorous plants, grown by a biologist who got a little carried away.</h1>
+    <p class="hero-eyebrow">Evolved to eat bugs &middot; Grown in Georgia &middot; Shipped to the lower 48</p>
+    <h1>Carnivorous plants, grown by an evolutionary biologist who got a little carried away.</h1>
   </section>
 
   <!-- ── Featured: no-dormancy experiment bonus (shown when window.EXPERIMENT.active) ── -->
@@ -78,13 +78,117 @@
 
   <main>
 
+    <!-- ── Cephalotus showcase ──
+         Copy lives here; sizes, prices, clones, mixes and gallery photos live in the
+         "cephalotus" entry in plants.js and are filled in by renderCeph() below.
+         The block stays hidden if that entry is missing. -->
+    <section class="ceph shop-section" id="sec-cephalotus" aria-labelledby="ceph-title" hidden>
+
+      <div class="ceph-hero">
+        <img class="ceph-hero-bg" src="images/ceph-hero-rows.jpg" alt="" decoding="async" fetchpriority="high">
+        <div class="ceph-hero-inner">
+          <div class="ceph-hero-copy">
+            <p class="ceph-eyebrow"><span class="ceph-new">New</span> The Albany pitcher plant</p>
+            <h2 class="ceph-title" id="ceph-title"><em>Cephalotus follicularis</em></h2>
+            <p class="ceph-lede">I get asked about these a lot, so here it is all in one place.</p>
+            <p class="ceph-lede ceph-lede-soft">One species, in a family all its own, from the peaty swamps of the far southwest corner of Western Australia. It evolved its pitchers completely independently of <em>Nepenthes</em> and <em>Sarracenia</em> (convergent evolution at its finest).</p>
+            <dl class="ceph-facts">
+              <div><dt>From</dt><dd id="ceph-fact-from">$60</dd></div>
+              <div><dt>Named clones</dt><dd id="ceph-fact-clones">5</dd></div>
+              <div><dt>Grown in</dt><dd>2.5&Prime; pots</dd></div>
+            </dl>
+            <div class="ceph-hero-actions">
+              <a class="ceph-cta" href="#ceph-buy">Pick yours</a>
+              <a class="ceph-cta ceph-cta-ghost" href="#ceph-gallery-wrap">See more photos</a>
+            </div>
+          </div>
+          <figure class="ceph-hero-video" id="ceph-hero-video">
+            <video muted loop playsinline preload="none" aria-label="A dark Cephalotus turning slowly in the hand, outdoors"></video>
+          </figure>
+        </div>
+      </div>
+
+      <div class="ceph-buy" id="ceph-buy">
+        <h3 class="ceph-h3 ceph-buy-title">Pick your plant</h3>
+        <div class="ceph-stage">
+          <div class="ceph-stage-frame">
+            <img id="ceph-stage-img" src="" alt="" decoding="async">
+            <span class="ceph-stage-tag" id="ceph-stage-tag"></span>
+          </div>
+          <p class="ceph-stage-note">These are example plants at each size. Everything grows in 2.5 inch pots, so the pot gives you the scale.</p>
+        </div>
+
+        <div class="ceph-config">
+
+          <div class="ceph-field">
+            <p class="ceph-legend" id="ceph-size-legend">Size</p>
+            <div class="ceph-sizes" id="ceph-sizes" role="radiogroup" aria-labelledby="ceph-size-legend"></div>
+            <p class="ceph-hint" id="ceph-size-note" hidden></p>
+          </div>
+
+          <div class="ceph-field" id="ceph-clone-field">
+            <p class="ceph-legend" id="ceph-clone-legend">Clone <span class="ceph-legend-aside">every one has &lsquo;OG Black&rsquo; as a parent</span></p>
+            <div class="ceph-clones" id="ceph-clones" role="radiogroup" aria-labelledby="ceph-clone-legend"></div>
+          </div>
+
+          <div class="ceph-field">
+            <p class="ceph-legend" id="ceph-mix-legend">Potting mix</p>
+            <div class="ceph-mixes" id="ceph-mixes" role="radiogroup" aria-labelledby="ceph-mix-legend"></div>
+            <p class="ceph-hint">I prefer the rockwool. It is easier to ship and more resilient to root rot. Happy to send either.</p>
+          </div>
+
+          <div class="ceph-summary">
+            <div class="ceph-summary-text">
+              <span class="ceph-summary-label" id="ceph-summary-label"></span>
+              <span class="ceph-summary-price" id="ceph-summary-price"></span>
+            </div>
+            <button type="button" class="ceph-add" id="ceph-add">Add to cart</button>
+          </div>
+          <p class="ceph-stock-note">Heads up: I&rsquo;ll check stock on your exact size and clone when the order comes in. If I don&rsquo;t have it, I&rsquo;ll reach out and ask about a substitute.</p>
+        </div>
+      </div>
+
+      <div class="ceph-gallery-wrap" id="ceph-gallery-wrap">
+        <div class="ceph-gallery-head">
+          <h3 class="ceph-h3">Up close</h3>
+          <div class="ceph-gallery-nav">
+            <button type="button" class="ceph-nav-btn" id="ceph-gal-prev" aria-label="Scroll photos left">&#8249;</button>
+            <button type="button" class="ceph-nav-btn" id="ceph-gal-next" aria-label="Scroll photos right">&#8250;</button>
+          </div>
+        </div>
+        <div class="ceph-gallery" id="ceph-gallery"></div>
+      </div>
+
+      <div class="ceph-care">
+        <div class="ceph-care-item">
+          <h4>How I grow them</h4>
+          <p class="ceph-care-stat"><span class="ceph-nowrap">250&ndash;350 PPFD</span> &middot; <span class="ceph-nowrap">50% humidity</span> &middot; <span class="ceph-nowrap">70&ndash;80&deg;F</span></p>
+          <p>Water them like a <em>Nepenthes</em>: moist, but never soaking and never dry. I tray water, let it dry down to damp, then tray water again.</p>
+        </div>
+        <div class="ceph-care-item">
+          <h4>When yours arrives</h4>
+          <p>Some trap loss after shipping is normal. To keep it to a minimum, fill the pitchers with water and bag the plant for a week to cut the transpirational strain, then gradually reintroduce it to your conditions.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── Cephalotus photo lightbox ── -->
+    <div class="ceph-lightbox" id="ceph-lightbox" aria-hidden="true" role="dialog" aria-label="Cephalotus photos">
+      <button type="button" class="ceph-lb-close" id="ceph-lb-close" aria-label="Close">&times;</button>
+      <button type="button" class="ceph-lb-arrow ceph-lb-prev" id="ceph-lb-prev" aria-label="Previous photo">&#8249;</button>
+      <img id="ceph-lb-img" src="" alt="">
+      <button type="button" class="ceph-lb-arrow ceph-lb-next" id="ceph-lb-next" aria-label="Next photo">&#8250;</button>
+      <p class="ceph-lb-count" id="ceph-lb-count"></p>
+    </div>
+
     <!-- ── Shop sections (rendered from plants.js, grouped by category) ── -->
     <div id="shop" class="shop"></div>
 
     <!-- ── About ── -->
     <div class="about-section">
       <div class="about-photos">
-        <img loading="lazy" src="images/about-oliver.jpg" alt="Oliver holding a tray of Venus flytraps" class="about-photo about-photo-main" />
+        <img loading="lazy" src="images/about-will.jpg" alt="Will holding a Cephalotus in a black pot" class="about-photo about-photo-main" />
         <img loading="lazy" src="images/oliver-flytraps.jpg" alt="Oliver holding a tray of Venus flytraps" class="about-photo about-photo-secondary" />
       </div>
       <div class="about-text">
@@ -172,7 +276,7 @@
   </main>
 
   <footer>
-    &copy; 2025 Phamcliff Farm &mdash; All plants hand-grown and shipped with care.
+    &copy; 2025 Phamcliff Farm &mdash; Grown by an evolutionary biologist, shipped with care.
   </footer>
 
 
@@ -331,7 +435,7 @@
   </div>
 
   <script src="sales.js?v=4"></script>
-  <script src="plants.js?v=2"></script>
+  <script src="plants.js?v=3"></script>
   <script>
     (function () {
 
@@ -379,6 +483,8 @@
       // Each plant in plants.js carries a `category`; anything unknown
       // falls into the trailing "Other" bucket so nothing disappears.
       var SECTIONS = [
+        // custom: rendered by its own block (the #sec-cephalotus showcase), not as a card grid.
+        { key: 'cephalotus', chip: 'Cephalotus',  title: 'Cephalotus',                   sub: '', custom: true },
         { key: 'flytrap',    chip: 'Flytraps',    title: 'Venus Flytraps',               sub: '<em>Dionaea muscipula</em>. Named cultivars, plus one giant of unknown parentage. Shipped bare root.' },
         { key: 'drosera',    chip: 'Sundews',     title: 'Sundews',                      sub: '<em>Drosera</em>. The easiest carnivores to keep alive, and the fastest to fill a pot.' },
         { key: 'pinguicula', chip: 'Butterworts', title: 'Butterworts',                  sub: '<em>Pinguicula</em>. Mexican butterworts: small sticky rosettes that are murder on fungus gnats.' },
@@ -510,6 +616,23 @@
           });
           if (!items.length) return;
 
+          if (sec.custom) {
+            var customEl = document.getElementById('sec-' + sec.key);
+            if (!customEl) return;
+            customEl.hidden = false;
+            var cchip = document.createElement('a');
+            cchip.className = 'jump-chip jump-chip-feature';
+            cchip.href = '#sec-' + sec.key;
+            cchip.innerHTML = sec.chip + '<span class="jump-chip-count">New</span>';
+            cchip.addEventListener('click', function (e) {
+              e.preventDefault();
+              customEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (history.replaceState) history.replaceState(null, '', '#sec-' + sec.key);
+            });
+            chips.appendChild(cchip);
+            return;
+          }
+
           var section = document.createElement('section');
           section.className = 'shop-section';
           section.id = 'sec-' + sec.key;
@@ -568,6 +691,248 @@
 
       renderShop();
 
+      // ── Cephalotus showcase ─────────────────────────────────────
+      // Reads the "cephalotus" entry in plants.js: sizes, clones, mixes,
+      // gallery and video. Cart lines read like "Medium, Behemoth, Rockwool".
+      (function renderCeph() {
+        var root = document.getElementById('sec-cephalotus');
+        var ceph = plants.filter(function (p) { return p.category === 'cephalotus'; })[0];
+        if (!root || !ceph || root.hidden) return;
+
+        var soldOut = ceph.status === 'sold' || ceph.status === 'unavailable';
+        var sizesEl  = document.getElementById('ceph-sizes');
+        var clonesEl = document.getElementById('ceph-clones');
+        var mixesEl  = document.getElementById('ceph-mixes');
+        var cloneFld = document.getElementById('ceph-clone-field');
+        var sizeNote = document.getElementById('ceph-size-note');
+        var stageImg = document.getElementById('ceph-stage-img');
+        var stageTag = document.getElementById('ceph-stage-tag');
+        var sumLabel = document.getElementById('ceph-summary-label');
+        var sumPrice = document.getElementById('ceph-summary-price');
+        var addBtn   = document.getElementById('ceph-add');
+
+        var sizes  = ceph.sizes  || [];
+        var clones = ceph.clones || [];
+        var mixes  = ceph.mixes  || [];
+        var state = { size: null, clone: null, mix: mixes.length ? mixes[0].name : '' };
+
+        // Hero facts stay in sync with the data.
+        var prices = sizes.filter(function (s) { return !s.soldOut; }).map(function (s) { return s.price; });
+        if (prices.length) document.getElementById('ceph-fact-from').textContent = fmtMoney(Math.min.apply(null, prices));
+        document.getElementById('ceph-fact-clones').textContent = String(clones.length);
+
+        function option(cls, html, pressed, disabled) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = cls;
+          b.setAttribute('role', 'radio');
+          b.setAttribute('aria-checked', pressed ? 'true' : 'false');
+          b.innerHTML = html;
+          if (disabled) { b.disabled = true; b.classList.add('is-out'); }
+          return b;
+        }
+
+        function paint() {
+          var size = state.size;
+          sizesEl.querySelectorAll('.ceph-size').forEach(function (b, i) {
+            b.setAttribute('aria-checked', String(sizes[i] === size));
+          });
+          clonesEl.querySelectorAll('.ceph-clone').forEach(function (b, i) {
+            b.setAttribute('aria-checked', String(clones[i].name === state.clone));
+          });
+          mixesEl.querySelectorAll('.ceph-mix').forEach(function (b, i) {
+            b.setAttribute('aria-checked', String(mixes[i].name === state.mix));
+          });
+
+          var needsClone = size && !size.noClone;
+          cloneFld.classList.toggle('is-off', !needsClone);
+          clonesEl.querySelectorAll('.ceph-clone').forEach(function (b) {
+            b.disabled = !needsClone || b.classList.contains('is-out');
+          });
+
+          sizeNote.hidden = !(size && size.note);
+          sizeNote.textContent = size && size.note ? size.note : '';
+
+          if (size && size.photo && stageImg.getAttribute('data-src') !== size.photo) {
+            stageImg.setAttribute('data-src', size.photo);
+            stageImg.classList.add('is-swapping');
+            var next = new Image();
+            next.onload = next.onerror = function () {
+              stageImg.src = size.photo;
+              stageImg.alt = 'Example ' + size.label.toLowerCase() + ' Cephalotus in a 2.5 inch pot';
+              stageImg.classList.remove('is-swapping');
+            };
+            next.src = size.photo;
+          }
+          stageTag.textContent = size ? size.label + ' · ' + fmtMoney(size.price) : '';
+
+          var parts = [];
+          if (size) parts.push(size.label);
+          if (needsClone && state.clone) parts.push(state.clone);
+          if (state.mix) parts.push(state.mix);
+          sumLabel.textContent = parts.join(', ');
+          sumPrice.textContent = size ? fmtMoney(size.price) : '';
+
+          if (soldOut) {
+            addBtn.disabled = true;
+            addBtn.textContent = 'Sold out for now';
+          } else if (needsClone && !state.clone) {
+            addBtn.disabled = true;
+            addBtn.textContent = 'Pick a clone';
+          } else {
+            addBtn.disabled = !size;
+            addBtn.textContent = 'Add to cart';
+          }
+        }
+
+        sizesEl.style.setProperty('--ceph-n', String(Math.max(sizes.length, 1)));
+        sizesEl.classList.toggle('is-many', sizes.length > 3);
+        sizes.forEach(function (s) {
+          var b = option('ceph-size',
+            '<span class="ceph-size-name">' + s.label + '</span>' +
+            '<span class="ceph-size-price">' + fmtMoney(s.price) + '</span>' +
+            (s.soldOut ? '<span class="ceph-size-out">Sold out</span>' : ''),
+            false, s.soldOut);
+          b.addEventListener('click', function () { state.size = s; paint(); });
+          sizesEl.appendChild(b);
+        });
+
+        clones.forEach(function (c) {
+          var b = option('ceph-clone',
+            '<span class="ceph-clone-name">' + c.name + '</span>' +
+            '<span class="ceph-clone-parents">' + String(c.parents).split(' \u00d7 ').map(function (x) {
+              return '<span class="ceph-nowrap">' + x + '</span>'; }).join(' \u00d7 ') + '</span>' +
+            (c.soldOut ? '<span class="ceph-size-out">Sold out</span>' : ''),
+            false, c.soldOut);
+          b.addEventListener('click', function () { state.clone = c.name; paint(); });
+          clonesEl.appendChild(b);
+        });
+
+        mixes.forEach(function (m) {
+          var b = option('ceph-mix',
+            m.name + (m.note ? ' <span class="ceph-mix-note">' + m.note + '</span>' : ''), false, false);
+          b.addEventListener('click', function () { state.mix = m.name; paint(); });
+          mixesEl.appendChild(b);
+        });
+
+        // Arrow keys move within each radiogroup.
+        [sizesEl, clonesEl, mixesEl].forEach(function (group) {
+          group.addEventListener('keydown', function (e) {
+            if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].indexOf(e.key) < 0) return;
+            var btns = Array.prototype.filter.call(group.children, function (b) { return !b.disabled; });
+            var i = btns.indexOf(document.activeElement);
+            if (i < 0) return;
+            e.preventDefault();
+            var step = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
+            var nb = btns[(i + step + btns.length) % btns.length];
+            nb.focus(); nb.click();
+          });
+        });
+
+        state.size = sizes.filter(function (s) { return s.label === ceph.defaultSize && !s.soldOut; })[0] ||
+                     sizes.filter(function (s) { return !s.soldOut; })[0] || null;
+        paint();
+
+        addBtn.addEventListener('click', function () {
+          var size = state.size;
+          if (!size || soldOut) return;
+          if (!size.noClone && !state.clone) return;
+          addToCart(ceph, sumLabel.textContent, size.price, 1);
+        });
+
+        // ── Hero video + gallery ──
+        var heroFig = document.getElementById('ceph-hero-video');
+        var heroVid = heroFig.querySelector('video');
+        if (ceph.video) {
+          if (ceph.image) heroVid.setAttribute('poster', ceph.image);
+          var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var playHero = function () {
+            if (!heroVid.getAttribute('src')) heroVid.src = ceph.video;
+            var p = heroVid.play();
+            if (p && p.catch) p.catch(function () { /* autoplay blocked: poster stays */ });
+          };
+          if (!reduceMotion) {
+            if ('IntersectionObserver' in window) {
+              new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                  if (en.isIntersecting) playHero();
+                  else if (heroVid.getAttribute('src')) heroVid.pause();
+                });
+              }, { rootMargin: '200px 0px' }).observe(heroVid);
+            } else {
+              playHero();
+            }
+          }
+        } else {
+          heroFig.hidden = true;
+        }
+
+        var galEl = document.getElementById('ceph-gallery');
+        var gallery = ceph.gallery || [];
+        gallery.forEach(function (g, i) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'ceph-shot' + (g.wide ? ' is-wide' : '');
+          b.setAttribute('aria-label', 'Open photo ' + (i + 1) + ' of ' + gallery.length);
+          b.innerHTML = '<img src="' + escapeAttr(thumbOf(g.file)) + '" alt="' + escapeAttr(g.alt || '') + '" loading="lazy" decoding="async"' +
+            ' onerror="this.onerror=null;this.src=\'' + escapeAttr(g.file) + '\';">';
+          b.addEventListener('click', function () { openLightbox(i); });
+          galEl.appendChild(b);
+        });
+        if (!gallery.length) document.getElementById('ceph-gallery-wrap').hidden = true;
+
+        function scrollGallery(dir) {
+          var shot = galEl.querySelector('.ceph-shot');
+          var w = shot ? shot.getBoundingClientRect().width + 14 : 300;
+          galEl.scrollBy({ left: dir * w * 2, behavior: 'smooth' });
+        }
+        document.getElementById('ceph-gal-prev').addEventListener('click', function () { scrollGallery(-1); });
+        document.getElementById('ceph-gal-next').addEventListener('click', function () { scrollGallery(1); });
+
+        // Lightbox
+        var lb = document.getElementById('ceph-lightbox');
+        var lbImg = document.getElementById('ceph-lb-img');
+        var lbCount = document.getElementById('ceph-lb-count');
+        var lbIdx = 0;
+        function showLb(i) {
+          lbIdx = (i + gallery.length) % gallery.length;
+          lbImg.src = gallery[lbIdx].file;
+          lbImg.alt = gallery[lbIdx].alt || '';
+          lbCount.textContent = (lbIdx + 1) + ' / ' + gallery.length;
+        }
+        function openLightbox(i) {
+          showLb(i);
+          lb.classList.add('open');
+          lb.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          document.getElementById('ceph-lb-close').focus();
+        }
+        function closeLightbox() {
+          if (!lb.classList.contains('open')) return;
+          lb.classList.remove('open');
+          lb.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+        document.getElementById('ceph-lb-close').addEventListener('click', closeLightbox);
+        document.getElementById('ceph-lb-prev').addEventListener('click', function () { showLb(lbIdx - 1); });
+        document.getElementById('ceph-lb-next').addEventListener('click', function () { showLb(lbIdx + 1); });
+        lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+        document.addEventListener('keydown', function (e) {
+          if (!lb.classList.contains('open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          else if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
+          else if (e.key === 'ArrowRight') showLb(lbIdx + 1);
+        });
+        var touchX = null;
+        lb.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+        lb.addEventListener('touchend', function (e) {
+          if (touchX === null) return;
+          var dx = e.changedTouches[0].clientX - touchX;
+          if (Math.abs(dx) > 40) showLb(lbIdx + (dx < 0 ? 1 : -1));
+          touchX = null;
+        });
+      }());
+
       // ── Header height → CSS var (keeps the jump bar snug under the header) ──
       (function () {
         var header = document.querySelector('.site-header');
@@ -582,7 +947,8 @@
       // ── Highlight the chip for the section currently in view ──
       (function () {
         var chips = Array.prototype.slice.call(document.querySelectorAll('.jump-chip'));
-        var secs  = Array.prototype.slice.call(document.querySelectorAll('.shop-section'));
+        var secs  = Array.prototype.slice.call(document.querySelectorAll('.shop-section'))
+          .filter(function (s) { return !s.hidden; });
         if (!secs.length) return;
         var ticking = false;
         function update() {
@@ -805,7 +1171,7 @@
         // Gallery — fall back to main image if no size photos yet
         var gallery = (plant.images && plant.images.length > 0)
           ? plant.images
-          : (plant.video ? [] : [{ label: plant.name, file: plant.image }]);
+          : (plant.video || !plant.image ? [] : [{ label: plant.name, file: plant.image }]);
         if (plant.video) {
           gallery = [{ label: 'Video', file: plant.video, isVideo: true }].concat(gallery);
         }
@@ -827,7 +1193,14 @@
         }
 
         var defaultIdx = plant.video ? 0 : gallery.length - 1;
-        showGalleryItem(gallery[defaultIdx]);
+        if (gallery.length) {
+          showGalleryItem(gallery[defaultIdx]);
+        } else {
+          // No photo yet: skip the image area instead of showing a broken image.
+          mainImg.style.display = 'none';
+          mainVideo.style.display = 'none';
+          mainVideo.pause();
+        }
 
         // Thumbnails — only show if there are multiple items
         thumbsWrap.innerHTML = '';

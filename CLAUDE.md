@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Static single-page website for selling hand-grown carnivorous plants.
+Static single-page website for selling carnivorous plants grown by an evolutionary biologist.
 Hosted on GitHub Pages at: https://willratcliff.github.io/carnivorous-plants-list
 
 The site lists current inventory with photos, tiered pricing, and contact links.
@@ -44,7 +44,7 @@ CLAUDE.md         — this file
 {
   name:        "Common Name",
   species:     "Genus species 'Clone'",
-  category:    "flytrap",   // flytrap | drosera | pinguicula | nepenthes | oddities | supplies
+  category:    "flytrap",   // cephalotus | flytrap | drosera | pinguicula | nepenthes | oddities | supplies
   price:       { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
   description: "Short description shown on card and in modal.",
   image:       "images/main-photo.jpg",   // card thumbnail
@@ -127,3 +127,26 @@ participant to a Google Sheet with a first check-in date one year out; see
   photos are `images/target-clone-tray.jpg` and `images/target-clone-closeup.jpg`.
 - **Sheet logging only works after the updated `apps-script.gs` is pasted
   into the Apps Script project and redeployed as a new version.**
+
+## Cephalotus Showcase
+
+Cephalotus are not a normal card. The `#sec-cephalotus` block in `index.html` is a dark,
+full-width showcase at the top of the shop (first jump chip, "Cephalotus · New") with a hero
+video, a size/clone/mix picker that adds straight to the cart, a swipeable photo strip with a
+lightbox, and care notes.
+
+- **Data:** the `category: "cephalotus"` entry at the top of `plants.js`. `sizes` (label, price,
+  example photo; `noClone: true` hides the clone picker for that size; `soldOut: true` greys one out),
+  `clones` (name + parentage; `soldOut: true` greys one out), `mixes`, `video`, and `gallery`
+  (`wide: true` for landscape shots). Set the entry's `status` to `"sold"` to disable Add to Cart;
+  delete the entry to hide the whole block.
+- **Copy:** the hero text, size-photo note, mix note, stock note and care notes are static HTML in the
+  `#sec-cephalotus` block in `index.html`.
+- **Cart:** lines read `Cephalotus follicularis (Medium, Behemoth, Rockwool)`, so the order email
+  and the dashboard's email importer pick up size, clone and mix from the parentheses. Shipping is
+  the same as everything else ($15 flat, free at $100+). Cephalotus never appear in the $50+
+  free-plant dropdown (it only lists plants with a `price.small`).
+- **Styling:** the `.ceph` block at the end of `style.css`; its colors are scoped tokens on `.ceph`.
+- **Photos:** `images/ceph-*.jpg` (portrait 1050×1400, landscape 1600–2000 wide, EXIF stripped) with
+  600–700px thumbs in `images/thumbs/`. Hero video: `images/ceph-backyard-video.mp4` (720px wide,
+  8 s, no audio) with `ceph-backyard-video-poster.jpg`.
