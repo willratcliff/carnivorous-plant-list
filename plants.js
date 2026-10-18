@@ -396,13 +396,26 @@ const plants = [
   },
 
   {
+    name: "<em>Utricularia warburgii</em> — Rooted Plug",
+    category: "oddities",
+    species: "Utricularia warburgii",
+    flatPrice: "$25",
+    price: {},
+    shortDescription: "A terrestrial bladderwort from China with small violet flowers marked by a yellow throat. Rooted plugs, $25 each.",
+    description: "Up for sale are rooted plugs of <em>Utricularia warburgii</em>, a terrestrial bladderwort from China, where it grows in sunny wet meadows. In flower it sends up short scapes carrying a few small violet flowers, each with a yellow splotch at the throat. It sits in section <em>Nigrescentes</em> next to its closest relative, <em>U. caerulea</em>, and it was only reported growing wild in Taiwan in 2024. Buyers receive a rooted plug taken from established stock, like the pot pictured.\n\nGROWING\nA peat/sand mix kept constantly moist to wet, the pot sitting in a tray of mineral-free water (distilled, RO, or rain), and bright light from a window or under grow lights.",
+    image: "images/u-warburgii.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
     name: "LED Grow Light with Stake",
     category: "supplies",
-    species: "Full Spectrum · 400+ PPFD at 1″ · Stake + Metal Base + AC Adapter · Built-In Timer",
+    species: "Full Spectrum · 400+ PPFD at 1″ · Stake + AC Adapter · Built-In Timer",
     flatPrice: "$10",
     price: {},
-    shortDescription: "The best of nearly a dozen ring lights I've tried, from a batch that's twice as bright as the runner-up (400+ PPFD at 1 inch). Stake, metal base, AC adapter and a built-in 12h on / 12h off timer. $10.",
-    description: "This compact LED ring light is a simple, self-contained lighting setup for a Venus flytrap or two, and it comes with everything you need. In the box: a telescoping stake that inserts directly into the pot, a weighted metal base you can set a potted plant on top of, an AC adapter, and a built-in timer that cycles 12 hours on, 12 hours off with no external timer needed. Just plug it in and go.\n\nWHY THIS ONE?\nI have tried nearly a dozen of these, and these are the best I have found. The exact same lights vary 4-fold in brightness, and this exact batch is by far the best: twice as bright as the second brightest. It puts out over 400 PPFD at 1 inch (see the PAR meter reading), which is honestly too bright for my preference. I recommend 250 to 350 PPFD, and I would put your plant 3 to 6 inches away from the light.\n\nYou can get a ring light for a few bucks cheaper elsewhere, but with this one, you know exactly what you are getting (and it's a fantastic batch).\n\nThe light uses a mixture of warm and cool white LEDs for a full-spectrum output.",
+    shortDescription: "The best of nearly a dozen ring lights I've tried, from a batch that's twice as bright as the runner-up (400+ PPFD at 1 inch). Stake, AC adapter and a built-in 12h on / 12h off timer. $10.",
+    description: "This compact LED ring light is a simple, self-contained lighting setup for a Venus flytrap or two, and it comes with everything you need. In the box: a telescoping stake that inserts directly into the pot, an AC adapter, and a built-in timer that cycles 12 hours on, 12 hours off with no external timer needed. Just plug it in and go.\n\nWHY THIS ONE?\nI have tried nearly a dozen of these, and these are the best I have found. The exact same lights vary 4-fold in brightness, and this exact batch is by far the best: twice as bright as the second brightest. It puts out over 400 PPFD at 1 inch (see the PAR meter reading), which is honestly too bright for my preference. I recommend 250 to 350 PPFD, and I would put your plant 3 to 6 inches away from the light.\n\nYou can get a ring light for a few bucks cheaper elsewhere, but with this one, you know exactly what you are getting (and it's a fantastic batch).\n\nThe light uses a mixture of warm and cool white LEDs for a full-spectrum output.",
     image: "images/led-grow-light-stake.jpg",
     images: [
       { label: "PAR at 1″",  file: "images/led-grow-light-par.jpg" },
