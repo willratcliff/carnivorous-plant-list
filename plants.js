@@ -313,9 +313,15 @@ const plants = [
       { label: "2 Divisions", price: "$20" },
     ],
     shortDescription: "One of the easiest and most rewarding sundews. Gets enormous, blooms freely, and is all but unkillable. Highly recommended for beginners and collectors alike.",
-    description: "Up for sale are divisions of <em>Drosera binata</em> var. multifida extrema, one of the most spectacular and forgiving sundews you can grow. This variety produces a dense crown of forked, Y-shaped leaves that subdivide again and again into a mass of glistening, dew-covered tentacles. A mature plant in good light is a genuinely impressive sight.\n\nIn my experience, this plant is all but unkillable. I once ripped one apart while separating it from a Utricularia pot, shredded roots and all, and ended up with 15 new plants sprouting from the root fragments. That regenerative capacity is part of what makes it such a satisfying grower. It does not punish neglect, it rewards attention, and it practically propagates itself.\n\nGROWING\nGrow it like a Venus flytrap: pure peat or peat/perlite mix, mineral-free water (distilled, RO, or rain), and as much light as you can give it. It does well under grow lights or in a sunny window, and it tolerates a wide range of temperatures. It will reward good conditions with size and flower stalks, but it is remarkably tolerant of less-than-ideal setups.\n\nDivisions are shipped bare root.",
+    description: "Up for sale are divisions of <em>Drosera binata</em> var. multifida extrema, one of the most spectacular and forgiving sundews you can grow. This variety produces a dense crown of forked, Y-shaped leaves that subdivide again and again into a mass of glistening, dew-covered tentacles. A mature plant in good light is a genuinely impressive sight.\n\nIn my experience, this plant is all but unkillable. I once ripped one apart while separating it from a Utricularia pot, shredded roots and all, and ended up with 15 new plants sprouting from the root fragments. That regenerative capacity is part of what makes it such a satisfying grower. It does not punish neglect, it rewards attention, and it practically propagates itself.\n\nGROWING\nGrow it like a Venus flytrap: pure peat or peat/perlite mix, mineral-free water (distilled, RO, or rain), and as much light as you can give it. It does well under grow lights or in a sunny window, and it tolerates a wide range of temperatures. It will reward good conditions with size and flower stalks, but it is remarkably tolerant of less-than-ideal setups.\n\nDivisions are shipped bare root. Customer photos courtesy of Lisa Sahli.",
     image: "images/d-binata-multifida-extrema.jpg",
-    images: [],
+    images: [
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-1.jpg" },
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-2.jpg" },
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-3.jpg" },
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-4.jpg" },
+      { label: "My plants",  file: "images/d-binata-multifida-extrema.jpg" },
+    ],
     status: "available",
   },
 
