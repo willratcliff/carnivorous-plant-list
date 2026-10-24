@@ -441,6 +441,15 @@
 
       // ── Render cards ──────────────────────────────────────────
       var statusLabel = { available: 'Available', limited: 'Limited', sold: 'Sold', new: 'New', unavailable: 'Unavailable' };
+
+      // `justAdded: "YYYY-MM-DD"` in plants.js flags a fresh listing for 30 days:
+      // rose "Just added" badge, top of its section, and a count on the jump chip.
+      var JUST_ADDED_DAYS = 30;
+      function isJustAdded(p) {
+        if (!p.justAdded || p.status === 'sold' || p.status === 'unavailable') return false;
+        var t = Date.parse(p.justAdded + 'T00:00:00');
+        return !isNaN(t) && (Date.now() - t) < JUST_ADDED_DAYS * 86400000;
+      }
       var sizeLabels  = { small: 'Small', medium: 'Medium', large: 'Large', specimen: 'Specimen' };
       var sizes = ['small', 'medium', 'large', 'specimen'];
 
@@ -581,9 +590,11 @@
           '<div class="plant-image">' +
             imgHTML +
             saleBadgeHTML +
-            '<span class="status-badge status-' + plant.status + '">' +
-              (statusLabel[plant.status] || plant.status) +
-            '</span>' +
+            (isJustAdded(plant)
+              ? '<span class="status-badge status-justadded">Just added</span>'
+              : '<span class="status-badge status-' + plant.status + '">' +
+                  (statusLabel[plant.status] || plant.status) +
+                '</span>') +
             '<span class="card-view-hint">View details</span>' +
           '</div>' +
           '<div class="plant-info">' +
@@ -616,6 +627,10 @@
           });
           if (!items.length) return;
 
+          // Just-added listings float to the top of their section.
+          var fresh = items.filter(isJustAdded);
+          items = fresh.concat(items.filter(function (p) { return !isJustAdded(p); }));
+
           if (sec.custom) {
             var customEl = document.getElementById('sec-' + sec.key);
             if (!customEl) return;
@@ -647,6 +662,7 @@
             '<div>' +
               '<h2 class="section-title">' + sec.title + '</h2>' +
               '<p class="section-sub">' + items.length + (items.length === 1 ? ' listing' : ' listings') +
+                (fresh.length ? ' · <span class="section-new">' + fresh.length + ' just added</span>' : '') +
                 (sec.sub ? ' · ' + sec.sub : '') + '</p>' +
             '</div>' +
             '<span class="section-chevron" aria-hidden="true">' + CHEVRON + '</span>';
@@ -666,7 +682,8 @@
           var chip = document.createElement('a');
           chip.className = 'jump-chip';
           chip.href = '#sec-' + sec.key;
-          chip.innerHTML = sec.chip + '<span class="jump-chip-count">' + items.length + '</span>';
+          chip.innerHTML = sec.chip + '<span class="jump-chip-count">' + items.length + '</span>' +
+            (fresh.length ? '<span class="jump-chip-new">' + fresh.length + ' new</span>' : '');
           chip.addEventListener('click', function (e) {
             e.preventDefault();
             section.classList.remove('collapsed');
@@ -1531,10 +1548,10 @@
         else if (!hasFreeShip) hints.push('$' + (100 - t.sub).toFixed(2) + ' more for free shipping');
         rewardProgress.textContent = hints.length ? '→ Add ' + hints[0] : '';
 
-        // Populate flytrap dropdown (only plants with small price that are available)
+        // Populate flytrap dropdown (only available plants with a small price, minus noReward ones)
         if (hasFlytrap && rewardSelect.children.length === 0) {
           var smallPlants = plants.filter(function (p) {
-            return p.price && p.price.small && p.status !== 'unavailable' && p.status !== 'sold';
+            return p.price && p.price.small && !p.noReward && p.status !== 'unavailable' && p.status !== 'sold';
           });
           rewardSelect.innerHTML = '<option value="">— Choose your free flytrap or ping —</option>';
           smallPlants.forEach(function (p) {

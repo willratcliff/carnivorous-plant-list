@@ -269,6 +269,16 @@ h1, h2, h3 {
   background: rgba(255, 255, 255, 0.18);
   color: #fff;
 }
+.jump-chip-new {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #f7e0e5;
+  color: #8b2741;
+}
+.jump-chip.active .jump-chip-new { background: #c2255c; color: #fff; }
+.section-new { color: #c2255c; font-weight: 600; }
 
 /* ── Shop sections ── */
 .shop-section {
@@ -436,6 +446,7 @@ main {
 .status-limited     { background: #d98a13; }
 .status-sold        { background: #c43c3c; }
 .status-new         { background: #7a3fd1; }
+.status-justadded   { background: #c2255c; }
 .status-unavailable { background: #6b7280; }
 
 /* ── Card text info ── */

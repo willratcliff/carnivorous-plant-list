@@ -55,6 +55,8 @@ CLAUDE.md         — this file
     { label: "Specimen", file: "images/plant-specimen.jpg" },
   ],
   status: "available",  // available | limited | sold | new
+  justAdded: "2026-10-24",  // optional: "Just added" badge + top of section + chip count, auto-expires after 30 days
+  noReward: true,          // optional: keep out of the $50+ free small flytrap/ping dropdown
 },
 ```
 
@@ -105,7 +107,9 @@ order email under "Order Rewards" (no Apps Script change needed):
   line to the Order Rewards banner on every page. **Turn it off:** set
   `active: false` (or set `ends` to an ISO date with offset).
 - **$50+:** a free small flytrap or ping. The dropdown lists every available plant
-  with a `small` price in `plants.js` (so Pinguicula count).
+  with a `small` price in `plants.js` (so Pinguicula count), except entries
+  marked `noReward: true` (pricier or low-stock plants; as of Oct 24 2026: El Lobo,
+  Leilani, Johanna, cyclosecta, emarginata × jaumavensis, esseriana).
 - **$100+:** free shipping (`calcTotals` in `index.html`).
 
 The static banner text for the $50/$100 tiers lives in `index.html`, `care.html`,

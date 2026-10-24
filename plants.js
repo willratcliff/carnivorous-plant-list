@@ -21,6 +21,11 @@
 //                  "limited"   → amber badge  (only a few left)
 //                  "sold"      → red badge    (greyed out)
 //                  "new"       → purple badge
+//    noReward    : true → keep the plant out of the free "small flytrap or ping"
+//                  dropdown for $50+ orders (pricier plants, or ones with limited stock)
+//    justAdded   : "YYYY-MM-DD" → rose "Just added" badge (instead of the status badge),
+//                  moved to the top of its section, counted on the jump chip.
+//                  Expires on its own 30 days after the date.
 //
 //  To ADD a plant:    copy one block and paste it before the ]; at the bottom
 //  To REMOVE a plant: delete its entire { ... }, block
@@ -136,19 +141,112 @@ const plants = [
     name: "Pinguicula agnata 'El Lobo'",
     category: "pinguicula",
     species: "",
-    price: { medium: "$20", large: "$30" },
-    shortDescription: "A big, pale Mexican butterwort. Broad yellow-green leaves edged in red, every one glistening with mucilage. Medium $20, large $30.",
-    description: "Pinguicula agnata 'El Lobo' is one of the larger Mexican butterworts: broad, rounded, yellow-green leaves with a thin red margin, lying nearly flat and covered edge to edge in the sticky glands that make these plants so good at catching fungus gnats. Under strong light the leaves stay pale and the red edge deepens.\n\nIt grows like the rest of the Mexican butterworts: a mineral-based mix, bright light, and good airflow. Buyers receive a single plant from established stock, not a full tray. Two sizes are offered, medium for $20 and large for $30.",
+    price: { small: "$15", medium: "$20", large: "$30" },
+    shortDescription: "A big, pale Mexican butterwort. Broad yellow-green leaves edged in red, every one glistening with mucilage. Small $15, medium $20, large $30.",
+    description: "Pinguicula agnata 'El Lobo' is one of the larger Mexican butterworts: broad, rounded, yellow-green leaves with a thin red margin, lying nearly flat and covered edge to edge in the sticky glands that make these plants so good at catching fungus gnats. Under strong light the leaves stay pale and the red edge deepens.\n\nIt grows like the rest of the Mexican butterworts: a mineral-based mix, bright light, and good airflow. Buyers receive a single plant from established stock, not a full tray. Three sizes are offered: small (about dime-size, ~1.8 cm) for $15, medium for $20, and large for $30.",
     image: "images/agnata-el-lobo.jpg",
+    images: [
+      { label: "Medium / Large", file: "images/agnata-el-lobo.jpg"       },
+      { label: "Small",          file: "images/agnata-el-lobo-small.jpg" },
+    ],
+    status: "new",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula 'Leilani'",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$15", medium: "$20" },
+    shortDescription: "A hybrid of P. laueana and P. cyclosecta with silvery-green leaves rimmed in lavender. Small (dime-size) $15, medium (quarter-size) $20.",
+    description: "Pinguicula 'Leilani' is a hybrid of P. laueana and P. cyclosecta bred by Rainbow Carnivorous Plants. It takes its color from the cyclosecta side: rounded, silvery-green leaves rimmed in lavender-purple, with the purple spreading further across the leaf under strong light. Every leaf is covered edge to edge in sticky glands that catch fungus gnats and other small insects. Rosettes stay compact, around 1.5 to 2 inches across when mature; the pot in hand shows a few of them grown together.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette, not the filled-in pot in the photo. Small plants are about dime-size (~1.8 cm) for $15; medium plants are about quarter-size (~2.4 cm) for $20.",
+    image: "images/leilani.jpg",
+    images: [
+      { label: "Mature Pot",     file: "images/leilani.jpg"   },
+      { label: "Single Rosette", file: "images/leilani-2.jpg" },
+    ],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula 'Johanna'",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$15", medium: "$20" },
+    shortDescription: "P. agnata × debbertiana. Broad, rounded leaves that flush rose-pink under strong light. Small (dime-size) $15, medium (quarter-size) $20.",
+    description: "Pinguicula 'Johanna' is a hybrid of P. agnata and P. debbertiana, and it takes something from each parent: the broad, rounded leaves of agnata and the pink of debbertiana. Under strong light the whole rosette flushes rose-pink around a pale green center. The leaves are covered in sticky glands that catch fungus gnats and other small insects, and mature rosettes reach about 2.5 inches across.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $15; medium plants are about quarter-size (~2.4 cm) for $20.",
+    image: "images/johanna.jpg",
     images: [],
     status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula cyclosecta",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10", medium: "$15" },
+    shortDescription: "A small Mexican butterwort with silvery-green leaves that blush purple at the edges. Small (dime-size) $10, medium (quarter-size) $15.",
+    description: "Pinguicula cyclosecta is a small butterwort from Nuevo León, Mexico. It forms tight rosettes of rounded, silvery-green leaves that blush lavender-purple toward the edges in strong light, the margins often ruffling slightly as they color. The leaves are covered in sticky glands that catch fungus gnats and other small insects. It stays small, around 2 to 2.5 inches across when mature, and it is one parent of 'Leilani' if you want the pair side by side.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $10; medium plants are about quarter-size (~2.4 cm) for $15.",
+    image: "images/cyclosecta.jpg",
+    images: [
+      { label: "Rosettes",    file: "images/cyclosecta.jpg"   },
+      { label: "In the Tray", file: "images/cyclosecta-2.jpg" },
+    ],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula emarginata × jaumavensis",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "A compact hybrid with pale yellow-green leaves, crisp white margins and a pink blush. Small (dime-size) $10, medium (quarter-size) $15, large (half-dollar-size) $20.",
+    description: "Pinguicula emarginata × jaumavensis is a hybrid of two small Mexican species. The leaves are pale yellow-green and slightly pointed, each outlined in a crisp white margin, and in strong light they blush peach-pink from the tips and the center of the rosette outward. The surface is covered in sticky glands that catch fungus gnats and other small insects. It stays compact, rarely much more than 2 inches across.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $10, medium about quarter-size (~2.4 cm) for $15, and large about half-dollar-size (~3 cm) for $20.",
+    image: "images/emarginata-x-jaumavensis.jpg",
+    images: [],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula esseriana",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10", medium: "$12", large: "$15" },
+    shortDescription: "A tiny Mexican species with stacked, lime-green rosettes of white-edged leaves. Small (dime-size) $10, medium (nickel-size) $12, large (quarter-size) $15.",
+    description: "Pinguicula esseriana is one of the smaller Mexican butterworts. It builds neat, many-layered rosettes of rounded lime-green leaves, each one rimmed in white, stacked like a tiny succulent rose. The leaves are covered in sticky glands that catch fungus gnats and other small insects, and it sends up pale pink flowers on thin stalks (one is just opening in the photo).\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $10, medium about nickel-size (~2.1 cm) for $12, and large about quarter-size (~2.4 cm) for $15.",
+    image: "images/esseriana.jpg",
+    images: [],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula 'Marciano'",
+    category: "pinguicula",
+    species: "",
+    price: { medium: "$15" },
+    shortDescription: "P. heterophylla × 'Weser'. Pointed leaves that blush rose-pink from the center out, in a rosette shaped like a lotus. Medium (quarter-size) $15.",
+    description: "Pinguicula 'Marciano' is a hybrid of P. heterophylla and P. 'Weser'. The leaves are pointed and slightly cupped, pale yellow-green at first, and in strong light they blush rose-pink starting from the new growth at the center, so a well-lit rosette looks a bit like a lotus flower. The leaves are covered in sticky glands that catch fungus gnats and other small insects. Mature rosettes reach about 2 to 3 inches across.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Offered in one size: medium, about quarter-size (~2.4 cm), for $15.",
+    image: "images/marciano.jpg",
+    images: [],
+    status: "new",
+    justAdded: "2026-10-24",
   },
 
   {
     name: "Korean Shark VFT",
     category: "flytrap",
     species: "Dionaea muscipula 'Korean Shark'",
-    price: { medium: "$15", large: "$20" },
+    price: { small: "$10", medium: "$15", large: "$20" },
     shortDescription: "A mutant of Korean Melody Shark. Retains the shark-like dentation but is larger, more vigorous, and has more robust petioles.",
     description: "Korean Shark is a mutant of the well-known Korean Melody Shark clone. It keeps the distinctive shark-tooth dentation that makes Melody Shark so recognizable, but everything else has been dialed up: the traps are larger, the petioles are thicker and more robust, and the overall vigor of the plant is noticeably stronger than its parent clone.\n\nIf you've grown Korean Melody Shark and wished it had more substance, this is the answer. The sawtooth margins are still there, but the plant behind them is built heavier and grows faster.",
     image: "images/korean-shark.jpg",
@@ -161,7 +259,7 @@ const plants = [
     name: "B52 Hybrid VFT",
     category: "flytrap",
     species: "Dionaea muscipula 'B52 Hybrid'",
-    price: { medium: "$15", large: "$20" },
+    price: { small: "$10", medium: "$15", large: "$20" },
     shortDescription: "Like a cracked out B52. Low-growing with gigantic, pink traps — a true giant and one of the coolest clones to come along in recent years.",
     description: "Think B52, then crank everything up. This hybrid takes the famous giant genetics and pushes them further: the growth habit is low and compact, the traps are massive, and they color up to a striking pink that sets it apart from just about anything else in the genus. It is, frankly, like a cracked out B52.\n\nThis is a true giant clone. The traps size up quickly and the pink coloration develops reliably in good light, giving the whole plant a look that stops people mid-scroll. If you've grown B52 and loved it, this is the next level. One of the coolest clones I've seen come along in recent years.",
     image: "images/b52-hybrid.jpg",
