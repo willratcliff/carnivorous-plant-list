@@ -1,0 +1,714 @@
+// ================================================================
+//  PLANTS.JS  —  Edit this file to update your listings
+// ================================================================
+//
+//  Each plant entry has these fields:
+//
+//    name        : Common name shown on the card
+//    species     : Scientific name (shown in italic below the name)
+//    category    : Section the card is filed under. One of:
+//                    "cephalotus" · "flytrap" · "drosera" · "pinguicula" · "nepenthes" · "oddities" · "supplies"
+//                  ("cephalotus" is special: it drives the showcase block, see the entry below)
+//                  (anything else, or missing, lands in an "Other" section)
+//    price       : Object with size tiers — omit or set to "" to hide a size
+//                    { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" }
+//    description : Short blurb shown on the card and in the detail modal
+//    image       : Main photo shown on the card, e.g. "images/vft-main.jpg"
+//    images      : Optional gallery for the detail modal — one photo per size.
+//                  Each entry: { label: "Small", file: "images/vft-small.jpg" }
+//                  If empty [], the modal just shows the main image.
+//    status      : "available"  → green badge
+//                  "limited"   → amber badge  (only a few left)
+//                  "sold"      → red badge    (greyed out)
+//                  "new"       → purple badge
+//    noReward    : true → keep the plant out of the free "small flytrap or ping"
+//                  dropdown for $50+ orders (pricier plants, or ones with limited stock)
+//    justAdded   : "YYYY-MM-DD" → rose "Just added" badge (instead of the status badge),
+//                  moved to the top of its section, counted on the jump chip.
+//                  Expires on its own 30 days after the date.
+//
+//  To ADD a plant:    copy one block and paste it before the ]; at the bottom
+//  To REMOVE a plant: delete its entire { ... }, block
+//  To mark SOLD:      change status to "sold"
+// ================================================================
+
+const plants = [
+
+  // ── Cephalotus ──────────────────────────────────────────────────
+  // Rendered as its own showcase block at the top of the shop (the
+  // #cephalotus section in index.html), not as a normal card.
+  //   sizes   : one entry per buyable option. `photo` is an example plant
+  //             at that size. `noClone: true` hides the clone picker (e.g. for
+  //             a no-ID option); add `note: "..."` to show a line under the sizes.
+  //             Add `soldOut: true` to grey a size out.
+  //   clones  : add `soldOut: true` to grey a clone out.
+  //   gallery : photos for the swipeable strip under the clones (`wide: true` for landscape shots).
+  //   status  : "sold" or "unavailable" disables Add to Cart for the whole block.
+  {
+    name: "Cephalotus follicularis",
+    category: "cephalotus",
+    species: "Albany pitcher plant",
+    sizes: [
+      { label: "Small",        price: 75,  photo: "images/ceph-small.jpg"  },
+      { label: "Medium",       price: 100, photo: "images/ceph-medium.jpg" },
+      { label: "Large",        price: 125, photo: "images/ceph-large.jpg"  },
+    ],
+    defaultSize: "Medium",
+    clones: [
+      { name: "Anthracite", parents: "“Coalmine Beach” × ‘OG Black’" },
+      { name: "Behemoth",   parents: "“UC Davis” × ‘OG Black’" },
+      { name: "Bogjewels",  parents: "‘OG Black’ × “Julie Jones”" },
+      { name: "Ducbog",     parents: "“UC Davis” × ‘OG Black’" },
+      { name: "Ogre",       parents: "‘OG Black’ × “Coalmine Beach”" },
+    ],
+    mixes: [
+      { name: "Rockwool",  note: "my pick" },
+      { name: "Peat/sand" },
+    ],
+    video: "images/ceph-backyard-video.mp4",
+    image: "images/ceph-backyard-video-poster.jpg",
+    gallery: [
+      { file: "images/ceph-dark-in-hand.jpg",  alt: "A near-black Cephalotus held up over a tray of green Venus flytraps" },
+      { file: "images/ceph-rows-flytraps.jpg", wide: true, alt: "Rows of Cephalotus under grow lights, flytraps at the edge of the shelf" },
+      { file: "images/ceph-red-lid.jpg",       alt: "A Cephalotus with one bright red lid, held over flytraps" },
+      { file: "images/ceph-dark-clump.jpg",    alt: "A dense, dark, hairy clump of Cephalotus pitchers" },
+      { file: "images/ceph-backyard.jpg",      alt: "A dark Cephalotus held up outdoors against a green backyard" },
+      { file: "images/ceph-pitcher-side.jpg",  alt: "Side view of a fat Cephalotus pitcher with rows of plants behind it" },
+      { file: "images/ceph-rows-hairy.jpg",    wide: true, alt: "Shelf of Cephalotus under lights, the hairy pitchers in sharp focus" },
+      { file: "images/ceph-pink-lid.jpg",      alt: "Cephalotus with a pink, striped lid" },
+      { file: "images/ceph-red-rosette.jpg",   alt: "A red-flushed Cephalotus in a 2.5 inch pot" },
+      { file: "images/ceph-young-hairy.jpg",   alt: "A young, very hairy Cephalotus seen from above" },
+      { file: "images/ceph-rockwool-tray.jpg", alt: "Small Cephalotus growing in rockwool cubes" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "Pinguicula debbertiana",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10" },
+    shortDescription: "A pink Mexican butterwort that forms tight, glandular rosettes of sticky, carnivorous leaves. Offered as small (~1.5 cm) for $10.",
+    description: "Pinguicula debbertiana is a Mexican butterwort prized for its soft pink coloration and neat, symmetrical rosettes. In their summer growth phase the sticky, carnivorous leaves blush pink under bright light and catch fungus gnats and other small insects.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Small plants are about 1.5 cm in diameter.",
+    image: "images/debbertiana.jpg",
+    images: [
+      { label: "Rosettes", file: "images/debbertiana.jpg"   },
+      { label: "Close-Up", file: "images/debbertiana-2.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "Pinguicula ehlersiae 'Victoria'",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10" },
+    shortDescription: "A compact Mexican butterwort with symmetrical rose-pink, white-margined rosettes. Offered as small (~1.5 cm) for $10.",
+    description: "Pinguicula ehlersiae 'Victoria' is a selected clone of this compact Mexican butterwort, prized for its neat, symmetrical rosettes of rose-pink leaves edged in white. The sticky, glandular leaves catch fungus gnats and other small insects, and the plant colors up beautifully under bright light.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Small plants are about 1.5 cm in diameter.",
+    image: "images/ehlersiae-victoria.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "Pinguicula ehlersiae 'Cotton Candy'",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10" },
+    shortDescription: "A pastel selection of P. ehlersiae — creamy white rosettes blushed with soft pink. Offered as small (~1.5 cm) for $10.",
+    description: "Pinguicula ehlersiae 'Cotton Candy' is a pastel selection of this compact Mexican butterwort, named for its soft, cotton-candy coloring — creamy white rosettes blushed with pink toward the center. The sticky, glandular leaves catch fungus gnats and other small insects, and the delicate coloration develops best under bright light.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Small plants are about 1.5 cm in diameter.",
+    image: "images/ehlersiae-cotton-candy.jpg",
+    images: [
+      { label: "Rosettes", file: "images/ehlersiae-cotton-candy.jpg"   },
+      { label: "Close-Up", file: "images/ehlersiae-cotton-candy-2.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "Pinguicula ehlersiae × mesophytica",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10" },
+    shortDescription: "A vigorous butterwort hybrid with plump mauve rosettes and vivid magenta flowers. Offered as small (~1.5 cm) for $10.",
+    description: "Pinguicula ehlersiae × mesophytica is a hybrid Mexican butterwort that pairs the compact rosette of P. ehlersiae with the larger, succulent leaves of P. mesophytica. The result is a robust, easy grower with plump mauve-lavender leaves and striking magenta flowers held on tall stalks. The sticky, glandular leaves catch fungus gnats and other small insects.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Small plants are about 1.5 cm in diameter.",
+    image: "images/ehlersiae-x-mesophytica.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "Pinguicula agnata 'El Lobo'",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$15", medium: "$20", large: "$30" },
+    shortDescription: "A big, pale Mexican butterwort. Broad yellow-green leaves edged in red, every one glistening with mucilage. Small $15, medium $20, large $30.",
+    description: "Pinguicula agnata 'El Lobo' is one of the larger Mexican butterworts: broad, rounded, yellow-green leaves with a thin red margin, lying nearly flat and covered edge to edge in the sticky glands that make these plants so good at catching fungus gnats. Under strong light the leaves stay pale and the red edge deepens.\n\nIt grows like the rest of the Mexican butterworts: a mineral-based mix, bright light, and good airflow. Buyers receive a single plant from established stock, not a full tray. Three sizes are offered: small (about dime-size, ~1.8 cm) for $15, medium for $20, and large for $30.",
+    image: "images/agnata-el-lobo.jpg",
+    images: [
+      { label: "Medium / Large", file: "images/agnata-el-lobo.jpg"       },
+      { label: "Small",          file: "images/agnata-el-lobo-small.jpg" },
+    ],
+    status: "new",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula 'Leilani'",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$15", medium: "$20" },
+    shortDescription: "A hybrid of P. laueana and P. cyclosecta with silvery-green leaves rimmed in lavender. Small (dime-size) $15, medium (quarter-size) $20.",
+    description: "Pinguicula 'Leilani' is a hybrid of P. laueana and P. cyclosecta bred by Rainbow Carnivorous Plants. It takes its color from the cyclosecta side: rounded, silvery-green leaves rimmed in lavender-purple, with the purple spreading further across the leaf under strong light. Every leaf is covered edge to edge in sticky glands that catch fungus gnats and other small insects. Rosettes stay compact, around 1.5 to 2 inches across when mature; the pot in hand shows a few of them grown together.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette, not the filled-in pot in the photo. Small plants are about dime-size (~1.8 cm) for $15; medium plants are about quarter-size (~2.4 cm) for $20.",
+    image: "images/leilani.jpg",
+    images: [
+      { label: "Mature Pot",     file: "images/leilani.jpg"   },
+      { label: "Single Rosette", file: "images/leilani-2.jpg" },
+    ],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula 'Johanna'",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$15", medium: "$20" },
+    shortDescription: "P. agnata × debbertiana. Broad, rounded leaves that flush rose-pink under strong light. Small (dime-size) $15, medium (quarter-size) $20.",
+    description: "Pinguicula 'Johanna' is a hybrid of P. agnata and P. debbertiana, and it takes something from each parent: the broad, rounded leaves of agnata and the pink of debbertiana. Under strong light the whole rosette flushes rose-pink around a pale green center. The leaves are covered in sticky glands that catch fungus gnats and other small insects, and mature rosettes reach about 2.5 inches across.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $15; medium plants are about quarter-size (~2.4 cm) for $20.",
+    image: "images/johanna.jpg",
+    images: [],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula cyclosecta",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10", medium: "$15" },
+    shortDescription: "A small Mexican butterwort with silvery-green leaves that blush purple at the edges. Small (dime-size) $10, medium (quarter-size) $15.",
+    description: "Pinguicula cyclosecta is a small butterwort from Nuevo León, Mexico. It forms tight rosettes of rounded, silvery-green leaves that blush lavender-purple toward the edges in strong light, the margins often ruffling slightly as they color. The leaves are covered in sticky glands that catch fungus gnats and other small insects. It stays small, around 2 to 2.5 inches across when mature, and it is one parent of 'Leilani' if you want the pair side by side.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $10; medium plants are about quarter-size (~2.4 cm) for $15.",
+    image: "images/cyclosecta.jpg",
+    images: [
+      { label: "Rosettes",    file: "images/cyclosecta.jpg"   },
+      { label: "In the Tray", file: "images/cyclosecta-2.jpg" },
+    ],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula emarginata × jaumavensis",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "A compact hybrid with pale yellow-green leaves, crisp white margins and a pink blush. Small (dime-size) $10, medium (quarter-size) $15, large (half-dollar-size) $20.",
+    description: "Pinguicula emarginata × jaumavensis is a hybrid of two small Mexican species. The leaves are pale yellow-green and slightly pointed, each outlined in a crisp white margin, and in strong light they blush peach-pink from the tips and the center of the rosette outward. The surface is covered in sticky glands that catch fungus gnats and other small insects. It stays compact, rarely much more than 2 inches across.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $10, medium about quarter-size (~2.4 cm) for $15, and large about half-dollar-size (~3 cm) for $20.",
+    image: "images/emarginata-x-jaumavensis.jpg",
+    images: [],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula esseriana",
+    category: "pinguicula",
+    species: "",
+    price: { small: "$12", medium: "$15", large: "$20" },
+    shortDescription: "A tiny Mexican species with stacked, lime-green rosettes of white-edged leaves. Small (dime-size) $12, medium (nickel-size) $15, large (quarter-size) $20.",
+    description: "Pinguicula esseriana is one of the smaller Mexican butterworts. It builds neat, many-layered rosettes of rounded lime-green leaves, each one rimmed in white, stacked like a tiny succulent rose. The leaves are covered in sticky glands that catch fungus gnats and other small insects, and it sends up pale pink flowers on thin stalks (one is just opening in the photo).\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $12, medium about nickel-size (~2.1 cm) for $15, and large about quarter-size (~2.4 cm) for $20.",
+    image: "images/esseriana.jpg",
+    images: [],
+    status: "new",
+    justAdded: "2026-10-24",
+    noReward: true,
+  },
+
+  {
+    name: "Pinguicula 'Marciano'",
+    category: "pinguicula",
+    species: "",
+    price: { medium: "$15" },
+    shortDescription: "P. heterophylla × 'Weser'. Pointed leaves that blush rose-pink from the center out, in a rosette shaped like a lotus. Medium (quarter-size) $15.",
+    description: "Pinguicula 'Marciano' is a hybrid of P. heterophylla and P. 'Weser'. The leaves are pointed and slightly cupped, pale yellow-green at first, and in strong light they blush rose-pink starting from the new growth at the center, so a well-lit rosette looks a bit like a lotus flower. The leaves are covered in sticky glands that catch fungus gnats and other small insects. Mature rosettes reach about 2 to 3 inches across.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Offered in one size: medium, about quarter-size (~2.4 cm), for $15.",
+    image: "images/marciano.jpg",
+    images: [],
+    status: "new",
+    justAdded: "2026-10-24",
+  },
+
+  {
+    name: "Korean Shark VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'Korean Shark'",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "A mutant of Korean Melody Shark. Retains the shark-like dentation but is larger, more vigorous, and has more robust petioles.",
+    description: "Korean Shark is a mutant of the well-known Korean Melody Shark clone. It keeps the distinctive shark-tooth dentation that makes Melody Shark so recognizable, but everything else has been dialed up: the traps are larger, the petioles are thicker and more robust, and the overall vigor of the plant is noticeably stronger than its parent clone.\n\nIf you've grown Korean Melody Shark and wished it had more substance, this is the answer. The sawtooth margins are still there, but the plant behind them is built heavier and grows faster.",
+    image: "images/korean-shark.jpg",
+    video: "images/korean-shark-video.mp4",
+    images: [],
+    status: "available",
+  },
+
+  {
+    name: "B52 Hybrid VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'B52 Hybrid'",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "Like a cracked out B52. Low-growing with gigantic, pink traps — a true giant and one of the coolest clones to come along in recent years.",
+    description: "Think B52, then crank everything up. This hybrid takes the famous giant genetics and pushes them further: the growth habit is low and compact, the traps are massive, and they color up to a striking pink that sets it apart from just about anything else in the genus. It is, frankly, like a cracked out B52.\n\nThis is a true giant clone. The traps size up quickly and the pink coloration develops reliably in good light, giving the whole plant a look that stops people mid-scroll. If you've grown B52 and loved it, this is the next level. One of the coolest clones I've seen come along in recent years.",
+    image: "images/b52-hybrid.jpg",
+    images: [
+      { label: "Colony", file: "images/b52-hybrid.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "Chinese Dumpling VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'Chinese Dumpling' · Rare Cultivar",
+    price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
+    bulkTiers: [
+      { label: "Medium · 10+ ea.", price: "$10" },
+    ],
+    shortDescription: "Rare cultivar with short, rounded traps and frilly, twisted teeth at maturity. One of the most distinctive mutant flytraps in the hobby.",
+    description: "Chinese Dumpling is one of the most distinctive and sought-after flytrap cultivars to hit the hobby in recent years. It gets its name from the unique shape of its traps, which are short, rounded, and reminiscent of a dumpling. At maturity, the trap margins become twisted and the cilia take on a frilly, almost serrated look that gives the whole plant a wonderfully sinister appearance. In a world full of mutant flytraps, this one still manages to stand out.\n\nGrown in strong light, the traps will blush a deep red while the petioles stay a vibrant green, making for a striking contrast. Younger and winter traps tend to look more typical, without much visible mutation to the teeth. As the plants mature and the warmer, sunnier months arrive, the characteristic dumpling shape really starts to express itself. This is also a clone that puts on impressive rhizome development for its size.\n\n",
+    image: "images/chinese-dumpling-large.jpg",
+    images: [
+      { label: "Small",    file: "images/chinese-dumpling-small.jpg"   },
+      { label: "Medium",   file: "images/chinese-dumpling-medium.jpg"  },
+      { label: "Mediums",  file: "images/chinese-dumpling-mediums.jpg" },
+      { label: "Large",    file: "images/chinese-dumpling-large.jpg"   },
+      { label: "Large 2",  file: "images/chinese-dumpling-large-2.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "B52 VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'B52'",
+    price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
+    bulkTiers: [
+      { label: "Medium · 10+ ea.", price: "$10" },
+    ],
+    shortDescription: "The most famous giant clone in the hobby. Mature traps exceed 2 inches, the plant clumps readily, and it grows fast. A must-have for any collection.",
+    description: "B52 is one of the most famous Venus flytrap cultivars in the hobby, and probably the first giant clone most growers hear about. It was developed by Henning von Schmeling in Georgia as part of a larger breeding program, where 'B52' was simply his internal label for the plant (generation B, number 52, though he switched the labels with 13 and 52 IIRC because this clone was head and shoulders above the rest, and B52 had a better ring to it). The name stuck, and it's easy to see why. Mature traps can exceed 2 inches in length, roughly double the size of a typical flytrap, and the plant clumps readily, producing a dense carpet of oversized traps.\n\nIn good light, the trap interiors color up to a bright, vivid red while the petioles stay a clean green, making for a bold contrast. This is also a notably vigorous grower. Where some large-trapping clones can be fussy or slow, B52 puts on size quickly and tends to divide on its own, which is part of what has made it such a staple. If you're looking for a flytrap that makes an impression even from across the room, this is the one.\n\n",
+    image: "images/b52-large.jpg",
+    images: [
+      { label: "Medium",     file: "images/b52-medium.jpg" },
+      { label: "Large",      file: "images/b52-large.jpg" },
+      { label: "Specimen",   file: "images/b52-specimen.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "FTS Maroon Monster VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'FTS Maroon Monster' · ICPS Registered Cultivar",
+    price: { small: "$10", specimen: "Inquire" },
+    bulkTiers: [],
+    shortDescription: "One of the most sought-after red clones in the hobby. Fast-growing with oversized traps that color up to a deep maroon, almost purple-black in strong light. ICPS registered cultivar.",
+    description: "This is an ICPS registered cultivar developed by Matt Miller through the Flytrap Store's breeding program, and it has become one of the most sought-after red clones in the hobby for good reason. Where most red Venus flytraps tend to be slow, finicky growers, Maroon Monster breaks the mold entirely. It grows fast, puts out thick and sturdy leaves, and produces oversized traps that color up to an incredible deep maroon, almost purple-black in strong light.\n\nThe contrast between those dark trap interiors and the bright lime-green edging along the trap margins is what really sets this clone apart visually. If you've grown Akai Ryu before and wished for something with more substance, bigger traps, and a more compact growth habit, this is the plant you've been looking for.\n\n",
+    image: "images/maroon-monster-new.jpg",
+    images: [],
+    status: "available",
+  },
+
+  {
+    name: "Specimen Typical VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula · Typical",
+    flatPrice: "$25",
+    bulkTiers: [
+      { label: "10+ ea.", price: "$15" },
+    ],
+    shortDescription: "Large, vigorous typical clones with big traps and well-developed rhizomes. These divide rapidly and are the source of our wholesale medium divisions.",
+    description: "These are large, mature Venus flytraps grown from typical clones selected for vigor, trap size, and rhizome development. They are not named cultivars, but they perform like plants twice their price: big traps, strong constitutions, and a growth rate that keeps the community pots constantly overflowing.\n\nWHY TYPICALS?\nTypicals are underrated. The best ones produce traps that rival many named clones, and because they haven't been through years of hobbyist selection pressure for looks alone, they tend to be robust and forgiving growers. These particular plants are the source stock for our wholesale medium division program — we divide them repeatedly, they bounce back fast, and the cycle keeps going. A single specimen can realistically produce dozens of divisions per year under good conditions.\n\nIf you're looking to build a collection quickly, or just want a large, impressive plant that will reward neglect with vigorous growth, this is the place to start.",
+    image: "images/typical-specimen-1.jpg",
+    images: [
+      { label: "Specimen",  file: "images/typical-specimen-1.jpg" },
+      { label: "Close-Up",  file: "images/typical-specimen-2.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "Red Piranha VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'Red Piranha' · ICPS Registered Cultivar",
+    price: { small: "$10", medium: "$15" },
+    shortDescription: "ICPS registered sawtooth cultivar with chili-pepper-red traps, jagged teeth, and a striking golden-green margin. A hobby classic since 1999.",
+    description: "Red Piranha is an ICPS registered cultivar developed by Ed Reed and first published in the Carnivorous Plant Newsletter back in 1999. It has been a staple of the hobby ever since. This is a red sawtooth type that produces bright, chili-pepper-red traps lined with short, jagged teeth that give the whole plant a distinctly piranha-like appearance.\n\nWhat really makes Red Piranha pop is the thick band of golden-green edging that runs along the trap margins just below those jagged teeth, contrasting against the deep red of the trap interior. As individual traps age, they tend to suffuse fully red, darkening over time. The plant grows upright with an open habit and colors up beautifully in strong light.\n\n",
+    image: "images/red-piranha.jpg",
+    images: [],
+    status: "available",
+  },
+
+  {
+    name: "Giant Traps VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'Giant Traps'",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    bulkTiers: [
+      { label: "Medium · 10+ ea.", price: "$10" },
+    ],
+
+    shortDescription: "A large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably.",
+    description: "Giant Traps is a large-trapping cultivar that does exactly what the name promises: oversized traps that color up to a vivid red in strong light, on a vigorous, upright plant that divides reliably. Not a novelty mutant — just a genuinely large, well-performing flytrap.",
+    image: "images/giant.jpg",
+    images: [],
+    status: "available",
+  },
+
+  {
+    name: "FTS Towering Giant VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'FTS Towering Giant'",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    bulkTiers: [
+      { label: "Medium · 10+ ea.", price: "$10" },
+    ],
+    shortDescription: "Developed by Matt Miller, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — one of the most architecturally dramatic flytraps you can grow.",
+    description: "Developed by Matt Miller and named in 2014, Towering Giant earns its name through extraordinarily tall, upright petioles that push large traps high into the air — spring leaves can reach six inches or more. The coloration leans lime green to chartreuse with a contrasting red throat. One of the most architecturally dramatic flytraps in the hobby.",
+    image: "images/towering-giant.jpg",
+    images: [
+      { label: "Community Tray", file: "images/towering-giant.jpg"       },
+      { label: "Large Plant",    file: "images/towering-giant-large.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "Big Mouth VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula 'Big Mouth'",
+    price: { small: "$10", medium: "$15", large: "$20" },
+    shortDescription: "A stunning clone. Big Mouth produces large, low-slung traps with vivid red-purple interiors, extraordinarily long and shapely cilia, and a wide-open, flat profile unlike anything else in the hobby.",
+    description: "A stunning clone. First propagated in 1998 by Tony Camilleri, Big Mouth is defined by the exceptional width of its trap opening, vivid red-purple interior coloration, and extraordinarily long and shapely cilia that give the traps a striking, almost ornate appearance. Traps are carried on short petioles in a low, ground-hugging rosette. A plant that genuinely looks different from every other flytrap in a collection.",
+    image: "images/big-mouth-nursery-tray.jpg",
+    images: [
+      { label: "Nursery Tray", file: "images/big-mouth-nursery-tray.jpg"   },
+      { label: "Nursery Tray", file: "images/big-mouth-nursery-tray-2.jpg" },
+      { label: "Up Close",     file: "images/big-mouth-up-close.jpg"       },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "<em>Drosera binata</em> var. multifida extrema",
+    category: "drosera",
+    species: "Drosera binata var. multifida extrema",
+    priceTiers: [
+      { label: "1 Division",  price: "$12" },
+      { label: "2 Divisions", price: "$20" },
+    ],
+    shortDescription: "One of the easiest and most rewarding sundews. Gets enormous, blooms freely, and is all but unkillable. Highly recommended for beginners and collectors alike.",
+    description: "Up for sale are divisions of <em>Drosera binata</em> var. multifida extrema, one of the most spectacular and forgiving sundews you can grow. This variety produces a dense crown of forked, Y-shaped leaves that subdivide again and again into a mass of glistening, dew-covered tentacles. A mature plant in good light is a genuinely impressive sight.\n\nIn my experience, this plant is all but unkillable. I once ripped one apart while separating it from a Utricularia pot, shredded roots and all, and ended up with 15 new plants sprouting from the root fragments. That regenerative capacity is part of what makes it such a satisfying grower. It does not punish neglect, it rewards attention, and it practically propagates itself.\n\nThe photos labeled Lisa Sahli are from a customer who grew out one of my divisions. The last photo shows my own plants.\n\nGROWING\nGrow it like a Venus flytrap: pure peat or peat/perlite mix, mineral-free water (distilled, RO, or rain), and as much light as you can give it. It does well under grow lights or in a sunny window, and it tolerates a wide range of temperatures. It will reward good conditions with size and flower stalks, but it is remarkably tolerant of less-than-ideal setups.\n\nDivisions are shipped bare root.",
+    image: "images/d-binata-multifida-extrema.jpg",
+    images: [
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-1.jpg", fit: "contain" },
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-2.jpg", fit: "contain" },
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-3.jpg" },
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-4.jpg" },
+      { label: "My plants",  file: "images/d-binata-multifida-extrema.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "<em>Stylidium debile</em> — Trigger Plant",
+    category: "oddities",
+    species: "Stylidium debile",
+    flatPrice: "$10",
+    price: {},
+    bulkTiers: [],
+    shortDescription: "The trigger plant: its spring-loaded anther snaps down to smack pollinating insects in milliseconds. Easy to grow in pure peat, and irresistible for kids pretending to be bees.",
+    description: "Up for sale are divisions of <em>Stylidium debile</em>, the trigger plant. This quirky Australian native has a party trick unlike anything else in the plant world: a spring-loaded anther column that snaps down and smacks any insect that lands on the flower, coating it in pollen in milliseconds. It's the fastest movement in the plant kingdom, and it never gets old to watch.\n\nKids absolutely love it. Have them pretend to be a bee, touch the flower column with a fingertip or toothpick, and watch it fire.\n\nGROWING\n<em>Stylidium debile</em> is easy. It thrives in pure peat moss kept consistently moist, the same conditions you'd use for a Venus flytrap or sundew. It tolerates a wide range of light levels and will bloom prolifically under grow lights or in a bright window, sending up wiry stalks tipped with small pink flowers. Each flower is a loaded trigger waiting to go off.\n\nDivisions are shipped bare root. Size is representative of plants shown in the divisions photo.",
+    image: "images/stylidium-community.jpg",
+    images: [
+      { label: "Mature 3.5\" pot several months after a single division was added", file: "images/stylidium-community.jpg" },
+      { label: "Divisions",      file: "images/stylidium-divisions.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "<em>Utricularia calycifida</em> — Established Clump",
+    category: "oddities",
+    species: "Utricularia calycifida",
+    flatPrice: "$20",
+    price: {},
+    shortDescription: "Established clump in active growth with multiple flower stalks emerging. Bare root, ready to pot.",
+    description: "Up for sale are established clumps of <em>Utricularia calycifida</em>, in active growth with multiple flower stalks emerging. They grow in 2.5\" pots, and you will receive a mature specimen like the one shown. The clumps develop an impressive network of stolons and fine roots that fill the entire pot, studded throughout with the tiny bladder traps the plant uses to catch and digest microscopic prey in the soil. This kind of root and trap development is a clear sign of a healthy, vigorous plant that should settle in quickly after repotting and continue growing without missing a beat.\n\nWHY U. CALYCIFIDA?\n<em>Utricularia calycifida</em> is a terrestrial bladderwort native to South America, and it is one of the best species in the genus for growers who want a plant that flowers reliably and looks great doing it. It produces delicate violet blooms on wiry stalks that rise well above the rosette of spoon-shaped leaves, often putting out multiple flower stalks at once. The flowers punch well above their weight for a plant this size.\n\nWhat makes this species particularly appealing is how easy it is to maintain compared to many tropical <em>Utricularia</em>. It does well on a bright windowsill or under grow lights, tolerates a range of humidity levels, and spreads steadily through underground stolons. It's a great entry point into the world of bladderworts for growers who are used to flytraps and sundews, and an equally good addition for experienced collectors looking for something that flowers without fuss.",
+    image: "images/u-calycifida-flowers.jpg",
+    images: [
+      { label: "In Bloom",          file: "images/u-calycifida-flowers.jpg" },
+      { label: "Root Ball",         file: "images/u-calycifida-root-ball.jpg" },
+      { label: "Root Detail",       file: "images/u-calycifida-roots.jpg" },
+      { label: "Growing Collection",file: "images/u-calycifida-pots.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "<em>Utricularia blanchetii</em> — Rooted Plug",
+    category: "oddities",
+    species: "Utricularia blanchetii",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A Brazilian bladderwort that buries its own pot under a cloud of pale lilac flowers on wiry, dark scapes. Rooted plugs, $15 each.",
+    description: "Up for sale are rooted plugs of <em>Utricularia blanchetii</em>, a terrestrial bladderwort from Brazil and one of the most floriferous plants in the genus. In full bloom the mother pots carry dozens of flower stalks at once, the whole thing hovering in a haze of pale lilac and white flowers held on thin, dark, wiry scapes well above a mat of grassy leaves. Buyers receive a rooted plug taken from established stock, not a blooming pot.\n\nWHY U. BLANCHETII?\nMost bladderworts flower politely. Blanchetii flowers like it is trying to prove something. A settled pot will throw scape after scape until the leaves disappear entirely under the display, and each small flower carries a delicate purple veining on the lower lip that is worth getting close to see. Below the surface it is doing the real work: the substrate is threaded with stolons studded with bladder traps, tiny suction bulbs that fire in under a millisecond to catch protozoa and other soil microfauna.\n\nGROWING\nEasy. Grow it in peat or a peat/sand mix, sit the pot in a tray of mineral-free water (distilled, RO, or rain), and give it bright light from a window or under grow lights. It spreads steadily through the medium and will fill a pot on its own. Plugs establish fast and typically start flowering once they have taken hold.",
+    image: "images/u-blanchetii.jpg",
+    images: [
+      { label: "In Bloom", file: "images/u-blanchetii.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "<em>Utricularia appendiculata</em> — Rooted Plug",
+    category: "oddities",
+    species: "Utricularia appendiculata",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A terrestrial bladderwort from the Sphagnum bogs of tropical Africa, and the only species in its own section of the genus. Rooted plugs, $15 each.",
+    description: "Up for sale are rooted plugs of <em>Utricularia appendiculata</em>, a terrestrial bladderwort from tropical Africa and Madagascar, where it grows in Sphagnum bogs and boggy grassland. It is a bit of a taxonomic loner: Peter Taylor gave it a section all its own, <em>Oliveria</em>, and it is still the only species in it. Buyers receive a rooted plug taken from established stock.\n\nGROWING\nSame easy routine as <em>U. blanchetii</em>: peat or a peat/sand mix, the pot sitting in a tray of mineral-free water (distilled, RO, or rain), and bright light from a window or under grow lights.",
+    image: "images/u-appendiculata.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "<em>Utricularia tridentata</em> — Rooted Plug",
+    category: "oddities",
+    species: "Utricularia tridentata",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A small, perennial terrestrial bladderwort from southern Brazil, Uruguay and northeastern Argentina. Rooted plugs, $15 each.",
+    description: "Up for sale are rooted plugs of <em>Utricularia tridentata</em>, a small, perennial terrestrial bladderwort from South America, native to southeastern and southern Brazil, Uruguay, and northeastern Argentina. It belongs to section <em>Foliosa</em>. Like the other terrestrial bladderworts, the traps live underground: tiny bladders along the stolons that catch soil microfauna. Buyers receive a rooted plug taken from established stock, like the pot pictured.\n\nGROWING\nSame easy routine as <em>U. blanchetii</em>: peat or a peat/sand mix, the pot sitting in a tray of mineral-free water (distilled, RO, or rain), and bright light from a window or under grow lights.",
+    image: "images/u-tridentata.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "<em>Utricularia warburgii</em> — Rooted Plug",
+    category: "oddities",
+    species: "Utricularia warburgii",
+    flatPrice: "$25",
+    price: {},
+    shortDescription: "A terrestrial bladderwort from China with small violet flowers marked by a yellow throat. Rooted plugs, $25 each.",
+    description: "Up for sale are rooted plugs of <em>Utricularia warburgii</em>, a terrestrial bladderwort from China, where it grows in sunny wet meadows. In flower it sends up short scapes carrying a few small violet flowers, each with a yellow splotch at the throat. It sits in section <em>Nigrescentes</em> next to its closest relative, <em>U. caerulea</em>, and it was only reported growing wild in Taiwan in 2024. Buyers receive a rooted plug taken from established stock, like the pot pictured.\n\nGROWING\nA peat/sand mix kept constantly moist to wet, the pot sitting in a tray of mineral-free water (distilled, RO, or rain), and bright light from a window or under grow lights.",
+    image: "images/u-warburgii.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "LED Grow Light with Stake",
+    category: "supplies",
+    species: "Full Spectrum · 400+ PPFD at 1″ · Stake + AC Adapter · Built-In Timer",
+    flatPrice: "$10",
+    price: {},
+    shortDescription: "The best of nearly a dozen ring lights I've tried, from a batch that's twice as bright as the runner-up (400+ PPFD at 1 inch). Stake, AC adapter and a built-in 12h on / 12h off timer. $10.",
+    description: "This compact LED ring light is a simple, self-contained lighting setup for a Venus flytrap or two, and it comes with everything you need. In the box: a telescoping stake that inserts directly into the pot, an AC adapter, and a built-in timer that cycles 12 hours on, 12 hours off with no external timer needed. Just plug it in and go.\n\nWHY THIS ONE?\nI have tried nearly a dozen of these, and these are the best I have found. The exact same lights vary 4-fold in brightness, and this exact batch is by far the best: twice as bright as the second brightest. It puts out over 400 PPFD at 1 inch (see the PAR meter reading), which is honestly too bright for my preference. I recommend 250 to 350 PPFD, and I would put your plant 3 to 6 inches away from the light.\n\nYou can get a ring light for a few bucks cheaper elsewhere, but with this one, you know exactly what you are getting (and it's a fantastic batch).\n\nThe light uses a mixture of warm and cool white LEDs for a full-spectrum output.",
+    image: "images/led-grow-light-stake.jpg",
+    images: [
+      { label: "PAR at 1″",  file: "images/led-grow-light-par.jpg" },
+      { label: "With Flytrap", file: "images/led-grow-light-stake.jpg" },
+      { label: "Light Detail",  file: "images/led-grow-light-stake-2.jpg" },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "Beginner Kit",
+    category: "supplies",
+    species: "Everything you need to get started",
+    kitPlantPicker: true,
+    priceTiers: [
+      { label: "Kit with Plant of Your Choice",  price: "$30", pick: true },
+      { label: "Kit with Sundew (D. binata)",  price: "$30" },
+    ],
+    shortDescription: "A plant of your choice, 2.5\" pot, peat moss, and grow light. Flytraps, sundews and butterworts ship bare root, so you pot them up and learn the basics yourself. Nepenthes ship potted.",
+    description: "This kit has everything a beginner needs to start growing carnivorous plants: a healthy plant of your choice (any available Venus flytrap clone, <em>Nepenthes</em>, or Mexican butterwort, or a <em>Drosera binata</em> var. multifida extrema sundew), a 2.5\" pot, peat moss, and a grow light.\n\nFlytraps, sundews and butterworts ship bare root, not pre-potted. That is intentional. Potting one up yourself takes five minutes and teaches you exactly how these plants want to be grown, which will pay off every year when repotting and dividing season comes around. In our experience, bare root shipping is also a more reliable way to ship flytraps — the plants travel lighter, stay drier, and arrive in better condition. Nepenthes are the exception: those ship potted in sphagnum, ready to grow.\n\nIf you choose the plant-of-your-choice option, the dropdown lists everything currently eligible: Venus flytrap clones, <em>Nepenthes</em>, and Mexican butterworts. The sundew option is a division of <em>Drosera binata</em> var. multifida extrema, one of the easiest and most spectacular sundews in cultivation. Both are forgiving growers that do well under the included grow light.",
+    image: "images/beginner-kit.jpg",
+    images: [],
+    status: "available",
+  },
+
+  {
+    name: "Nutricote 360 + Fluval Bug Bites Fertilizer Kit",
+    category: "supplies",
+    species: "1 lb Nutricote 18-6-8 · 2 oz Bug Bites Pellets",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "Everything you need to supercharge your flytraps with the trap feeding method: 1 lb Nutricote 360 controlled-release fertilizer (18-6-8) and 2 oz Fluval Bug Bites pellets.",
+    description: "Up for sale is 1 lb of Nutricote 360 controlled release fertilizer (18-6-8 with micronutrients) and 2 oz of Fluval Bug Bites pellets, a mix of insect and fish protein. This is everything you need to supercharge your flytraps using the trap feeding method described below. One pound of Nutricote is a lot of fertilizer: a single prill contains roughly the same amount of nutrient as 200 foliar feedings with 100ppm Maxsea, and you will have thousands of prills to work with. This will last most hobbyists a very long time.\n\nWHY NUTRICOTE?\nFeeding insects to your flytraps works, but the nutrient payload of a single bug is modest, especially for phosphorus and potassium, which are quite low in meat relative to nitrogen. Nutricote changes the equation. A single prill delivers 5 to 10 times the nutrient density of a typical insect, and because it is coated in a resin shell, those nutrients release slowly over time rather than all at once. Feed a prill into a trap and you are giving the plant a sustained, high-density nutrient drip straight through the leaf tissue. I have been getting biomass doubling times on the order of two and a half weeks with this method, and I have taken plants from seed to flowering size in about eight months. It basically removes nutrient limitation as a bottleneck and lets the plants luxury feed.\n\nHOW TO USE IT\nVenus flytraps will reject a dry fertilizer pellet as inorganic debris, so the Bug Bites are essential. Start by rehydrating as many Bug Bites pellets as you plan to feed traps. Pour boiling water over them for about 15 seconds, then decant. You are aiming for a play dough texture: firm and moldable, not spongy or wet. If the pellets feel sponge-like, they are too wet, and excess moisture in the trap can lead to rot.\n\nOnce your Bug Bites are at the right consistency, place one Nutricote prill and one rehydrated pellet into an open trap, then massage the trap gently for about 20 seconds to stimulate the trigger hairs and induce closure. The trap will seal and begin absorbing nutrients over the following days and weeks.\n\nThe occasional prill, maybe 1 in 10, will release too aggressively and burn the leaf. That is normal; just remove the dead trap. The rest will deliver a sustained flow of NPK and micronutrients directly into the plant, fueling growth at a rate that insect feeding alone cannot touch.\n\nNote: Nutricote 360 is not the same thing as Osmocote. Osmocote releases far too quickly and will burn the traps. The 360-day Nutricote formula is gentle enough that the vast majority of traps handle it without issue.",
+    image: "images/fertilizer-product.jpg",
+    images: [
+      { label: "Before",        file: "images/fertilizer-before.jpg" },
+      { label: "After 1 Month", file: "images/fertilizer-after.jpg" },
+      { label: "The Kit",       file: "images/fertilizer-product.jpg" },
+    ],
+    videoLink: "https://www.instagram.com/p/DU6h58gCRjB/",
+    status: "available",
+  },
+
+  {
+    name: "Unknown Giant VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula · Unidentified Giant Clone",
+    price: { small: "$10", medium: "$15" },
+    shortDescription: "An unidentified giant clone that consistently outperforms many named cultivars: oversized traps, tall upright petioles, and outstanding vigor. Multiple available.",
+    description: "Up for sale is one large Venus flytrap from a giant clone whose label was unfortunately lost. You will receive a mature specimen with solid rhizome development and traps that are already sizing up nicely for the season. Multiple available, first come first served.\n\nWHY THIS CLONE?\nI grow dozens of named cultivars, and this unidentified clone is among the most impressive performers in my entire collection. It produces oversized traps on tall, upright petioles with a strong, sturdy growth habit that gives the whole plant real presence. The traps color up easily in good light, developing rich red interiors without needing to be pushed hard, and the overall vigor of the plant is outstanding.\n\nThis is the kind of flytrap that makes people stop and look. The combination of trap size, upright stature, and reliable coloration puts it in rare company, and it has consistently outperformed many of the named giants I grow alongside it. If you're the type of grower who cares more about the plant in front of you than the name on the tag, this one will not disappoint.",
+    image: "images/unknown-giant-1.jpg",
+    images: [
+      { label: "Community Pot", file: "images/unknown-giant-fertilizer.jpg" },
+      { label: "For Scale",      file: "images/unknown-giant-oliver.jpg"     },
+      { label: "Packed & Ready", file: "images/unknown-giant-packed.jpg"     },
+      { label: "Plant",          file: "images/unknown-giant-1.jpg"          },
+      { label: "Close-Up",       file: "images/unknown-giant-2.jpg"          },
+    ],
+    status: "available",
+  },
+
+  {
+    name: "<em>Drosera adelae</em> 'Giant'",
+    category: "drosera",
+    species: "Drosera adelae 'Giant'",
+    priceTiers: [
+      { label: "1 Division",  price: "$15" },
+      { label: "2 Divisions", price: "$25" },
+    ],
+    shortDescription: "A large-growing form of the lance-leaved sundew, shipped bare root at about 2 inches tall. An easy, vigorous grower that thrives in low light.",
+    description: "Up for sale are divisions of <em>Drosera adelae</em> 'Giant', a large-growing form of the lance-leaved sundew from Queensland, Australia. This is one of the easiest sundews in cultivation and one of the most forgiving carnivorous plants you can grow. It tolerates lower light levels than most sundews, spreads readily by root runners, and produces long, lance-shaped leaves covered in glistening tentacles that catch fungus gnats and other small insects.\n\nThe 'Giant' form produces noticeably larger rosettes and longer leaves than typical <em>D. adelae</em>, making it a more substantial and impressive plant. Once established, it will spread through the pot by underground runners and form a dense colony.\n\nDivisions are shipped bare root at about 2 inches tall.",
+    image: "images/d-adelae-giant.jpg",
+    images: [
+      { label: "Division", file: "images/d-adelae-giant.jpg" },
+      { label: "Community Pots", file: "images/d-adelae-giant-2.jpg" },
+    ],
+    status: "sold",
+  },
+
+  {
+    name: "<em>Drosera spatulata</em> × <em>ultramafica</em>",
+    category: "drosera",
+    species: "Drosera spatulata × ultramafica",
+    priceTiers: [
+      { label: "1 Rosette",  price: "$15" },
+      { label: "2 Rosettes", price: "$25" },
+    ],
+    shortDescription: "A compact, vividly red sundew hybrid at flowering size (1–1.5 inches). Shipped bare root.",
+    description: "Up for sale are rosettes of <em>Drosera spatulata</em> × <em>ultramafica</em>, a compact sundew hybrid that colors up to a striking, vivid red under bright light. The rosettes are small but intensely colored, with spoon-shaped leaves densely covered in glistening tentacles. Plants are at flowering size, about 1 to 1.5 inches in diameter, and are already producing flower stalks.\n\nThis hybrid combines the easy-growing nature of <em>D. spatulata</em> with the compact form and intense coloration of <em>D. ultramafica</em>. It does well in a standard peat/perlite mix kept wet, under bright light.\n\nRosettes are shipped bare root at flowering size.",
+    image: "images/d-spatulata-x-ultramafica-pot.jpg",
+    images: [
+      { label: "Rosette", file: "images/d-spatulata-x-ultramafica.jpg"     },
+      { label: "Pot",     file: "images/d-spatulata-x-ultramafica-pot.jpg" },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "<em>Drosera intermedia</em>",
+    category: "drosera",
+    species: "Drosera intermedia",
+    flatPrice: "$20",
+    price: {},
+    shortDescription: "The spoonleaf sundew. A vigorous clumper that throws crown after crown and blushes red in strong light. $20 per plant, shipped bare root.",
+    description: "Up for sale are plants of <em>Drosera intermedia</em>, the spoonleaf sundew. The stock pots fill in with a half dozen crowns pushing against each other and several flower scapes already set with seed. The leaves are the giveaway for this species: narrow, spoon-shaped blades held up on long petioles, angled toward the light rather than lying flat, every tentacle carrying a bead of mucilage. Under strong light the blades and tentacles color to a deep pink-red. Buyers receive a single plant taken from established stock, not a filled-in pot.\n\nWHY D. INTERMEDIA?\nIt clumps. A single plant does not stay a single plant for long: it offsets from the base until you have a tight colony filling the pot, and it self-seeds readily on top of that. That makes it one of the better sundews for growers who want a pot that fills in on its own rather than a specimen that needs babying. It is also a hardy, wide-ranging species in the wild, growing in wet peat and sand seeps, and that toughness carries into cultivation.\n\nGROWING\nStandard sundew treatment: peat or a peat/perlite mix kept wet, mineral-free water (distilled, RO, or rain) in a tray, and as much light as you can give it. Light is what drives the red. In colder winters it may pull back into a tight resting bud and start again in spring; kept warm and lit, it will often just keep growing.\n\nPlants are shipped bare root.",
+    image: "images/d-intermedia.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "<em>Nepenthes</em> 'Lady Luck'",
+    category: "nepenthes",
+    species: "Nepenthes 'Lady Luck'",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A vigorous Nepenthes hybrid with deep red, fuzzy pitchers that color up readily under grow lights. Shipped potted.",
+    description: "<em>Nepenthes</em> 'Lady Luck' is a vigorous hybrid pitcher plant that colors up beautifully even under modest grow lights. The pitchers are a deep, velvety red, with a ribbed red peristome, fringed wings running down the front, and a fine coat of hairs over the whole thing (zoom in on the close-up, the fuzz is real). It is one of the easier Nepenthes to grow indoors, tolerating a range of humidity and temperature levels that would stress fussier species.\n\nPlants are similar to those pictured and are shipped potted in sphagnum moss, ready to grow.",
+    image: "images/n-lady-luck-pitchers.jpg",
+    images: [
+      { label: "Pitchers", file: "images/n-lady-luck-pitchers.jpg" },
+      { label: "Plant",    file: "images/n-lady-luck.jpg"          },
+    ],
+    status: "new",
+  },
+
+  {
+    name: "<em>Drosera capensis</em> 'Peppermint'",
+    category: "drosera",
+    species: "Drosera capensis 'Peppermint'",
+    flatPrice: "$30",
+    price: {},
+    shortDescription: "A candy-striped Cape sundew from David Flocken's Candy Cane line: green leaves edged in deep red, arching back on themselves into a hook. $30 per plant, shipped potted.",
+    description: "Up for sale are medium plants of <em>Drosera capensis</em> 'Peppermint', grown under LEDs. The leaves are striped, a green to yellow-green center running the length of the blade with the margins and tips flushed deep pink-red, and every tentacle is carrying a bead of mucilage. The older leaves arch back on themselves into a hook, which is where the Candy Cane line gets its name. Set one next to a typical Cape sundew, a plain green strap with red tentacles, and you would not guess they were the same species.\n\nWHERE THIS CLONE CAME FROM\n'Peppermint' is a selection out of the Candy Cane line of <em>D. capensis</em>, which traces to David Flocken (GrowPings), a Utah grower who has spent years on a project to make capensis interesting again. His method is brute force: grow out enormous numbers of seedlings and keep the handful that stand out. He was already deep into that program by 2015, when he described the goal in an interview as a quest \"to revive Drosera capensis to the status it deserves.\" The Candy Cane line came out of that work and built a following among growers who take capensis seriously. Jeremiah's Plants released 'Peppermint' as a first release, calling it almost seven years in the making, at $45 bare root, and it sold out.\n\nWHY CAPENSIS?\nIt is the sundew everyone hands to beginners, and for good reason: it grows fast, flowers freely, and comes back from the root when the top dies. That toughness is exactly what makes a good selection worth owning, because you get the striping and the curl of a collector's plant on something that will forgive the mistakes you make while learning to grow it. It also earns its keep. A well-grown capensis on a kitchen counter will strip the fungus gnats out of your houseplants, folding its leaves around whatever it catches.\n\nGROWING\nPeat or a peat and perlite mix kept wet, mineral-free water (distilled, RO, or rain) in a tray, and as much light as you can give it. Light is what drives the color. Grown dim, 'Peppermint' is just a green capensis with good manners. It will flower, and capensis flowers self-pollinate without any help, so expect volunteer seedlings in nearby pots. Whether those seedlings hold the striping is not something I can promise you, so treat the plant you buy as the sure thing.\n\nUnlike the rest of my sundews, these ship potted rather than bare root.",
+    image: "images/d-capensis-peppermint.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "<em>Drosera capensis</em> (Baardskeerdersbos)",
+    category: "drosera",
+    species: "Drosera capensis, Baardskeerdersbos",
+    flatPrice: "$20",
+    price: {},
+    shortDescription: "One of the most incredible capensis clones with location data I have grown: strong upright growth, excellent color and vigor. $20 per plant. Coming soon.",
+    description: "Coming soon. This is <em>Drosera capensis</em> from Baardskeerdersbos, South Africa, and it is one of the most incredible capensis clones with location data that I have grown. The growth form is strong and upright, with a dense rosette of leaves held up off the pot, and the color is excellent: red petioles and tentacles over yellow-green leaf blades. It is also a vigorous grower.\n\nGROWING\nPeat or a peat and perlite mix kept wet, mineral-free water (distilled, RO, or rain) in a tray, and as much light as you can give it. Strong light is what brings out the red.\n\nPlants are not ready to ship yet. Check back soon.",
+    image: "images/d-capensis-baardskeerdersbos.jpg",
+    images: [],
+    status: "comingsoon",
+  },
+
+  {
+    name: "<em>Nepenthes</em> 'Gaya'",
+    category: "nepenthes",
+    species: "Nepenthes 'Gaya'",
+    flatPrice: "$15",
+    price: {},
+    shortDescription: "A three-species hybrid tropical pitcher plant that pitchers young and grows happily in ordinary indoor conditions. Deep red, cherry-speckled traps. $15 per plant, shipped potted.",
+    description: "Up for sale are plants of <em>Nepenthes</em> 'Gaya', a hybrid of <em>N. khasiana</em> with (<em>N. ventricosa</em> × <em>N. maxima</em>). These are young plants that are already pitchering, carrying deep red traps with a broad, flared peristome and heavy cherry-red speckling, with the newest leaves blushing pink under strong light. Plants are similar to those pictured.\n\nWHY 'GAYA'?\nIt is easy indoors, which is not something you can say about most of the genus. Three species go into the cross, and the hybrid appears to have picked up the useful part of each: vigor from <em>khasiana</em>, tolerance of ordinary room conditions from <em>ventricosa</em>, and the heavy red speckling and wide peristome from <em>maxima</em>. The plants I am selling are already pitchering while still small, under nothing fancier than an LED strip on a shelf.\n\nGROWING\nWarm and bright. Roughly 70 to 85°F in the day with a cooler night, and as much light as you can give it short of burning the leaves. A window with a few hours of sun works, and so does a shelf under LEDs, which is how these were grown. Pot it in something loose and airy, long-fibered sphagnum on its own or cut with perlite, and water from the top with distilled, RO, or rain water. Keep the mix evenly moist, but do not stand it in a deep tray the way you would a flytrap, since Nepenthes roots rot when they sit waterlogged. Higher humidity gives bigger, better-colored pitchers, but 'Gaya' keeps producing them in normal room air, making it one of the few Nepenthes I am comfortable handing to someone who has never grown one.\n\nPlants are shipped potted in sphagnum moss, ready to grow.",
+    image: "images/n-gaya.jpg",
+    images: [],
+    status: "new",
+  },
+
+  {
+    name: "<em>Utricularia alpina</em> — Potted Division",
+    category: "oddities",
+    species: "Utricularia alpina",
+    flatPrice: "$20",
+    price: {},
+    shortDescription: "A large, elegant epiphytic bladderwort growing in a bed of live sphagnum. Potted division with well-established stolons and stunning white flowers.",
+    description: "Up for sale is a potted division of <em>Utricularia alpina</em>, one of the most elegant bladderworts in cultivation. This epiphytic species from the tropical Americas produces broad, strap-like leaves and stunning large white flowers with a yellow patch, striking enough to compete with any orchid on a windowsill. The plant is established in live sphagnum moss, with well-developed stolons running through the medium.\n\nWHY U. ALPINA?\nMost <em>Utricularia</em> are tiny, threadlike things that disappear into their pots. Alpina is the opposite: it grows large, makes a real presence, and when it blooms, it stops people in their tracks. The flowers are among the showiest in the genus, and a well-grown specimen in live sphagnum looks genuinely spectacular.\n\nGROWING\nGrow it just like a Venus flytrap or sundew: pot it in pure sphagnum and sit it in a tray of distilled or rain water. It does well under grow lights or in a bright window. Once established, it grows steadily and blooms reliably.",
+    image: "images/u-alpina.jpg",
+    images: [],
+    status: "sold",
+  },
+
+];
+
+// ================================================================
+//  BULK PLANTS  —  Quantity-priced listings shown in the
+//  "Bulk & Wholesale" section at the bottom of the page.
+//
+//  Same fields as above, but use priceTiers instead of price:
+//    priceTiers: [
+//      { label: "5 Plants",  price: "$30" },
+//      { label: "20 Plants", price: "$60" },
+//    ]
+// ================================================================
+
+const bulkPlants = [];

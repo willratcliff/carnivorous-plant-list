@@ -53,8 +53,10 @@ CLAUDE.md         — this file
     { label: "Medium",   file: "images/plant-medium.jpg" },
     { label: "Large",    file: "images/plant-large.jpg" },
     { label: "Specimen", file: "images/plant-specimen.jpg" },
+    // optional per photo: fit: "contain" shows the whole frame in the modal (tall shots) instead of cropping
   ],
-  status: "available",  // available | limited | sold | new
+  status: "available",  // available | limited | sold | new | unavailable | comingsoon
+                        // comingsoon: teal "Coming soon" badge, price shown, no Add to Cart, kept out of reward/kit pickers
   justAdded: "2026-10-24",  // optional: "Just added" badge + top of section + chip count, auto-expires after 30 days
   noReward: true,          // optional: keep out of the $50+ free small flytrap/ping dropdown
 },

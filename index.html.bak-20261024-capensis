@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phamcliff Farm · Carnivorous Plants Grown by an Evolutionary Biologist</title>
+  <meta name="description" content="Cephalotus, Venus flytraps, sundews, butterworts, Nepenthes and a few oddities, grown in Georgia by an evolutionary biologist who got a little carried away. $15 flat-rate shipping to the lower 48." />
+  <meta name="theme-color" content="#1d2a1f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=20261017" />
+</head>
+<body>
+
+  <!-- ── Sticky header ── -->
+  <header class="site-header">
+    <a href="index.html" class="logo" style="text-decoration:none; color:#fff; display:flex; align-items:center; gap:10px;">
+      <img src="images/phamcliff-logo.png" alt="Phamcliff Farm logo" style="height:44px; width:44px; object-fit:cover; border-radius:6px;">
+      Phamcliff Farm
+    </a>
+    <nav class="site-nav" id="site-nav">
+      <a class="nav-link" href="care.html">Care Guide</a>
+      <a class="nav-link" href="dormancy.html">Dormancy</a>
+      <a class="nav-link" href="nutricote.html">Nutricote</a>
+    </nav>
+    <div class="header-actions">
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">&#9776;</button>
+      <button class="cart-icon-btn" id="cart-icon-btn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Shipping bar ── -->
+  <div class="shipping-bar">
+    🚚 $15 flat-rate shipping &amp; handling &nbsp;·&nbsp; Contiguous 48 states only
+  </div>
+  <div class="rewards-banner">
+    <div class="rewards-banner-inner">
+      <strong>Order Rewards</strong> (tiers stack!) &nbsp;—&nbsp;
+      🪴 $50+: pick a free small flytrap or ping &nbsp;·&nbsp;
+      🚚 $100+: free shipping
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <p class="hero-eyebrow">Evolved to eat bugs &middot; Grown in Georgia &middot; Shipped to the lower 48</p>
+    <h1>Carnivorous plants, grown by an evolutionary biologist who got a little carried away.</h1>
+  </section>
+
+  <!-- ── Featured: no-dormancy experiment bonus (shown when window.EXPERIMENT.active) ── -->
+  <section class="feature-card" id="experiment-feature" hidden>
+    <div class="feature-photos">
+      <img src="images/thumbs/target-clone-tray.jpg" alt="A nursery tray of Venus flytraps, every one a division of a single no-dormancy Target clone" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/target-clone-tray.jpg';">
+      <img class="feature-photo-2" src="images/thumbs/target-clone-closeup.jpg" alt="Close-up of the same tray, traps open and healthy" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/target-clone-closeup.jpg';">
+    </div>
+    <div class="feature-body">
+      <p class="feature-eyebrow">Limited-time bonus &middot; Citizen science</p>
+      <h2 class="feature-title">Free with any order: a division of my no-dormancy flytrap</h2>
+      <p class="feature-text">Three years ago I bought a typical Venus flytrap at Target and stopped giving it a winter rest, fully expecting it to decline. It hasn't. That one plant has thrown roughly 60 divisions since, and every plant in this tray descends from it. For a limited time I'll tuck a free division into any order if you opt in. Here's the citizen-science part: I have no stake in which way you go, and a mix is actually better, since the more growers and the more regimes, the more we can learn (statistical power, and all that). Pick one, dormancy or no dormancy, stick with it, and be willing to share how the plant does over the coming years when I check in. The backstory is in <a href="dormancy.html">the dormancy post</a>.</p>
+      <div class="feature-actions">
+        <button type="button" class="feature-btn" id="experiment-feature-btn">Count me in</button>
+        <span class="feature-status" id="experiment-feature-status">Added to your order at checkout.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Jump bar (filled in by JS with one chip per section) ── -->
+  <nav class="jump-bar" id="jump-bar" aria-label="Jump to a section">
+    <div class="jump-bar-inner" id="jump-bar-inner"></div>
+  </nav>
+
+  <main>
+
+    <!-- ── Cephalotus showcase ──
+         Copy lives here; sizes, prices, clones, mixes and gallery photos live in the
+         "cephalotus" entry in plants.js and are filled in by renderCeph() below.
+         The block stays hidden if that entry is missing. -->
+    <section class="ceph shop-section" id="sec-cephalotus" aria-labelledby="ceph-title" hidden>
+
+      <div class="ceph-hero">
+        <img class="ceph-hero-bg" src="images/ceph-hero-rows.jpg" alt="" decoding="async" fetchpriority="high">
+        <div class="ceph-hero-inner">
+          <div class="ceph-hero-copy">
+            <p class="ceph-eyebrow"><span class="ceph-new">New</span> The Albany pitcher plant</p>
+            <h2 class="ceph-title" id="ceph-title"><em>Cephalotus follicularis</em></h2>
+            <p class="ceph-lede">I get asked about these a lot, so here it is all in one place.</p>
+            <p class="ceph-lede ceph-lede-soft">One species, in a family all its own, from the peaty swamps of the far southwest corner of Western Australia. It evolved its pitchers completely independently of <em>Nepenthes</em> and <em>Sarracenia</em> (convergent evolution at its finest).</p>
+            <dl class="ceph-facts">
+              <div><dt>From</dt><dd id="ceph-fact-from">$60</dd></div>
+              <div><dt>Named clones</dt><dd id="ceph-fact-clones">5</dd></div>
+              <div><dt>Grown in</dt><dd>2.5&Prime; pots</dd></div>
+            </dl>
+            <div class="ceph-hero-actions">
+              <a class="ceph-cta" href="#ceph-buy">Pick yours</a>
+              <a class="ceph-cta ceph-cta-ghost" href="#ceph-gallery-wrap">See more photos</a>
+            </div>
+          </div>
+          <figure class="ceph-hero-video" id="ceph-hero-video">
+            <video muted loop playsinline preload="none" aria-label="A dark Cephalotus turning slowly in the hand, outdoors"></video>
+          </figure>
+        </div>
+      </div>
+
+      <div class="ceph-buy" id="ceph-buy">
+        <h3 class="ceph-h3 ceph-buy-title">Pick your plant</h3>
+        <div class="ceph-stage">
+          <div class="ceph-stage-frame">
+            <img id="ceph-stage-img" src="" alt="" decoding="async">
+            <span class="ceph-stage-tag" id="ceph-stage-tag"></span>
+          </div>
+          <p class="ceph-stage-note">These are example plants at each size. Everything grows in 2.5 inch pots, so the pot gives you the scale.</p>
+        </div>
+
+        <div class="ceph-config">
+
+          <div class="ceph-field">
+            <p class="ceph-legend" id="ceph-size-legend">Size</p>
+            <div class="ceph-sizes" id="ceph-sizes" role="radiogroup" aria-labelledby="ceph-size-legend"></div>
+            <p class="ceph-hint" id="ceph-size-note" hidden></p>
+          </div>
+
+          <div class="ceph-field" id="ceph-clone-field">
+            <p class="ceph-legend" id="ceph-clone-legend">Clone <span class="ceph-legend-aside">every one has &lsquo;OG Black&rsquo; as a parent</span></p>
+            <div class="ceph-clones" id="ceph-clones" role="radiogroup" aria-labelledby="ceph-clone-legend"></div>
+          </div>
+
+          <div class="ceph-field">
+            <p class="ceph-legend" id="ceph-mix-legend">Potting mix</p>
+            <div class="ceph-mixes" id="ceph-mixes" role="radiogroup" aria-labelledby="ceph-mix-legend"></div>
+            <p class="ceph-hint">I prefer the rockwool. It is easier to ship and more resilient to root rot. Happy to send either.</p>
+          </div>
+
+          <div class="ceph-summary">
+            <div class="ceph-summary-text">
+              <span class="ceph-summary-label" id="ceph-summary-label"></span>
+              <span class="ceph-summary-price" id="ceph-summary-price"></span>
+            </div>
+            <button type="button" class="ceph-add" id="ceph-add">Add to cart</button>
+          </div>
+          <p class="ceph-stock-note">Heads up: I&rsquo;ll check stock on your exact size and clone when the order comes in. If I don&rsquo;t have it, I&rsquo;ll reach out and ask about a substitute.</p>
+        </div>
+      </div>
+
+      <div class="ceph-gallery-wrap" id="ceph-gallery-wrap">
+        <div class="ceph-gallery-head">
+          <h3 class="ceph-h3">Up close</h3>
+          <div class="ceph-gallery-nav">
+            <button type="button" class="ceph-nav-btn" id="ceph-gal-prev" aria-label="Scroll photos left">&#8249;</button>
+            <button type="button" class="ceph-nav-btn" id="ceph-gal-next" aria-label="Scroll photos right">&#8250;</button>
+          </div>
+        </div>
+        <div class="ceph-gallery" id="ceph-gallery"></div>
+      </div>
+
+      <div class="ceph-care">
+        <div class="ceph-care-item">
+          <h4>How I grow them</h4>
+          <p class="ceph-care-stat"><span class="ceph-nowrap">250&ndash;350 PPFD</span> &middot; <span class="ceph-nowrap">50% humidity</span> &middot; <span class="ceph-nowrap">70&ndash;80&deg;F</span></p>
+          <p>Water them like a <em>Nepenthes</em>: moist, but never soaking and never dry. I tray water, let it dry down to damp, then tray water again.</p>
+        </div>
+        <div class="ceph-care-item">
+          <h4>When yours arrives</h4>
+          <p>Some trap loss after shipping is normal. To keep it to a minimum, fill the pitchers with water and bag the plant for a week to cut the transpirational strain, then gradually reintroduce it to your conditions.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── Cephalotus photo lightbox ── -->
+    <div class="ceph-lightbox" id="ceph-lightbox" aria-hidden="true" role="dialog" aria-label="Cephalotus photos">
+      <button type="button" class="ceph-lb-close" id="ceph-lb-close" aria-label="Close">&times;</button>
+      <button type="button" class="ceph-lb-arrow ceph-lb-prev" id="ceph-lb-prev" aria-label="Previous photo">&#8249;</button>
+      <img id="ceph-lb-img" src="" alt="">
+      <button type="button" class="ceph-lb-arrow ceph-lb-next" id="ceph-lb-next" aria-label="Next photo">&#8250;</button>
+      <p class="ceph-lb-count" id="ceph-lb-count"></p>
+    </div>
+
+    <!-- ── Shop sections (rendered from plants.js, grouped by category) ── -->
+    <div id="shop" class="shop"></div>
+
+    <!-- ── About ── -->
+    <div class="about-section">
+      <div class="about-photos">
+        <img loading="lazy" src="images/about-will.jpg" alt="Will holding a Cephalotus in a black pot" class="about-photo about-photo-main" />
+        <img loading="lazy" src="images/oliver-flytraps.jpg" alt="Oliver holding a tray of Venus flytraps" class="about-photo about-photo-secondary" />
+      </div>
+      <div class="about-text">
+        <h2 class="about-title">About the Grower</h2>
+        <p>I'm Will Ratcliff, a <a href="https://ratclifflab.biosci.gatech.edu/about-the-pi/" target="_blank" rel="noopener">professor of evolutionary biology at Georgia Tech</a>, where my lab studies the evolution of multicellular life. Outside the lab, I grow carnivorous plants with my kids — it's a hobby that sits at the intersection of science, obsession, and a genuine love of weird biology.</p>
+        <p>I particularly enjoy experimenting with ways to overcome the bottlenecks to fertilization and tinkering with methods to get optimal growth and vigor out of these plants.</p>
+      </div>
+    </div>
+
+    <!-- ── Friends & Resources ── -->
+    <div class="friends-section">
+      <h2 class="friends-title">Friends &amp; Resources</h2>
+      <div class="friend-card">
+        <div class="friend-card-text">
+          <h3><a href="https://www.mikesplants.com" target="_blank" rel="noopener">MikesPlants.com</a></h3>
+          <p>If you're looking for Sarracenia, Venus flytraps, Cephalotus, or companion bog plants, I can't recommend Mike Wang's plants more highly. He's one of the best growers out there, with arguably the best selection of Sarracenia in North America, consistently high-quality plants, and a genuine willingness to help growers get the most out of their collection. Head over and check out what he has on offer.</p>
+        </div>
+      </div>
+      <div class="friend-card">
+        <div class="friend-card-text">
+          <h3><a href="https://www.carnivorousplantshub.com/products/venus-flytrap-repotting-kit-smaller-planter" target="_blank" rel="noopener">Carnivorous Plants Hub — Repotting Kit</a></h3>
+          <p>Since most of my plants ship bare root, you'll need to pot them up when they arrive. I plant in pure peat, but if you don't want to have to go to the store and get a gigantic bale when you just need enough for a single pot, I recommend this high-quality repotting kit from Carnivorous Plants Hub.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── How to Order ── -->
+    <div class="contact-section">
+      <h2>How to Order</h2>
+      <p class="contact-intro">
+        Use the cart above to put together your order, then send it my way via email. Payment is accepted via
+        <strong>PayPal</strong>, <strong>Venmo</strong>, or <strong>Zelle</strong> — once payment is received, I'll get your order shipped right out. You can also reach me on any of the platforms below.
+      </p>
+
+      <div class="contact-links">
+
+        <a class="contact-link email" href="mailto:will@phamcliff.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+          will@phamcliff.com
+        </a>
+
+        <a class="contact-link instagram" href="https://www.instagram.com/willhascoolplants" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+          </svg>
+          @willhascoolplants
+        </a>
+
+        <a class="contact-link facebook" href="https://www.facebook.com/profile.php?id=61586990360469" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+          Facebook
+        </a>
+
+        <a class="contact-link reddit" href="https://www.reddit.com/user/Berberis/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M16.7 10.3a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z" fill="currentColor" stroke="none"/>
+            <path d="M7.3 10.3a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z" fill="currentColor" stroke="none"/>
+            <path d="M15.5 9A5 5 0 0 0 8.5 9"/>
+            <path d="M9 14.5s1 1.5 3 1.5 3-1.5 3-1.5"/>
+            <path d="M14.5 6.5l-1 3"/>
+            <circle cx="16" cy="5.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          u/Berberis
+        </a>
+
+        <a class="contact-link ebay" href="https://www.ebay.com/usr/thepitcherpeople" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          eBay: thepitcherpeople
+        </a>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Phamcliff Farm &mdash; Grown by an evolutionary biologist, shipped with care.
+  </footer>
+
+
+  <!-- ── Detail modal ── -->
+  <div id="plant-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <img id="modal-main-img" class="modal-main-img" src="" alt="" />
+      <video id="modal-main-video" class="modal-main-img" autoplay loop muted playsinline style="display:none;"></video>
+      <div id="modal-thumbs" class="modal-thumbs"></div>
+      <div class="modal-details">
+        <div class="modal-header">
+          <div>
+            <h2 id="modal-name" class="modal-name"></h2>
+            <p id="modal-species" class="modal-species"></p>
+          </div>
+        </div>
+        <div id="modal-prices" class="price-tiers modal-price-tiers"></div>
+        <p id="modal-description" class="modal-description"></p>
+        <div id="modal-cart-row" class="modal-cart-row">
+          <select id="modal-size-select" class="modal-size-select"></select>
+          <select id="modal-clone-select" class="modal-size-select" style="display:none;margin-top:6px;"></select>
+          <button id="modal-add-cart-btn" class="modal-add-cart-btn">+ Add to Cart</button>
+        </div>
+        <div class="modal-action-btns">
+          <a id="modal-video" href="#" class="modal-video-btn" target="_blank" rel="noopener" style="display:none;">
+            Watch Video
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── Cart panel ── -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-panel" class="cart-panel" aria-hidden="true">
+    <div class="cart-header">
+      <h2 class="cart-title">Your Order</h2>
+      <button id="cart-close-btn" class="cart-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-body">
+      <div id="cart-items-list" class="cart-items-list"></div>
+      <p id="cart-ship-note" class="cart-ship-note"></p>
+      <div id="cart-rewards" class="cart-rewards" style="display:none;">
+        <div class="rewards-title">Order Rewards</div>
+        <div id="reward-frost" class="reward-row" style="display:none;">
+          <span>❄️ Pick your free plant (every order, until the first frost):</span>
+          <select id="reward-frost-select" class="cart-addr-field" style="margin-top:4px;font-size:0.85rem;"></select>
+        </div>
+        <div id="reward-flytrap" class="reward-row" style="display:none;">
+          <span>🪴 Pick your free small flytrap or ping:</span>
+          <select id="reward-flytrap-select" class="cart-addr-field" style="margin-top:4px;font-size:0.85rem;"></select>
+        </div>
+        <div id="reward-shipping" class="reward-row" style="display:none;">
+          <span>🚚 Free shipping unlocked!</span>
+        </div>
+        <div id="reward-progress" class="reward-progress"></div>
+      </div>
+      <div class="cart-experiment" id="cart-experiment" style="display:none;">
+        <label class="exp-optin-label">
+          <input type="checkbox" id="exp-optin">
+          <span><strong>Add a free division of the Target clone and join the citizen-science experiment.</strong> I'll pick one regime, stick with it, and share how the plant does over the coming years when Will checks in.</span>
+        </label>
+        <div class="exp-fields" id="exp-fields" style="display:none;">
+          <label class="cart-field-label" for="exp-regime">Which regime will you use?</label>
+          <select id="exp-regime" class="cart-addr-field">
+            <option value="">Choose one</option>
+            <option value="No dormancy">No dormancy (grow it straight through winter)</option>
+            <option value="Dormancy">Dormancy (give it a winter rest)</option>
+            <option value="Undecided">Haven't decided yet</option>
+          </select>
+          <label class="cart-field-label" for="exp-setup">Where will it live?</label>
+          <select id="exp-setup" class="cart-addr-field">
+            <option value="">Choose one</option>
+            <option>Windowsill</option>
+            <option>Grow lights</option>
+            <option>Greenhouse</option>
+            <option>Outdoors</option>
+            <option>Not sure yet</option>
+          </select>
+          <input id="exp-notes" class="cart-addr-field" type="text" placeholder="Anything else about your setup (optional)" maxlength="200">
+        </div>
+      </div>
+      <div class="discount-code-row" id="discount-code-row">
+        <input id="cart-discount-input" class="cart-addr-field" type="text" placeholder="Discount code" />
+        <button id="cart-discount-btn" class="discount-apply-btn">Apply</button>
+      </div>
+      <div class="discount-applied-row" id="discount-applied-row" style="display:none;">
+        <span class="discount-applied-label" id="discount-applied-label"></span>
+        <button id="discount-remove-btn" class="discount-remove-btn">Remove</button>
+      </div>
+      <p id="discount-status" class="discount-status"></p>
+      <div class="cart-summary">
+        <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
+        <div class="summary-row summary-discount" id="discount-row" style="display:none;">
+          <span id="discount-label">Discount</span>
+          <span id="sum-discount">-$0.00</span>
+        </div>
+        <div class="summary-row"><span>Shipping &amp; Handling</span><span id="sum-shipping">$15.00</span></div>
+        <div class="summary-row" id="heatpack-row">
+          <label class="summary-check-label">
+            <input type="checkbox" id="cart-heatpack-chk"> Heat pack <small>($5 — cold weather protection)</small>
+          </label>
+          <span id="sum-heatpack">$0.00</span>
+        </div>
+        <div class="summary-row" id="ga-tax-row" style="display:none;">
+          <span>GA Sales Tax <small>(8%)</small></span>
+          <span id="sum-tax">$0.00</span>
+        </div>
+        <div class="summary-row summary-total"><span>Total</span><span id="sum-total">$0.00</span></div>
+      </div>
+
+      <label class="cart-field-label">Your Email <span style="color:#c0392b;">*</span></label>
+      <input  id="cart-email" class="cart-addr-field" type="email" placeholder="you@example.com" />
+
+      <label class="cart-field-label">Shipping Address <span style="color:#c0392b;">*</span></label>
+      <input  id="cart-addr-name"   class="cart-addr-field" type="text"   placeholder="Full name" />
+      <input  id="cart-addr-street" class="cart-addr-field" type="text"   placeholder="Street address" />
+      <div class="cart-addr-row">
+        <input  id="cart-addr-city"   class="cart-addr-field" type="text"   placeholder="City" />
+        <select id="cart-addr-state"  class="cart-addr-field cart-addr-state">
+          <option value="">State</option>
+          <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+          <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+          <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+          <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+          <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
+          <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+          <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+          <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+          <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+          <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+        </select>
+        <input  id="cart-addr-zip"    class="cart-addr-field cart-addr-zip"  type="text" placeholder="ZIP" maxlength="10" />
+      </div>
+
+      <label class="cart-field-label">Payment Method <span style="color:#c0392b;">*</span></label>
+      <div class="payment-methods">
+        <label class="payment-option">
+          <input type="radio" name="payment" value="PayPal"> PayPal
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="Venmo"> Venmo
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="Zelle"> Zelle
+        </label>
+      </div>
+      <div id="payment-instructions" class="payment-instructions" style="display:none;"></div>
+
+      <label class="cart-field-label" for="cart-comments">Comments / Special Requests</label>
+      <textarea id="cart-comments" class="cart-comments" placeholder="Optional — heat pack questions, special requests, etc."></textarea>
+      <button id="cart-email-btn" class="cart-email-btn">Send Order</button>
+    </div>
+  </div>
+
+  <script src="sales.js?v=4"></script>
+  <script src="plants.js?v=3"></script>
+  <script>
+    (function () {
+
+      // ── Render cards ──────────────────────────────────────────
+      var statusLabel = { available: 'Available', limited: 'Limited', sold: 'Sold', new: 'New', unavailable: 'Unavailable' };
+
+      // `justAdded: "YYYY-MM-DD"` in plants.js flags a fresh listing for 30 days:
+      // rose "Just added" badge, top of its section, and a count on the jump chip.
+      var JUST_ADDED_DAYS = 30;
+      function isJustAdded(p) {
+        if (!p.justAdded || p.status === 'sold' || p.status === 'unavailable') return false;
+        var t = Date.parse(p.justAdded + 'T00:00:00');
+        return !isNaN(t) && (Date.now() - t) < JUST_ADDED_DAYS * 86400000;
+      }
+      var sizeLabels  = { small: 'Small', medium: 'Medium', large: 'Large', specimen: 'Specimen' };
+      var sizes = ['small', 'medium', 'large', 'specimen'];
+
+      function buildPriceHTML(plant) {
+        var html = '<div class="price-tiers">';
+        if (plant.flatPrice) {
+          html += '<div class="price-tier"><span class="tier-price">' + plant.flatPrice + '</span></div>';
+        } else if (plant.priceTiers) {
+          plant.priceTiers.forEach(function (t) {
+            html += '<div class="price-tier">' +
+              '<span class="tier-size">' + t.label + '</span>' +
+              '<span class="tier-price">' + t.price + '</span>' +
+            '</div>';
+          });
+        } else {
+          sizes.forEach(function (s) {
+            if (plant.price[s]) {
+              html += '<div class="price-tier">' +
+                '<span class="tier-size">' + sizeLabels[s] + '</span>' +
+                '<span class="tier-price">' + plant.price[s] + '</span>' +
+              '</div>';
+            }
+          });
+        }
+        if (plant.bulkTiers && plant.bulkTiers.length) {
+          html += '<div class="price-tier" style="border-top:1px solid #e0e0e0;margin-top:4px;padding-top:4px;">' +
+            '<span class="tier-size" style="color:#888;font-size:0.78em;text-transform:uppercase;letter-spacing:0.05em;">Bulk</span>' +
+          '</div>';
+          plant.bulkTiers.forEach(function (t) {
+            html += '<div class="price-tier">' +
+              '<span class="tier-size">' + t.label + '</span>' +
+              '<span class="tier-price">' + t.price + '</span>' +
+            '</div>';
+          });
+        }
+        return html + '</div>';
+      }
+
+      // ── Sections ───────────────────────────────────────────────
+      // Each plant in plants.js carries a `category`; anything unknown
+      // falls into the trailing "Other" bucket so nothing disappears.
+      var SECTIONS = [
+        // custom: rendered by its own block (the #sec-cephalotus showcase), not as a card grid.
+        { key: 'cephalotus', chip: 'Cephalotus',  title: 'Cephalotus',                   sub: '', custom: true },
+        { key: 'flytrap',    chip: 'Flytraps',    title: 'Venus Flytraps',               sub: '<em>Dionaea muscipula</em>. Named cultivars, plus one giant of unknown parentage. Shipped bare root.' },
+        { key: 'drosera',    chip: 'Sundews',     title: 'Sundews',                      sub: '<em>Drosera</em>. The easiest carnivores to keep alive, and the fastest to fill a pot.' },
+        { key: 'pinguicula', chip: 'Butterworts', title: 'Butterworts',                  sub: '<em>Pinguicula</em>. Mexican butterworts: small sticky rosettes that are murder on fungus gnats.' },
+        { key: 'nepenthes',  chip: 'Nepenthes',   title: 'Tropical Pitcher Plants',      sub: '<em>Nepenthes</em>. Tropical pitcher plants that do fine indoors. These ship potted.' },
+        { key: 'oddities',   chip: 'Oddities',    title: 'Bladderworts &amp; Oddities',  sub: '<em>Utricularia</em>, <em>Stylidium</em>, and whatever else I could not resist propagating.' },
+        { key: 'supplies',   chip: 'Supplies',    title: 'Supplies &amp; Kits',          sub: 'A $10 grow light, a fertilizer kit for trap feeding, and a beginner kit with a plant of your choice.' },
+        { key: 'other',      chip: 'Other',       title: 'Other',                        sub: '' }
+      ];
+
+      var CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+
+      // Card thumbnails live in images/thumbs/ (700px wide). Fall back to
+      // the full-size photo if a thumb hasn't been generated yet.
+      function thumbOf(path) {
+        return path.replace(/^images\//, 'images/thumbs/');
+      }
+
+      function escapeAttr(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+      }
+
+      function fmtMoney(n) {
+        return '$' + (n % 1 ? n.toFixed(2) : String(n));
+      }
+
+      // One-line price summary for the card: "$15", "$10 – $20", "$12+"
+      function priceSummary(plant) {
+        var vals = [], inquire = false, options = 0;
+        function push(v) {
+          if (!v) return;
+          if (/inquire/i.test(v)) { inquire = true; return; }
+          var n = parseFloat(String(v).replace(/[^0-9.]/g, ''));
+          if (!isNaN(n)) vals.push(n);
+        }
+        var noteWord = 'sizes';
+        if (plant.flatPrice) {
+          push(plant.flatPrice);
+        } else if (plant.priceTiers) {
+          noteWord = 'options';
+          plant.priceTiers.forEach(function (t) { push(t.price); options++; });
+        } else if (plant.price) {
+          sizes.forEach(function (sz) { if (plant.price[sz]) { push(plant.price[sz]); options++; } });
+        }
+        var main = '', note = [];
+        if (vals.length) {
+          var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+          if (min === max) main = fmtMoney(min) + (inquire ? '+' : '');
+          else main = fmtMoney(min) + ' – ' + fmtMoney(max) + (inquire ? '+' : '');
+        } else if (inquire) {
+          main = 'Inquire';
+        }
+        if (options > 1) note.push(options + ' ' + noteWord);
+        if (plant.bulkTiers && plant.bulkTiers.length) note.push('bulk pricing');
+        return { main: main, note: note.join(' · ') };
+      }
+
+      function buildCard(plant) {
+        var card = document.createElement('div');
+        card.className = 'plant-card' + (plant.status === 'sold' || plant.status === 'unavailable' ? ' sold' : '');
+        card.style.cursor = 'pointer';
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+
+        var plainName = escapeAttr(String(plant.name).replace(/<[^>]+>/g, ''));
+        var imgHTML;
+        if (plant.video) {
+          // Poster first; the video itself only loads when the card scrolls into view.
+          var poster = plant.image ? escapeAttr(thumbOf(plant.image)) : '';
+          imgHTML = '<video class="card-video" muted loop playsinline preload="none"' +
+            (poster ? ' poster="' + poster + '"' : '') +
+            ' data-src="' + escapeAttr(plant.video) + '" aria-label="' + plainName + '"></video>' +
+            '<span class="video-tag">&#9654; Video</span>';
+        } else if (plant.image) {
+          var full = escapeAttr(plant.image);
+          imgHTML = '<img src="' + escapeAttr(thumbOf(plant.image)) + '" alt="' + plainName + '" loading="lazy" decoding="async"' +
+            ' onerror="this.onerror=null;this.src=\'' + full + '\';">';
+        } else {
+          imgHTML = '<div class="img-placeholder">🌿</div>';
+        }
+
+        var saleBadgeHTML = '';
+        var plantSale = window.SaleHelpers && window.SaleHelpers.hasAnySaleForPlant(plant.name);
+        if (plantSale) {
+          saleBadgeHTML = '<span class="sale-badge">' + (plantSale.type === 'bogo' ? 'BOGO' : 'SALE') + '</span>';
+        }
+
+        var ps = priceSummary(plant);
+        var priceHTML = ps.main
+          ? '<div class="plant-price-line"><span class="price-main">' + ps.main + '</span>' +
+            (ps.note ? '<span class="price-note">' + ps.note + '</span>' : '') + '</div>'
+          : '';
+
+        card.innerHTML =
+          '<div class="plant-image">' +
+            imgHTML +
+            saleBadgeHTML +
+            (isJustAdded(plant)
+              ? '<span class="status-badge status-justadded">Just added</span>'
+              : '<span class="status-badge status-' + plant.status + '">' +
+                  (statusLabel[plant.status] || plant.status) +
+                '</span>') +
+            '<span class="card-view-hint">View details</span>' +
+          '</div>' +
+          '<div class="plant-info">' +
+            '<h3 class="plant-name">' + plant.name + '</h3>' +
+            (plant.species ? '<p class="plant-species">' + plant.species + '</p>' : '') +
+            priceHTML +
+            '<p class="plant-description">' + (plant.shortDescription || plant.description) + '</p>' +
+          '</div>';
+
+        card.addEventListener('click', function () { openModal(plant); });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(plant); }
+        });
+        return card;
+      }
+
+      function renderShop() {
+        var shop = document.getElementById('shop');
+        var chips = document.getElementById('jump-bar-inner');
+        var known = {};
+        SECTIONS.forEach(function (sec) { known[sec.key] = true; });
+
+        var isPhone = window.matchMedia('(max-width: 640px)').matches;
+        var firstRendered = true;
+
+        SECTIONS.forEach(function (sec) {
+          var items = plants.filter(function (p) {
+            var c = p.category || 'other';
+            return sec.key === 'other' ? !known[c] || c === 'other' : c === sec.key;
+          });
+          if (!items.length) return;
+
+          // Just-added listings float to the top of their section.
+          var fresh = items.filter(isJustAdded);
+          items = fresh.concat(items.filter(function (p) { return !isJustAdded(p); }));
+
+          if (sec.custom) {
+            var customEl = document.getElementById('sec-' + sec.key);
+            if (!customEl) return;
+            customEl.hidden = false;
+            var cchip = document.createElement('a');
+            cchip.className = 'jump-chip jump-chip-feature';
+            cchip.href = '#sec-' + sec.key;
+            cchip.innerHTML = sec.chip + '<span class="jump-chip-count">New</span>';
+            cchip.addEventListener('click', function (e) {
+              e.preventDefault();
+              customEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (history.replaceState) history.replaceState(null, '', '#sec-' + sec.key);
+            });
+            chips.appendChild(cchip);
+            return;
+          }
+
+          var section = document.createElement('section');
+          section.className = 'shop-section';
+          section.id = 'sec-' + sec.key;
+          if (isPhone && !firstRendered) section.classList.add('collapsed');
+          firstRendered = false;
+
+          var head = document.createElement('button');
+          head.className = 'section-head';
+          head.type = 'button';
+          head.setAttribute('aria-expanded', String(!section.classList.contains('collapsed')));
+          head.innerHTML =
+            '<div>' +
+              '<h2 class="section-title">' + sec.title + '</h2>' +
+              '<p class="section-sub">' + items.length + (items.length === 1 ? ' listing' : ' listings') +
+                (fresh.length ? ' · <span class="section-new">' + fresh.length + ' just added</span>' : '') +
+                (sec.sub ? ' · ' + sec.sub : '') + '</p>' +
+            '</div>' +
+            '<span class="section-chevron" aria-hidden="true">' + CHEVRON + '</span>';
+          head.addEventListener('click', function () {
+            var collapsed = section.classList.toggle('collapsed');
+            head.setAttribute('aria-expanded', String(!collapsed));
+          });
+
+          var grid = document.createElement('div');
+          grid.className = 'plants-grid';
+          items.forEach(function (plant) { grid.appendChild(buildCard(plant)); });
+
+          section.appendChild(head);
+          section.appendChild(grid);
+          shop.appendChild(section);
+
+          var chip = document.createElement('a');
+          chip.className = 'jump-chip';
+          chip.href = '#sec-' + sec.key;
+          chip.innerHTML = sec.chip + '<span class="jump-chip-count">' + items.length + '</span>' +
+            (fresh.length ? '<span class="jump-chip-new">' + fresh.length + ' new</span>' : '');
+          chip.addEventListener('click', function (e) {
+            e.preventDefault();
+            section.classList.remove('collapsed');
+            head.setAttribute('aria-expanded', 'true');
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (history.replaceState) history.replaceState(null, '', '#sec-' + sec.key);
+          });
+          chips.appendChild(chip);
+        });
+
+        // Deep link: /#sec-drosera opens that section on load.
+        if (location.hash && /^#sec-/.test(location.hash)) {
+          var target = document.querySelector(location.hash);
+          if (target) {
+            target.classList.remove('collapsed');
+            var h = target.querySelector('.section-head');
+            if (h) h.setAttribute('aria-expanded', 'true');
+            setTimeout(function () { target.scrollIntoView({ block: 'start' }); }, 50);
+          }
+        }
+      }
+
+      renderShop();
+
+      // ── Cephalotus showcase ─────────────────────────────────────
+      // Reads the "cephalotus" entry in plants.js: sizes, clones, mixes,
+      // gallery and video. Cart lines read like "Medium, Behemoth, Rockwool".
+      (function renderCeph() {
+        var root = document.getElementById('sec-cephalotus');
+        var ceph = plants.filter(function (p) { return p.category === 'cephalotus'; })[0];
+        if (!root || !ceph || root.hidden) return;
+
+        var soldOut = ceph.status === 'sold' || ceph.status === 'unavailable';
+        var sizesEl  = document.getElementById('ceph-sizes');
+        var clonesEl = document.getElementById('ceph-clones');
+        var mixesEl  = document.getElementById('ceph-mixes');
+        var cloneFld = document.getElementById('ceph-clone-field');
+        var sizeNote = document.getElementById('ceph-size-note');
+        var stageImg = document.getElementById('ceph-stage-img');
+        var stageTag = document.getElementById('ceph-stage-tag');
+        var sumLabel = document.getElementById('ceph-summary-label');
+        var sumPrice = document.getElementById('ceph-summary-price');
+        var addBtn   = document.getElementById('ceph-add');
+
+        var sizes  = ceph.sizes  || [];
+        var clones = ceph.clones || [];
+        var mixes  = ceph.mixes  || [];
+        var state = { size: null, clone: null, mix: mixes.length ? mixes[0].name : '' };
+
+        // Hero facts stay in sync with the data.
+        var prices = sizes.filter(function (s) { return !s.soldOut; }).map(function (s) { return s.price; });
+        if (prices.length) document.getElementById('ceph-fact-from').textContent = fmtMoney(Math.min.apply(null, prices));
+        document.getElementById('ceph-fact-clones').textContent = String(clones.length);
+
+        function option(cls, html, pressed, disabled) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = cls;
+          b.setAttribute('role', 'radio');
+          b.setAttribute('aria-checked', pressed ? 'true' : 'false');
+          b.innerHTML = html;
+          if (disabled) { b.disabled = true; b.classList.add('is-out'); }
+          return b;
+        }
+
+        function paint() {
+          var size = state.size;
+          sizesEl.querySelectorAll('.ceph-size').forEach(function (b, i) {
+            b.setAttribute('aria-checked', String(sizes[i] === size));
+          });
+          clonesEl.querySelectorAll('.ceph-clone').forEach(function (b, i) {
+            b.setAttribute('aria-checked', String(clones[i].name === state.clone));
+          });
+          mixesEl.querySelectorAll('.ceph-mix').forEach(function (b, i) {
+            b.setAttribute('aria-checked', String(mixes[i].name === state.mix));
+          });
+
+          var needsClone = size && !size.noClone;
+          cloneFld.classList.toggle('is-off', !needsClone);
+          clonesEl.querySelectorAll('.ceph-clone').forEach(function (b) {
+            b.disabled = !needsClone || b.classList.contains('is-out');
+          });
+
+          sizeNote.hidden = !(size && size.note);
+          sizeNote.textContent = size && size.note ? size.note : '';
+
+          if (size && size.photo && stageImg.getAttribute('data-src') !== size.photo) {
+            stageImg.setAttribute('data-src', size.photo);
+            stageImg.classList.add('is-swapping');
+            var next = new Image();
+            next.onload = next.onerror = function () {
+              stageImg.src = size.photo;
+              stageImg.alt = 'Example ' + size.label.toLowerCase() + ' Cephalotus in a 2.5 inch pot';
+              stageImg.classList.remove('is-swapping');
+            };
+            next.src = size.photo;
+          }
+          stageTag.textContent = size ? size.label + ' · ' + fmtMoney(size.price) : '';
+
+          var parts = [];
+          if (size) parts.push(size.label);
+          if (needsClone && state.clone) parts.push(state.clone);
+          if (state.mix) parts.push(state.mix);
+          sumLabel.textContent = parts.join(', ');
+          sumPrice.textContent = size ? fmtMoney(size.price) : '';
+
+          if (soldOut) {
+            addBtn.disabled = true;
+            addBtn.textContent = 'Sold out for now';
+          } else if (needsClone && !state.clone) {
+            addBtn.disabled = true;
+            addBtn.textContent = 'Pick a clone';
+          } else {
+            addBtn.disabled = !size;
+            addBtn.textContent = 'Add to cart';
+          }
+        }
+
+        sizesEl.style.setProperty('--ceph-n', String(Math.max(sizes.length, 1)));
+        sizesEl.classList.toggle('is-many', sizes.length > 3);
+        sizes.forEach(function (s) {
+          var b = option('ceph-size',
+            '<span class="ceph-size-name">' + s.label + '</span>' +
+            '<span class="ceph-size-price">' + fmtMoney(s.price) + '</span>' +
+            (s.soldOut ? '<span class="ceph-size-out">Sold out</span>' : ''),
+            false, s.soldOut);
+          b.addEventListener('click', function () { state.size = s; paint(); });
+          sizesEl.appendChild(b);
+        });
+
+        clones.forEach(function (c) {
+          var b = option('ceph-clone',
+            '<span class="ceph-clone-name">' + c.name + '</span>' +
+            '<span class="ceph-clone-parents">' + String(c.parents).split(' \u00d7 ').map(function (x) {
+              return '<span class="ceph-nowrap">' + x + '</span>'; }).join(' \u00d7 ') + '</span>' +
+            (c.soldOut ? '<span class="ceph-size-out">Sold out</span>' : ''),
+            false, c.soldOut);
+          b.addEventListener('click', function () { state.clone = c.name; paint(); });
+          clonesEl.appendChild(b);
+        });
+
+        mixes.forEach(function (m) {
+          var b = option('ceph-mix',
+            m.name + (m.note ? ' <span class="ceph-mix-note">' + m.note + '</span>' : ''), false, false);
+          b.addEventListener('click', function () { state.mix = m.name; paint(); });
+          mixesEl.appendChild(b);
+        });
+
+        // Arrow keys move within each radiogroup.
+        [sizesEl, clonesEl, mixesEl].forEach(function (group) {
+          group.addEventListener('keydown', function (e) {
+            if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].indexOf(e.key) < 0) return;
+            var btns = Array.prototype.filter.call(group.children, function (b) { return !b.disabled; });
+            var i = btns.indexOf(document.activeElement);
+            if (i < 0) return;
+            e.preventDefault();
+            var step = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
+            var nb = btns[(i + step + btns.length) % btns.length];
+            nb.focus(); nb.click();
+          });
+        });
+
+        state.size = sizes.filter(function (s) { return s.label === ceph.defaultSize && !s.soldOut; })[0] ||
+                     sizes.filter(function (s) { return !s.soldOut; })[0] || null;
+        paint();
+
+        addBtn.addEventListener('click', function () {
+          var size = state.size;
+          if (!size || soldOut) return;
+          if (!size.noClone && !state.clone) return;
+          addToCart(ceph, sumLabel.textContent, size.price, 1);
+        });
+
+        // ── Hero video + gallery ──
+        var heroFig = document.getElementById('ceph-hero-video');
+        var heroVid = heroFig.querySelector('video');
+        if (ceph.video) {
+          if (ceph.image) heroVid.setAttribute('poster', ceph.image);
+          var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var playHero = function () {
+            if (!heroVid.getAttribute('src')) heroVid.src = ceph.video;
+            var p = heroVid.play();
+            if (p && p.catch) p.catch(function () { /* autoplay blocked: poster stays */ });
+          };
+          if (!reduceMotion) {
+            if ('IntersectionObserver' in window) {
+              new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                  if (en.isIntersecting) playHero();
+                  else if (heroVid.getAttribute('src')) heroVid.pause();
+                });
+              }, { rootMargin: '200px 0px' }).observe(heroVid);
+            } else {
+              playHero();
+            }
+          }
+        } else {
+          heroFig.hidden = true;
+        }
+
+        var galEl = document.getElementById('ceph-gallery');
+        var gallery = ceph.gallery || [];
+        gallery.forEach(function (g, i) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'ceph-shot' + (g.wide ? ' is-wide' : '');
+          b.setAttribute('aria-label', 'Open photo ' + (i + 1) + ' of ' + gallery.length);
+          b.innerHTML = '<img src="' + escapeAttr(thumbOf(g.file)) + '" alt="' + escapeAttr(g.alt || '') + '" loading="lazy" decoding="async"' +
+            ' onerror="this.onerror=null;this.src=\'' + escapeAttr(g.file) + '\';">';
+          b.addEventListener('click', function () { openLightbox(i); });
+          galEl.appendChild(b);
+        });
+        if (!gallery.length) document.getElementById('ceph-gallery-wrap').hidden = true;
+
+        function scrollGallery(dir) {
+          var shot = galEl.querySelector('.ceph-shot');
+          var w = shot ? shot.getBoundingClientRect().width + 14 : 300;
+          galEl.scrollBy({ left: dir * w * 2, behavior: 'smooth' });
+        }
+        document.getElementById('ceph-gal-prev').addEventListener('click', function () { scrollGallery(-1); });
+        document.getElementById('ceph-gal-next').addEventListener('click', function () { scrollGallery(1); });
+
+        // Lightbox
+        var lb = document.getElementById('ceph-lightbox');
+        var lbImg = document.getElementById('ceph-lb-img');
+        var lbCount = document.getElementById('ceph-lb-count');
+        var lbIdx = 0;
+        function showLb(i) {
+          lbIdx = (i + gallery.length) % gallery.length;
+          lbImg.src = gallery[lbIdx].file;
+          lbImg.alt = gallery[lbIdx].alt || '';
+          lbCount.textContent = (lbIdx + 1) + ' / ' + gallery.length;
+        }
+        function openLightbox(i) {
+          showLb(i);
+          lb.classList.add('open');
+          lb.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          document.getElementById('ceph-lb-close').focus();
+        }
+        function closeLightbox() {
+          if (!lb.classList.contains('open')) return;
+          lb.classList.remove('open');
+          lb.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+        document.getElementById('ceph-lb-close').addEventListener('click', closeLightbox);
+        document.getElementById('ceph-lb-prev').addEventListener('click', function () { showLb(lbIdx - 1); });
+        document.getElementById('ceph-lb-next').addEventListener('click', function () { showLb(lbIdx + 1); });
+        lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+        document.addEventListener('keydown', function (e) {
+          if (!lb.classList.contains('open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          else if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
+          else if (e.key === 'ArrowRight') showLb(lbIdx + 1);
+        });
+        var touchX = null;
+        lb.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+        lb.addEventListener('touchend', function (e) {
+          if (touchX === null) return;
+          var dx = e.changedTouches[0].clientX - touchX;
+          if (Math.abs(dx) > 40) showLb(lbIdx + (dx < 0 ? 1 : -1));
+          touchX = null;
+        });
+      }());
+
+      // ── Header height → CSS var (keeps the jump bar snug under the header) ──
+      (function () {
+        var header = document.querySelector('.site-header');
+        function setHeaderH() {
+          if (header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+        }
+        setHeaderH();
+        window.addEventListener('resize', setHeaderH);
+        window.addEventListener('load', setHeaderH);
+      }());
+
+      // ── Highlight the chip for the section currently in view ──
+      (function () {
+        var chips = Array.prototype.slice.call(document.querySelectorAll('.jump-chip'));
+        var secs  = Array.prototype.slice.call(document.querySelectorAll('.shop-section'))
+          .filter(function (s) { return !s.hidden; });
+        if (!secs.length) return;
+        var ticking = false;
+        function update() {
+          ticking = false;
+          var bar = document.getElementById('jump-bar');
+          var offset = (bar ? bar.getBoundingClientRect().bottom : 0) + 12;
+          var current = secs[0];
+          for (var i = 0; i < secs.length; i++) {
+            if (secs[i].getBoundingClientRect().top <= offset) current = secs[i];
+          }
+          chips.forEach(function (c) {
+            c.classList.toggle('active', c.getAttribute('href') === '#' + current.id);
+          });
+        }
+        window.addEventListener('scroll', function () {
+          if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        }, { passive: true });
+        update();
+      }());
+
+      // ── Card videos: load + play only while on screen ──
+      (function () {
+        var vids = Array.prototype.slice.call(document.querySelectorAll('video.card-video'));
+        if (!vids.length) return;
+        function start(v) {
+          if (!v.getAttribute('src')) v.src = v.getAttribute('data-src');
+          var p = v.play();
+          if (p && p.catch) p.catch(function () { /* autoplay blocked: poster stays */ });
+        }
+        if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) start(en.target);
+            else if (en.target.getAttribute('src')) en.target.pause();
+          });
+        }, { rootMargin: '200px 0px' });
+        vids.forEach(function (v) { io.observe(v); });
+      }());
+
+
+      // ── Modal ─────────────────────────────────────────────────
+      var modal      = document.getElementById('plant-modal');
+      var mainImg    = document.getElementById('modal-main-img');
+      var mainVideo  = document.getElementById('modal-main-video');
+      var thumbsWrap = document.getElementById('modal-thumbs');
+      var modalName  = document.getElementById('modal-name');
+      var modalSpec  = document.getElementById('modal-species');
+      var modalPrice = document.getElementById('modal-prices');
+      var modalDesc  = document.getElementById('modal-description');
+      var modalVideo = document.getElementById('modal-video');
+
+      function openModal(plant) {
+        // Name + species
+        modalName.innerHTML = plant.name;
+        modalSpec.textContent = plant.species;
+        modalDesc.innerHTML = plant.description
+          .replace(/\n\n/g, '<br><br>')
+          .replace(/\n/g, '<br>');
+
+        // Prices
+        modalPrice.innerHTML = '';
+        if (plant.flatPrice) {
+          var flatRow = document.createElement('div');
+          flatRow.className = 'price-tier';
+          flatRow.innerHTML = '<span class="tier-price">' + plant.flatPrice + '</span>';
+          modalPrice.appendChild(flatRow);
+        } else if (plant.priceTiers) {
+          plant.priceTiers.forEach(function (t) {
+            var row = document.createElement('div');
+            row.className = 'price-tier';
+            row.innerHTML = '<span class="tier-size">' + t.label + '</span>' +
+                            '<span class="tier-price">' + t.price + '</span>';
+            modalPrice.appendChild(row);
+          });
+        } else {
+          sizes.forEach(function (s) {
+            if (plant.price[s]) {
+              var row = document.createElement('div');
+              row.className = 'price-tier';
+              row.innerHTML = '<span class="tier-size">' + sizeLabels[s] + '</span>' +
+                              '<span class="tier-price">' + plant.price[s] + '</span>';
+              modalPrice.appendChild(row);
+            }
+          });
+        }
+        if (plant.bulkTiers && plant.bulkTiers.length) {
+          var bulkLabel = document.createElement('div');
+          bulkLabel.className = 'price-tier';
+          bulkLabel.style.cssText = 'border-top:1px solid #e0e0e0;margin-top:4px;padding-top:4px;';
+          bulkLabel.innerHTML = '<span class="tier-size" style="color:#888;font-size:0.78em;text-transform:uppercase;letter-spacing:0.05em;">Bulk</span>';
+          modalPrice.appendChild(bulkLabel);
+          plant.bulkTiers.forEach(function (t) {
+            var row = document.createElement('div');
+            row.className = 'price-tier';
+            row.innerHTML = '<span class="tier-size">' + t.label + '</span>' +
+                            '<span class="tier-price">' + t.price + '</span>';
+            modalPrice.appendChild(row);
+          });
+        }
+
+        // Video link
+        if (plant.videoLink) {
+          modalVideo.href = plant.videoLink;
+          modalVideo.style.display = 'inline-block';
+        } else {
+          modalVideo.style.display = 'none';
+        }
+
+        // Cart — size select
+        var cartRow     = document.getElementById('modal-cart-row');
+        var sizeSelect  = document.getElementById('modal-size-select');
+        var addCartBtn  = document.getElementById('modal-add-cart-btn');
+        sizeSelect.innerHTML = '';
+
+        var cartOptions = []; // [{label, price}]
+        if (plant.flatPrice) {
+          var fp = parseFloat(plant.flatPrice.replace(/[^0-9.]/g, ''));
+          if (!isNaN(fp)) cartOptions.push({ label: '', price: fp });
+        } else if (plant.priceTiers) {
+          plant.priceTiers.forEach(function (t) {
+            var p = parseFloat(t.price.replace(/[^0-9.]/g, ''));
+            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p, pick: t.pick });
+          });
+        } else if (plant.price) {
+          sizes.forEach(function (s) {
+            var val = plant.price[s];
+            if (val && val !== 'Inquire') {
+              var p = parseFloat(val.replace(/[^0-9.]/g, ''));
+              if (!isNaN(p)) cartOptions.push({ label: sizeLabels[s], price: p });
+            }
+          });
+        }
+        if (plant.bulkTiers) {
+          plant.bulkTiers.forEach(function (t) {
+            var p = parseFloat(t.price.replace(/[^0-9.]/g, ''));
+            var qty = parseInt(t.label) || 10;
+            if (!isNaN(p)) cartOptions.push({ label: t.label, price: p, minQty: qty });
+          });
+        }
+
+        var cloneSelect = document.getElementById('modal-clone-select');
+        cloneSelect.style.display = 'none';
+        cloneSelect.innerHTML = '';
+
+        if (cartOptions.length > 0 && plant.status !== 'sold' && plant.status !== 'unavailable') {
+          cartRow.style.display = 'flex';
+          if (cartOptions.length === 1 && cartOptions[0].label === '') {
+            sizeSelect.style.display = 'none';
+          } else {
+            sizeSelect.style.display = 'block';
+            cartOptions.forEach(function (opt) {
+              var o = document.createElement('option');
+              o.value = opt.price;
+              o.textContent = opt.label + (opt.label ? ' — $' + opt.price.toFixed(2) : '');
+              o.dataset.label = opt.label;
+              o.dataset.minqty = opt.minQty || 1;
+              sizeSelect.appendChild(o);
+            });
+          }
+
+          if (plant.kitPlantPicker) {
+            // Lowest listed price for a plant, ignoring "Inquire" and bulk tiers.
+            var kitPlantPrice = function (p) {
+              var vals = [];
+              if (p.flatPrice) {
+                var f = parseFloat(p.flatPrice.replace(/[^0-9.]/g, ''));
+                if (!isNaN(f)) vals.push(f);
+              }
+              if (p.price) {
+                sizes.forEach(function (sz) {
+                  var v = p.price[sz];
+                  if (v && v !== 'Inquire') {
+                    var n = parseFloat(v.replace(/[^0-9.]/g, ''));
+                    if (!isNaN(n)) vals.push(n);
+                  }
+                });
+              }
+              return vals.length ? Math.min.apply(null, vals) : null;
+            };
+            // Kit plants: flytraps, Nepenthes and Pinguicula that cost $15 or less.
+            var kitPlants = plants.filter(function (p) {
+              if (p.kitPlantPicker || p.status === 'unavailable' || p.status === 'sold') return false;
+              var txt = (p.name + ' ' + (p.species || '')).replace(/<[^>]+>/g, '');
+              if (!/VFT|Venus flytrap|Nepenthes|Pinguicula/i.test(txt)) return false;
+              var mp = kitPlantPrice(p);
+              return mp !== null && mp <= 15;
+            });
+            cloneSelect.innerHTML = '<option value="">— Choose your plant —</option>';
+            kitPlants.forEach(function (p) {
+              var plain = p.name.replace(/<[^>]+>/g, '');
+              var o = document.createElement('option');
+              o.value = plain;
+              o.textContent = plain;
+              cloneSelect.appendChild(o);
+            });
+            var showClonePicker = function () {
+              var selOpt = cartOptions[sizeSelect.selectedIndex];
+              cloneSelect.style.display = (selOpt && selOpt.pick) ? 'block' : 'none';
+            };
+            showClonePicker();
+            sizeSelect.addEventListener('change', showClonePicker);
+          }
+
+          addCartBtn.onclick = function () {
+            var opt = (cartOptions.length === 1 && cartOptions[0].label === '')
+              ? cartOptions[0]
+              : cartOptions[sizeSelect.selectedIndex];
+            var label = opt.label;
+            if (plant.kitPlantPicker && opt.pick) {
+              var clone = cloneSelect.value;
+              if (!clone) { alert('Please choose your kit plant.'); return; }
+              label = label + ' — ' + clone;
+            }
+            addToCart(plant, label, opt.price, opt.minQty || 1);
+          };
+        } else {
+          cartRow.style.display = 'none';
+        }
+
+        // Gallery — fall back to main image if no size photos yet
+        var gallery = (plant.images && plant.images.length > 0)
+          ? plant.images
+          : (plant.video || !plant.image ? [] : [{ label: plant.name, file: plant.image }]);
+        if (plant.video) {
+          gallery = [{ label: 'Video', file: plant.video, isVideo: true }].concat(gallery);
+        }
+
+        function showGalleryItem(item) {
+          if (item.isVideo) {
+            mainImg.style.display = 'none';
+            mainVideo.src = item.file;
+            mainVideo.style.display = '';
+            var mp = mainVideo.play();
+            if (mp && mp.catch) mp.catch(function () {});
+          } else {
+            mainVideo.style.display = 'none';
+            mainVideo.pause();
+            mainImg.src = item.file;
+            mainImg.alt = item.label;
+            mainImg.style.display = '';
+          }
+        }
+
+        var defaultIdx = plant.video ? 0 : gallery.length - 1;
+        if (gallery.length) {
+          showGalleryItem(gallery[defaultIdx]);
+        } else {
+          // No photo yet: skip the image area instead of showing a broken image.
+          mainImg.style.display = 'none';
+          mainVideo.style.display = 'none';
+          mainVideo.pause();
+        }
+
+        // Thumbnails — only show if there are multiple items
+        thumbsWrap.innerHTML = '';
+        if (gallery.length > 1) {
+          gallery.forEach(function (img, i) {
+            var thumb = document.createElement('div');
+            thumb.className = 'modal-thumb' + (i === defaultIdx ? ' active' : '');
+            if (img.isVideo) {
+              thumb.innerHTML =
+                '<video src="' + img.file + '" muted style="width:100%;height:100%;object-fit:cover;"></video>' +
+                '<div class="modal-thumb-label">▶ ' + img.label + '</div>';
+            } else {
+              thumb.innerHTML =
+                '<img src="' + img.file + '" alt="' + img.label + '">' +
+                '<div class="modal-thumb-label">' + img.label + '</div>';
+            }
+            thumb.addEventListener('click', function () {
+              showGalleryItem(img);
+              thumbsWrap.querySelectorAll('.modal-thumb').forEach(function (t) {
+                t.classList.remove('active');
+              });
+              thumb.classList.add('active');
+            });
+            thumbsWrap.appendChild(thumb);
+          });
+          thumbsWrap.style.display = 'flex';
+        } else {
+          thumbsWrap.style.display = 'none';
+        }
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('modal-close').addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeModal(); closeCart(); } });
+
+
+      // ── Cart ────────────────────────────────────────────────────
+      var cart = [];
+      var appliedDiscount = null;
+      var cartPanel    = document.getElementById('cart-panel');
+      var cartOverlay  = document.getElementById('cart-overlay');
+      var cartBadge    = document.getElementById('cart-badge');
+      var cartItemsList= document.getElementById('cart-items-list');
+      var cartShipNote = document.getElementById('cart-ship-note');
+      var heatpackRow  = document.getElementById('heatpack-row');
+      var heatpackChk  = document.getElementById('cart-heatpack-chk');
+      var gaTaxRow     = document.getElementById('ga-tax-row');
+      var cartEmail    = document.getElementById('cart-email');
+      var addrName     = document.getElementById('cart-addr-name');
+      var addrStreet   = document.getElementById('cart-addr-street');
+      var addrCity     = document.getElementById('cart-addr-city');
+      var addrState    = document.getElementById('cart-addr-state');
+      var addrZip      = document.getElementById('cart-addr-zip');
+      var cartComments = document.getElementById('cart-comments');
+      var paymentInstructions = document.getElementById('payment-instructions');
+
+      var paymentInfo = {
+        PayPal: 'Send payment to <strong>will@phamcliff.com</strong> via PayPal.',
+        Venmo:  'Send payment to <strong>@phamcliff</strong> on Venmo.',
+        Zelle:  'Send payment to <strong>phamcliff-flytraps</strong> via Zelle.'
+      };
+      var paymentInfoPlain = {
+        PayPal: 'Send payment to will@phamcliff.com via PayPal.',
+        Venmo:  'Send payment to @phamcliff on Venmo.',
+        Zelle:  'Send payment to phamcliff-flytraps via Zelle.'
+      };
+
+      function getSelectedPayment() {
+        var radios = document.querySelectorAll('input[name="payment"]');
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) return radios[i].value;
+        }
+        return '';
+      }
+
+      document.querySelectorAll('input[name="payment"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          paymentInstructions.innerHTML = paymentInfo[this.value];
+          paymentInstructions.style.display = 'block';
+        });
+      });
+
+      function openCart() {
+        var btn = document.getElementById('cart-email-btn');
+        btn.style.display = '';
+        btn.textContent = 'Send Order';
+        btn.style.background = '';
+        btn.disabled = false;
+        cartPanel.classList.add('open');
+        cartPanel.setAttribute('aria-hidden', 'false');
+        cartOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeCart() {
+        cartPanel.classList.remove('open');
+        cartPanel.setAttribute('aria-hidden', 'true');
+        cartOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('cart-icon-btn').addEventListener('click', openCart);
+      document.getElementById('hamburger-btn').addEventListener('click', function () {
+        document.getElementById('site-nav').classList.toggle('nav-open');
+      });
+      document.getElementById('cart-close-btn').addEventListener('click', closeCart);
+      cartOverlay.addEventListener('click', closeCart);
+
+      // ── No-Dormancy Experiment opt-in ──────────────────────────
+      // Frost bonus (sales.js): a free U. calycifida or S. debile with every order.
+      var frostActive = !!(window.SaleHelpers && window.SaleHelpers.frostBonusActive &&
+                           window.SaleHelpers.frostBonusActive());
+      var frostSelect = document.getElementById('reward-frost-select');
+      if (frostActive) {
+        var frostNames = { 'Utricularia calycifida': ' (bladderwort)', 'Stylidium debile': ' (trigger plant)' };
+        frostSelect.innerHTML = '<option value="">— Choose your free plant —</option>';
+        window.FROST_BONUS.choices.concat(['No thanks']).forEach(function (c) {
+          var opt = document.createElement('option');
+          opt.value = c;
+          opt.textContent = c + (frostNames[c] || '');
+          frostSelect.appendChild(opt);
+        });
+      }
+
+      // One flag drives both the featured block and the cart checkbox.
+      var experimentOn = false;
+      var expActive = (function () {
+        var cfg = window.EXPERIMENT;
+        if (!cfg || !cfg.active) return false;
+        if (cfg.ends && new Date() > new Date(cfg.ends)) return false;
+        return true;
+      }());
+      var expFeature   = document.getElementById('experiment-feature');
+      var expFeatBtn   = document.getElementById('experiment-feature-btn');
+      var expFeatStat  = document.getElementById('experiment-feature-status');
+      var expCartBlock = document.getElementById('cart-experiment');
+      var expOptIn     = document.getElementById('exp-optin');
+      var expFields    = document.getElementById('exp-fields');
+      var expRegime    = document.getElementById('exp-regime');
+      var expSetup     = document.getElementById('exp-setup');
+      var expNotes     = document.getElementById('exp-notes');
+
+      function setExperiment(on) {
+        experimentOn = !!on;
+        expOptIn.checked = experimentOn;
+        expFields.style.display = experimentOn ? '' : 'none';
+        expFeatBtn.classList.toggle('on', experimentOn);
+        expFeatBtn.textContent = experimentOn ? '\u2713 You\u2019re in' : 'Count me in';
+        expFeatStat.style.display = experimentOn ? '' : 'none';
+      }
+      if (expActive) {
+        expFeature.hidden = false;
+        expCartBlock.style.display = '';
+        expFeatBtn.addEventListener('click', function () {
+          setExperiment(!experimentOn);
+          if (experimentOn && cart.length === 0) {
+            expFeatStat.textContent = 'Added to your order at checkout. Pick any plant below and it ships along.';
+          } else {
+            expFeatStat.textContent = 'Added to your order at checkout.';
+          }
+        });
+        expOptIn.addEventListener('change', function () { setExperiment(expOptIn.checked); });
+      }
+      setExperiment(false);
+
+      function addToCart(plant, sizeLabel, price, minQty) {
+        minQty = minQty || 1;
+        var step = 1;
+        var saleTag = null;
+        var saleId = null;
+        var sale = window.SaleHelpers && window.SaleHelpers.saleFor(plant.name, sizeLabel);
+        if (sale && sale.type === 'bogo') {
+          // BOGO: pair quantities (step by 2, min 2) and halve the unit price
+          // so cart total reflects "pay for one, get one free".
+          price = price / 2;
+          minQty = Math.max(minQty, 2);
+          step = 2;
+          saleTag = 'BOGO';
+          saleId = sale.id;
+        }
+        var id = plant.name + '||' + sizeLabel;
+        var found = false;
+        for (var i = 0; i < cart.length; i++) {
+          if (cart[i].id === id) {
+            cart[i].qty += (cart[i].step || 1);
+            found = true;
+            break;
+          }
+        }
+        if (!found) cart.push({
+          id: id, name: plant.name, size: sizeLabel,
+          price: price, qty: minQty, minQty: minQty,
+          step: step, saleTag: saleTag, saleId: saleId,
+        });
+        renderCart();
+        closeModal();
+        openCart();
+      }
+
+      function calcTotals() {
+        var sub = 0;
+        for (var i = 0; i < cart.length; i++) sub += cart[i].price * cart[i].qty;
+        var discount = 0;
+        if (appliedDiscount && appliedDiscount.type === 'bogo') {
+          var cheapest = Infinity;
+          var eligibleQty = 0;
+          for (var i = 0; i < cart.length; i++) {
+            var isBulk = cart[i].minQty > 1 && !cart[i].saleTag;
+            if (appliedDiscount.excludeBulk && isBulk) continue;
+            eligibleQty += cart[i].qty;
+            if (cart[i].price < cheapest) cheapest = cart[i].price;
+          }
+          if (eligibleQty >= 2 && cheapest < Infinity) {
+            discount = cheapest;
+          }
+        }
+        var free     = sub >= 100;
+        var shipping = free ? 0 : 15;
+        var heat     = (!free && heatpackChk.checked) ? 5 : 0;
+        var taxBase  = sub - discount + shipping + heat;
+        var isGA     = addrState.value === 'GA';
+        var tax      = isGA ? Math.round(taxBase * 0.08 * 100) / 100 : 0;
+        return { sub: sub, discount: discount, shipping: shipping, heat: heat, tax: tax, total: taxBase + tax, free: free };
+      }
+
+      function renderCart() {
+        var count = 0;
+        for (var i = 0; i < cart.length; i++) count += cart[i].qty;
+        cartBadge.textContent = count;
+        cartBadge.style.display = count > 0 ? 'flex' : 'none';
+
+        cartItemsList.innerHTML = '';
+        if (cart.length === 0) {
+          var emp = document.createElement('p');
+          emp.className = 'cart-empty';
+          emp.textContent = 'Your cart is empty.';
+          cartItemsList.appendChild(emp);
+        } else {
+          cart.forEach(function (item, idx) {
+            var row = document.createElement('div');
+            row.className = 'cart-item';
+
+            var info = document.createElement('div');
+            info.className = 'cart-item-info';
+            info.innerHTML = '<span class="cart-item-name">' + item.name +
+              (item.size ? ' <em>(' + item.size + ')</em>' : '') +
+              (item.saleTag ? ' <span style="color:#c87a00;font-weight:700;">(' + item.saleTag + ')</span>' : '') +
+              '</span>' +
+              (item.minQty > 1 && !item.saleTag ? '<span style="font-size:0.75em;color:#888;"> min ' + item.minQty + '</span>' : '') +
+              '<span class="cart-item-price">$' + (item.price * item.qty).toFixed(2) + '</span>';
+
+            var ctrl = document.createElement('div');
+            ctrl.className = 'cart-item-ctrl';
+
+            [['−', -1], ['+', 1]].forEach(function (pair) {
+              var btn = document.createElement('button');
+              btn.className = 'qty-btn';
+              btn.textContent = pair[0];
+              btn.addEventListener('click', (function (i, dir) { return function () {
+                var step = cart[i].step || 1;
+                cart[i].qty += dir * step;
+                var min = cart[i].minQty || 1;
+                if (cart[i].qty < min) cart.splice(i, 1);
+                renderCart();
+              }; })(idx, pair[1]));
+              ctrl.appendChild(btn);
+              if (pair[0] === '−') {
+                var qn = document.createElement('span');
+                qn.className = 'qty-num';
+                qn.textContent = item.qty;
+                ctrl.appendChild(qn);
+              }
+            });
+
+            var rm = document.createElement('button');
+            rm.className = 'qty-remove';
+            rm.textContent = '×';
+            rm.addEventListener('click', (function (i) { return function () {
+              cart.splice(i, 1); renderCart();
+            }; })(idx));
+            ctrl.appendChild(rm);
+
+            row.appendChild(info);
+            row.appendChild(ctrl);
+            cartItemsList.appendChild(row);
+          });
+        }
+
+        var t = calcTotals();
+        document.getElementById('sum-subtotal').textContent = '$' + t.sub.toFixed(2);
+        document.getElementById('discount-row').style.display = t.discount > 0 ? 'flex' : 'none';
+        document.getElementById('sum-discount').textContent = '-$' + t.discount.toFixed(2);
+        document.getElementById('sum-shipping').textContent = t.free ? 'Free' : '$' + t.shipping.toFixed(2);
+        heatpackRow.style.display = t.free ? 'none' : 'flex';
+        document.getElementById('sum-heatpack').textContent = heatpackChk.checked ? '$5.00' : '$0.00';
+        gaTaxRow.style.display = addrState.value === 'GA' ? 'flex' : 'none';
+        document.getElementById('sum-tax').textContent = '$' + t.tax.toFixed(2);
+        document.getElementById('sum-total').textContent = '$' + t.total.toFixed(2);
+
+        // ── Rewards tiers ──
+        var rewardsEl       = document.getElementById('cart-rewards');
+        var rewardFlytrap   = document.getElementById('reward-flytrap');
+        var rewardShipping  = document.getElementById('reward-shipping');
+        var rewardProgress  = document.getElementById('reward-progress');
+        var rewardSelect    = document.getElementById('reward-flytrap-select');
+
+        var hasFrost     = frostActive && cart.length > 0;
+        var hasFlytrap   = t.sub >= 50;
+        var hasFreeShip  = t.sub >= 100;
+
+        document.getElementById('reward-frost').style.display = hasFrost ? '' : 'none';
+        rewardFlytrap.style.display   = hasFlytrap   ? '' : 'none';
+        rewardShipping.style.display  = hasFreeShip  ? '' : 'none';
+        rewardsEl.style.display = (hasFrost || hasFlytrap || hasFreeShip || t.sub > 0) ? '' : 'none';
+
+        // Progress hints
+        var hints = [];
+        if (!hasFlytrap && t.sub > 0) hints.push('$' + (50 - t.sub).toFixed(2) + ' more to pick a free small flytrap or ping');
+        else if (!hasFreeShip) hints.push('$' + (100 - t.sub).toFixed(2) + ' more for free shipping');
+        rewardProgress.textContent = hints.length ? '→ Add ' + hints[0] : '';
+
+        // Populate flytrap dropdown (only available plants with a small price, minus noReward ones)
+        if (hasFlytrap && rewardSelect.children.length === 0) {
+          var smallPlants = plants.filter(function (p) {
+            return p.price && p.price.small && !p.noReward && p.status !== 'unavailable' && p.status !== 'sold';
+          });
+          rewardSelect.innerHTML = '<option value="">— Choose your free flytrap or ping —</option>';
+          smallPlants.forEach(function (p) {
+            var opt = document.createElement('option');
+            opt.value = p.name;
+            opt.textContent = p.name;
+            rewardSelect.appendChild(opt);
+          });
+        } else if (!hasFlytrap) {
+          rewardSelect.innerHTML = '';
+        }
+
+        // Ship note
+        if (hasFreeShip) {
+          cartShipNote.textContent = '';
+          cartShipNote.className = 'cart-ship-note';
+        } else {
+          cartShipNote.textContent = '';
+          cartShipNote.className = 'cart-ship-note';
+        }
+      }
+
+      heatpackChk.addEventListener('change', renderCart);
+      addrState.addEventListener('change', renderCart);
+
+      function hashCode(str) {
+        var data = new TextEncoder().encode(str);
+        return crypto.subtle.digest('SHA-256', data).then(function (buf) {
+          return Array.from(new Uint8Array(buf)).map(function (b) {
+            return b.toString(16).padStart(2, '0');
+          }).join('');
+        });
+      }
+
+      document.getElementById('cart-discount-btn').addEventListener('click', function () {
+        var input = document.getElementById('cart-discount-input').value.toUpperCase().trim();
+        var status = document.getElementById('discount-status');
+        if (!input) return;
+        hashCode(input).then(function (hash) {
+          var codes = window.DISCOUNT_CODES || [];
+          var match = null;
+          for (var i = 0; i < codes.length; i++) {
+            if (codes[i].hash === hash) { match = codes[i]; break; }
+          }
+          if (match) {
+            appliedDiscount = match;
+            document.getElementById('discount-code-row').style.display = 'none';
+            document.getElementById('discount-applied-row').style.display = 'flex';
+            document.getElementById('discount-applied-label').textContent = '✓ ' + match.label;
+            status.textContent = '';
+            status.className = 'discount-status';
+            renderCart();
+          } else {
+            status.textContent = 'Invalid discount code.';
+            status.className = 'discount-status error';
+          }
+        });
+      });
+
+      document.getElementById('cart-discount-input').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('cart-discount-btn').click();
+      });
+
+      document.getElementById('discount-remove-btn').addEventListener('click', function () {
+        appliedDiscount = null;
+        document.getElementById('discount-code-row').style.display = 'flex';
+        document.getElementById('discount-applied-row').style.display = 'none';
+        document.getElementById('cart-discount-input').value = '';
+        document.getElementById('discount-status').textContent = '';
+        renderCart();
+      });
+
+      document.getElementById('cart-email-btn').addEventListener('click', function () {
+        if (cart.length === 0) { alert('Your cart is empty.'); return; }
+        for (var bi = 0; bi < cart.length; bi++) {
+          if (cart[bi].minQty > 1 && cart[bi].qty < cart[bi].minQty) {
+            alert(cart[bi].name + ' bulk pricing requires a minimum of ' + cart[bi].minQty + '. Please update your quantity or remove the item.');
+            return;
+          }
+        }
+        if (!cartEmail.value.trim())  { alert('Please enter your email address.'); cartEmail.focus(); return; }
+        if (!addrName.value.trim())   { alert('Please enter your name.'); addrName.focus(); return; }
+        if (!addrStreet.value.trim()) { alert('Please enter your street address.'); addrStreet.focus(); return; }
+        if (!addrCity.value.trim())   { alert('Please enter your city.'); addrCity.focus(); return; }
+        if (!addrState.value)         { alert('Please select your state.'); addrState.focus(); return; }
+        if (!addrZip.value.trim())    { alert('Please enter your ZIP code.'); addrZip.focus(); return; }
+        var selectedPayment = getSelectedPayment();
+        if (!selectedPayment) { alert('Please select a payment method.'); return; }
+        var t = calcTotals();
+        var frostChoice = '';
+        if (frostActive) {
+          frostChoice = frostSelect.value;
+          if (!frostChoice) { alert('Please pick your free plant (U. calycifida or S. debile) in the Order Rewards section, or choose "No thanks".'); frostSelect.focus(); return; }
+        }
+        var rewardFlytrapChoice = '';
+        if (t.sub >= 50) {
+          rewardFlytrapChoice = document.getElementById('reward-flytrap-select').value;
+          if (!rewardFlytrapChoice) { alert('Please pick your free small flytrap or ping from the rewards section.'); return; }
+        }
+        var lines = cart.map(function (item) {
+          return '\u2022 ' + item.name + (item.size ? ' (' + item.size + ')' : '') +
+            ' \xd7' + item.qty + '  \u2014  $' + (item.price * item.qty).toFixed(2) +
+            (item.saleTag ? ' (' + item.saleTag + ')' : '');
+        }).join('\n');
+
+        // Collect any active sales actually used by this order, for an email summary.
+        var saleSummary = '';
+        var usedSaleIds = {};
+        cart.forEach(function (item) {
+          if (item.saleId && !usedSaleIds[item.saleId]) {
+            usedSaleIds[item.saleId] = true;
+            var sale = (window.SALES || []).find(function (s) { return s.id === item.saleId; });
+            if (sale) {
+              saleSummary += '\n\u2022 ' + sale.bannerText;
+            }
+          }
+        });
+
+        var body = 'Hi Will,\n\nI\u2019d like to place the following order:\n\n' + lines +
+          '\n\n──────────────────' +
+          '\nSubtotal:            $' + t.sub.toFixed(2);
+        if (t.discount > 0) body += '\nDiscount:            -$' + t.discount.toFixed(2) + ' (' + appliedDiscount.label + ')';
+        body += '\nShipping & Handling: ' + (t.free ? 'Free (order \u2265$100)' : '$' + t.shipping.toFixed(2));
+        if (heatpackChk.checked) body += '\nHeat Pack:           ' + (t.free ? 'Free (order \u2265$100)' : '$5.00');
+        if (addrState.value === 'GA') body += '\nGA Tax (8%):         $' + t.tax.toFixed(2);
+        body += '\nTotal:               $' + t.total.toFixed(2);
+        body += '\n\n──────────────────\nCustomer Email: ' + cartEmail.value.trim();
+        body += '\n\n──────────────────\nShipping Address:\n' +
+          addrName.value.trim() + '\n' +
+          addrStreet.value.trim() + '\n' +
+          addrCity.value.trim() + ', ' + addrState.value + ' ' + addrZip.value.trim();
+        body += '\n\n──────────────────\nPayment Method: ' + selectedPayment + '\n' + paymentInfoPlain[selectedPayment];
+        if (appliedDiscount && t.discount > 0) {
+          saleSummary += '\n• Discount code: ' + appliedDiscount.label + ' (-$' + t.discount.toFixed(2) + ')';
+        }
+        if (saleSummary) body += '\n\n──────────────────\nSale Applied:' + saleSummary;
+        var rewardLines = [];
+        if (frostActive && frostChoice !== 'No thanks') rewardLines.push('• Free plant: ' + frostChoice);
+        if (t.sub >= 50)  rewardLines.push('• Free small flytrap/ping: ' + rewardFlytrapChoice);
+        if (t.sub >= 100) rewardLines.push('• Free shipping');
+        if (rewardLines.length) body += '\n\n──────────────────\nOrder Rewards:\n' + rewardLines.join('\n');
+        var comments = cartComments.value.trim();
+        if (comments) body += '\n\n──────────────────\nNotes:\n' + comments;
+
+        var experiment = null;
+        if (expActive && experimentOn) {
+          if (!expRegime.value) { alert('Which regime will you use for the free flytrap? Pick one in the cart, or untick the free division.'); expRegime.focus(); return; }
+          if (!expSetup.value) { alert('Where will the free flytrap live? Pick one in the cart, or untick the free division.'); expSetup.focus(); return; }
+          experiment = {
+            optIn: true,
+            regime: expRegime.value,
+            setup: expSetup.value,
+            notes: expNotes.value.trim(),
+            name: addrName.value.trim(),
+            email: cartEmail.value.trim(),
+            city: addrCity.value.trim(),
+            state: addrState.value,
+            subtotal: t.sub
+          };
+          body += '\n\n──────────────────\nCitizen Science Experiment: YES (free Target clone division)' +
+            '\nRegime: ' + experiment.regime +
+            '\nGrowing setup: ' + experiment.setup +
+            (experiment.notes ? '\nSetup notes: ' + experiment.notes : '') +
+            '\nWill may check in over the coming years to ask how the plant is doing.';
+        }
+        body += '\n\nThanks!';
+
+        var btn = document.getElementById('cart-email-btn');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+
+        var submittedEmail = cartEmail.value.trim();
+        fetch('https://script.google.com/macros/s/AKfycbyJnmfdYwvRckhsoYN4j9xZ8zasOpks8ccBSysA6hG-VIMlBLSPf7hKNoMyumsQEVawdQ/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({ body: body, customerEmail: submittedEmail, experiment: experiment })
+        }).then(function () {
+          cart = [];
+          heatpackChk.checked = false;
+          cartEmail.value = '';
+          addrName.value = '';
+          addrStreet.value = '';
+          addrCity.value = '';
+          addrState.value = '';
+          addrZip.value = '';
+          cartComments.value = '';
+          frostSelect.value = '';
+          expRegime.value = '';
+          expSetup.value = '';
+          expNotes.value = '';
+          setExperiment(false);
+          document.querySelectorAll('input[name="payment"]').forEach(function(r){ r.checked = false; });
+          paymentInstructions.style.display = 'none';
+          appliedDiscount = null;
+          document.getElementById('discount-code-row').style.display = 'flex';
+          document.getElementById('discount-applied-row').style.display = 'none';
+          document.getElementById('cart-discount-input').value = '';
+          document.getElementById('discount-status').textContent = '';
+          renderCart();
+          btn.textContent = '✓ Order Sent!';
+          btn.style.background = '#7cb342';
+          btn.disabled = true;
+          cartItemsList.innerHTML =
+            '<div style="text-align:center;padding:20px 10px;">' +
+              '<div style="font-size:1.5rem;margin-bottom:10px;">✓</div>' +
+              '<div style="font-size:1rem;font-weight:700;color:#2c3e2d;margin-bottom:10px;">Order received!</div>' +
+              '<p style="font-size:0.88rem;color:#555;line-height:1.6;margin-bottom:10px;">' +
+                'Check your email for order details and payment instructions. We will ship once payment is received.' +
+              '</p>' +
+              '<p style="font-size:0.85rem;color:#555;line-height:1.6;margin-bottom:10px;">' +
+                'Your confirmation was sent to:<br><strong>' + submittedEmail + '</strong>' +
+              '</p>' +
+              '<p style="font-size:0.82rem;color:#888;line-height:1.6;">' +
+                'If you don’t see it, check your spam folder and verify the email address above is correct. ' +
+                'If it’s still not there, reach out to us at <a href="mailto:will@phamcliff.com" style="color:#7cb342;">will@phamcliff.com</a>.' +
+              '</p>' +
+            '</div>';
+          btn.style.display = 'none';
+        }).catch(function () {
+          btn.textContent = 'Send Order';
+          btn.disabled = false;
+          alert('Something went wrong sending your order. Please email will@phamcliff.com directly.');
+        });
+      });
+
+      renderCart();
+
+    }());
+  </script>
+
+</body>
+</html>

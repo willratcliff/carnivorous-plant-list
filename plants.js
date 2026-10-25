@@ -188,9 +188,9 @@ const plants = [
     name: "Pinguicula cyclosecta",
     category: "pinguicula",
     species: "",
-    price: { small: "$10", medium: "$15" },
-    shortDescription: "A small Mexican butterwort with silvery-green leaves that blush purple at the edges. Small (dime-size) $10, medium (quarter-size) $15.",
-    description: "Pinguicula cyclosecta is a small butterwort from Nuevo León, Mexico. It forms tight rosettes of rounded, silvery-green leaves that blush lavender-purple toward the edges in strong light, the margins often ruffling slightly as they color. The leaves are covered in sticky glands that catch fungus gnats and other small insects. It stays small, around 2 to 2.5 inches across when mature, and it is one parent of 'Leilani' if you want the pair side by side.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $10; medium plants are about quarter-size (~2.4 cm) for $15.",
+    price: { small: "$10" },
+    shortDescription: "A small Mexican butterwort with silvery-green leaves that blush purple at the edges. Offered as small (dime-size) for $10.",
+    description: "Pinguicula cyclosecta is a small butterwort from Nuevo León, Mexico. It forms tight rosettes of rounded, silvery-green leaves that blush lavender-purple toward the edges in strong light, the margins often ruffling slightly as they color. The leaves are covered in sticky glands that catch fungus gnats and other small insects. It stays small, around 2 to 2.5 inches across when mature, and it is one parent of 'Leilani' if you want the pair side by side.\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $10.",
     image: "images/cyclosecta.jpg",
     images: [
       { label: "Rosettes",    file: "images/cyclosecta.jpg"   },
@@ -411,11 +411,11 @@ const plants = [
       { label: "2 Divisions", price: "$20" },
     ],
     shortDescription: "One of the easiest and most rewarding sundews. Gets enormous, blooms freely, and is all but unkillable. Highly recommended for beginners and collectors alike.",
-    description: "Up for sale are divisions of <em>Drosera binata</em> var. multifida extrema, one of the most spectacular and forgiving sundews you can grow. This variety produces a dense crown of forked, Y-shaped leaves that subdivide again and again into a mass of glistening, dew-covered tentacles. A mature plant in good light is a genuinely impressive sight.\n\nIn my experience, this plant is all but unkillable. I once ripped one apart while separating it from a Utricularia pot, shredded roots and all, and ended up with 15 new plants sprouting from the root fragments. That regenerative capacity is part of what makes it such a satisfying grower. It does not punish neglect, it rewards attention, and it practically propagates itself.\n\nGROWING\nGrow it like a Venus flytrap: pure peat or peat/perlite mix, mineral-free water (distilled, RO, or rain), and as much light as you can give it. It does well under grow lights or in a sunny window, and it tolerates a wide range of temperatures. It will reward good conditions with size and flower stalks, but it is remarkably tolerant of less-than-ideal setups.\n\nDivisions are shipped bare root. Customer photos courtesy of Lisa Sahli.",
+    description: "Up for sale are divisions of <em>Drosera binata</em> var. multifida extrema, one of the most spectacular and forgiving sundews you can grow. This variety produces a dense crown of forked, Y-shaped leaves that subdivide again and again into a mass of glistening, dew-covered tentacles. A mature plant in good light is a genuinely impressive sight.\n\nIn my experience, this plant is all but unkillable. I once ripped one apart while separating it from a Utricularia pot, shredded roots and all, and ended up with 15 new plants sprouting from the root fragments. That regenerative capacity is part of what makes it such a satisfying grower. It does not punish neglect, it rewards attention, and it practically propagates itself.\n\nThe photos labeled Lisa Sahli are from a customer who grew out one of my divisions. The last photo shows my own plants.\n\nGROWING\nGrow it like a Venus flytrap: pure peat or peat/perlite mix, mineral-free water (distilled, RO, or rain), and as much light as you can give it. It does well under grow lights or in a sunny window, and it tolerates a wide range of temperatures. It will reward good conditions with size and flower stalks, but it is remarkably tolerant of less-than-ideal setups.\n\nDivisions are shipped bare root.",
     image: "images/d-binata-multifida-extrema.jpg",
     images: [
-      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-1.jpg" },
-      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-2.jpg" },
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-1.jpg", fit: "contain" },
+      { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-2.jpg", fit: "contain" },
       { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-3.jpg" },
       { label: "Lisa Sahli", file: "images/d-binata-multifida-extrema-lisa-sahli-4.jpg" },
       { label: "My plants",  file: "images/d-binata-multifida-extrema.jpg" },
@@ -657,6 +657,19 @@ const plants = [
     image: "images/d-capensis-peppermint.jpg",
     images: [],
     status: "new",
+  },
+
+  {
+    name: "<em>Drosera capensis</em> (Baardskeerdersbos)",
+    category: "drosera",
+    species: "Drosera capensis, Baardskeerdersbos",
+    flatPrice: "$20",
+    price: {},
+    shortDescription: "One of the most incredible capensis clones with location data I have grown: strong upright growth, excellent color and vigor. $20 per plant. Coming soon.",
+    description: "Coming soon. This is <em>Drosera capensis</em> from Baardskeerdersbos, South Africa, and it is one of the most incredible capensis clones with location data that I have grown. The growth form is strong and upright, with a dense rosette of leaves held up off the pot, and the color is excellent: red petioles and tentacles over yellow-green leaf blades. It is also a vigorous grower.\n\nGROWING\nPeat or a peat and perlite mix kept wet, mineral-free water (distilled, RO, or rain) in a tray, and as much light as you can give it. Strong light is what brings out the red.\n\nPlants are not ready to ship yet. Check back soon.",
+    image: "images/d-capensis-baardskeerdersbos.jpg",
+    images: [],
+    status: "comingsoon",
   },
 
   {

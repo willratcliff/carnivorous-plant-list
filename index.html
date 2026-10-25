@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20261017" />
+  <link rel="stylesheet" href="style.css?v=20261024" />
 </head>
 <body>
 
@@ -435,18 +435,18 @@
   </div>
 
   <script src="sales.js?v=4"></script>
-  <script src="plants.js?v=3"></script>
+  <script src="plants.js?v=4"></script>
   <script>
     (function () {
 
       // ── Render cards ──────────────────────────────────────────
-      var statusLabel = { available: 'Available', limited: 'Limited', sold: 'Sold', new: 'New', unavailable: 'Unavailable' };
+      var statusLabel = { available: 'Available', limited: 'Limited', sold: 'Sold', new: 'New', unavailable: 'Unavailable', comingsoon: 'Coming soon' };
 
       // `justAdded: "YYYY-MM-DD"` in plants.js flags a fresh listing for 30 days:
       // rose "Just added" badge, top of its section, and a count on the jump chip.
       var JUST_ADDED_DAYS = 30;
       function isJustAdded(p) {
-        if (!p.justAdded || p.status === 'sold' || p.status === 'unavailable') return false;
+        if (!p.justAdded || p.status === 'sold' || p.status === 'unavailable' || p.status === 'comingsoon') return false;
         var t = Date.parse(p.justAdded + 'T00:00:00');
         return !isNaN(t) && (Date.now() - t) < JUST_ADDED_DAYS * 86400000;
       }
@@ -1110,7 +1110,7 @@
         cloneSelect.style.display = 'none';
         cloneSelect.innerHTML = '';
 
-        if (cartOptions.length > 0 && plant.status !== 'sold' && plant.status !== 'unavailable') {
+        if (cartOptions.length > 0 && plant.status !== 'sold' && plant.status !== 'unavailable' && plant.status !== 'comingsoon') {
           cartRow.style.display = 'flex';
           if (cartOptions.length === 1 && cartOptions[0].label === '') {
             sizeSelect.style.display = 'none';
@@ -1147,7 +1147,7 @@
             };
             // Kit plants: flytraps, Nepenthes and Pinguicula that cost $15 or less.
             var kitPlants = plants.filter(function (p) {
-              if (p.kitPlantPicker || p.status === 'unavailable' || p.status === 'sold') return false;
+              if (p.kitPlantPicker || p.status === 'unavailable' || p.status === 'sold' || p.status === 'comingsoon') return false;
               var txt = (p.name + ' ' + (p.species || '')).replace(/<[^>]+>/g, '');
               if (!/VFT|Venus flytrap|Nepenthes|Pinguicula/i.test(txt)) return false;
               var mp = kitPlantPrice(p);
@@ -1205,6 +1205,8 @@
             mainVideo.pause();
             mainImg.src = item.file;
             mainImg.alt = item.label;
+            // `fit: "contain"` on a gallery photo shows the whole frame (tall shots) instead of cropping.
+            mainImg.classList.toggle('modal-main-img--contain', item.fit === 'contain');
             mainImg.style.display = '';
           }
         }
@@ -1551,7 +1553,7 @@
         // Populate flytrap dropdown (only available plants with a small price, minus noReward ones)
         if (hasFlytrap && rewardSelect.children.length === 0) {
           var smallPlants = plants.filter(function (p) {
-            return p.price && p.price.small && !p.noReward && p.status !== 'unavailable' && p.status !== 'sold';
+            return p.price && p.price.small && !p.noReward && p.status !== 'unavailable' && p.status !== 'sold' && p.status !== 'comingsoon';
           });
           rewardSelect.innerHTML = '<option value="">— Choose your free flytrap or ping —</option>';
           smallPlants.forEach(function (p) {

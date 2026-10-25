@@ -448,6 +448,7 @@ main {
 .status-new         { background: #7a3fd1; }
 .status-justadded   { background: #c2255c; }
 .status-unavailable { background: #6b7280; }
+.status-comingsoon  { background: #0f766e; }
 
 /* ── Card text info ── */
 .plant-info {
@@ -793,6 +794,13 @@ main {
   object-fit: cover;
   display: block;
   border-radius: 15px 15px 0 0;
+}
+
+/* Tall photos (gallery entries with fit: "contain") show the whole frame. */
+.modal-main-img.modal-main-img--contain {
+  height: 440px;
+  object-fit: contain;
+  background: #f3f2ee;
 }
 
 /* ── Thumbnails ── */
