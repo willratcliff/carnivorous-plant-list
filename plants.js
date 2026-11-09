@@ -61,10 +61,9 @@ const plants = [
       { name: "Ducbog",     parents: "“UC Davis” × ‘OG Black’" },
       { name: "Ogre",       parents: "‘OG Black’ × “Coalmine Beach”" },
     ],
-    mixes: [
-      { name: "Rockwool",  note: "my pick" },
-      { name: "Peat/sand" },
-    ],
+    // mixes: buyer picks a potting mix, e.g. [{ name: "Rockwool", note: "my pick" }, { name: "Peat/sand" }].
+    // Empty [] hides the picker (Nov 8 2026: low stock, Will picks the best plant).
+    mixes: [],
     video: "images/ceph-backyard-video.mp4",
     image: "images/ceph-backyard-video-poster.jpg",
     gallery: [

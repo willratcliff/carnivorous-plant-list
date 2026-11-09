@@ -143,7 +143,8 @@ lightbox, and care notes.
 
 - **Data:** the `category: "cephalotus"` entry at the top of `plants.js`. `sizes` (label, price,
   example photo; `noClone: true` hides the clone picker for that size; `soldOut: true` greys one out),
-  `clones` (name + parentage; `soldOut: true` greys one out), `mixes`, `video`, and `gallery`
+  `clones` (name + parentage; `soldOut: true` greys one out), `mixes` (`[]` hides the potting-mix
+  picker; off since Nov 8 2026, low stock), `video`, and `gallery`
   (`wide: true` for landscape shots). Set the entry's `status` to `"sold"` to disable Add to Cart;
   delete the entry to hide the whole block.
 - **Copy:** the hero text, size-photo note, mix note, stock note and care notes are static HTML in the

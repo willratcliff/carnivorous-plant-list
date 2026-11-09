@@ -131,7 +131,7 @@
             <div class="ceph-clones" id="ceph-clones" role="radiogroup" aria-labelledby="ceph-clone-legend"></div>
           </div>
 
-          <div class="ceph-field">
+          <div class="ceph-field" id="ceph-mix-field">
             <p class="ceph-legend" id="ceph-mix-legend">Potting mix</p>
             <div class="ceph-mixes" id="ceph-mixes" role="radiogroup" aria-labelledby="ceph-mix-legend"></div>
             <p class="ceph-hint">I prefer the rockwool. It is easier to ship and more resilient to root rot. Happy to send either.</p>
@@ -721,6 +721,7 @@
         var clonesEl = document.getElementById('ceph-clones');
         var mixesEl  = document.getElementById('ceph-mixes');
         var cloneFld = document.getElementById('ceph-clone-field');
+        var mixFld   = document.getElementById('ceph-mix-field');
         var sizeNote = document.getElementById('ceph-size-note');
         var stageImg = document.getElementById('ceph-stage-img');
         var stageTag = document.getElementById('ceph-stage-tag');
@@ -732,6 +733,7 @@
         var clones = ceph.clones || [];
         var mixes  = ceph.mixes  || [];
         var state = { size: null, clone: null, mix: mixes.length ? mixes[0].name : '' };
+        if (mixFld) mixFld.hidden = !mixes.length;   // mixes: [] in plants.js hides the potting-mix picker
 
         // Hero facts stay in sync with the data.
         var prices = sizes.filter(function (s) { return !s.soldOut; }).map(function (s) { return s.price; });
