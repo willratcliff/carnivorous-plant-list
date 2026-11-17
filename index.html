@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20261024" />
+  <link rel="stylesheet" href="style.css?v=20261117" />
 </head>
 <body>
 
@@ -429,13 +429,14 @@
       <div id="payment-instructions" class="payment-instructions" style="display:none;"></div>
 
       <label class="cart-field-label" for="cart-comments">Comments / Special Requests</label>
-      <textarea id="cart-comments" class="cart-comments" placeholder="Optional — heat pack questions, special requests, etc."></textarea>
+      <p class="cart-field-hint">By default we ship non-dormant plants. If you&rsquo;d prefer dormant plants (e.g., flytraps), please note it here.</p>
+      <textarea id="cart-comments" class="cart-comments" placeholder="Optional — dormant plants, heat pack questions, special requests, etc."></textarea>
       <button id="cart-email-btn" class="cart-email-btn">Send Order</button>
     </div>
   </div>
 
   <script src="sales.js?v=5"></script>
-  <script src="plants.js?v=4"></script>
+  <script src="plants.js?v=5"></script>
   <script>
     (function () {
 
@@ -1808,6 +1809,9 @@
               '</p>' +
               '<p style="font-size:0.85rem;color:#555;line-height:1.6;margin-bottom:10px;">' +
                 'Your confirmation was sent to:<br><strong>' + submittedEmail + '</strong>' +
+              '</p>' +
+              '<p style="font-size:0.85rem;color:#555;line-height:1.6;margin-bottom:10px;">' +
+                'By default we ship non-dormant plants. If you’d prefer dormant plants (e.g., flytraps) and didn’t mention it in your order notes, just reply to your confirmation email.' +
               '</p>' +
               '<p style="font-size:0.82rem;color:#888;line-height:1.6;">' +
                 'If you don’t see it, check your spam folder and verify the email address above is correct. ' +

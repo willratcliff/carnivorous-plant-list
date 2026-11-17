@@ -1256,6 +1256,14 @@ main {
 }
 .cart-comments:focus { border-color: var(--accent); }
 
+.cart-field-hint {
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 6px;
+}
+
 .cart-addr-field {
   width: 100%;
   border: 1px solid #ddd;
