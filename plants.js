@@ -51,7 +51,7 @@ const plants = [
     sizes: [
       { label: "Small",        price: 75,  photo: "images/ceph-small.jpg"  },
       { label: "Medium",       price: 100, photo: "images/ceph-medium.jpg" },
-      { label: "Large",        price: 125, photo: "images/ceph-large.jpg"  },
+      { label: "Large",        price: 125, photo: "images/ceph-large.jpg", soldOut: true },
     ],
     defaultSize: "Medium",
     clones: [
