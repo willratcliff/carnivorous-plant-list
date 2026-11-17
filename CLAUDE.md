@@ -103,11 +103,11 @@ except the first starts collapsed; tapping a section header or a jump chip expan
 The cart's Order Rewards section stacks three tiers; picks are written into the
 order email under "Order Rewards" (no Apps Script change needed):
 
-- **Every order (fall 2026, until the first frost):** a free *Utricularia calycifida*
-  or *Stylidium debile*, or "No thanks". Required pick in the cart. Driven by
-  `window.FROST_BONUS` in `sales.js`, which also adds the "Until the first frost"
-  line to the Order Rewards banner on every page. **Turn it off:** set
-  `active: false` (or set `ends` to an ISO date with offset).
+- **Frost bonus (OFF since Nov 17 2026):** a free *Utricularia calycifida*
+  or *Stylidium debile* with every order, or "No thanks". Required pick in the cart
+  while on. Driven by `window.FROST_BONUS` in `sales.js`, which also adds the
+  "Until the first frost" line to the Order Rewards banner on every page.
+  **Turn it on/off:** `active: true/false` (or set `ends` to an ISO date with offset).
 - **$50+:** a free small flytrap or ping. The dropdown lists every available plant
   with a `small` price in `plants.js` (so Pinguicula count), except entries
   marked `noReward: true` (pricier or low-stock plants; as of Oct 24 2026: El Lobo,
@@ -116,6 +116,28 @@ order email under "Order Rewards" (no Apps Script change needed):
 
 The static banner text for the $50/$100 tiers lives in `index.html`, `care.html`,
 `dormancy.html` and `nutricote.html`.
+
+The $50 and $100 tiers go by the cart subtotal **before** any percent-off code,
+so applying a code never takes a reward away.
+
+## Discount Codes and Sale Banners
+
+Both live in `sales.js`. Codes are SHA-256 hashes in `window.DISCOUNT_CODES`
+(hash the uppercase code; the comment above the array has the one-liner).
+
+- **`type: 'percent'`** takes `percent`% off every plant and supply line. Shipping,
+  the heat pack and tax are not discounted. The cut is applied to each line, so the
+  cart shows struck-through prices, and the order email lists the price actually paid
+  (`$7.50 (25% off)`) with a "Discount code:" line under Sale Applied. The dashboard's
+  email importer then records the discounted subtotal with no changes needed.
+- **`type: 'bogo'`** (older): cheapest eligible item free; shows as a Discount line.
+- Optional `starts` / `ends` (ISO 8601 with offset; -05:00 in winter) limit when a code
+  works; outside the window the cart says "Too early!" or "has expired".
+- **Advertise a code** with a banner-only entry in `window.SALES` (`plant: null`,
+  `type: 'banner'`, `bannerText`, `starts`, `ends`); the end date is appended automatically.
+
+**Black Friday 2026:** code `BLACKFLYDAY`, 25% off, Nov 17 to 11:59 PM ET Nov 30
+(Cyber Monday), with a matching banner on every page. Both expire on their own.
 
 ## Flytrap Citizen-Science Bonus
 

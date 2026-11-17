@@ -2420,3 +2420,15 @@ footer {
   .ceph-size, .ceph-clone, .ceph-cta, .ceph-add, .ceph-shot img, .ceph-stage-frame img { transition: none; }
   .ceph-size:hover, .ceph-clone:hover, .ceph-cta:hover, .ceph-add:hover { transform: none; }
 }
+
+/* Discount-code chip in the sale banner, fine print, and struck list price in the cart */
+.sale-code {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1.5px dashed currentColor;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.sale-banner-fine { font-weight: 500; font-size: 0.82em; opacity: 0.8; }
+.cart-item-was { color: #999; font-weight: 400; margin-right: 2px; }

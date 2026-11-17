@@ -9,13 +9,28 @@
 //                 any custom labels from priceTiers/bulkTiers
 //   type        'bogo' for buy-one-get-one. New types can be added later.
 //   bannerText  text shown in the top-of-page sale banner
-//   starts      ISO 8601 with timezone offset (use -04:00 for ET / EDT)
+//   starts      ISO 8601 with timezone offset (-04:00 for EDT, -05:00 for EST)
 //   ends        ISO 8601 with timezone offset (inclusive)
+//
+// A banner-only entry (plant: null, type: 'banner') just shows bannerText
+// in the top banner between its dates; it changes no prices. Use it to
+// advertise a discount code from DISCOUNT_CODES.
 //
 // To add a new sale: append an entry below.
 // To turn one off early: delete the entry or set `ends` to a past date.
 
-window.SALES = [];
+window.SALES = [
+  // Black Friday sale, Nov 17 -> Cyber Monday 2026: advertises the BLACKFLYDAY code below.
+  {
+    id: 'blackflyday-2026',
+    plant: null,
+    type: 'banner',
+    bannerText: '\ud83e\udeb0 Black Fly-Day Sale: 25% off all plants &amp; supplies with code ' +
+      '<span class="sale-code">BLACKFLYDAY</span> <span class="sale-banner-fine">(shipping not included)</span>',
+    starts: '2026-11-17T00:00:00-05:00',
+    ends:   '2026-11-30T23:59:59-05:00',
+  },
+];
 
 // ── No-Dormancy Experiment bonus ────────────────────────────────────
 // Free division of the no-dormancy Target clone, added to any order when
@@ -32,7 +47,7 @@ window.EXPERIMENT = {
 // the $50+ and $100+ order rewards. Set `active` to false after the first
 // frost (or set `ends` to an ISO 8601 date with offset).
 window.FROST_BONUS = {
-  active: true,
+  active: false,   // turned off Nov 17 2026
   ends: null,
   choices: ['Utricularia calycifida', 'Stylidium debile'],
 };
@@ -72,6 +87,15 @@ window.SaleHelpers = {
     return true;
   },
 
+  // Is a discount code usable right now? 'ok', 'early' or 'expired'.
+  // `starts` / `ends` on a code are optional.
+  codeWindow: function (code, now) {
+    now = now || new Date();
+    if (code.starts && now < new Date(code.starts)) return 'early';
+    if (code.ends && now > new Date(code.ends)) return 'expired';
+    return 'ok';
+  },
+
   // Format the sale end date in the farm's local timezone (ET) so every
   // visitor sees the same cutoff regardless of where they're browsing from.
   formatEndDate: function (sale) {
@@ -86,8 +110,28 @@ window.SaleHelpers = {
 
 // ── Discount codes (hashed for security) ────────────────────────────
 // Codes are stored as SHA-256 hashes so the actual code text never
-// appears in source. To add a new code, hash it (uppercase) and append.
-window.DISCOUNT_CODES = [];
+// appears in source. To add a new code, hash it (uppercase) and append:
+//   python3 -c "import hashlib;print(hashlib.sha256(b'CODE').hexdigest())"
+//
+// Types:
+//   'bogo'     cheapest eligible item free (optional excludeBulk: true)
+//   'percent'  `percent`% off every plant and supply in the cart. Shipping,
+//              the heat pack and tax are not discounted. The cut is taken off
+//              each line, so the order email and the dashboard record the
+//              price actually paid. The $50+ / $100+ rewards still go by the
+//              pre-discount subtotal, so applying a code never loses a reward.
+// Optional `starts` / `ends` (ISO 8601 with offset) limit when a code works.
+window.DISCOUNT_CODES = [
+  {
+    // BLACKFLYDAY: Black Friday sale, Nov 17 -> Cyber Monday (Nov 30) 2026, 25% off
+    hash: '638b3051fe612156adc0529b58cd22a787069ac4d72ba871056974cf0bf4d272',
+    label: 'BLACKFLYDAY',
+    type: 'percent',
+    percent: 25,
+    starts: '2026-11-17T00:00:00-05:00',
+    ends:   '2026-11-30T23:59:59-05:00',
+  },
+];
 
 // ── Auto-render the sale banner ─────────────────────────────────────
 // Runs on every page that includes sales.js. Inserts a banner element
