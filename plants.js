@@ -315,7 +315,7 @@ const plants = [
     name: "FTS Maroon Monster VFT",
     category: "flytrap",
     species: "Dionaea muscipula 'FTS Maroon Monster' · ICPS Registered Cultivar",
-    price: { small: "$10", specimen: "Inquire" },
+    price: { small: "$10", medium: "$15", large: "$20", specimen: "Inquire" },
     bulkTiers: [],
     shortDescription: "One of the most sought-after red clones in the hobby. Fast-growing with oversized traps that color up to a deep maroon, almost purple-black in strong light. ICPS registered cultivar.",
     description: "This is an ICPS registered cultivar developed by Matt Miller through the Flytrap Store's breeding program, and it has become one of the most sought-after red clones in the hobby for good reason. Where most red Venus flytraps tend to be slow, finicky growers, Maroon Monster breaks the mold entirely. It grows fast, puts out thick and sturdy leaves, and produces oversized traps that color up to an incredible deep maroon, almost purple-black in strong light.\n\nThe contrast between those dark trap interiors and the bright lime-green edging along the trap margins is what really sets this clone apart visually. If you've grown Akai Ryu before and wished for something with more substance, bigger traps, and a more compact growth habit, this is the plant you've been looking for.\n\n",
