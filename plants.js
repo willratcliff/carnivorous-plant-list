@@ -654,11 +654,12 @@ const plants = [
     species: "Drosera capensis, Baardskeerdersbos",
     flatPrice: "$20",
     price: {},
-    shortDescription: "One of the most incredible capensis clones with location data I have grown: strong upright growth, excellent color and vigor. $20 per plant. Coming soon.",
-    description: "Coming soon. This is <em>Drosera capensis</em> from Baardskeerdersbos, South Africa, and it is one of the most incredible capensis clones with location data that I have grown. The growth form is strong and upright, with a dense rosette of leaves held up off the pot, and the color is excellent: red petioles and tentacles over yellow-green leaf blades. It is also a vigorous grower.\n\nGROWING\nPeat or a peat and perlite mix kept wet, mineral-free water (distilled, RO, or rain) in a tray, and as much light as you can give it. Strong light is what brings out the red.\n\nPlants are not ready to ship yet. Check back soon.",
+    shortDescription: "One of the most incredible capensis clones with location data I have grown: strong upright growth, excellent color and vigor. $20 per plant.",
+    description: "This is <em>Drosera capensis</em> from Baardskeerdersbos, South Africa, and it is one of the most incredible capensis clones with location data that I have grown. The growth form is strong and upright, with a dense rosette of leaves held up off the pot, and the color is excellent: red petioles and tentacles over yellow-green leaf blades. It is also a vigorous grower.\n\nGROWING\nPeat or a peat and perlite mix kept wet, mineral-free water (distilled, RO, or rain) in a tray, and as much light as you can give it. Strong light is what brings out the red.",
     image: "images/d-capensis-baardskeerdersbos.jpg",
     images: [],
-    status: "comingsoon",
+    status: "new",
+    justAdded: "2026-11-19",
   },
 
   {
