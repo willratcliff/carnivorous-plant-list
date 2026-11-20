@@ -139,6 +139,16 @@ Both live in `sales.js`. Codes are SHA-256 hashes in `window.DISCOUNT_CODES`
 **Black Friday 2026:** code `BLACKFLYDAY`, 25% off, Nov 17 to 11:59 PM ET Nov 30
 (Cyber Monday), with a matching banner on every page. Both expire on their own.
 
+## Shipping Pause Checkbox
+
+A required checkbox just above Send Order (`#cart-shipping-pause` in `index.html`) while a shipping
+pause is on. Not a banner. Driven by `window.SHIPPING_PAUSE` in `sales.js` (`active`, `starts`, `ends`);
+outside the window the box is hidden and not required. The wording is static HTML; edit it there when
+the dates change. Send Order is blocked until it is ticked, and the order email gains a
+`Shipping Pause Acknowledged:` section (before Notes). Nov 2026: pause Nov 23-27, orders Nov 21-29
+ship Nov 30 (box shows Nov 21 00:00 ET to Nov 29 11:59 PM ET). Bump the `sales.js?v=` number in
+`index.html` when editing `sales.js`. To remove: set `active: false`.
+
 ## Flytrap Citizen-Science Bonus
 
 A featured block at the top of the sale page offers a free division of the

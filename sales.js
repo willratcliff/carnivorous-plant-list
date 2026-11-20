@@ -52,6 +52,18 @@ window.FROST_BONUS = {
   choices: ['Utricularia calycifida', 'Stylidium debile'],
 };
 
+// ── Shipping pause: required checkbox in the cart ───────────────────
+// While the window is open, the cart shows a notice the customer must tick
+// before Send Order works, and the order email records that they agreed.
+// The wording is static HTML (#cart-shipping-pause in index.html); change it
+// there if the dates change. Set `active` to false (or let `ends` pass) to
+// take it down. Thanksgiving 2026: pause Nov 23-27, orders Nov 21-29 ship Nov 30.
+window.SHIPPING_PAUSE = {
+  active: true,
+  starts: '2026-11-21T00:00:00-05:00',
+  ends:   '2026-11-29T23:59:59-05:00',
+};
+
 // ── Helpers consumed by the cart and card-rendering code ────────────
 window.SaleHelpers = {
   activeSales: function (now) {
@@ -78,6 +90,15 @@ window.SaleHelpers = {
       if (actives[i].plant === plantName) return actives[i];
     }
     return null;
+  },
+
+  shippingPauseActive: function (now) {
+    var cfg = window.SHIPPING_PAUSE;
+    if (!cfg || !cfg.active) return false;
+    now = now || new Date();
+    if (cfg.starts && now < new Date(cfg.starts)) return false;
+    if (cfg.ends && now > new Date(cfg.ends)) return false;
+    return true;
   },
 
   frostBonusActive: function (now) {

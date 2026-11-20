@@ -2440,3 +2440,23 @@ footer {
 }
 .sale-banner-fine { font-weight: 500; font-size: 0.82em; opacity: 0.8; }
 .cart-item-was { color: #999; font-weight: 400; margin-right: 2px; }
+
+/* ── Cart: shipping pause confirmation ── */
+.cart-pause {
+  background: #fff6e0;
+  border: 1px solid #ecd493;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 14px 0 12px;
+}
+.cart-pause.needs-check { border-color: #c0392b; box-shadow: 0 0 0 2px rgba(192, 57, 43, 0.18); }
+.cart-pause-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ink);
+  cursor: pointer;
+}
+.cart-pause-label input { accent-color: var(--accent); width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }

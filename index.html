@@ -431,11 +431,17 @@
       <label class="cart-field-label" for="cart-comments">Comments / Special Requests</label>
       <p class="cart-field-hint">By default we ship non-dormant plants. If you&rsquo;d prefer dormant plants (e.g., flytraps), please note it here.</p>
       <textarea id="cart-comments" class="cart-comments" placeholder="Optional — dormant plants, heat pack questions, special requests, etc."></textarea>
+      <div class="cart-pause" id="cart-shipping-pause" style="display:none;">
+        <label class="cart-pause-label">
+          <input type="checkbox" id="cart-pause-chk">
+          <span><strong>Shipping pause, Nov 23&ndash;27.</strong> I understand that all orders placed between Nov 21 and Nov 29 will ship on <strong>November 30</strong>.</span>
+        </label>
+      </div>
       <button id="cart-email-btn" class="cart-email-btn">Send Order</button>
     </div>
   </div>
 
-  <script src="sales.js?v=5"></script>
+  <script src="sales.js?v=6"></script>
   <script src="plants.js?v=5"></script>
   <script>
     (function () {
@@ -1287,6 +1293,16 @@
       var addrState    = document.getElementById('cart-addr-state');
       var addrZip      = document.getElementById('cart-addr-zip');
       var cartComments = document.getElementById('cart-comments');
+      var pauseBlock   = document.getElementById('cart-shipping-pause');
+      var pauseChk     = document.getElementById('cart-pause-chk');
+      // Shipping pause (sales.js): the box only shows, and is only required, while the window is open.
+      function shippingPauseOn() { return window.SaleHelpers.shippingPauseActive(); }
+      function updateShippingPause() {
+        var on = shippingPauseOn();
+        pauseBlock.style.display = on ? '' : 'none';
+        if (!on) pauseChk.checked = false;
+      }
+      pauseChk.addEventListener('change', function () { pauseBlock.classList.remove('needs-check'); });
       var paymentInstructions = document.getElementById('payment-instructions');
 
       var paymentInfo = {
@@ -1316,6 +1332,7 @@
       });
 
       function openCart() {
+        updateShippingPause();
         var btn = document.getElementById('cart-email-btn');
         btn.style.display = '';
         btn.textContent = 'Send Order';
@@ -1680,6 +1697,14 @@
         if (!addrZip.value.trim())    { alert('Please enter your ZIP code.'); addrZip.focus(); return; }
         var selectedPayment = getSelectedPayment();
         if (!selectedPayment) { alert('Please select a payment method.'); return; }
+        updateShippingPause();
+        var pauseAgreed = shippingPauseOn();
+        if (pauseAgreed && !pauseChk.checked) {
+          pauseBlock.classList.add('needs-check');
+          pauseBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          alert('Please check the box confirming you understand the Nov 23\u201327 shipping pause: orders placed Nov 21\u201329 ship on November 30.');
+          return;
+        }
         var t = calcTotals();
         var frostChoice = '';
         if (frostActive) {
@@ -1739,6 +1764,7 @@
         if (t.listSub >= 50) rewardLines.push('• Free small flytrap/ping: ' + rewardFlytrapChoice);
         if (t.free)          rewardLines.push('• Free shipping');
         if (rewardLines.length) body += '\n\n──────────────────\nOrder Rewards:\n' + rewardLines.join('\n');
+        if (pauseAgreed) body += '\n\n──────────────────\nShipping Pause Acknowledged: Customer agreed that, because of the Nov 23\u201327 shipping pause, this order will ship on November 30.';
         var comments = cartComments.value.trim();
         if (comments) body += '\n\n──────────────────\nNotes:\n' + comments;
 
@@ -1777,6 +1803,8 @@
         }).then(function () {
           cart = [];
           heatpackChk.checked = false;
+          pauseChk.checked = false;
+          pauseBlock.classList.remove('needs-check');
           cartEmail.value = '';
           addrName.value = '';
           addrStreet.value = '';
