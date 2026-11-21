@@ -226,7 +226,7 @@ const plants = [
     description: "Pinguicula esseriana is one of the smaller Mexican butterworts. It builds neat, many-layered rosettes of rounded lime-green leaves, each one rimmed in white, stacked like a tiny succulent rose. The leaves are covered in sticky glands that catch fungus gnats and other small insects, and it sends up pale pink flowers on thin stalks (one is just opening in the photo).\n\nIt's an easy, rewarding grower on a mineral-based mix with bright light and good airflow. Buyers receive a single rosette. Small plants are about dime-size (~1.8 cm) for $12, medium about nickel-size (~2.1 cm) for $15, and large about quarter-size (~2.4 cm) for $20.",
     image: "images/esseriana.jpg",
     images: [],
-    status: "new",
+    status: "sold",
     justAdded: "2026-10-24",
     noReward: true,
   },
