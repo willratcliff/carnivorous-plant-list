@@ -117,8 +117,11 @@ order email under "Order Rewards" (no Apps Script change needed):
 The static banner text for the $50/$100 tiers lives in `index.html`, `care.html`,
 `dormancy.html` and `nutricote.html`.
 
-The $50 and $100 tiers go by the cart subtotal **before** any percent-off code,
-so applying a code never takes a reward away.
+The $50 and $100 tiers go by the cart subtotal **after** any discount code
+(percent-off or BOGO), before shipping, heat pack and tax (`rewardSub` in `calcTotals`;
+changed Nov 20 2026, it used to be the pre-discount subtotal). So a $120 cart with
+25% off ($90) pays shipping, and a $60 cart with 25% off ($45) gets no free plant.
+The cart's progress hint counts the shortfall in after-discount dollars.
 
 ## Discount Codes and Sale Banners
 

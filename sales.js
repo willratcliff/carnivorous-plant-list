@@ -139,8 +139,9 @@ window.SaleHelpers = {
 //   'percent'  `percent`% off every plant and supply in the cart. Shipping,
 //              the heat pack and tax are not discounted. The cut is taken off
 //              each line, so the order email and the dashboard record the
-//              price actually paid. The $50+ / $100+ rewards still go by the
-//              pre-discount subtotal, so applying a code never loses a reward.
+//              price actually paid. The $50+ / $100+ rewards go by the subtotal
+//              AFTER the discount (calcTotals in index.html), so a code can
+//              drop an order below a reward tier.
 // Optional `starts` / `ends` (ISO 8601 with offset) limit when a code works.
 window.DISCOUNT_CODES = [
   {

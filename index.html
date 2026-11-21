@@ -441,7 +441,7 @@
     </div>
   </div>
 
-  <script src="sales.js?v=6"></script>
+  <script src="sales.js?v=7"></script>
   <script src="plants.js?v=5"></script>
   <script>
     (function () {
@@ -1482,15 +1482,17 @@
             discount = cheapest;
           }
         }
-        // Rewards and free shipping go by the pre-discount subtotal, so applying
-        // a percent-off code never takes away a reward.
-        var free     = listSub >= 100;
+        // Rewards and free shipping go by what the customer actually pays for
+        // plants and supplies: the subtotal AFTER any discount code (percent-off
+        // or BOGO), before shipping, heat pack and tax.
+        var rewardSub = Math.round((sub - discount) * 100) / 100;
+        var free     = rewardSub >= 100;
         var shipping = free ? 0 : 15;
         var heat     = (!free && heatpackChk.checked) ? 5 : 0;
         var taxBase  = sub - discount + shipping + heat;
         var isGA     = addrState.value === 'GA';
         var tax      = isGA ? Math.round(taxBase * 0.08 * 100) / 100 : 0;
-        return { sub: sub, listSub: listSub, savings: savings, discount: discount, shipping: shipping, heat: heat, tax: tax, total: taxBase + tax, free: free };
+        return { sub: sub, listSub: listSub, rewardSub: rewardSub, savings: savings, discount: discount, shipping: shipping, heat: heat, tax: tax, total: taxBase + tax, free: free };
       }
 
       function renderCart() {
@@ -1582,8 +1584,8 @@
         var rewardSelect    = document.getElementById('reward-flytrap-select');
 
         var hasFrost     = frostActive && cart.length > 0;
-        var hasFlytrap   = t.listSub >= 50;
-        var hasFreeShip  = t.listSub >= 100;
+        var hasFlytrap   = t.rewardSub >= 50;
+        var hasFreeShip  = t.rewardSub >= 100;
 
         document.getElementById('reward-frost').style.display = hasFrost ? '' : 'none';
         rewardFlytrap.style.display   = hasFlytrap   ? '' : 'none';
@@ -1592,9 +1594,9 @@
 
         // Progress hints
         var hints = [];
-        var before = pctOff() ? ' (before discount)' : '';
-        if (!hasFlytrap && t.listSub > 0) hints.push('$' + (50 - t.listSub).toFixed(2) + ' more' + before + ' to pick a free small flytrap or ping');
-        else if (!hasFreeShip) hints.push('$' + (100 - t.listSub).toFixed(2) + ' more' + before + ' for free shipping');
+        var after = (pctOff() || t.discount > 0) ? ' (after discount)' : '';
+        if (!hasFlytrap && t.listSub > 0) hints.push('$' + (50 - t.rewardSub).toFixed(2) + ' more' + after + ' to pick a free small flytrap or ping');
+        else if (!hasFreeShip) hints.push('$' + (100 - t.rewardSub).toFixed(2) + ' more' + after + ' for free shipping');
         rewardProgress.textContent = hints.length ? '→ Add ' + hints[0] : '';
 
         // Populate flytrap dropdown (only available plants with a small price, minus noReward ones)
@@ -1712,7 +1714,7 @@
           if (!frostChoice) { alert('Please pick your free plant (U. calycifida or S. debile) in the Order Rewards section, or choose "No thanks".'); frostSelect.focus(); return; }
         }
         var rewardFlytrapChoice = '';
-        if (t.listSub >= 50) {
+        if (t.rewardSub >= 50) {
           rewardFlytrapChoice = document.getElementById('reward-flytrap-select').value;
           if (!rewardFlytrapChoice) { alert('Please pick your free small flytrap or ping from the rewards section.'); return; }
         }
@@ -1740,7 +1742,7 @@
           '\n\n──────────────────' +
           '\nSubtotal:            $' + t.sub.toFixed(2);
         if (t.discount > 0) body += '\nDiscount:            -$' + t.discount.toFixed(2) + ' (' + appliedDiscount.label + ')';
-        var freeNote = 'Free (order \u2265$100' + (pctOff() ? ' before discount' : '') + ')';
+        var freeNote = 'Free (order \u2265$100' + ((pctOff() || t.discount > 0) ? ' after discount' : '') + ')';
         body += '\nShipping & Handling: ' + (t.free ? freeNote : '$' + t.shipping.toFixed(2));
         if (heatpackChk.checked) body += '\nHeat Pack:           ' + (t.free ? freeNote : '$5.00');
         if (addrState.value === 'GA') body += '\nGA Tax (8%):         $' + t.tax.toFixed(2);
@@ -1761,7 +1763,7 @@
         if (saleSummary) body += '\n\n──────────────────\nSale Applied:' + saleSummary;
         var rewardLines = [];
         if (frostActive && frostChoice !== 'No thanks') rewardLines.push('• Free plant: ' + frostChoice);
-        if (t.listSub >= 50) rewardLines.push('• Free small flytrap/ping: ' + rewardFlytrapChoice);
+        if (t.rewardSub >= 50) rewardLines.push('• Free small flytrap/ping: ' + rewardFlytrapChoice);
         if (t.free)          rewardLines.push('• Free shipping');
         if (rewardLines.length) body += '\n\n──────────────────\nOrder Rewards:\n' + rewardLines.join('\n');
         if (pauseAgreed) body += '\n\n──────────────────\nShipping Pause Acknowledged: Customer agreed that, because of the Nov 23\u201327 shipping pause, this order will ship on November 30.';
