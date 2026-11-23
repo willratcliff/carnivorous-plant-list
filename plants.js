@@ -343,6 +343,18 @@ const plants = [
   },
 
   {
+    name: "Northrop Typical VFT",
+    category: "flytrap",
+    species: "Dionaea muscipula · Typical DW From Northrop",
+    price: { large: "$20" },
+    shortDescription: "A typical with a story: wild-collected by Northrop Carnivorous Plants in the 1960s, then selected for winter frost tolerance in Colorado. Very V-shaped teeth. Large plants, $20.",
+    description: "This typical clone comes with a nice bit of history. The plants were collected from the wild in the 1960s by Northrop Carnivorous Plants, planted out on Dan Winter's property in Mississippi, then relocated to Colorado, where they went through strong selection for winter frost tolerance. I got mine from Jeremiah's Plants, which sells it as 'Typical DW From Northrop'.\n\nIt has a cool morphology, too, with very V-shaped teeth. Offered as large plants for $20.",
+    images: [],
+    status: "new",
+    justAdded: "2026-11-22",
+  },
+
+  {
     name: "Red Piranha VFT",
     category: "flytrap",
     species: "Dionaea muscipula 'Red Piranha' · ICPS Registered Cultivar",
