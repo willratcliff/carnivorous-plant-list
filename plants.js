@@ -55,11 +55,11 @@ const plants = [
     ],
     defaultSize: "Medium",
     clones: [
-      { name: "Anthracite", parents: "“Coalmine Beach” × ‘OG Black’" },
+      { name: "Anthracite", parents: "“Coalmine Beach” × ‘OG Black’", soldOut: true },
       { name: "Behemoth",   parents: "“UC Davis” × ‘OG Black’" },
-      { name: "Bogjewels",  parents: "‘OG Black’ × “Julie Jones”" },
-      { name: "Ducbog",     parents: "“UC Davis” × ‘OG Black’" },
-      { name: "Ogre",       parents: "‘OG Black’ × “Coalmine Beach”" },
+      { name: "Bogjewels",  parents: "‘OG Black’ × “Julie Jones”", soldOut: true },
+      { name: "Ducbog",     parents: "“UC Davis” × ‘OG Black’", soldOut: true },
+      { name: "Ogre",       parents: "‘OG Black’ × “Coalmine Beach”", soldOut: true },
     ],
     // mixes: buyer picks a potting mix, e.g. [{ name: "Rockwool", note: "my pick" }, { name: "Peat/sand" }].
     // Empty [] hides the picker (Nov 8 2026: low stock, Will picks the best plant).

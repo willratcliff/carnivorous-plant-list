@@ -857,6 +857,11 @@
 
         state.size = sizes.filter(function (s) { return s.label === ceph.defaultSize && !s.soldOut; })[0] ||
                      sizes.filter(function (s) { return !s.soldOut; })[0] || null;
+        // Preselect a clone: ceph.defaultClone if it's in stock, else the only in-stock clone.
+        var openClones = clones.filter(function (c) { return !c.soldOut; });
+        var defClone = openClones.filter(function (c) { return c.name === ceph.defaultClone; })[0] ||
+                       (openClones.length === 1 ? openClones[0] : null);
+        if (defClone) state.clone = defClone.name;
         paint();
 
         addBtn.addEventListener('click', function () {

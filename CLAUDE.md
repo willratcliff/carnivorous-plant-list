@@ -178,7 +178,8 @@ lightbox, and care notes.
 
 - **Data:** the `category: "cephalotus"` entry at the top of `plants.js`. `sizes` (label, price,
   example photo; `noClone: true` hides the clone picker for that size; `soldOut: true` greys one out),
-  `clones` (name + parentage; `soldOut: true` greys one out), `mixes` (`[]` hides the potting-mix
+  `clones` (name + parentage; `soldOut: true` greys one out; optional `defaultClone: "Name"` preselects one,
+  and when only one clone is in stock it is preselected automatically; Nov 27 2026: only Behemoth in stock), `mixes` (`[]` hides the potting-mix
   picker; off since Nov 8 2026, low stock), `video`, and `gallery`
   (`wide: true` for landscape shots). Set the entry's `status` to `"sold"` to disable Add to Cart;
   delete the entry to hide the whole block.
